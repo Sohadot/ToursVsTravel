@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="{{ lang|default('en') }}" dir="{{ 'rtl' if is_rtl else 'ltr' }}">
+<head>
+  {% include "partials/head.html" %}
+</head>
+<body class="site-body {{ page_class|default('') }}">
+  <a class="skip-link" href="#main-content">
+    {{ skip_to_content_label|default('Skip to content') }}
+  </a>
+
+  {% include "partials/nav.html" %}
+
+  <main id="main-content" class="site-main" tabindex="-1">
+    {% block content %}{% endblock %}
+  </main>
+
+  {% include "partials/footer.html" %}
+
+  <script defer src="{{ base_url }}/static/js/main.js"></script>
+  {% block page_scripts %}{% endblock %}
+</body>
+</html>

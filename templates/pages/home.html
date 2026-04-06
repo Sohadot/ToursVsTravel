@@ -1,0 +1,211 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+<section class="section">
+  <div class="container">
+    <div class="home-hero surface-card">
+      <div class="home-hero__inner">
+        <div class="home-hero__copy">
+          <p class="home-hero__eyebrow">
+            {{ home_eyebrow|default('17 travel styles • 200 destinations • evidence-led comparison') }}
+          </p>
+
+          <h1 class="section__heading">
+            {{ home_heading|default('Same Destination. Different Stories.') }}
+          </h1>
+
+          <p class="section__intro">
+            {{ home_intro|default('TourVsTravel helps you compare how people move through the world across 17 distinct travel styles. We do not sell one answer. We help you choose the path that fits your intent, your budget, and your way of experiencing place.') }}
+          </p>
+
+          <div class="home-hero__actions">
+            <a href="{{ url_primary_cta|default(base_url ~ '/' ~ lang ~ '/tools/travel-decision-compass/') }}"
+               class="button button--primary">
+              {{ primary_cta_label|default('Find Your Match') }}
+            </a>
+
+            <a href="{{ url_compare_index|default(base_url ~ '/' ~ lang ~ '/compare/') }}"
+               class="button button--secondary">
+              {{ home_secondary_cta|default('Start Comparing') }}
+            </a>
+          </div>
+        </div>
+
+        <div class="home-hero__visual surface-card surface-card--soft" aria-hidden="true">
+          <div class="home-hero__visual-frame">
+            <div class="home-hero__vs">VS</div>
+            <div class="home-hero__symbol home-hero__symbol--tour">
+              {{ hero_tour_label|default('Tour') }}
+            </div>
+            <div class="home-hero__symbol home-hero__symbol--travel">
+              {{ hero_travel_label|default('Travel') }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="compare-engine">
+  <div class="container">
+    <div class="home-section-head">
+      <h2 class="section__heading">
+        {{ compare_engine_heading|default('Compare Two Ways Through the World') }}
+      </h2>
+      <p class="section__intro">
+        {{ compare_engine_intro|default('TourVsTravel is built as a comparison infrastructure. Every travel style carries a different promise, cost structure, social rhythm, and relationship to place.') }}
+      </p>
+    </div>
+
+    <div class="compare-engine surface-card">
+      <div class="compare-engine__grid">
+        <div class="compare-engine__side compare-engine__side--a">
+          <p class="compare-engine__label">{{ compare_style_a_label|default('Travel Style A') }}</p>
+          <h3 class="compare-engine__title">{{ compare_style_a_name|default('Guided Group Tour') }}</h3>
+          <p class="compare-engine__text">
+            {{ compare_style_a_text|default('Organized, pre-structured, and logistically externalized. Strong on convenience, timing, and standardized execution.') }}
+          </p>
+        </div>
+
+        <div class="compare-engine__divider" aria-hidden="true">VS</div>
+
+        <div class="compare-engine__side compare-engine__side--b">
+          <p class="compare-engine__label">{{ compare_style_b_label|default('Travel Style B') }}</p>
+          <h3 class="compare-engine__title">{{ compare_style_b_name|default('Independent Travel') }}</h3>
+          <p class="compare-engine__text">
+            {{ compare_style_b_text|default('Self-directed, adaptive, and identity-driven. Strong on autonomy, improvisation, and personal relationship with place.') }}
+          </p>
+        </div>
+      </div>
+
+      <div class="compare-engine__actions">
+        <a href="{{ url_compare_index|default(base_url ~ '/' ~ lang ~ '/compare/') }}"
+           class="button button--primary">
+          {{ compare_engine_cta|default('Open Comparison Engine') }}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="travel-styles">
+  <div class="container">
+    <div class="home-section-head">
+      <h2 class="section__heading">
+        {{ styles_heading|default('The 17 Faces of Travel') }}
+      </h2>
+      <p class="section__intro">
+        {{ styles_intro|default('Each style is treated as a real conceptual path, not a decorative label. These are not categories for content filling. They are the logic of the site itself.') }}
+      </p>
+    </div>
+
+    <div class="styles-grid">
+      {% if featured_experience_types %}
+        {% for exp in featured_experience_types %}
+        <article class="style-card surface-card">
+          <h3 class="style-card__title">{{ exp.name }}</h3>
+          {% if exp.description %}
+          <p class="style-card__text">{{ exp.description }}</p>
+          {% endif %}
+        </article>
+        {% endfor %}
+      {% else %}
+        <article class="style-card surface-card">
+          <h3 class="style-card__title">Guided Group Tour</h3>
+          <p class="style-card__text">Shared efficiency, predictable flow, and externalized logistics.</p>
+        </article>
+
+        <article class="style-card surface-card">
+          <h3 class="style-card__title">Independent Travel</h3>
+          <p class="style-card__text">Self-directed movement with higher autonomy and personal responsibility.</p>
+        </article>
+
+        <article class="style-card surface-card">
+          <h3 class="style-card__title">Backpacking</h3>
+          <p class="style-card__text">Budget maximization, flexibility, and lived proximity to place.</p>
+        </article>
+
+        <article class="style-card surface-card">
+          <h3 class="style-card__title">Luxury Travel</h3>
+          <p class="style-card__text">Comfort, exclusivity, and premium orchestration of the travel experience.</p>
+        </article>
+
+        <article class="style-card surface-card">
+          <h3 class="style-card__title">Regenerative &amp; Community-Led</h3>
+          <p class="style-card__text">Travel designed to leave local systems stronger than before.</p>
+        </article>
+
+        <article class="style-card surface-card">
+          <h3 class="style-card__title">Religious &amp; Spiritual Pilgrimage</h3>
+          <p class="style-card__text">Travel defined by devotion, ritual, sacred purpose, and spiritual intention.</p>
+        </article>
+      {% endif %}
+    </div>
+
+    <div class="home-section-cta">
+      <a href="{{ url_experience_types_index|default(base_url ~ '/' ~ lang ~ '/experience/') }}"
+         class="button button--secondary">
+        {{ styles_cta|default('Explore All 17 Styles') }}
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="tools">
+  <div class="container">
+    <div class="home-section-head">
+      <h2 class="section__heading">
+        {{ tools_heading|default('Tools That Bring People Back') }}
+      </h2>
+      <p class="section__intro">
+        {{ tools_intro|default('The site is not only a publishing engine. It is also a repeat-use decision layer designed to turn comparison into a practical experience.') }}
+      </p>
+    </div>
+
+    <div class="tools-grid">
+      <article class="tool-card surface-card">
+        <h3 class="tool-card__title">Travel Decision Compass</h3>
+        <p class="tool-card__text">An evidence-led recommendation engine that maps a real trip to the travel style that fits it best.</p>
+      </article>
+
+      <article class="tool-card surface-card">
+        <h3 class="tool-card__title">Tour vs Travel Cost Comparator</h3>
+        <p class="tool-card__text">Structured cost comparison by destination, trip length, and traveler count, without pretending to be live pricing.</p>
+      </article>
+
+      <article class="tool-card surface-card">
+        <h3 class="tool-card__title">Destination Experience Matcher</h3>
+        <p class="tool-card__text">A destination-led model that identifies which travel styles are strongest for a given place and why.</p>
+      </article>
+
+      <article class="tool-card surface-card">
+        <h3 class="tool-card__title">Travel Style Index</h3>
+        <p class="tool-card__text">A personal profile score that helps users understand how they move through the world.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="methodology-strip">
+  <div class="container">
+    <div class="methodology-strip surface-card">
+      <div class="methodology-strip__copy">
+        <h2 class="methodology-strip__title">
+          {{ methodology_heading|default('Methodology is the Frame. Travel is the Road.') }}
+        </h2>
+        <p class="methodology-strip__text">
+          {{ methodology_intro|default('TourVsTravel is built as a reference system. Our role is not to push one ideology of movement, but to compare travel paths transparently, using structured criteria, official sources, and explicit assumptions.') }}
+        </p>
+      </div>
+
+      <div class="methodology-strip__actions">
+        <a href="{{ url_methodology|default(base_url ~ '/' ~ lang ~ '/methodology/') }}"
+           class="button button--primary">
+          {{ methodology_cta|default('Read the Methodology') }}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,83 @@
+<footer class="site-footer" role="contentinfo">
+  <div class="site-footer__top container">
+    <div class="site-footer__brand">
+      <a href="{{ url_home|default(base_url ~ '/' ~ lang ~ '/') }}"
+         class="brand-lockup brand-lockup--footer"
+         aria-label="{{ site_name|default('TourVsTravel') }}">
+        <span class="brand-lockup__icon-wrap" aria-hidden="true">
+          <img
+            src="{{ base_url }}/static/img/brand/logo-icon.svg"
+            alt=""
+            class="brand-lockup__icon"
+            width="36"
+            height="36"
+            loading="lazy"
+            decoding="async"
+          >
+        </span>
+
+        <span class="brand-lockup__wordmark">
+          <span class="brand-lockup__tour">Tour</span><span class="brand-lockup__vs">Vs</span><span class="brand-lockup__travel">Travel</span><span class="brand-lockup__tld">.com</span>
+        </span>
+      </a>
+
+      <p class="site-footer__tagline">
+        {{ site_tagline|default('The Unbiased Reference for Travel Decisions') }}
+      </p>
+
+      <p class="site-footer__summary">
+        {{ footer_summary|default('TourVsTravel is a multilingual, evidence-led travel decision infrastructure built to compare how people move through the world across destinations, styles, and intentions.') }}
+      </p>
+    </div>
+
+    <div class="site-footer__grid">
+      <section class="site-footer__column" aria-labelledby="footer-explore">
+        <h2 id="footer-explore" class="site-footer__heading">
+          {{ footer_explore_label|default('Explore') }}
+        </h2>
+        <ul class="site-footer__list" role="list">
+          <li><a href="{{ url_compare_index|default(base_url ~ '/' ~ lang ~ '/compare/') }}">{{ nav_compare|default('Compare') }}</a></li>
+          <li><a href="{{ url_destinations_index|default(base_url ~ '/' ~ lang ~ '/destinations/') }}">{{ nav_destinations|default('Destinations') }}</a></li>
+          <li><a href="{{ url_experience_types_index|default(base_url ~ '/' ~ lang ~ '/experience/') }}">{{ footer_styles_label|default('17 Styles') }}</a></li>
+          <li><a href="{{ url_tools_index|default(base_url ~ '/' ~ lang ~ '/tools/') }}">{{ nav_tools|default('Tools') }}</a></li>
+        </ul>
+      </section>
+
+      <section class="site-footer__column" aria-labelledby="footer-framework">
+        <h2 id="footer-framework" class="site-footer__heading">
+          {{ footer_framework_label|default('Framework') }}
+        </h2>
+        <ul class="site-footer__list" role="list">
+          <li><a href="{{ url_methodology|default(base_url ~ '/' ~ lang ~ '/methodology/') }}">{{ nav_methodology|default('Methodology') }}</a></li>
+          <li><a href="{{ url_source_policy|default(base_url ~ '/' ~ lang ~ '/methodology/source-policy/') }}">{{ footer_source_policy_label|default('Source Policy') }}</a></li>
+          <li><a href="{{ url_editorial_standards|default(base_url ~ '/' ~ lang ~ '/methodology/editorial-standards/') }}">{{ footer_editorial_label|default('Editorial Standards') }}</a></li>
+          <li><a href="{{ url_report_index|default(base_url ~ '/' ~ lang ~ '/reports/') }}">{{ nav_report|default('Annual Report') }}</a></li>
+        </ul>
+      </section>
+
+      <section class="site-footer__column" aria-labelledby="footer-practical">
+        <h2 id="footer-practical" class="site-footer__heading">
+          {{ footer_practical_label|default('Practical') }}
+        </h2>
+        <ul class="site-footer__list" role="list">
+          <li><a href="{{ url_about|default(base_url ~ '/' ~ lang ~ '/about/') }}">{{ footer_about_label|default('About') }}</a></li>
+          <li><a href="{{ url_privacy|default(base_url ~ '/' ~ lang ~ '/privacy/') }}">{{ footer_privacy_label|default('Privacy') }}</a></li>
+          <li><a href="{{ url_contact|default(base_url ~ '/' ~ lang ~ '/contact/') }}">{{ footer_contact_label|default('Contact') }}</a></li>
+          <li><a href="{{ url_acquire|default(base_url ~ '/' ~ lang ~ '/acquire/') }}">{{ footer_acquire_label|default('Acquire Domain') }}</a></li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <div class="site-footer__bottom container">
+    <p class="site-footer__legal">
+      &copy; {{ current_year|default('2026') }} {{ site_name|default('TourVsTravel') }}. {{ footer_legal_suffix|default('All rights reserved.') }}
+    </p>
+
+    {% if footer_note %}
+    <p class="site-footer__note">
+      {{ footer_note }}
+    </p>
+    {% endif %}
+  </div>
+</footer>

@@ -1,71 +1,43 @@
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{# ------------------------------------------------------------------------- #}
+{# TourVsTravel — Central Head Partial                                       #}
+{# ------------------------------------------------------------------------- #}
+{# Purpose:                                                                  #}
+{#   Render the full <head> content in one disciplined place.                #}
+{#                                                                           #}
+{# Required runtime variables:                                               #}
+{#   base_url                                                                 #}
+{#   seo                                                                      #}
+{#                                                                           #}
+{# Optional runtime variables:                                               #}
+{#   page_css_files: list[str]   -> extra CSS files (root-relative paths)    #}
+{#   head_extra: str             -> extra safe head markup if absolutely      #}
+{#                                 required by a specific page                #}
+{#   theme_color: str            -> theme color override                      #}
+{# ------------------------------------------------------------------------- #}
 
-<title>{{ page_title|default(site_name|default('TourVsTravel')) }}</title>
-<meta name="description" content="{{ meta_desc|default(site_tagline|default('The Unbiased Reference for Travel Decisions')) }}">
-<meta name="robots" content="{{ robots_directive|default('index, follow') }}">
-<meta name="theme-color" content="#002B49">
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="format-detection" content="telephone=no">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="color-scheme" content="light">
+<meta name="theme-color" content="{{ theme_color | default('#0f172a') }}">
 
-{% if canonical_url %}
-<link rel="canonical" href="{{ canonical_url }}">
-{% endif %}
+<link rel="icon" href="{{ base_url }}/static/img/brand/logo-icon.jpg" type="image/jpeg">
+<link rel="shortcut icon" href="{{ base_url }}/static/img/brand/logo-icon.jpg" type="image/jpeg">
+<link rel="apple-touch-icon" href="{{ base_url }}/static/img/brand/logo-icon.jpg">
 
-{% if hreflang %}
-  {% for h in hreflang %}
-<link rel="alternate" hreflang="{{ h.lang }}" href="{{ h.url }}">
-  {% endfor %}
-{% endif %}
-
-<meta property="og:type" content="{{ og_type|default('website') }}">
-<meta property="og:site_name" content="{{ site_name|default('TourVsTravel') }}">
-<meta property="og:title" content="{{ og_title|default(page_title|default(site_name|default('TourVsTravel'))) }}">
-<meta property="og:description" content="{{ og_description|default(meta_desc|default(site_tagline|default('The Unbiased Reference for Travel Decisions'))) }}">
-{% if canonical_url %}
-<meta property="og:url" content="{{ canonical_url }}">
-{% endif %}
-{% if og_image %}
-<meta property="og:image" content="{{ og_image }}">
-{% endif %}
-{% if locale %}
-<meta property="og:locale" content="{{ locale }}">
-{% endif %}
-
-<meta name="twitter:card" content="{{ twitter_card|default('summary_large_image') }}">
-<meta name="twitter:title" content="{{ twitter_title|default(og_title|default(page_title|default(site_name|default('TourVsTravel')))) }}">
-<meta name="twitter:description" content="{{ twitter_description|default(og_description|default(meta_desc|default(site_tagline|default('The Unbiased Reference for Travel Decisions')))) }}">
-{% if og_image %}
-<meta name="twitter:image" content="{{ og_image }}">
-{% endif %}
-
-<link rel="icon" href="{{ base_url }}/static/img/brand/logo-icon.svg" type="image/svg+xml">
 <link rel="preload" href="{{ base_url }}/static/css/main.css" as="style">
 <link rel="stylesheet" href="{{ base_url }}/static/css/main.css">
 
-{% if extra_css_urls %}
-  {% for css_url in extra_css_urls %}
-<link rel="stylesheet" href="{{ css_url }}">
+{% if page_css_files is defined and page_css_files %}
+  {% for css_file in page_css_files %}
+    <link rel="stylesheet" href="{{ base_url }}{{ css_file }}">
   {% endfor %}
 {% endif %}
 
-{% if jsonld_article %}
-<script type="application/ld+json">
-{{ jsonld_article|safe }}
-</script>
-{% endif %}
+{% include "partials/seo_jsonld.html" %}
 
-{% if jsonld_breadcrumb %}
-<script type="application/ld+json">
-{{ jsonld_breadcrumb|safe }}
-</script>
-{% endif %}
-
-{% if jsonld_faq %}
-<script type="application/ld+json">
-{{ jsonld_faq|safe }}
-</script>
-{% endif %}
-
-{% if extra_head_html %}
-{{ extra_head_html|safe }}
+{% if head_extra is defined and head_extra %}
+  {{ head_extra | safe }}
 {% endif %}

@@ -2,37 +2,87 @@
 {# TourVsTravel — Central Head Partial                                       #}
 {# ------------------------------------------------------------------------- #}
 {# Purpose:                                                                  #}
-{#   Render the full <head> content in one disciplined place.                #}
+{#   Render the complete <head> payload in one disciplined place.            #}
 {#                                                                           #}
 {# Required runtime variables:                                               #}
-{#   base_url                                                                 #}
-{#   seo                                                                      #}
+{#   seo: dict                                                               #}
+{#   main_css_url: str                                                       #}
+{#   favicon_url: str                                                        #}
 {#                                                                           #}
 {# Optional runtime variables:                                               #}
-{#   page_css_files: list[str]   -> extra CSS files (root-relative paths)    #}
-{#   head_extra: str             -> extra safe head markup if absolutely      #}
-{#                                 required by a specific page                #}
-{#   theme_color: str            -> theme color override                      #}
+{#   apple_touch_icon_url: str                                               #}
+{#   favicon_type: str                                                       #}
+{#   theme_color: str                                                        #}
+{#   csp_meta_policy: str                                                    #}
+{#   csp_nonce: str                                                          #}
+{#   page_css_assets: list[dict]                                             #}
+{#       each asset shape:                                                   #}
+{#       {                                                                   #}
+{#         "href": str,                                                      #}
+{#         "media": str?,                                                    #}
+{#         "integrity": str?,                                                #}
+{#         "crossorigin": str?                                               #}
+{#       }                                                                   #}
+{#   preload_assets: list[dict]                                              #}
+{#       each asset shape:                                                   #}
+{#       {                                                                   #}
+{#         "href": str,                                                      #}
+{#         "as": str,                                                        #}
+{#         "type": str?,                                                     #}
+{#         "crossorigin": str?                                               #}
+{#       }                                                                   #}
+{#   manifest_url: str                                                       #}
+{#   head_extra: str                                                         #}
 {# ------------------------------------------------------------------------- #}
 
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="format-detection" content="telephone=no">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="color-scheme" content="light">
-<meta name="theme-color" content="{{ theme_color | default('#0f172a') }}">
+<meta name="theme-color" content="{{ theme_color | default('#0f172a') | e }}">
 
-<link rel="icon" href="{{ base_url }}/static/img/brand/logo-icon.jpg" type="image/jpeg">
-<link rel="shortcut icon" href="{{ base_url }}/static/img/brand/logo-icon.jpg" type="image/jpeg">
-<link rel="apple-touch-icon" href="{{ base_url }}/static/img/brand/logo-icon.jpg">
+{% if csp_meta_policy is defined and csp_meta_policy %}
+  <meta http-equiv="Content-Security-Policy" content="{{ csp_meta_policy | e }}">
+{% endif %}
 
-<link rel="preload" href="{{ base_url }}/static/css/main.css" as="style">
-<link rel="stylesheet" href="{{ base_url }}/static/css/main.css">
+{% if manifest_url is defined and manifest_url %}
+  <link rel="manifest" href="{{ manifest_url | e }}">
+{% endif %}
 
-{% if page_css_files is defined and page_css_files %}
-  {% for css_file in page_css_files %}
-    <link rel="stylesheet" href="{{ base_url }}{{ css_file }}">
+<link rel="icon" href="{{ favicon_url | e }}" type="{{ favicon_type | default('image/jpeg') | e }}">
+<link rel="shortcut icon" href="{{ favicon_url | e }}" type="{{ favicon_type | default('image/jpeg') | e }}">
+
+{% if apple_touch_icon_url is defined and apple_touch_icon_url %}
+  <link rel="apple-touch-icon" href="{{ apple_touch_icon_url | e }}">
+{% else %}
+  <link rel="apple-touch-icon" href="{{ favicon_url | e }}">
+{% endif %}
+
+{% if preload_assets is defined and preload_assets %}
+  {% for asset in preload_assets %}
+    <link
+      rel="preload"
+      href="{{ asset.href | e }}"
+      as="{{ asset.as | e }}"
+      {% if asset.type is defined and asset.type %}type="{{ asset.type | e }}"{% endif %}
+      {% if asset.crossorigin is defined and asset.crossorigin %}crossorigin="{{ asset.crossorigin | e }}"{% endif %}
+    >
+  {% endfor %}
+{% endif %}
+
+<link rel="stylesheet" href="{{ main_css_url | e }}">
+
+{% if page_css_assets is defined and page_css_assets %}
+  {% for asset in page_css_assets %}
+    <link
+      rel="stylesheet"
+      href="{{ asset.href | e }}"
+      {% if asset.media is defined and asset.media %}media="{{ asset.media | e }}"{% endif %}
+      {% if asset.integrity is defined and asset.integrity %}integrity="{{ asset.integrity | e }}"{% endif %}
+      {% if asset.crossorigin is defined and asset.crossorigin %}crossorigin="{{ asset.crossorigin | e }}"{% endif %}
+    >
   {% endfor %}
 {% endif %}
 

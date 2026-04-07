@@ -1,0 +1,299 @@
+{% set page_title = page_title|default(exp_a_name ~ ' ' ~ ui_vs ~ ' ' ~ exp_b_name ~ ' in ' ~ dest_name ~ ' | ' ~ site_name) %}
+{% set page_class = page_class|default('page-comparison') %}
+{% extends "layouts/base.html" %}
+
+{% block content %}
+<section class="section">
+  <div class="container">
+    <div class="comparison-hero surface-card">
+      <div class="comparison-hero__inner">
+        <div class="comparison-hero__copy">
+          <p class="comparison-hero__eyebrow">
+            {{ dest_name }} • {{ compare_eyebrow|default('evidence-led comparison') }}
+          </p>
+
+          <h1 class="section__heading comparison-hero__title">
+            {{ exp_a_name }} <span class="comparison-hero__vs">{{ ui_vs|default('VS') }}</span> {{ exp_b_name }}
+          </h1>
+
+          <p class="section__intro comparison-hero__intro">
+            {{ meta_desc }}
+          </p>
+
+          <div class="comparison-hero__meta">
+            {% if best_seasons %}
+            <div class="comparison-meta-card">
+              <p class="comparison-meta-card__label">{{ comparison_best_season_label|default('Best seasons') }}</p>
+              <p class="comparison-meta-card__value">
+                {{ best_seasons|join(', ') }}
+              </p>
+            </div>
+            {% endif %}
+
+            {% if duration %}
+            <div class="comparison-meta-card">
+              <p class="comparison-meta-card__label">{{ comparison_duration_label|default('Typical duration') }}</p>
+              <p class="comparison-meta-card__value">{{ duration }}</p>
+            </div>
+            {% endif %}
+
+            {% if dest.region %}
+            <div class="comparison-meta-card">
+              <p class="comparison-meta-card__label">{{ comparison_region_label|default('Region') }}</p>
+              <p class="comparison-meta-card__value">{{ dest.region }}</p>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section comparison-core">
+  <div class="container">
+    <div class="comparison-summary-grid">
+      <article class="compare-card surface-card">
+        <div class="compare-card__header">
+          <p class="compare-card__eyebrow">{{ comparison_side_a_label|default('Style A') }}</p>
+          <h2 class="compare-card__title">{{ exp_a_name }}</h2>
+        </div>
+
+        {% if desc_a %}
+        <p class="compare-card__text">{{ desc_a }}</p>
+        {% endif %}
+
+        <div class="compare-card__stats">
+          {% if budget_a %}
+          <div class="compare-stat">
+            <p class="compare-stat__label">{{ ui_budget_range|default('Budget Range') }}</p>
+            <p class="compare-stat__value">{{ budget_a }}</p>
+          </div>
+          {% endif %}
+
+          {% if group_a %}
+          <div class="compare-stat">
+            <p class="compare-stat__label">{{ ui_typical_group|default('Typical Group Size') }}</p>
+            <p class="compare-stat__value">{{ group_a }}</p>
+          </div>
+          {% endif %}
+
+          {% if cost_range_a %}
+          <div class="compare-stat">
+            <p class="compare-stat__label">{{ ui_cost_range|default('Cost Range') }}</p>
+            <p class="compare-stat__value">{{ cost_range_a }}</p>
+          </div>
+          {% endif %}
+        </div>
+
+        {% if ideal_for_a %}
+        <div class="compare-card__block">
+          <h3 class="compare-card__block-title">{{ ui_best_for|default('Best For') }}</h3>
+          <ul class="compare-chip-list" role="list">
+            {% for item in ideal_for_a %}
+            <li class="compare-chip">{{ item }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+      </article>
+
+      <div class="comparison-divider" aria-hidden="true">
+        <span class="comparison-divider__badge">{{ ui_vs|default('VS') }}</span>
+      </div>
+
+      <article class="compare-card surface-card">
+        <div class="compare-card__header">
+          <p class="compare-card__eyebrow">{{ comparison_side_b_label|default('Style B') }}</p>
+          <h2 class="compare-card__title">{{ exp_b_name }}</h2>
+        </div>
+
+        {% if desc_b %}
+        <p class="compare-card__text">{{ desc_b }}</p>
+        {% endif %}
+
+        <div class="compare-card__stats">
+          {% if budget_b %}
+          <div class="compare-stat">
+            <p class="compare-stat__label">{{ ui_budget_range|default('Budget Range') }}</p>
+            <p class="compare-stat__value">{{ budget_b }}</p>
+          </div>
+          {% endif %}
+
+          {% if group_b %}
+          <div class="compare-stat">
+            <p class="compare-stat__label">{{ ui_typical_group|default('Typical Group Size') }}</p>
+            <p class="compare-stat__value">{{ group_b }}</p>
+          </div>
+          {% endif %}
+
+          {% if cost_range_b %}
+          <div class="compare-stat">
+            <p class="compare-stat__label">{{ ui_cost_range|default('Cost Range') }}</p>
+            <p class="compare-stat__value">{{ cost_range_b }}</p>
+          </div>
+          {% endif %}
+        </div>
+
+        {% if ideal_for_b %}
+        <div class="compare-card__block">
+          <h3 class="compare-card__block-title">{{ ui_best_for|default('Best For') }}</h3>
+          <ul class="compare-chip-list" role="list">
+            {% for item in ideal_for_b %}
+            <li class="compare-chip">{{ item }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+      </article>
+    </div>
+  </div>
+</section>
+
+{% if criteria %}
+<section class="section">
+  <div class="container">
+    <div class="home-section-head">
+      <h2 class="section__heading">
+        {{ comparison_criteria_heading|default('Structured Comparison Criteria') }}
+      </h2>
+      <p class="section__intro">
+        {{ comparison_criteria_intro|default('Each page compares two travel styles through explicit criteria rather than vague editorial preference.') }}
+      </p>
+    </div>
+
+    <div class="criteria-grid">
+      {% for item in criteria %}
+      <article class="criteria-card surface-card">
+        <div class="criteria-card__head">
+          <h3 class="criteria-card__title">{{ item.label }}</h3>
+          {% if item.description %}
+          <p class="criteria-card__text">{{ item.description }}</p>
+          {% endif %}
+        </div>
+
+        <div class="criteria-card__scores">
+          <div class="criteria-score">
+            <p class="criteria-score__name">{{ exp_a_name }}</p>
+            {% if item.score_a %}
+            <p class="criteria-score__value">
+              <span class="score-pill">{{ item.score_a }}</span>
+              {% if item.label_a %}
+              <span class="criteria-score__label">{{ item.label_a }}</span>
+              {% endif %}
+            </p>
+            {% endif %}
+          </div>
+
+          <div class="criteria-score">
+            <p class="criteria-score__name">{{ exp_b_name }}</p>
+            {% if item.score_b %}
+            <p class="criteria-score__value">
+              <span class="score-pill">{{ item.score_b }}</span>
+              {% if item.label_b %}
+              <span class="criteria-score__label">{{ item.label_b }}</span>
+              {% endif %}
+            </p>
+            {% endif %}
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if local_insight %}
+<section class="section">
+  <div class="container">
+    <div class="comparison-insight surface-card">
+      <div class="comparison-insight__inner">
+        <div class="comparison-insight__copy">
+          <h2 class="comparison-insight__title">
+            {{ ui_local_insight|default('Local Insight') }}
+          </h2>
+          <p class="comparison-insight__text">{{ local_insight }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if affiliate_links %}
+<section class="section">
+  <div class="container">
+    <div class="home-section-head">
+      <h2 class="section__heading">
+        {{ comparison_next_step_heading|default('Next Step Resources') }}
+      </h2>
+      <p class="section__intro">
+        {{ comparison_next_step_intro|default('We do not use live booking data. We direct users toward structured, relevant external resources when appropriate.') }}
+      </p>
+    </div>
+
+    <div class="affiliate-grid">
+      {% for link in affiliate_links %}
+      <article class="affiliate-card surface-card">
+        <div class="affiliate-card__content">
+          <h3 class="affiliate-card__title">{{ link.label }}</h3>
+          {% if link.provider %}
+          <p class="affiliate-card__provider">{{ link.provider }}</p>
+          {% endif %}
+        </div>
+
+        <div class="affiliate-card__actions">
+          <a href="{{ link.url }}"
+             class="button button--secondary"
+             target="_blank"
+             rel="nofollow noopener noreferrer">
+            {{ comparison_resource_cta|default('Open Resource') }}
+          </a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if sources %}
+<section class="section">
+  <div class="container">
+    <div class="home-section-head">
+      <h2 class="section__heading">
+        {{ ui_sources|default('Sources') }}
+      </h2>
+      <p class="section__intro">
+        {{ comparison_sources_intro|default('Every comparison should remain anchored in identifiable sources, even when the page is generated at scale.') }}
+      </p>
+    </div>
+
+    <div class="sources-panel surface-card">
+      <ul class="sources-list" role="list">
+        {% for source in sources %}
+        <li class="sources-list__item">
+          <div class="sources-list__meta">
+            <p class="sources-list__name">{{ source.name }}</p>
+            {% if source.provider %}
+            <p class="sources-list__provider">{{ source.provider }}</p>
+            {% endif %}
+          </div>
+
+          {% if source.url %}
+          <a href="{{ source.url }}"
+             class="sources-list__link"
+             target="_blank"
+             rel="nofollow noopener noreferrer">
+            {{ comparison_source_visit_label|default('Visit source') }}
+          </a>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+{% endif %}
+{% endblock %}

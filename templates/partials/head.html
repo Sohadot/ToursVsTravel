@@ -14,7 +14,6 @@
 {#   favicon_type: str                                                       #}
 {#   theme_color: str                                                        #}
 {#   csp_meta_policy: str                                                    #}
-{#   csp_nonce: str                                                          #}
 {#   page_css_assets: list[dict]                                             #}
 {#       each asset shape:                                                   #}
 {#       {                                                                   #}
@@ -32,27 +31,32 @@
 {#         "crossorigin": str?                                               #}
 {#       }                                                                   #}
 {#   manifest_url: str                                                       #}
-{#   head_extra: str                                                         #}
+{#   referrer_policy: str                                                    #}
 {# ------------------------------------------------------------------------- #}
 
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="format-detection" content="telephone=no">
-<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="referrer" content="{{ referrer_policy | default('strict-origin-when-cross-origin') | e }}">
 <meta name="color-scheme" content="light">
 <meta name="theme-color" content="{{ theme_color | default('#0f172a') | e }}">
 
+{# NOTE:
+   CSP via <meta> is only a supplemental fallback.
+   The authoritative CSP should be delivered via HTTP response headers / Cloudflare.
+#}
 {% if csp_meta_policy is defined and csp_meta_policy %}
   <meta http-equiv="Content-Security-Policy" content="{{ csp_meta_policy | e }}">
 {% endif %}
+
+{% include "partials/seo_jsonld.html" %}
 
 {% if manifest_url is defined and manifest_url %}
   <link rel="manifest" href="{{ manifest_url | e }}">
 {% endif %}
 
-<link rel="icon" href="{{ favicon_url | e }}" type="{{ favicon_type | default('image/jpeg') | e }}">
-<link rel="shortcut icon" href="{{ favicon_url | e }}" type="{{ favicon_type | default('image/jpeg') | e }}">
+<link rel="icon" href="{{ favicon_url | e }}"{% if favicon_type is defined and favicon_type %} type="{{ favicon_type | e }}"{% endif %}>
 
 {% if apple_touch_icon_url is defined and apple_touch_icon_url %}
   <link rel="apple-touch-icon" href="{{ apple_touch_icon_url | e }}">
@@ -84,10 +88,4 @@
       {% if asset.crossorigin is defined and asset.crossorigin %}crossorigin="{{ asset.crossorigin | e }}"{% endif %}
     >
   {% endfor %}
-{% endif %}
-
-{% include "partials/seo_jsonld.html" %}
-
-{% if head_extra is defined and head_extra %}
-  {{ head_extra | safe }}
 {% endif %}

@@ -84,7 +84,7 @@ languages:
     enabled: true
 
   - code: "zh"
-    hreflang: "zh"
+    hreflang: "zh-CN"
     locale: "zh_CN"
     dir: "ltr"
     native_name: "中文"
@@ -119,8 +119,12 @@ seo:
   robots_directive: "index, follow"
   og_type: "website"
   twitter_card: "summary_large_image"
-  default_og_image: "/static/img/og/default-og.jpg"
+  default_og_image: "https://tourvstravel.com/static/img/og/default-og.jpg"
   theme_color: "#002B49"
+
+  hreflang:
+    include_x_default: true
+    x_default_lang: "en"
 
   title_templates:
     home:
@@ -682,8 +686,6 @@ ui:
       ja: "ソース"
 
 defaults:
-  current_year: "2026"
-
   footer_note:
     en: "No live pricing is claimed on this site. Where relevant, users are directed to official or structured external resources."
     ar: "لا يدّعي هذا الموقع تقديم أسعار حية مباشرة. وعند الحاجة، يتم توجيه المستخدمين إلى مصادر رسمية أو خارجية منظمة."

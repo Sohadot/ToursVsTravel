@@ -1,0 +1,528 @@
+schema:
+  file_id: "tools_config"
+  schema_version: "1.0.0"
+  strict_mode: true
+
+  required_languages:
+    - "en"
+    - "ar"
+    - "fr"
+    - "es"
+    - "de"
+    - "zh"
+    - "ja"
+
+  validation:
+    fail_on_unknown_top_level_keys: true
+    fail_on_unknown_tool_keys: true
+    fail_on_missing_required_language: true
+    fail_on_duplicate_tool_ids: true
+    fail_on_duplicate_tool_slugs: true
+    fail_on_relative_external_urls: true
+    fail_on_missing_affiliate_disclosure_when_affiliate_enabled: true
+    fail_on_scoring_gaps: true
+    fail_on_invalid_score_band_order: true
+    fail_on_circular_self_dependency: true
+    fail_on_empty_required_options_source: true
+
+settings:
+  disabled_tools_build_behavior: "exclude_from_public_build"
+  canonical_tool_path_template: "/{lang}/tools/{tool_slug}/"
+  public_tools_order:
+    - "travel_decision_compass"
+    - "tour_vs_travel_cost_comparator"
+    - "destination_experience_matcher"
+    - "travel_style_index"
+    - "flight_route_comparator"
+
+shared_text:
+  affiliate_disclosure_label: &affiliate_disclosure_label
+    en: "Affiliate disclosure"
+    ar: "إفصاح الأفلييت"
+    fr: "Divulgation d'affiliation"
+    es: "Divulgación de afiliación"
+    de: "Affiliate-Hinweis"
+    zh: "联盟链接披露"
+    ja: "アフィリエイト開示"
+
+  affiliate_disclosure_text: &affiliate_disclosure_text
+    en: "Some outbound links may be affiliate links. This does not alter our methodology, rankings, or evaluation logic, and this site does not claim live pricing or real-time availability."
+    ar: "قد تكون بعض الروابط الخارجية روابط أفلييت. هذا لا يغيّر منهجيتنا أو ترتيبنا أو منطق التقييم، وهذا الموقع لا يدّعي أسعارًا حية أو توفرًا لحظيًا."
+    fr: "Certains liens sortants peuvent être des liens d'affiliation. Cela ne modifie ni notre méthodologie, ni notre classement, ni notre logique d'évaluation, et ce site ne prétend pas fournir de prix en direct ni de disponibilité en temps réel."
+    es: "Algunos enlaces externos pueden ser enlaces de afiliación. Esto no altera nuestra metodología, clasificación ni lógica de evaluación, y este sitio no afirma ofrecer precios en vivo ni disponibilidad en tiempo real."
+    de: "Einige ausgehende Links können Affiliate-Links sein. Dies verändert weder unsere Methodik noch unser Ranking oder unsere Bewertungslogik, und diese Website beansprucht keine Live-Preise oder Echtzeitverfügbarkeit."
+    zh: "部分外部链接可能为联盟链接。这不会改变我们的方法论、排序或评估逻辑，且本网站不声称提供实时价格或实时可用性。"
+    ja: "一部の外部リンクはアフィリエイトリンクである可能性があります。これは当サイトの方法論、順位付け、評価ロジックを変更するものではなく、当サイトはライブ価格やリアルタイム在庫を主張しません。"
+
+  precision_warning_text: &precision_warning_text
+    en: "This tool provides structured estimates and comparison bands, not live market quotes."
+    ar: "تقدم هذه الأداة تقديرات منظمة ونطاقات مقارنة، وليست أسعار سوق مباشرة."
+    fr: "Cet outil fournit des estimations structurées et des fourchettes comparatives, et non des cotations en direct."
+    es: "Esta herramienta ofrece estimaciones estructuradas y rangos comparativos, no cotizaciones en tiempo real."
+    de: "Dieses Tool liefert strukturierte Schätzungen und Vergleichsbereiche, keine Live-Marktpreise."
+    zh: "该工具提供的是结构化估算和比较区间，而非实时市场报价。"
+    ja: "このツールはリアルタイム見積もりではなく、構造化された推定値と比較帯を提供します。"
+
+shared:
+  input_types:
+    integer:
+      value_kind: "integer"
+      allow_unknown_values: false
+
+    boolean:
+      value_kind: "boolean"
+      allow_unknown_values: false
+
+    enum_single_select:
+      value_kind: "string"
+      allow_unknown_values: false
+      requires_enum_id: true
+
+    enum_multi_select:
+      value_kind: "array[string]"
+      allow_unknown_values: false
+      requires_enum_id: true
+      requires_min_selections: true
+      requires_max_selections: true
+
+    destination_select:
+      value_kind: "string"
+      allow_unknown_values: false
+      value_source:
+        file: "destinations.yaml"
+        collection: "destinations"
+        value_field: "id"
+        label_field: "name"
+      validation:
+        require_existing_value: true
+
+  enums:
+    budget_band:
+      - "low"
+      - "medium"
+      - "high"
+      - "luxury"
+
+    planning_preference:
+      - "fully_structured"
+      - "semi_structured"
+      - "flexible"
+      - "fully_open"
+
+    cultural_depth:
+      - "light"
+      - "moderate"
+      - "deep"
+
+    comfort_priority:
+      - "low"
+      - "medium"
+      - "high"
+
+    mobility_preference:
+      - "low_movement"
+      - "balanced"
+      - "high_movement"
+
+    travel_goal:
+      - "efficiency"
+      - "freedom"
+      - "restoration"
+      - "transformation"
+      - "family_bonding"
+      - "cultural_learning"
+      - "pilgrimage"
+
+    trip_goal:
+      - "comfort"
+      - "freedom"
+      - "culture"
+      - "adventure"
+      - "family"
+      - "pilgrimage"
+      - "wellness"
+
+    group_preference:
+      - "solo"
+      - "small_group"
+      - "family_group"
+      - "large_group"
+
+    spontaneity:
+      - "low"
+      - "medium"
+      - "high"
+
+    route_mode_preference:
+      - "direct_flight"
+      - "transit_flight"
+      - "multi_city"
+      - "ferry_connection"
+      - "cruise_arrival"
+
+    origin_region:
+      - "europe"
+      - "middle_east"
+      - "north_america"
+      - "asia_pacific"
+      - "africa"
+      - "latin_america"
+
+    cost_style_set:
+      - "guided_group_tour"
+      - "independent_travel"
+      - "cultural_immersion"
+      - "luxury_travel"
+      - "family_travel"
+      - "backpacking"
+      - "cruise_experience"
+
+tools:
+  - id: "travel_decision_compass"
+    version: "1.0.0"
+
+    publication:
+      status: "active"
+      build_visibility: "public"
+      interactive: true
+      evergreen: true
+      shareable: true
+      indexable: true
+      uses_live_data: false
+
+    routing:
+      slug: "travel-decision-compass"
+      path_template: "/{lang}/tools/travel-decision-compass/"
+
+    category: "decision"
+    priority: 1
+
+    name:
+      en: "Travel Decision Compass"
+      ar: "بوصلة قرار السفر"
+      fr: "Boussole de Décision de Voyage"
+      es: "Brújula de Decisión de Viaje"
+      de: "Reise-Entscheidungskompass"
+      zh: "旅行决策指南针"
+      ja: "トラベル・ディシジョン・コンパス"
+
+    short_description:
+      en: "An evidence-led recommendation tool that maps a real trip to the travel style that fits it best."
+      ar: "أداة توصية قائمة على الأدلة تربط الرحلة الحقيقية بنمط السفر الأنسب لها."
+      fr: "Un outil de recommandation fondé sur des critères explicites qui relie un vrai voyage au style qui lui convient le mieux."
+      es: "Una herramienta de recomendación basada en evidencia que vincula un viaje real con el estilo que mejor le conviene."
+      de: "Ein evidenzgeleitetes Empfehlungstool, das eine reale Reise dem am besten passenden Reisestil zuordnet."
+      zh: "一个基于证据的推荐工具，用于将真实旅程映射到最适合的旅行风格。"
+      ja: "実際の旅行を最適な旅行スタイルに結びつける、エビデンス主導の推薦ツール。"
+
+    long_description:
+      en: "Not a personality quiz. The Compass evaluates a specific trip across intent, structure, flexibility, group dynamics, budget pressure, and desired relationship to place."
+      ar: "ليست اختبار شخصية. تقوم البوصلة بتقييم رحلة محددة عبر النية والبنية والمرونة وديناميكيات المجموعة وضغط الميزانية والعلاقة المطلوبة بالمكان."
+      fr: "Ce n'est pas un simple quiz de personnalité. La Boussole évalue un voyage précis selon l'intention, la structure, la flexibilité, la dynamique de groupe, la pression budgétaire et la relation souhaitée au lieu."
+      es: "No es un simple test de personalidad. La Brújula evalúa un viaje concreto según intención, estructura, flexibilidad, dinámica de grupo, presión presupuestaria y relación deseada con el lugar."
+      de: "Kein gewöhnliches Persönlichkeitsquiz. Der Kompass bewertet eine konkrete Reise anhand von Absicht, Struktur, Flexibilität, Gruppendynamik, Budgetdruck und gewünschter Beziehung zum Ort."
+      zh: "这不是普通的性格测试。该指南针根据旅行意图、结构、灵活性、团队动态、预算压力和与目的地的关系来评估具体旅程。"
+      ja: "これは性格診断ではありません。コンパスは、意図、構造、柔軟性、同行者構成、予算圧力、場所との関係性をもとに特定の旅を評価します。"
+
+    primary_cta:
+      en: "Find Your Match"
+      ar: "اعثر على الأنسب لك"
+      fr: "Trouvez votre correspondance"
+      es: "Encuentra tu mejor ajuste"
+      de: "Finden Sie die passende Wahl"
+      zh: "找到最适合你的方式"
+      ja: "自分に合う旅を見つける"
+
+    inputs:
+      - key: "destination"
+        type_id: "destination_select"
+        required: true
+
+      - key: "trip_length_days"
+        type_id: "integer"
+        required: true
+        validation:
+          min: 1
+          max: 60
+
+      - key: "party_size"
+        type_id: "integer"
+        required: true
+        validation:
+          min: 1
+          max: 20
+
+      - key: "budget_band"
+        type_id: "enum_single_select"
+        enum_id: "budget_band"
+        required: true
+
+      - key: "planning_preference"
+        type_id: "enum_single_select"
+        enum_id: "planning_preference"
+        required: true
+
+      - key: "cultural_depth"
+        type_id: "enum_single_select"
+        enum_id: "cultural_depth"
+        required: true
+
+      - key: "comfort_priority"
+        type_id: "enum_single_select"
+        enum_id: "comfort_priority"
+        required: true
+
+      - key: "mobility_preference"
+        type_id: "enum_single_select"
+        enum_id: "mobility_preference"
+        required: true
+
+      - key: "spiritual_intent"
+        type_id: "boolean"
+        required: false
+
+      - key: "travel_goal"
+        type_id: "enum_single_select"
+        enum_id: "travel_goal"
+        required: true
+
+    outputs:
+      primary_output: "recommended_style"
+      secondary_outputs:
+        - "top_3_styles"
+        - "fit_rationale"
+        - "tradeoffs"
+        - "comparison_links"
+
+    evaluation_model:
+      mode: "recommendation"
+      engine: "weighted_rules"
+      score_range:
+        min: 0
+        max: 100
+      score_bands:
+        - key: "strong_fit"
+          min: 80
+          max: 100
+        - key: "good_fit"
+          min: 65
+          max: 79
+        - key: "possible_fit"
+          min: 50
+          max: 64
+        - key: "weak_fit"
+          min: 25
+          max: 49
+        - key: "no_fit"
+          min: 0
+          max: 24
+      ranking:
+        enabled: true
+        max_results: 3
+      precision:
+        type: "ordinal"
+        show_precision_warning: false
+
+    data_dependencies:
+      - file: "destinations.yaml"
+        required: true
+      - file: "experience_types.yaml"
+        required: true
+      - file: "comparison_criteria.yaml"
+        required: true
+
+    external_resources:
+      official_links:
+        enabled: true
+        preferred: true
+
+      affiliate:
+        enabled: false
+        providers: []
+        disclosure:
+          required: false
+          label: {}
+          text: {}
+          position: null
+
+      external_url_policy:
+        require_https: true
+        allow_relative_urls: false
+        rel_attributes:
+          - "nofollow"
+          - "noopener"
+          - "noreferrer"
+
+    trust_policy:
+      claim_live_pricing: false
+      claim_real_time_availability: false
+      claim_medical_or_psychological_diagnosis: false
+      require_explanation_layer: true
+      require_disclaimer: false
+      require_affiliate_disclosure: false
+      require_official_source_routing: true
+
+    seo:
+      title_template:
+        en: "Travel Decision Compass | TourVsTravel"
+        ar: "بوصلة قرار السفر | TourVsTravel"
+        fr: "Boussole de Décision de Voyage | TourVsTravel"
+        es: "Brújula de Decisión de Viaje | TourVsTravel"
+        de: "Reise-Entscheidungskompass | TourVsTravel"
+        zh: "旅行决策指南针 | TourVsTravel"
+        ja: "トラベル・ディシジョン・コンパス | TourVsTravel"
+
+      description_template:
+        en: "Use the Travel Decision Compass to identify the travel style that best fits your real trip, based on structure, budget, comfort, and intent."
+        ar: "استخدم بوصلة قرار السفر لتحديد نمط السفر الأنسب لرحلتك الحقيقية بناءً على البنية والميزانية والراحة والنية."
+        fr: "Utilisez la Boussole de Décision de Voyage pour identifier le style qui convient le mieux à votre voyage réel selon la structure, le budget, le confort et l'intention."
+        es: "Usa la Brújula de Decisión de Viaje para identificar el estilo que mejor se adapta a tu viaje real según estructura, presupuesto, comodidad e intención."
+        de: "Nutzen Sie den Reise-Entscheidungskompass, um den Reisestil zu bestimmen, der am besten zu Ihrer tatsächlichen Reise passt – basierend auf Struktur, Budget, Komfort und Absicht."
+        zh: "使用旅行决策指南针，根据结构、预算、舒适度和旅行意图，找出最适合你真实旅程的旅行风格。"
+        ja: "旅の構造、予算、快適性、意図に基づいて、実際の旅行に最適なスタイルを見つけるためにトラベル・ディシジョン・コンパスを使います。"
+
+  - id: "tour_vs_travel_cost_comparator"
+    version: "1.0.0"
+
+    publication:
+      status: "active"
+      build_visibility: "public"
+      interactive: true
+      evergreen: true
+      shareable: true
+      indexable: true
+      uses_live_data: false
+
+    routing:
+      slug: "tour-vs-travel-cost-comparator"
+      path_template: "/{lang}/tools/tour-vs-travel-cost-comparator/"
+
+    category: "cost"
+    priority: 2
+
+    name:
+      en: "Tour vs Travel Cost Comparator"
+      ar: "مقارن تكلفة Tour مقابل Travel"
+      fr: "Comparateur de Coût Tour vs Travel"
+      es: "Comparador de Coste Tour vs Travel"
+      de: "Tour-vs-Travel-Kostenrechner"
+      zh: "Tour 与 Travel 成本比较器"
+      ja: "Tour vs Travel コスト比較ツール"
+
+    short_description:
+      en: "Compare structured tour costs against self-directed travel costs for a destination, duration, and group size."
+      ar: "قارن بين تكلفة الجولة المنظمة وتكلفة السفر المستقل حسب الوجهة والمدة وحجم المجموعة."
+      fr: "Comparez le coût d'un voyage structuré au coût d'un voyage autonome selon la destination, la durée et la taille du groupe."
+      es: "Compara el coste de un viaje estructurado con el de un viaje independiente según destino, duración y tamaño del grupo."
+      de: "Vergleichen Sie die Kosten einer strukturierten Reise mit denen einer selbstorganisierten Reise nach Ziel, Dauer und Gruppengröße."
+      zh: "根据目的地、时长和人数，比较结构化旅行与自主旅行的成本。"
+      ja: "目的地・日数・人数に基づいて、構造化された旅行と自主管理旅行の費用を比較します。"
+
+    long_description:
+      en: "A structured estimator that compares cost bands rather than pretending to provide live booking quotes. Designed for transparency, not false precision."
+      ar: "مُقدِّر منظم يقارن نطاقات التكلفة بدل الادعاء بتقديم أسعار حجز مباشرة. صُمم للشفافية لا للدقة الزائفة."
+      fr: "Un estimateur structuré qui compare des fourchettes de coût au lieu de prétendre fournir des devis en direct. Conçu pour la transparence, non pour une fausse précision."
+      es: "Un estimador estructurado que compara rangos de coste en lugar de fingir cotizaciones en tiempo real. Diseñado para la transparencia, no para una falsa precisión."
+      de: "Ein strukturierter Schätzer, der Kostenbereiche vergleicht, statt Live-Angebote vorzutäuschen. Entwickelt für Transparenz, nicht für Scheingenauigkeit."
+      zh: "这是一个比较成本区间的结构化估算器，而不是伪装成实时预订报价工具。它追求透明，而非虚假的精确。"
+      ja: "ライブ予約見積もりを装うのではなく、費用帯を比較する構造化推定ツールです。目的は見せかけの精度ではなく透明性です。"
+
+    primary_cta:
+      en: "Compare Costs"
+      ar: "قارن التكاليف"
+      fr: "Comparer les coûts"
+      es: "Comparar costes"
+      de: "Kosten vergleichen"
+      zh: "比较成本"
+      ja: "費用を比較する"
+
+    inputs:
+      - key: "destination"
+        type_id: "destination_select"
+        required: true
+
+      - key: "trip_length_days"
+        type_id: "integer"
+        required: true
+        validation:
+          min: 1
+          max: 60
+
+      - key: "party_size"
+        type_id: "integer"
+        required: true
+        validation:
+          min: 1
+          max: 20
+
+      - key: "budget_band"
+        type_id: "enum_single_select"
+        enum_id: "budget_band"
+        required: true
+
+      - key: "style_set"
+        type_id: "enum_multi_select"
+        enum_id: "cost_style_set"
+        required: true
+        validation:
+          min_selections: 2
+          max_selections: 4
+
+    outputs:
+      primary_output: "cost_comparison_table"
+      secondary_outputs:
+        - "cost_drivers"
+        - "high_cost_risk_flags"
+        - "official_booking_resources"
+
+    evaluation_model:
+      mode: "estimation"
+      engine: "destination_cost_bands_x_style_multipliers"
+      score_range: null
+      score_bands: []
+      ranking:
+        enabled: false
+        max_results: 0
+      precision:
+        type: "banded"
+        show_precision_warning: true
+        warning_text: *precision_warning_text
+
+    data_dependencies:
+      - file: "destinations.yaml"
+        required: true
+      - file: "experience_types.yaml"
+        required: true
+      - file: "comparisons.yaml"
+        required: true
+
+    external_resources:
+      official_links:
+        enabled: true
+        preferred: true
+
+      affiliate:
+        enabled: true
+        providers:
+          - "Skyscanner"
+          - "Booking"
+          - "GetYourGuide"
+        disclosure:
+          required: true
+          label: *affiliate_disclosure_label
+          text: *affiliate_disclosure_text
+          position: "before_external_links"
+
+      external_url_policy:
+        require_https: true
+        allow_relative_urls: false
+        rel_attributes:
+          - "nofollow"
+          - "noopener"
+          - "noreferrer"
+
+    trust_policy:
+      claim_live_pricing: false
+      claim_real_time_availability: false
+      claim_medical_or_psychological_diagnosis: false
+      require_explanation_layer: true

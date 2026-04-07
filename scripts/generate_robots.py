@@ -18,6 +18,8 @@ Design principles
 - canonical sitemap URL derived from site_config.site.base_url
 - optional extra sitemap URLs are validated strictly
 - atomic file write
+- single official public API for file generation:
+      generate_robots_file(output_dir=...)
 
 Execution
 ---------
@@ -74,12 +76,22 @@ import yaml
 # Logging
 # ============================================================================
 
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(message)s",
-    datefmt="%H:%M:%S",
-)
 log = logging.getLogger("generate_robots")
+
+
+def configure_logging() -> None:
+    """
+    Configure logging for standalone CLI execution.
+
+    This function is intentionally called only from main(), so importing this
+    module from build.py does not mutate the host process logging policy.
+    """
+    if not logging.getLogger().handlers:
+        logging.basicConfig(
+            level=logging.INFO,
+            format="%(asctime)s [%(levelname)s] %(message)s",
+            datefmt="%H:%M:%S",
+        )
 
 
 # ============================================================================
@@ -602,6 +614,30 @@ def _ensure_safe_output_dir(output_dir: Path) -> Path:
     return resolved
 
 
+def write_robots_file(output_dir: Path, content: str) -> Path:
+    safe_output_dir = _ensure_safe_output_dir(output_dir)
+    path = safe_output_dir / "robots.txt"
+    _atomic_write_text(path, content)
+    return path
+
+
+# ============================================================================
+# Public API
+# ============================================================================
+
+def generate_robots_file(*, output_dir: Path = DEFAULT_OUTPUT_DIR) -> Path:
+    """
+    Official file-generation API for build.py and standalone usage.
+
+    Returns the full output path of the generated robots.txt file.
+    """
+    site_config = load_site_config()
+    content = build_robots_text(site_config)
+    path = write_robots_file(output_dir, content)
+    log.info("Generated robots.txt -> %s", path)
+    return path
+
+
 # ============================================================================
 # CLI
 # ============================================================================
@@ -629,16 +665,17 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
 
     if args.stdout:
         logging.disable(logging.CRITICAL)
+    else:
+        configure_logging()
 
     try:
-        site_config = load_site_config()
-        content = build_robots_text(site_config)
-
         if args.stdout:
+            site_config = load_site_config()
+            content = build_robots_text(site_config)
             print(content, end="")
             return 0
 
-        path = write_robots_file(args.output_dir.resolve(), content)
+        path = generate_robots_file(output_dir=args.output_dir.resolve())
         log.info("robots.txt generation completed successfully: %s", path)
         return 0
 

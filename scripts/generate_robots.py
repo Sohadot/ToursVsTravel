@@ -570,8 +570,8 @@ def _ensure_safe_output_dir(output_dir: Path) -> Path:
     repo_root = ROOT_DIR.resolve()
     allowed_in_repo_output = DEFAULT_OUTPUT_DIR.resolve()
 
-    if not output_dir.is_absolute():
-    raise RobotsWriteError(f"Output directory must be absolute. Got: {output_dir}")
+    if not resolved.is_absolute():
+        raise RobotsWriteError(f"Output directory must be absolute. Got: {output_dir}")
 
     if str(resolved) == resolved.anchor:
         raise RobotsWriteError(f"Refusing to write robots.txt to filesystem root: {resolved}")

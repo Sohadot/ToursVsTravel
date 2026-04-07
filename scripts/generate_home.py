@@ -1008,6 +1008,7 @@ def build_home_context(
         "footer_privacy": _resolve_footer_label(site_config, registry, lang, "privacy", "footer_privacy"),
         "footer_terms": _resolve_footer_label(site_config, registry, lang, "terms", "footer_terms"),
         "footer_acquire": _resolve_footer_label(site_config, registry, lang, "acquire", "footer_acquire"),
+        "footer_note": _resolve_site_summary(site_config, registry, lang) or site_tagline or site_name,
 
         # Accessibility / language switching
         "ui_skip_to_content_label": _resolve_ui_label(

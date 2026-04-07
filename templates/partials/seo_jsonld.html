@@ -1,0 +1,66 @@
+{# ------------------------------------------------------------------------- #}
+{# TourVsTravel — Central SEO Partial                                        #}
+{# ------------------------------------------------------------------------- #}
+{# Contract:                                                                 #}
+{#   Expects a single `seo` object shaped by scripts/seo.py::build_page_seo  #}
+{#                                                                           #}
+{#   seo = {                                                                 #}
+{#     "title": str,                                                         #}
+{#     "description": str,                                                   #}
+{#     "canonical_url": str,                                                 #}
+{#     "robots_directive": str,                                              #}
+{#     "hreflang": [{"lang": str, "url": str}, ...],                         #}
+{#     "og": {                                                               #}
+{#       "title": str,                                                       #}
+{#       "description": str,                                                 #}
+{#       "image": str,                                                       #}
+{#       "type": str,                                                        #}
+{#       "url": str,                                                         #}
+{#       "site_name": str                                                    #}
+{#     },                                                                    #}
+{#     "twitter": {                                                          #}
+{#       "card": str,                                                        #}
+{#       "title": str,                                                       #}
+{#       "description": str,                                                 #}
+{#       "image": str                                                        #}
+{#     },                                                                    #}
+{#     "jsonld": [str, str, ...]                                             #}
+{#   }                                                                       #}
+{# ------------------------------------------------------------------------- #}
+
+{% if seo is defined and seo %}
+  <title>{{ seo.title }}</title>
+
+  <meta name="description" content="{{ seo.description }}">
+  <meta name="robots" content="{{ seo.robots_directive }}">
+
+  <link rel="canonical" href="{{ seo.canonical_url }}">
+
+  {% if seo.hreflang %}
+    {% for alt in seo.hreflang %}
+      <link rel="alternate" hreflang="{{ alt.lang }}" href="{{ alt.url }}">
+    {% endfor %}
+  {% endif %}
+
+  <meta property="og:title" content="{{ seo.og.title }}">
+  <meta property="og:description" content="{{ seo.og.description }}">
+  <meta property="og:type" content="{{ seo.og.type }}">
+  <meta property="og:url" content="{{ seo.og.url }}">
+  <meta property="og:image" content="{{ seo.og.image }}">
+  <meta property="og:site_name" content="{{ seo.og.site_name }}">
+
+  <meta name="twitter:card" content="{{ seo.twitter.card }}">
+  <meta name="twitter:title" content="{{ seo.twitter.title }}">
+  <meta name="twitter:description" content="{{ seo.twitter.description }}">
+  <meta name="twitter:image" content="{{ seo.twitter.image }}">
+
+  {% if seo.lang %}
+    <meta property="og:locale" content="{{ seo.lang }}">
+  {% endif %}
+
+  {% if seo.jsonld %}
+    {% for payload in seo.jsonld %}
+      <script type="application/ld+json">{{ payload | safe }}</script>
+    {% endfor %}
+  {% endif %}
+{% endif %}

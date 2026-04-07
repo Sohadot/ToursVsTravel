@@ -1015,6 +1015,7 @@ def build_home_context(
         ),
         "home_urls_by_lang": home_urls_by_lang,
         "language_switcher": _build_language_switcher(site_config, registry, lang, home_urls_by_lang),
+        "featured_experience_types": [],
 
         # Helpful generic aliases for templates
         "page_lang_urls": home_urls_by_lang,

@@ -1,22 +1,61 @@
+{# ------------------------------------------------------------------------- #}
+{# TourVsTravel — Base Layout                                                #}
+{# ------------------------------------------------------------------------- #}
+{# Purpose:                                                                  #}
+{#   Sovereign parent layout for all pages.                                  #}
+{#                                                                           #}
+{# Required runtime variables:                                               #}
+{#   lang: str                                                               #}
+{#   is_rtl: bool                                                            #}
+{#   seo: dict                                                               #}
+{#   ui_skip_to_content_label: str                                           #}
+{#   main_js_url: str                                                        #}
+{#                                                                           #}
+{# Optional runtime variables:                                               #}
+{#   body_class: str                                                         #}
+{#   page_js_assets: list[dict]                                              #}
+{#       each asset shape:                                                   #}
+{#       {                                                                   #}
+{#         "src": str,                                                       #}
+{#         "integrity": str?,                                                #}
+{#         "crossorigin": str?,                                              #}
+{#         "nonce": str?                                                     #}
+{#       }                                                                   #}
+{# ------------------------------------------------------------------------- #}
 <!DOCTYPE html>
-<html lang="{{ lang|default('en') }}" dir="{{ 'rtl' if is_rtl else 'ltr' }}">
+<html lang="{{ lang | e }}" dir="{% if is_rtl %}rtl{% else %}ltr{% endif %}">
 <head>
   {% include "partials/head.html" %}
 </head>
-<body class="site-body {{ page_class|default('') }}">
-  <a class="skip-link" href="#main-content">
-    {{ skip_to_content_label|default('Skip to content') }}
-  </a>
+<body class="{{ body_class | default('page-shell') | e }}">
+  <a class="skip-link" href="#main-content">{{ ui_skip_to_content_label | e }}</a>
 
-  {% include "partials/nav.html" %}
+  <div class="site-frame">
+    {% include "partials/nav.html" %}
 
-  <main id="main-content" class="site-main" tabindex="-1">
-    {% block content %}{% endblock %}
-  </main>
+    <main id="main-content" class="site-main" tabindex="-1">
+      {% block content %}{% endblock %}
+    </main>
 
-  {% include "partials/footer.html" %}
+    {% include "partials/footer.html" %}
+  </div>
 
-  <script defer src="{{ base_url }}/static/js/main.js"></script>
-  {% block page_scripts %}{% endblock %}
+  <script
+    defer
+    src="{{ main_js_url | e }}"
+    {% if csp_nonce is defined and csp_nonce %}nonce="{{ csp_nonce | e }}"{% endif %}
+  ></script>
+
+  {% if page_js_assets is defined and page_js_assets %}
+    {% for asset in page_js_assets %}
+      <script
+        defer
+        src="{{ asset.src | e }}"
+        {% if asset.integrity is defined and asset.integrity %}integrity="{{ asset.integrity | e }}"{% endif %}
+        {% if asset.crossorigin is defined and asset.crossorigin %}crossorigin="{{ asset.crossorigin | e }}"{% endif %}
+        {% if asset.nonce is defined and asset.nonce %}nonce="{{ asset.nonce | e }}"{% elif csp_nonce is defined and csp_nonce %}nonce="{{ csp_nonce | e }}"{% endif %}
+      ></script>
+    {% endfor %}
+  {% endif %}
 </body>
 </html>

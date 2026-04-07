@@ -10,6 +10,7 @@ Generate the multilingual home page into:
 
 This generator is intentionally strict:
 - fails early on missing config, templates, or static assets
+- validates base_url strictly as canonical HTTPS
 - does not handcraft SEO in templates
 - does not concatenate asset URLs inside Jinja
 - does not emit partial or broken output silently
@@ -55,6 +56,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from tempfile import NamedTemporaryFile
 from typing import Any, Dict, List, Mapping, Optional, Sequence
+from urllib.parse import urlparse
 
 import yaml
 from jinja2 import Environment, FileSystemLoader, StrictUndefined, select_autoescape
@@ -443,6 +445,42 @@ def _validate_csp_meta_policy(value: str) -> str:
     return text
 
 
+def _normalize_https_base_url(value: str) -> str:
+    """
+    Enforce a canonical HTTPS base URL with no credentials, query, fragment,
+    or nested path. Example accepted:
+        https://tourvstravel.com
+    """
+    text = _ensure_string(value, "site_config.site.base_url")
+
+    parsed = urlparse(text)
+    if parsed.scheme != "https":
+        raise ConfigError(
+            f"site_config.site.base_url must use https scheme. Got: {text!r}"
+        )
+    if not parsed.netloc:
+        raise ConfigError(
+            f"site_config.site.base_url must be an absolute HTTPS URL. Got: {text!r}"
+        )
+    if parsed.username is not None or parsed.password is not None:
+        raise ConfigError(
+            "site_config.site.base_url must not contain embedded credentials."
+        )
+    if parsed.query or parsed.fragment:
+        raise ConfigError(
+            "site_config.site.base_url must not contain query parameters or fragments."
+        )
+
+    # In this project, base_url must represent the origin/root, not a subpath.
+    normalized_path = parsed.path or ""
+    if normalized_path not in ("", "/"):
+        raise ConfigError(
+            f"site_config.site.base_url must not contain a path. Got: {text!r}"
+        )
+
+    return f"https://{parsed.netloc.rstrip('/')}"
+
+
 def _build_jinja_env() -> Environment:
     if not TEMPLATES_DIR.exists():
         raise RenderError(f"Templates directory is missing: {TEMPLATES_DIR}")
@@ -487,6 +525,14 @@ def _atomic_write_text(path: Path, content: str) -> None:
 # ============================================================================
 # Context resolution
 # ============================================================================
+
+def _resolve_base_url(site_config: Mapping[str, Any]) -> str:
+    site_section = _ensure_mapping(site_config.get("site"), "site_config.site")
+    raw = site_section.get("base_url")
+    if raw is None:
+        raise ConfigError("site_config.site.base_url is missing.")
+    return _normalize_https_base_url(_ensure_string(raw, "site_config.site.base_url"))
+
 
 def _resolve_site_name(
     site_config: Mapping[str, Any],
@@ -886,6 +932,7 @@ def build_home_context(
         f"language_config[{lang}]",
     )
 
+    base_url = _resolve_base_url(site_config)
     site_name = _resolve_site_name(site_config, registry, lang)
     site_tagline = _resolve_site_tagline(site_config, registry, lang)
     assets = _resolve_core_asset_urls(site_config)
@@ -905,6 +952,7 @@ def build_home_context(
 
     context: Dict[str, Any] = {
         # Core runtime
+        "base_url": base_url,
         "lang": lang,
         "is_rtl": _ensure_string(lang_conf.get("dir", "ltr"), f"language[{lang}].dir") == "rtl",
         "seo": seo_payload,

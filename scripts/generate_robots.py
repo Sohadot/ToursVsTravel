@@ -576,36 +576,30 @@ def _ensure_safe_output_dir(output_dir: Path) -> Path:
     if str(resolved) == resolved.anchor:
         raise RobotsWriteError(f"Refusing to write robots.txt to filesystem root: {resolved}")
 
+    # Allow the canonical final output directory inside the repository.
+    if resolved == allowed_in_repo_output:
+        return resolved
+
+    # Allow sanctioned build stage directories created by scripts/build.py.
+    # Rules:
+    # - must be directly under repository root
+    # - directory name must start with '.build-stage-'
+    if resolved.parent == repo_root and resolved.name.startswith(".build-stage-"):
+        return resolved
+
+    # Reject any other in-repo output target.
     try:
         resolved.relative_to(repo_root)
-        if resolved != allowed_in_repo_output:
-            raise RobotsWriteError(
-                f"Refusing in-repo output directory outside the sanctioned build target. "
-                f"Allowed in-repo output is only: {allowed_in_repo_output} ; got: {resolved}"
-            )
+        raise RobotsWriteError(
+            f"Refusing in-repo output directory outside the sanctioned build target. "
+            f"Allowed in-repo outputs are only: {allowed_in_repo_output} "
+            f"and direct build stages named '.build-stage-*' under {repo_root} ; got: {resolved}"
+        )
     except ValueError:
+        # Outside repo is allowed.
         pass
 
     return resolved
-
-
-def write_robots_file(output_dir: Path, content: str) -> Path:
-    safe_output_dir = _ensure_safe_output_dir(output_dir)
-    path = safe_output_dir / "robots.txt"
-    _atomic_write_text(path, content)
-    return path
-
-
-# ============================================================================
-# Public API
-# ============================================================================
-
-def generate_robots_file(*, output_dir: Path = DEFAULT_OUTPUT_DIR) -> Path:
-    site_config = load_site_config()
-    content = build_robots_text(site_config)
-    path = write_robots_file(output_dir, content)
-    log.info("Generated robots.txt -> %s", path)
-    return path
 
 
 # ============================================================================

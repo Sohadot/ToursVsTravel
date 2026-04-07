@@ -5,34 +5,31 @@ TourVsTravel — Local Build Orchestrator
 
 Purpose
 -------
-Run the local build pipeline into a staging directory, then promote the build
-to the final output directory only after all steps succeed.
+Run the disciplined local build pipeline into a staging directory, then
+promote the build to the final output directory only after all steps succeed.
 
 Current build scope
 -------------------
 Phase 1 includes:
-- copy static assets into build root
+- copy static assets into stage output
 - generate multilingual home pages
+- generate site-wide robots.txt
 
 Build policy
 ------------
 - build into staging first
 - never write directly into final output during generation
-- promote staging -> final only after success
-- keep output policy explicit and safe:
-    * allowed inside repo only at ROOT_DIR / "output"
-    * any other in-repo target is rejected
-    * outside-repo targets are allowed if safe
+- promote staging -> final only after all generation steps succeed
+- inside the repository, only ROOT_DIR/output is allowed as build output
+- any other in-repo output target is rejected
+- outside-repo targets are allowed if safe
 
 Execution
 ---------
 Run from repository root:
 
     python -m scripts.build
-
-Optional:
-    python -m scripts.build --lang ar
-    python -m scripts.build --output-dir ./output
+    python -m scripts.build --lang en
     python -m scripts.build --verbose
 """
 
@@ -40,13 +37,13 @@ from __future__ import annotations
 
 import argparse
 import logging
-import os
 import shutil
 import tempfile
 from pathlib import Path
 from typing import Optional, Sequence
 
 from scripts.generate_home import GenerateHomeError, generate_home_pages
+from scripts.generate_robots import GenerateRobotsError, generate_robots_file
 
 
 # ============================================================================
@@ -57,10 +54,9 @@ ROOT_DIR = Path(__file__).resolve().parents[1]
 STATIC_DIR = ROOT_DIR / "static"
 DEFAULT_OUTPUT_DIR = ROOT_DIR / "output"
 
-# Only ROOT_DIR/output is allowed inside the repository.
+# Only this in-repo output target is sanctioned.
 ALLOWED_IN_REPO_OUTPUT_DIR = DEFAULT_OUTPUT_DIR.resolve()
 
-# Explicitly sensitive paths inside the repository.
 EXPLICIT_SENSITIVE_PATHS = {
     ROOT_DIR.resolve(),
     (ROOT_DIR / ".git").resolve(),
@@ -136,7 +132,6 @@ def _ensure_safe_output_dir(output_dir: Path) -> Path:
     if str(resolved) == resolved.anchor:
         raise BuildSafetyError(f"Refusing to use filesystem root as output directory: {resolved}")
 
-    # If target is inside the repo, only ROOT_DIR/output is allowed.
     if _is_within(resolved, repo_root):
         if resolved != ALLOWED_IN_REPO_OUTPUT_DIR:
             raise BuildSafetyError(
@@ -160,10 +155,8 @@ def _require_static_tree() -> Path:
 
 def _make_stage_dir(final_output_dir: Path) -> Path:
     """
-    Create a staging directory safely and unpredictably.
-
-    The stage directory is created as a sibling of the final output directory,
-    which ensures promotion stays on the same parent mount in normal operation.
+    Create a staging directory safely and unpredictably as a sibling of the
+    final output directory.
     """
     stage_parent = final_output_dir.parent.resolve()
 
@@ -172,8 +165,6 @@ def _make_stage_dir(final_output_dir: Path) -> Path:
             f"Refusing to create build stage under a sensitive parent directory: {stage_parent}"
         )
 
-    # We intentionally allow stage creation under ROOT_DIR when final output is
-    # ROOT_DIR/output, because that is the sanctioned local build location.
     try:
         stage_path_str = tempfile.mkdtemp(prefix=".build-stage-", dir=str(stage_parent))
     except Exception as exc:
@@ -245,7 +236,6 @@ def _promote_stage_to_final(stage_dir: Path, final_output_dir: Path) -> None:
             shutil.rmtree(backup_dir)
 
     except Exception as exc:
-        # Attempt rollback only if we actually moved an old final output aside.
         if backup_dir_created and backup_dir.exists() and not final_output_dir.exists():
             try:
                 backup_dir.replace(final_output_dir)
@@ -257,6 +247,30 @@ def _promote_stage_to_final(stage_dir: Path, final_output_dir: Path) -> None:
                 ) from rollback_exc
 
         raise BuildStepError(f"Failed to promote staging build to final output: {exc}") from exc
+
+
+# ============================================================================
+# Build steps
+# ============================================================================
+
+def _run_home_generation(
+    *,
+    requested_lang: Optional[str],
+    stage_dir: Path,
+) -> int:
+    written_home = generate_home_pages(
+        requested_lang=requested_lang,
+        output_dir=stage_dir,
+    )
+    count = len(written_home)
+    log.info("Generated home pages: %d", count)
+    return count
+
+
+def _run_robots_generation(*, stage_dir: Path) -> Path:
+    robots_path = generate_robots_file(output_dir=stage_dir)
+    log.info("Generated robots.txt -> %s", robots_path)
+    return robots_path
 
 
 # ============================================================================
@@ -285,14 +299,16 @@ def run_build(
         # Step 1: static assets
         _copy_static_tree(stage_dir)
 
-        # Step 2: home pages
-        written_home = generate_home_pages(
+        # Step 2: pages
+        _run_home_generation(
             requested_lang=requested_lang,
-            output_dir=stage_dir,
+            stage_dir=stage_dir,
         )
-        log.info("Generated home pages: %d", len(written_home))
 
-        # Step 3: promote
+        # Step 3: robots
+        _run_robots_generation(stage_dir=stage_dir)
+
+        # Step 4: promote
         _promote_stage_to_final(stage_dir, final_output_dir)
         log.info("Build promoted successfully -> %s", final_output_dir)
         return final_output_dir
@@ -349,7 +365,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             output_dir=args.output_dir.resolve(),
             keep_stage_on_failure=args.keep_stage_on_failure,
         )
-    except (BuildError, GenerateHomeError) as exc:
+    except (BuildError, GenerateHomeError, GenerateRobotsError) as exc:
         log.error("%s", exc)
         return 1
     except Exception as exc:

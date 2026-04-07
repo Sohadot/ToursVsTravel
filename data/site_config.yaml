@@ -1,0 +1,694 @@
+site:
+  name: "TourVsTravel"
+  domain: "https://tourvstravel.com"
+  base_url: "https://tourvstravel.com"
+
+  tagline:
+    en: "The Unbiased Reference for Travel Decisions"
+    ar: "المرجع المحايد لقرارات السفر"
+    fr: "La référence impartiale pour les décisions de voyage"
+    es: "La referencia imparcial para las decisiones de viaje"
+    de: "Die unparteiische Referenz für Reiseentscheidungen"
+    zh: "旅行决策的客观参考"
+    ja: "旅行判断のための中立的リファレンス"
+
+  summary:
+    en: "A multilingual, evidence-led travel decision infrastructure built to compare how people move through the world across destinations, styles, and intentions."
+    ar: "بنية مرجعية متعددة اللغات قائمة على الأدلة، صُممت لمقارنة كيف يتحرك الناس عبر العالم بين الوجهات وأنماط السفر والنوايا المختلفة."
+    fr: "Une infrastructure multilingue et fondée sur les preuves, conçue pour comparer la manière dont les personnes traversent le monde selon les destinations, les styles et les intentions."
+    es: "Una infraestructura multilingüe y basada en evidencia, diseñada para comparar cómo las personas se mueven por el mundo entre destinos, estilos e intenciones."
+    de: "Eine mehrsprachige, evidenzgeleitete Infrastruktur, die vergleicht, wie Menschen sich durch die Welt bewegen – über Reiseziele, Stile und Absichten hinweg."
+    zh: "一个多语言、基于证据的旅行决策基础设施，用于比较人们如何以不同目的、风格和目的地穿行世界。"
+    ja: "目的地、スタイル、意図を横断して、人がどのように世界を旅するかを比較するために設計された、多言語・エビデンス主導の旅行判断インフラです。"
+
+branding:
+  colors:
+    primary_blue: "#002B49"
+    accent_gold: "#D4AF37"
+    bg_page: "#F8F7F3"
+    bg_surface: "#FFFFFF"
+    bg_footer: "#0D2233"
+    text_main: "#10202D"
+    text_muted: "#5D6B77"
+
+  logo:
+    icon_path: "/static/img/brand/logo-icon.jpg"
+    lockup_path: "/static/img/brand/logo-lockup.jpg"
+    wordmark_path: "/static/img/brand/logo-wordmark.jpg"
+
+  wordmark:
+    tour: "Tour"
+    vs: "Vs"
+    travel: "Travel"
+    tld: ".com"
+
+languages:
+  - code: "en"
+    hreflang: "en"
+    locale: "en_US"
+    dir: "ltr"
+    native_name: "English"
+    label: "EN"
+    enabled: true
+
+  - code: "ar"
+    hreflang: "ar"
+    locale: "ar"
+    dir: "rtl"
+    native_name: "العربية"
+    label: "AR"
+    enabled: true
+
+  - code: "fr"
+    hreflang: "fr"
+    locale: "fr_FR"
+    dir: "ltr"
+    native_name: "Français"
+    label: "FR"
+    enabled: true
+
+  - code: "es"
+    hreflang: "es"
+    locale: "es_ES"
+    dir: "ltr"
+    native_name: "Español"
+    label: "ES"
+    enabled: true
+
+  - code: "de"
+    hreflang: "de"
+    locale: "de_DE"
+    dir: "ltr"
+    native_name: "Deutsch"
+    label: "DE"
+    enabled: true
+
+  - code: "zh"
+    hreflang: "zh"
+    locale: "zh_CN"
+    dir: "ltr"
+    native_name: "中文"
+    label: "ZH"
+    enabled: true
+
+  - code: "ja"
+    hreflang: "ja"
+    locale: "ja_JP"
+    dir: "ltr"
+    native_name: "日本語"
+    label: "JA"
+    enabled: true
+
+routes:
+  home: "/{lang}/"
+  compare_index: "/{lang}/compare/"
+  destinations_index: "/{lang}/destinations/"
+  experience_types_index: "/{lang}/experience/"
+  tools_index: "/{lang}/tools/"
+  methodology: "/{lang}/methodology/"
+  reports_index: "/{lang}/reports/"
+  source_policy: "/{lang}/methodology/source-policy/"
+  editorial_standards: "/{lang}/methodology/editorial-standards/"
+  about: "/{lang}/about/"
+  privacy: "/{lang}/privacy/"
+  contact: "/{lang}/contact/"
+  acquire: "/{lang}/acquire/"
+  primary_cta: "/{lang}/tools/travel-decision-compass/"
+
+seo:
+  robots_directive: "index, follow"
+  og_type: "website"
+  twitter_card: "summary_large_image"
+  default_og_image: "/static/img/og/default-og.jpg"
+  theme_color: "#002B49"
+
+  title_templates:
+    home:
+      en: "TourVsTravel.com | Compare Your Way Through the World"
+      ar: "TourVsTravel.com | قارن طريقتك في السفر عبر العالم"
+      fr: "TourVsTravel.com | Comparez votre manière de parcourir le monde"
+      es: "TourVsTravel.com | Compara tu forma de recorrer el mundo"
+      de: "TourVsTravel.com | Vergleichen Sie Ihre Art, die Welt zu bereisen"
+      zh: "TourVsTravel.com | 比较你穿行世界的方式"
+      ja: "TourVsTravel.com | 世界を旅する方法を比較する"
+
+    comparison:
+      en: "{exp_a} vs {exp_b} in {destination} | TourVsTravel"
+      ar: "{exp_a} ضد {exp_b} في {destination} | TourVsTravel"
+      fr: "{exp_a} vs {exp_b} à {destination} | TourVsTravel"
+      es: "{exp_a} vs {exp_b} en {destination} | TourVsTravel"
+      de: "{exp_a} vs {exp_b} in {destination} | TourVsTravel"
+      zh: "{destination}：{exp_a} 与 {exp_b} 对比 | TourVsTravel"
+      ja: "{destination}での{exp_a} vs {exp_b} | TourVsTravel"
+
+  description_templates:
+    home:
+      en: "Compare 17 travel styles across destinations, intentions, budgets, and experiences. TourVsTravel is the unbiased reference for travel decisions."
+      ar: "قارن بين 17 نمطًا من أنماط السفر عبر الوجهات والنيات والميزانيات والتجارب. TourVsTravel هو المرجع المحايد لقرارات السفر."
+      fr: "Comparez 17 styles de voyage selon les destinations, les intentions, les budgets et les expériences. TourVsTravel est la référence impartiale pour décider comment voyager."
+      es: "Compara 17 estilos de viaje según destinos, intenciones, presupuestos y experiencias. TourVsTravel es la referencia imparcial para decidir cómo viajar."
+      de: "Vergleichen Sie 17 Reisestile über Ziele, Absichten, Budgets und Erlebnisse hinweg. TourVsTravel ist die unparteiische Referenz für Reiseentscheidungen."
+      zh: "比较17种旅行方式，覆盖目的地、意图、预算与体验。TourVsTravel 是旅行决策的客观参考。"
+      ja: "目的地、意図、予算、体験を横断して17の旅行スタイルを比較。TourVsTravelは旅行判断のための中立的リファレンスです。"
+
+    comparison:
+      en: "Compare {exp_a} vs {exp_b} in {destination}. Evidence-led travel analysis across cost, structure, immersion, and fit."
+      ar: "قارن بين {exp_a} و{exp_b} في {destination}. تحليل سفر مبني على الأدلة عبر التكلفة والبنية والانغماس ومدى الملاءمة."
+      fr: "Comparez {exp_a} et {exp_b} à {destination}. Une analyse fondée sur des critères explicites: coût, structure, immersion et adéquation."
+      es: "Compara {exp_a} y {exp_b} en {destination}. Un análisis basado en evidencia sobre coste, estructura, inmersión y adecuación."
+      de: "Vergleichen Sie {exp_a} und {exp_b} in {destination}. Evidenzgeleitete Analyse zu Kosten, Struktur, Immersion und Eignung."
+      zh: "比较 {destination} 中的 {exp_a} 与 {exp_b}。基于证据分析成本、结构、沉浸度与适配性。"
+      ja: "{destination}での{exp_a}と{exp_b}を比較。コスト、構造、没入度、適合性をエビデンスベースで分析します。"
+
+ui:
+  accessibility:
+    skip_to_content_label:
+      en: "Skip to content"
+      ar: "تجاوز إلى المحتوى"
+      fr: "Aller au contenu"
+      es: "Saltar al contenido"
+      de: "Zum Inhalt springen"
+      zh: "跳转到内容"
+      ja: "コンテンツへスキップ"
+
+    primary_nav_label:
+      en: "Primary navigation"
+      ar: "التنقل الرئيسي"
+      fr: "Navigation principale"
+      es: "Navegación principal"
+      de: "Hauptnavigation"
+      zh: "主导航"
+      ja: "メインナビゲーション"
+
+    menu_label:
+      en: "Menu"
+      ar: "القائمة"
+      fr: "Menu"
+      es: "Menú"
+      de: "Menü"
+      zh: "菜单"
+      ja: "メニュー"
+
+    language_switcher_label:
+      en: "Language switcher"
+      ar: "مبدل اللغة"
+      fr: "Sélecteur de langue"
+      es: "Selector de idioma"
+      de: "Sprachauswahl"
+      zh: "语言切换器"
+      ja: "言語切替"
+
+  nav:
+    home:
+      en: "Home"
+      ar: "الرئيسية"
+      fr: "Accueil"
+      es: "Inicio"
+      de: "Start"
+      zh: "首页"
+      ja: "ホーム"
+
+    compare:
+      en: "Compare"
+      ar: "قارن"
+      fr: "Comparer"
+      es: "Comparar"
+      de: "Vergleichen"
+      zh: "比较"
+      ja: "比較"
+
+    destinations:
+      en: "Destinations"
+      ar: "الوجهات"
+      fr: "Destinations"
+      es: "Destinos"
+      de: "Reiseziele"
+      zh: "目的地"
+      ja: "目的地"
+
+    tools:
+      en: "Tools"
+      ar: "الأدوات"
+      fr: "Outils"
+      es: "Herramientas"
+      de: "Werkzeuge"
+      zh: "工具"
+      ja: "ツール"
+
+    methodology:
+      en: "Methodology"
+      ar: "المنهجية"
+      fr: "Méthodologie"
+      es: "Metodología"
+      de: "Methodik"
+      zh: "方法论"
+      ja: "方法論"
+
+    report:
+      en: "Report"
+      ar: "التقرير"
+      fr: "Rapport"
+      es: "Informe"
+      de: "Bericht"
+      zh: "报告"
+      ja: "レポート"
+
+  cta:
+    primary:
+      en: "Find Your Match"
+      ar: "اعثر على الأنسب لك"
+      fr: "Trouvez votre correspondance"
+      es: "Encuentra tu mejor ajuste"
+      de: "Finden Sie die passende Wahl"
+      zh: "找到最适合你的方式"
+      ja: "自分に合う旅を見つける"
+
+    secondary_home:
+      en: "Start Comparing"
+      ar: "ابدأ المقارنة"
+      fr: "Commencer à comparer"
+      es: "Empezar a comparar"
+      de: "Vergleich starten"
+      zh: "开始比较"
+      ja: "比較を始める"
+
+    compare_engine:
+      en: "Open Comparison Engine"
+      ar: "افتح محرك المقارنة"
+      fr: "Ouvrir le moteur de comparaison"
+      es: "Abrir el motor de comparación"
+      de: "Vergleichsmaschine öffnen"
+      zh: "打开比较引擎"
+      ja: "比較エンジンを開く"
+
+    methodology:
+      en: "Read the Methodology"
+      ar: "اقرأ المنهجية"
+      fr: "Lire la méthodologie"
+      es: "Leer la metodología"
+      de: "Methodik lesen"
+      zh: "阅读方法论"
+      ja: "方法論を読む"
+
+    resource:
+      en: "Open Resource"
+      ar: "افتح المصدر"
+      fr: "Ouvrir la ressource"
+      es: "Abrir recurso"
+      de: "Ressource öffnen"
+      zh: "打开资源"
+      ja: "リソースを開く"
+
+  footer:
+    explore:
+      en: "Explore"
+      ar: "استكشف"
+      fr: "Explorer"
+      es: "Explorar"
+      de: "Entdecken"
+      zh: "探索"
+      ja: "探す"
+
+    framework:
+      en: "Framework"
+      ar: "الإطار"
+      fr: "Cadre"
+      es: "Marco"
+      de: "Rahmen"
+      zh: "框架"
+      ja: "フレームワーク"
+
+    practical:
+      en: "Practical"
+      ar: "عملي"
+      fr: "Pratique"
+      es: "Práctico"
+      de: "Praktisch"
+      zh: "实用"
+      ja: "実用"
+
+    styles:
+      en: "17 Styles"
+      ar: "17 نمطًا"
+      fr: "17 styles"
+      es: "17 estilos"
+      de: "17 Stile"
+      zh: "17种旅行风格"
+      ja: "17のスタイル"
+
+    source_policy:
+      en: "Source Policy"
+      ar: "سياسة المصادر"
+      fr: "Politique des sources"
+      es: "Política de fuentes"
+      de: "Quellenrichtlinie"
+      zh: "来源政策"
+      ja: "ソースポリシー"
+
+    editorial:
+      en: "Editorial Standards"
+      ar: "المعايير التحريرية"
+      fr: "Normes éditoriales"
+      es: "Estándares editoriales"
+      de: "Redaktionelle Standards"
+      zh: "编辑标准"
+      ja: "編集基準"
+
+    about:
+      en: "About"
+      ar: "حول"
+      fr: "À propos"
+      es: "Acerca de"
+      de: "Über uns"
+      zh: "关于"
+      ja: "概要"
+
+    privacy:
+      en: "Privacy"
+      ar: "الخصوصية"
+      fr: "Confidentialité"
+      es: "Privacidad"
+      de: "Datenschutz"
+      zh: "隐私"
+      ja: "プライバシー"
+
+    contact:
+      en: "Contact"
+      ar: "اتصل بنا"
+      fr: "Contact"
+      es: "Contacto"
+      de: "Kontakt"
+      zh: "联系"
+      ja: "お問い合わせ"
+
+    acquire:
+      en: "Acquire Domain"
+      ar: "اقتناء النطاق"
+      fr: "Acquérir le domaine"
+      es: "Adquirir dominio"
+      de: "Domain erwerben"
+      zh: "购买域名"
+      ja: "ドメイン取得"
+
+    legal_suffix:
+      en: "All rights reserved."
+      ar: "جميع الحقوق محفوظة."
+      fr: "Tous droits réservés."
+      es: "Todos los derechos reservados."
+      de: "Alle Rechte vorbehalten."
+      zh: "保留所有权利。"
+      ja: "All rights reserved."
+
+  home:
+    eyebrow:
+      en: "17 travel styles • 200 destinations • evidence-led comparison"
+      ar: "17 نمط سفر • 200 وجهة • مقارنة قائمة على الأدلة"
+      fr: "17 styles de voyage • 200 destinations • comparaison fondée sur des critères explicites"
+      es: "17 estilos de viaje • 200 destinos • comparación basada en evidencia"
+      de: "17 Reisestile • 200 Ziele • evidenzgeleiteter Vergleich"
+      zh: "17种旅行风格 • 200个目的地 • 基于证据的比较"
+      ja: "17の旅行スタイル • 200の目的地 • エビデンス主導の比較"
+
+    heading:
+      en: "Same Destination. Different Stories."
+      ar: "الوجهة نفسها. والقصص مختلفة."
+      fr: "Même destination. Histoires différentes."
+      es: "Mismo destino. Historias diferentes."
+      de: "Dasselbe Ziel. Unterschiedliche Geschichten."
+      zh: "同一目的地，不同故事。"
+      ja: "同じ目的地。異なる物語。"
+
+    intro:
+      en: "TourVsTravel helps you compare how people move through the world across 17 distinct travel styles. We do not sell one answer. We help you choose the path that fits your intent, your budget, and your way of experiencing place."
+      ar: "يساعدك TourVsTravel على مقارنة كيف يتحرك الناس عبر العالم من خلال 17 نمطًا مختلفًا من أنماط السفر. نحن لا نبيع إجابة واحدة، بل نساعدك على اختيار المسار الذي يناسب نيتك وميزانيتك وطريقتك في عيش المكان."
+      fr: "TourVsTravel vous aide à comparer la manière dont les personnes traversent le monde à travers 17 styles distincts. Nous ne vendons pas une réponse unique. Nous vous aidons à choisir le chemin adapté à votre intention, votre budget et votre façon de vivre un lieu."
+      es: "TourVsTravel te ayuda a comparar cómo las personas recorren el mundo a través de 17 estilos distintos. No vendemos una única respuesta. Te ayudamos a elegir el camino que se ajusta a tu intención, tu presupuesto y tu forma de vivir un lugar."
+      de: "TourVsTravel hilft Ihnen zu vergleichen, wie Menschen sich durch die Welt bewegen – über 17 unterschiedliche Reisestile hinweg. Wir verkaufen keine einzige Antwort. Wir helfen Ihnen, den Weg zu wählen, der zu Ihrer Absicht, Ihrem Budget und Ihrer Art passt, einen Ort zu erleben."
+      zh: "TourVsTravel 帮助你比较人们如何以17种不同的旅行风格穿行世界。我们不售卖单一答案，而是帮助你选择最适合你的意图、预算和体验方式的路径。"
+      ja: "TourVsTravelは、17の異なる旅行スタイルを通して、人がどのように世界を旅するかを比較できるようにします。私たちは一つの答えを売るのではなく、あなたの意図、予算、場所の体験の仕方に合った道を選べるよう支援します。"
+
+    compare_engine_heading:
+      en: "Compare Two Ways Through the World"
+      ar: "قارن بين طريقتين لعبور العالم"
+      fr: "Comparer deux manières de traverser le monde"
+      es: "Compara dos formas de recorrer el mundo"
+      de: "Zwei Arten vergleichen, die Welt zu durchqueren"
+      zh: "比较两种穿行世界的方式"
+      ja: "世界を旅する二つの方法を比較する"
+
+    compare_engine_intro:
+      en: "TourVsTravel is built as a comparison infrastructure. Every travel style carries a different promise, cost structure, social rhythm, and relationship to place."
+      ar: "بُني TourVsTravel كبنية مقارنة مرجعية. كل نمط سفر يحمل وعدًا مختلفًا، وبنية تكلفة مختلفة، وإيقاعًا اجتماعيًا مختلفًا، وعلاقة مختلفة بالمكان."
+      fr: "TourVsTravel est construit comme une infrastructure de comparaison. Chaque style de voyage porte une promesse, une structure de coût, un rythme social et une relation au lieu différents."
+      es: "TourVsTravel está construido como una infraestructura de comparación. Cada estilo de viaje implica una promesa, una estructura de costes, un ritmo social y una relación con el lugar diferentes."
+      de: "TourVsTravel ist als Vergleichsinfrastruktur aufgebaut. Jeder Reisestil hat ein anderes Versprechen, eine andere Kostenstruktur, einen anderen sozialen Rhythmus und eine andere Beziehung zum Ort."
+      zh: "TourVsTravel 被构建为一套比较基础设施。每种旅行风格都意味着不同的承诺、成本结构、社会节奏以及与地方的关系。"
+      ja: "TourVsTravelは比較インフラとして構築されています。各旅行スタイルには、それぞれ異なる約束、費用構造、社会的リズム、場所との関係があります。"
+
+    styles_heading:
+      en: "The 17 Faces of Travel"
+      ar: "الوجوه السبعة عشر للسفر"
+      fr: "Les 17 visages du voyage"
+      es: "Las 17 caras del viaje"
+      de: "Die 17 Gesichter des Reisens"
+      zh: "旅行的17种面貌"
+      ja: "旅の17の顔"
+
+    styles_intro:
+      en: "Each style is treated as a real conceptual path, not a decorative label. These are not categories for content filling. They are the logic of the site itself."
+      ar: "يُعامل كل نمط باعتباره مسارًا مفاهيميًا حقيقيًا، لا تسمية زخرفية. هذه ليست فئات لملء المحتوى، بل هي منطق الموقع نفسه."
+      fr: "Chaque style est traité comme un véritable chemin conceptuel, non comme une simple étiquette décorative. Ce ne sont pas des catégories de remplissage, mais la logique même du site."
+      es: "Cada estilo se trata como un camino conceptual real, no como una etiqueta decorativa. No son categorías para rellenar contenido, sino la lógica misma del sitio."
+      de: "Jeder Stil wird als echter konzeptueller Weg behandelt, nicht als dekoratives Etikett. Dies sind keine Kategorien zum Füllen von Inhalten, sondern die eigentliche Logik der Website."
+      zh: "每种风格都被视为真实的概念路径，而不是装饰性标签。它们不是填充内容的分类，而是网站本身的逻辑。"
+      ja: "各スタイルは装飾的なラベルではなく、実際の概念的な道として扱われます。これは単なる分類ではなく、サイトそのものの論理です。"
+
+    tools_heading:
+      en: "Tools That Bring People Back"
+      ar: "أدوات تعيد الناس مرارًا"
+      fr: "Des outils qui font revenir les gens"
+      es: "Herramientas que hacen volver a la gente"
+      de: "Werkzeuge, die Menschen zurückbringen"
+      zh: "让用户反复回来的工具"
+      ja: "人が何度も戻ってくるツール"
+
+    tools_intro:
+      en: "The site is not only a publishing engine. It is also a repeat-use decision layer designed to turn comparison into a practical experience."
+      ar: "الموقع ليس مجرد محرك نشر، بل هو أيضًا طبقة قرار متكررة الاستخدام، صُممت لتحويل المقارنة إلى تجربة عملية."
+      fr: "Le site n'est pas seulement un moteur de publication. C'est aussi une couche décisionnelle réutilisable conçue pour transformer la comparaison en expérience pratique."
+      es: "El sitio no es solo un motor de publicación. También es una capa de decisión reutilizable diseñada para convertir la comparación en una experiencia práctica."
+      de: "Die Website ist nicht nur eine Publikationsmaschine. Sie ist auch eine wiederverwendbare Entscheidungsebene, die Vergleich in eine praktische Erfahrung verwandelt."
+      zh: "这个网站不仅是一个发布引擎，它还是一个可重复使用的决策层，旨在把比较变成实际体验。"
+      ja: "このサイトは単なる公開エンジンではありません。比較を実用的な体験へ変える、再利用可能な判断レイヤーでもあります。"
+
+    methodology_heading:
+      en: "Methodology is the Frame. Travel is the Road."
+      ar: "المنهجية هي الإطار. والسفر هو الطريق."
+      fr: "La méthodologie est le cadre. Le voyage est la route."
+      es: "La metodología es el marco. El viaje es el camino."
+      de: "Die Methodik ist der Rahmen. Die Reise ist der Weg."
+      zh: "方法论是框架，旅行是道路。"
+      ja: "方法論はフレームであり、旅は道です。"
+
+    methodology_intro:
+      en: "TourVsTravel is built as a reference system. Our role is not to push one ideology of movement, but to compare travel paths transparently, using structured criteria, official sources, and explicit assumptions."
+      ar: "بُني TourVsTravel كنظام مرجعي. دورنا ليس دفع أيديولوجيا واحدة للحركة، بل مقارنة مسارات السفر بشفافية عبر معايير منظمة ومصادر رسمية وافتراضات معلنة."
+      fr: "TourVsTravel est construit comme un système de référence. Notre rôle n'est pas d'imposer une idéologie du déplacement, mais de comparer les chemins du voyage avec transparence à l'aide de critères structurés, de sources officielles et d'hypothèses explicites."
+      es: "TourVsTravel está construido como un sistema de referencia. Nuestro papel no es imponer una ideología del movimiento, sino comparar trayectorias de viaje con transparencia mediante criterios estructurados, fuentes oficiales y supuestos explícitos."
+      de: "TourVsTravel ist als Referenzsystem aufgebaut. Unsere Aufgabe ist es nicht, eine Ideologie des Reisens durchzusetzen, sondern Reisepfade transparent mithilfe strukturierter Kriterien, offizieller Quellen und expliziter Annahmen zu vergleichen."
+      zh: "TourVsTravel 被构建为一个参考系统。我们的职责不是推动单一的旅行意识形态，而是借助结构化标准、官方来源和明确假设，透明地比较不同的旅行路径。"
+      ja: "TourVsTravelはリファレンスシステムとして構築されています。私たちの役割は一つの移動思想を押しつけることではなく、構造化された基準、公的ソース、明示的な前提を用いて旅の道筋を透明に比較することです。"
+
+  comparison:
+    eyebrow:
+      en: "evidence-led comparison"
+      ar: "مقارنة قائمة على الأدلة"
+      fr: "comparaison fondée sur les preuves"
+      es: "comparación basada en evidencia"
+      de: "evidenzgeleiteter Vergleich"
+      zh: "基于证据的比较"
+      ja: "エビデンス主導の比較"
+
+    best_season_label:
+      en: "Best seasons"
+      ar: "أفضل المواسم"
+      fr: "Meilleures saisons"
+      es: "Mejores temporadas"
+      de: "Beste Reisezeiten"
+      zh: "最佳季节"
+      ja: "最適な季節"
+
+    duration_label:
+      en: "Typical duration"
+      ar: "المدة المعتادة"
+      fr: "Durée typique"
+      es: "Duración típica"
+      de: "Typische Dauer"
+      zh: "典型时长"
+      ja: "典型的な期間"
+
+    region_label:
+      en: "Region"
+      ar: "المنطقة"
+      fr: "Région"
+      es: "Región"
+      de: "Region"
+      zh: "地区"
+      ja: "地域"
+
+    side_a_label:
+      en: "Style A"
+      ar: "النمط أ"
+      fr: "Style A"
+      es: "Estilo A"
+      de: "Stil A"
+      zh: "风格A"
+      ja: "スタイルA"
+
+    side_b_label:
+      en: "Style B"
+      ar: "النمط ب"
+      fr: "Style B"
+      es: "Estilo B"
+      de: "Stil B"
+      zh: "风格B"
+      ja: "スタイルB"
+
+    criteria_heading:
+      en: "Structured Comparison Criteria"
+      ar: "معايير مقارنة منظمة"
+      fr: "Critères de comparaison structurés"
+      es: "Criterios de comparación estructurados"
+      de: "Strukturierte Vergleichskriterien"
+      zh: "结构化比较标准"
+      ja: "構造化された比較基準"
+
+    criteria_intro:
+      en: "Each page compares two travel styles through explicit criteria rather than vague editorial preference."
+      ar: "تقارن كل صفحة بين نمطي سفر عبر معايير واضحة، لا عبر تفضيل تحريري غامض."
+      fr: "Chaque page compare deux styles de voyage à travers des critères explicites plutôt que des préférences éditoriales vagues."
+      es: "Cada página compara dos estilos de viaje mediante criterios explícitos en lugar de preferencias editoriales vagas."
+      de: "Jede Seite vergleicht zwei Reisestile anhand expliziter Kriterien statt vager redaktioneller Vorlieben."
+      zh: "每个页面都通过明确标准来比较两种旅行风格，而不是依赖模糊的编辑偏好。"
+      ja: "各ページは曖昧な編集的好みではなく、明示的な基準によって二つの旅行スタイルを比較します。"
+
+    next_step_heading:
+      en: "Next Step Resources"
+      ar: "موارد الخطوة التالية"
+      fr: "Ressources pour l'étape suivante"
+      es: "Recursos para el siguiente paso"
+      de: "Ressourcen für den nächsten Schritt"
+      zh: "下一步资源"
+      ja: "次のステップのリソース"
+
+    next_step_intro:
+      en: "We do not use live booking data. We direct users toward structured, relevant external resources when appropriate."
+      ar: "نحن لا نستخدم بيانات حجز مباشرة. بل نوجّه المستخدمين إلى موارد خارجية منظمة وملائمة عند الحاجة."
+      fr: "Nous n'utilisons pas de données de réservation en direct. Nous orientons les utilisateurs vers des ressources externes structurées et pertinentes lorsque c'est approprié."
+      es: "No usamos datos de reserva en tiempo real. Dirigimos a los usuarios a recursos externos estructurados y relevantes cuando corresponde."
+      de: "Wir verwenden keine Live-Buchungsdaten. Stattdessen leiten wir Nutzer bei Bedarf zu strukturierten, relevanten externen Ressourcen weiter."
+      zh: "我们不使用实时预订数据，而是在适当的时候引导用户前往结构化且相关的外部资源。"
+      ja: "私たちはライブ予約データを使用しません。必要に応じて、構造化された関連外部リソースへユーザーを導きます。"
+
+    sources_intro:
+      en: "Every comparison should remain anchored in identifiable sources, even when the page is generated at scale."
+      ar: "يجب أن تبقى كل مقارنة مرتبطة بمصادر قابلة للتحديد، حتى عندما تُولّد الصفحة على نطاق واسع."
+      fr: "Chaque comparaison doit rester ancrée dans des sources identifiables, même lorsque la page est générée à grande échelle."
+      es: "Cada comparación debe permanecer anclada a fuentes identificables, incluso cuando la página se genera a gran escala."
+      de: "Jeder Vergleich muss auf identifizierbaren Quellen beruhen, selbst wenn die Seite in großem Maßstab generiert wird."
+      zh: "即使页面是大规模生成的，每个比较也必须建立在可识别的来源之上。"
+      ja: "大規模に生成されるページであっても、各比較は識別可能なソースに基づいている必要があります。"
+
+    source_visit_label:
+      en: "Visit source"
+      ar: "زيارة المصدر"
+      fr: "Visiter la source"
+      es: "Visitar la fuente"
+      de: "Quelle besuchen"
+      zh: "访问来源"
+      ja: "ソースを見る"
+
+  labels:
+    vs:
+      en: "VS"
+      ar: "ضد"
+      fr: "VS"
+      es: "VS"
+      de: "VS"
+      zh: "对比"
+      ja: "VS"
+
+    best_for:
+      en: "Best For"
+      ar: "الأفضل لـ"
+      fr: "Idéal pour"
+      es: "Ideal para"
+      de: "Ideal für"
+      zh: "最适合"
+      ja: "最適な対象"
+
+    cost_range:
+      en: "Cost Range"
+      ar: "نطاق التكلفة"
+      fr: "Fourchette de coût"
+      es: "Rango de coste"
+      de: "Kostenbereich"
+      zh: "成本范围"
+      ja: "費用範囲"
+
+    local_insight:
+      en: "Local Insight"
+      ar: "رؤية محلية"
+      fr: "Perspective locale"
+      es: "Perspectiva local"
+      de: "Lokale Einsicht"
+      zh: "本地洞察"
+      ja: "ローカルインサイト"
+
+    score:
+      en: "Score"
+      ar: "الدرجة"
+      fr: "Score"
+      es: "Puntuación"
+      de: "Wertung"
+      zh: "评分"
+      ja: "スコア"
+
+    typical_group:
+      en: "Typical Group Size"
+      ar: "حجم المجموعة المعتاد"
+      fr: "Taille de groupe typique"
+      es: "Tamaño típico del grupo"
+      de: "Typische Gruppengröße"
+      zh: "典型团队规模"
+      ja: "典型的なグループ規模"
+
+    budget_range:
+      en: "Budget Range"
+      ar: "نطاق الميزانية"
+      fr: "Fourchette budgétaire"
+      es: "Rango de presupuesto"
+      de: "Budgetbereich"
+      zh: "预算范围"
+      ja: "予算範囲"
+
+    sources:
+      en: "Sources"
+      ar: "المصادر"
+      fr: "Sources"
+      es: "Fuentes"
+      de: "Quellen"
+      zh: "来源"
+      ja: "ソース"
+
+defaults:
+  current_year: "2026"
+
+  footer_note:
+    en: "No live pricing is claimed on this site. Where relevant, users are directed to official or structured external resources."
+    ar: "لا يدّعي هذا الموقع تقديم أسعار حية مباشرة. وعند الحاجة، يتم توجيه المستخدمين إلى مصادر رسمية أو خارجية منظمة."
+    fr: "Ce site ne revendique pas de prix en direct. Lorsque c'est pertinent, les utilisateurs sont dirigés vers des ressources officielles ou externes structurées."
+    es: "Este sitio no afirma ofrecer precios en tiempo real. Cuando corresponde, los usuarios son dirigidos a recursos oficiales o externos estructurados."
+    de: "Diese Website erhebt keinen Anspruch auf Live-Preise. Wenn relevant, werden Nutzer zu offiziellen oder strukturierten externen Ressourcen weitergeleitet."
+    zh: "本网站不声称提供实时价格。如有需要，用户将被引导至官方或结构化外部资源。"
+    ja: "このサイトはライブ価格を主張しません。必要に応じて、ユーザーは公式または構造化された外部リソースへ案内されます。"

@@ -14,6 +14,7 @@ Phase 1 includes:
 - copy static assets into stage output
 - generate multilingual home pages
 - generate site-wide robots.txt
+- generate site-wide sitemap.xml
 
 Build policy
 ------------
@@ -44,6 +45,7 @@ from typing import Optional, Sequence
 
 from scripts.generate_home import GenerateHomeError, generate_home_pages
 from scripts.generate_robots import GenerateRobotsError, generate_robots_file
+from scripts.generate_sitemap import GenerateSitemapError, generate_sitemap_file
 
 
 # ============================================================================
@@ -273,6 +275,12 @@ def _run_robots_generation(*, stage_dir: Path) -> Path:
     return robots_path
 
 
+def _run_sitemap_generation(*, stage_dir: Path) -> Path:
+    sitemap_path = generate_sitemap_file(output_dir=stage_dir)
+    log.info("Generated sitemap.xml -> %s", sitemap_path)
+    return sitemap_path
+
+
 # ============================================================================
 # Build pipeline
 # ============================================================================
@@ -308,7 +316,10 @@ def run_build(
         # Step 3: robots
         _run_robots_generation(stage_dir=stage_dir)
 
-        # Step 4: promote
+        # Step 4: sitemap
+        _run_sitemap_generation(stage_dir=stage_dir)
+
+        # Step 5: promote
         _promote_stage_to_final(stage_dir, final_output_dir)
         log.info("Build promoted successfully -> %s", final_output_dir)
         return final_output_dir
@@ -365,7 +376,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             output_dir=args.output_dir.resolve(),
             keep_stage_on_failure=args.keep_stage_on_failure,
         )
-    except (BuildError, GenerateHomeError, GenerateRobotsError) as exc:
+    except (BuildError, GenerateHomeError, GenerateRobotsError, GenerateSitemapError) as exc:
         log.error("%s", exc)
         return 1
     except Exception as exc:

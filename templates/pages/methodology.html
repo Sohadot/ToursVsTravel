@@ -1,0 +1,808 @@
+{% extends "layouts/base.html" %}
+
+{% set methodology_copy = {
+  "en": {
+    "eyebrow": "Methodology",
+    "title": "Decision architecture before destination desire",
+    "summary": "TourVsTravel is not built as a promotional travel magazine or a booking funnel. It is built as a reference system for travel decisions: a structured layer that compares travel forms, constraints, tradeoffs, and fit before emotion, marketing, or visual seduction distort judgment.",
+    "identity_label": "System role",
+    "identity_value": "Unbiased travel decision reference",
+    "framework_label": "Model",
+    "framework_value": "Compare structures, not fantasies",
+    "output_label": "Primary output",
+    "output_value": "Clearer travel choice under real constraints",
+
+    "scope_title": "What this methodology does",
+    "scope_text": "The system evaluates how different travel structures behave under pressure: budget, pace, comfort, coordination, autonomy, predictability, complexity, and experiential depth. Its purpose is not to tell every user the same answer. Its purpose is to make the answer more legible.",
+
+    "principles_title": "Editorial principles",
+    "principles": [
+      "Method before persuasion.",
+      "Tradeoff clarity before recommendation.",
+      "Comparison before promotion.",
+      "Constraint-fit before aspiration.",
+      "Repeatable logic before opinion."
+    ],
+
+    "criteria_title": "Core comparison criteria",
+    "criteria": [
+      {
+        "name": "Constraint Fit",
+        "text": "Measures how well a travel form performs under budget limits, time restrictions, mobility needs, coordination burden, and tolerance for uncertainty."
+      },
+      {
+        "name": "Operational Complexity",
+        "text": "Measures planning load, booking fragmentation, transfer difficulty, documentation overhead, and the amount of coordination the traveler must personally absorb."
+      },
+      {
+        "name": "Control vs Support",
+        "text": "Measures how much autonomy the traveler keeps versus how much structure, guidance, and risk reduction the format provides."
+      },
+      {
+        "name": "Depth of Experience",
+        "text": "Measures whether the travel form privileges breadth, immersion, flexibility, local texture, or highly managed exposure."
+      },
+      {
+        "name": "Predictability",
+        "text": "Measures schedule stability, variance risk, disruption resilience, and the likelihood that the real trip diverges materially from the intended trip."
+      },
+      {
+        "name": "Suitability by Traveler Type",
+        "text": "Measures which decision profile the format best serves: independent planner, family coordinator, first-time traveler, cost-sensitive explorer, comfort-priority traveler, or logistics-averse user."
+      }
+    ],
+
+    "process_title": "How a page is produced",
+    "steps": [
+      {
+        "title": "1. Define the travel structures",
+        "text": "Each page begins with clearly bounded travel forms. The system does not compare vague moods. It compares specific structures with stable operational meaning."
+      },
+      {
+        "title": "2. Apply the same criteria",
+        "text": "Every comparison is run through the same criteria family so the site does not change its logic opportunistically from page to page."
+      },
+      {
+        "title": "3. Explain the tradeoff",
+        "text": "The result is not just a label such as better or worse. The system must explain what is gained, what is lost, and under which conditions the ranking changes."
+      },
+      {
+        "title": "4. Publish only what can be defended",
+        "text": "If a comparison cannot be explained with methodological clarity, it should not be published as a reference conclusion."
+      }
+    ],
+
+    "evidence_title": "Evidence hierarchy",
+    "evidence_intro": "The site is designed to prioritize durable signals over promotional noise. In descending order of authority, pages should be grounded in:",
+    "evidence": [
+      "Primary operational facts: travel structure, itinerary logic, coordination load, formal requirements, and booking architecture.",
+      "Stable contextual signals: cost ranges, seasonal pressure, transfer patterns, and logistical constraints that materially affect traveler fit.",
+      "Secondary synthesized analysis: patterns derived from repeatable comparison logic across destinations and travel types.",
+      "Promotional or operator claims only when clearly identified as lower-authority inputs rather than decision truth."
+    ],
+
+    "not_title": "What this site is not",
+    "not_items": [
+      "Not a booking engine disguised as editorial authority.",
+      "Not a listicle farm optimized only for search capture.",
+      "Not a mood board of aspirational travel imagery.",
+      "Not a universal answer machine that ignores traveler constraints."
+    ],
+
+    "limits_title": "Known limits",
+    "limits_text": "No methodological system removes uncertainty completely. Travel decisions remain sensitive to timing, health, group composition, border conditions, weather, operational disruptions, and human tolerance. The objective here is not false certainty. It is disciplined reduction of confusion.",
+
+    "closing_title": "Why this matters",
+    "closing_text": "A credible travel asset earns value when it does more than attract attention. It must reduce ambiguity, structure judgment, and become reusable. That is the role of TourVsTravel: not to amplify travel desire blindly, but to make travel choice more intelligent.",
+    "closing_note": "Reference value emerges when the user returns because the system clarifies reality."
+  },
+
+  "ar": {
+    "eyebrow": "المنهجية",
+    "title": "هندسة القرار قبل إغراء الوجهة",
+    "summary": "لم يُبنَ TourVsTravel كمجلة سفر ترويجية ولا كقمع حجز. لقد بُني كنظام مرجعي لاتخاذ القرار في السفر: طبقة منظمة تقارن بين أشكال السفر والقيود والمفاضلات ودرجة الملاءمة قبل أن تشوّه العاطفة أو التسويق أو الصورة البراقة الحكم السليم.",
+    "identity_label": "دور النظام",
+    "identity_value": "مرجع محايد لقرارات السفر",
+    "framework_label": "النموذج",
+    "framework_value": "نقارن البنى لا الأوهام",
+    "output_label": "المخرج الأساسي",
+    "output_value": "قرار سفر أوضح تحت قيود حقيقية",
+
+    "scope_title": "ماذا تفعل هذه المنهجية",
+    "scope_text": "يقيس هذا النظام كيف تتصرف أشكال السفر المختلفة تحت الضغط: الميزانية، الوتيرة، الراحة، عبء التنسيق، الاستقلالية، قابلية التنبؤ، التعقيد، وعمق التجربة. ليس الهدف أن يعطي كل مستخدم الجواب نفسه. الهدف أن يجعل الجواب أكثر وضوحًا وقابلية للفهم.",
+
+    "principles_title": "المبادئ التحريرية",
+    "principles": [
+      "المنهج قبل الإقناع.",
+      "وضوح المفاضلة قبل التوصية.",
+      "المقارنة قبل الترويج.",
+      "ملاءمة القيود قبل الطموح.",
+      "منطق قابل للتكرار قبل الرأي."
+    ],
+
+    "criteria_title": "معايير المقارنة الأساسية",
+    "criteria": [
+      {
+        "name": "ملاءمة القيود",
+        "text": "تقيس مدى أداء شكل السفر تحت حدود الميزانية وضيق الوقت واحتياجات الحركة وعبء التنسيق ومستوى تحمل عدم اليقين."
+      },
+      {
+        "name": "التعقيد التشغيلي",
+        "text": "تقيس حجم التخطيط وتجزؤ الحجوزات وصعوبة التنقل ومتطلبات الوثائق ومقدار التنسيق الذي يجب أن يتحمله المسافر بنفسه."
+      },
+      {
+        "name": "التحكم مقابل الدعم",
+        "text": "تقيس مقدار الاستقلالية التي يحتفظ بها المسافر مقابل مقدار البنية والإرشاد وتخفيف المخاطر التي يوفرها الشكل."
+      },
+      {
+        "name": "عمق التجربة",
+        "text": "تقيس ما إذا كان شكل السفر يفضّل الاتساع أو الانغماس أو المرونة أو الطابع المحلي أو التعرض المُدار بدقة."
+      },
+      {
+        "name": "قابلية التنبؤ",
+        "text": "تقيس استقرار الجدول ومخاطر التغير والقدرة على تحمل الاضطراب واحتمال انحراف الرحلة الفعلية عن الرحلة المقصودة."
+      },
+      {
+        "name": "الملاءمة حسب نوع المسافر",
+        "text": "تقيس أي نمط قرار يخدمه الشكل أكثر: المخطط المستقل، منسق العائلة، المسافر لأول مرة، المستكشف الحساس للتكلفة، الباحث عن الراحة، أو من يكره التعقيد اللوجستي."
+      }
+    ],
+
+    "process_title": "كيف تُنتَج الصفحة",
+    "steps": [
+      {
+        "title": "1. تعريف أشكال السفر بدقة",
+        "text": "كل صفحة تبدأ بأشكال سفر محددة بوضوح. النظام لا يقارن حالات شعورية مبهمة، بل يقارن بنىً لها معنى تشغيلي ثابت."
+      },
+      {
+        "title": "2. تطبيق المعايير نفسها",
+        "text": "كل مقارنة تمر عبر عائلة المعايير نفسها حتى لا يبدل الموقع منطقه انتهازيًا من صفحة إلى أخرى."
+      },
+      {
+        "title": "3. شرح المفاضلة",
+        "text": "النتيجة ليست مجرد حكم مثل أفضل أو أسوأ. يجب أن يشرح النظام ما الذي يُكتسب، وما الذي يُفقد، وتحت أي شروط يتغير الترتيب."
+      },
+      {
+        "title": "4. نشر ما يمكن الدفاع عنه فقط",
+        "text": "إذا تعذّر شرح المقارنة بوضوح منهجي، فلا ينبغي نشرها كاستنتاج مرجعي."
+      }
+    ],
+
+    "evidence_title": "هرمية الأدلة",
+    "evidence_intro": "صُمم الموقع ليعطي الأولوية للإشارات الثابتة على الضجيج الترويجي. وبترتيب السلطة من الأعلى إلى الأدنى، ينبغي أن تستند الصفحات إلى:",
+    "evidence": [
+      "حقائق تشغيلية أولية: بنية السفر، منطق البرنامج، عبء التنسيق، المتطلبات الرسمية، وهيكل الحجز.",
+      "إشارات سياقية مستقرة: نطاقات التكلفة، الضغط الموسمي، أنماط الانتقال، والقيود اللوجستية التي تؤثر فعلاً على ملاءمة المسافر.",
+      "تحليل تركيبي ثانوي: أنماط مشتقة من منطق مقارنة قابل للتكرار عبر الوجهات وأنماط السفر.",
+      "ادعاءات ترويجية أو تشغيلية فقط عندما تُعرَّف بوضوح كمدخلات منخفضة السلطة لا كحقيقة قرارية."
+    ],
+
+    "not_title": "ما الذي لا يمثله هذا الموقع",
+    "not_items": [
+      "ليس محرك حجز متنكرًا بلباس سلطة تحريرية.",
+      "ليس مزرعة قوائم هدفها الوحيد اصطياد البحث.",
+      "ليس لوحة مزاجية لصور السفر الحالمة.",
+      "ليس آلة أجوبة عامة تتجاهل قيود المسافر."
+    ],
+
+    "limits_title": "الحدود المعروفة",
+    "limits_text": "لا يوجد نظام منهجي يزيل عدم اليقين بالكامل. قرارات السفر تبقى حساسة للتوقيت والصحة وتركيبة المجموعة والحدود والطقس والاضطرابات التشغيلية وقدرة البشر على التحمل. الهدف هنا ليس يقينًا زائفًا، بل خفض الارتباك بطريقة منضبطة.",
+
+    "closing_title": "لماذا يهم هذا",
+    "closing_text": "الأصل الرقمي الموثوق لا يكتسب قيمته لأنه يجذب الانتباه فقط، بل لأنه يقلل الغموض وينظم الحكم ويصبح قابلاً لإعادة الاستخدام. هذا هو دور TourVsTravel: ليس تضخيم الرغبة في السفر بشكل أعمى، بل جعل قرار السفر أكثر ذكاءً.",
+    "closing_note": "القيمة المرجعية تظهر عندما يعود المستخدم لأن النظام يوضح الواقع."
+  },
+
+  "fr": {
+    "eyebrow": "Méthodologie",
+    "title": "Architecture de décision avant désir de destination",
+    "summary": "TourVsTravel n'est pas conçu comme un magazine promotionnel ni comme un tunnel de réservation. Le site est construit comme un système de référence pour les décisions de voyage: une couche structurée qui compare les formes de voyage, les contraintes, les arbitrages et l'adéquation avant que l'émotion, le marketing ou l'image ne déforment le jugement.",
+    "identity_label": "Rôle du système",
+    "identity_value": "Référence neutre pour les décisions de voyage",
+    "framework_label": "Modèle",
+    "framework_value": "Comparer des structures, pas des fantasmes",
+    "output_label": "Résultat principal",
+    "output_value": "Un choix de voyage plus clair sous contraintes réelles",
+
+    "scope_title": "Ce que fait cette méthodologie",
+    "scope_text": "Le système évalue la manière dont différentes structures de voyage se comportent sous pression: budget, rythme, confort, coordination, autonomie, prévisibilité, complexité et profondeur d'expérience. Son objectif n'est pas de donner la même réponse à tout le monde. Son objectif est de rendre la réponse plus lisible.",
+
+    "principles_title": "Principes éditoriaux",
+    "principles": [
+      "La méthode avant la persuasion.",
+      "La clarté des arbitrages avant la recommandation.",
+      "La comparaison avant la promotion.",
+      "L'adéquation aux contraintes avant l'aspiration.",
+      "Une logique répétable avant l'opinion."
+    ],
+
+    "criteria_title": "Critères centraux de comparaison",
+    "criteria": [
+      {
+        "name": "Adéquation aux contraintes",
+        "text": "Mesure la performance d'une forme de voyage face aux limites de budget, de temps, de mobilité, de coordination et de tolérance à l'incertitude."
+      },
+      {
+        "name": "Complexité opérationnelle",
+        "text": "Mesure la charge de planification, la fragmentation des réservations, la difficulté des transferts, la charge documentaire et la coordination que le voyageur doit absorber lui-même."
+      },
+      {
+        "name": "Contrôle vs accompagnement",
+        "text": "Mesure le niveau d'autonomie conservé par le voyageur face au niveau de structure, d'encadrement et de réduction du risque fourni par le format."
+      },
+      {
+        "name": "Profondeur d'expérience",
+        "text": "Mesure si la forme de voyage privilégie l'étendue, l'immersion, la flexibilité, la texture locale ou une exposition fortement encadrée."
+      },
+      {
+        "name": "Prévisibilité",
+        "text": "Mesure la stabilité du programme, le risque de variance, la résilience aux perturbations et la probabilité qu'un voyage réel diverge matériellement du voyage prévu."
+      },
+      {
+        "name": "Adéquation par profil de voyageur",
+        "text": "Mesure quel profil décisionnel sert le mieux le format: planificateur indépendant, famille, primo-voyageur, explorateur sensible au coût, voyageur orienté confort ou utilisateur réfractaire à la logistique."
+      }
+    ],
+
+    "process_title": "Comment une page est produite",
+    "steps": [
+      {
+        "title": "1. Définir les structures de voyage",
+        "text": "Chaque page commence par des formes de voyage clairement délimitées. Le système ne compare pas des humeurs vagues, mais des structures à signification opérationnelle stable."
+      },
+      {
+        "title": "2. Appliquer les mêmes critères",
+        "text": "Chaque comparaison passe par la même famille de critères afin que la logique ne change pas opportunément d'une page à l'autre."
+      },
+      {
+        "title": "3. Expliquer l'arbitrage",
+        "text": "Le résultat n'est pas seulement une étiquette comme meilleur ou pire. Le système doit expliquer ce qui est gagné, ce qui est perdu et dans quelles conditions le classement change."
+      },
+      {
+        "title": "4. Publier uniquement ce qui est défendable",
+        "text": "Si une comparaison ne peut pas être expliquée avec clarté méthodologique, elle ne doit pas être publiée comme conclusion de référence."
+      }
+    ],
+
+    "evidence_title": "Hiérarchie des preuves",
+    "evidence_intro": "Le site est conçu pour privilégier les signaux durables au bruit promotionnel. Par ordre d'autorité décroissante, les pages doivent s'appuyer sur:",
+    "evidence": [
+      "Des faits opérationnels primaires: structure du voyage, logique d'itinéraire, charge de coordination, exigences formelles et architecture de réservation.",
+      "Des signaux contextuels stables: fourchettes de coûts, pression saisonnière, schémas de transfert et contraintes logistiques qui affectent réellement l'adéquation voyageur.",
+      "Une analyse synthétique secondaire: motifs dérivés d'une logique de comparaison répétable entre destinations et styles de voyage.",
+      "Des affirmations promotionnelles uniquement lorsqu'elles sont clairement identifiées comme inputs de faible autorité et non comme vérité décisionnelle."
+    ],
+
+    "not_title": "Ce que ce site n'est pas",
+    "not_items": [
+      "Pas un moteur de réservation déguisé en autorité éditoriale.",
+      "Pas une ferme à listes optimisée uniquement pour capter le trafic de recherche.",
+      "Pas un tableau d'images aspirantes.",
+      "Pas une machine à réponses universelles qui ignore les contraintes du voyageur."
+    ],
+
+    "limits_title": "Limites connues",
+    "limits_text": "Aucun système méthodologique n'élimine totalement l'incertitude. Les décisions de voyage restent sensibles au calendrier, à la santé, à la composition du groupe, aux conditions frontalières, à la météo, aux perturbations opérationnelles et à la tolérance humaine. L'objectif n'est pas la fausse certitude, mais une réduction disciplinée de la confusion.",
+
+    "closing_title": "Pourquoi cela compte",
+    "closing_text": "Un actif numérique crédible ne prend de valeur que s'il fait plus qu'attirer l'attention. Il doit réduire l'ambiguïté, structurer le jugement et devenir réutilisable. C'est le rôle de TourVsTravel: non pas amplifier aveuglément le désir de voyage, mais rendre le choix plus intelligent.",
+    "closing_note": "La valeur de référence apparaît lorsque l'utilisateur revient parce que le système clarifie la réalité."
+  },
+
+  "es": {
+    "eyebrow": "Metodología",
+    "title": "Arquitectura de decisión antes del deseo de destino",
+    "summary": "TourVsTravel no está construido como una revista promocional ni como un embudo de reservas. Está construido como un sistema de referencia para decisiones de viaje: una capa estructurada que compara formas de viaje, restricciones, compensaciones y adecuación antes de que la emoción, el marketing o la imagen distorsionen el juicio.",
+    "identity_label": "Rol del sistema",
+    "identity_value": "Referencia neutral para decisiones de viaje",
+    "framework_label": "Modelo",
+    "framework_value": "Comparar estructuras, no fantasías",
+    "output_label": "Resultado principal",
+    "output_value": "Una elección de viaje más clara bajo restricciones reales",
+
+    "scope_title": "Qué hace esta metodología",
+    "scope_text": "El sistema evalúa cómo se comportan distintas estructuras de viaje bajo presión: presupuesto, ritmo, comodidad, coordinación, autonomía, previsibilidad, complejidad y profundidad de experiencia. Su propósito no es dar la misma respuesta a todos. Su propósito es hacer la respuesta más legible.",
+
+    "principles_title": "Principios editoriales",
+    "principles": [
+      "Método antes que persuasión.",
+      "Claridad del intercambio antes que recomendación.",
+      "Comparación antes que promoción.",
+      "Ajuste a restricciones antes que aspiración.",
+      "Lógica repetible antes que opinión."
+    ],
+
+    "criteria_title": "Criterios centrales de comparación",
+    "criteria": [
+      {
+        "name": "Ajuste a restricciones",
+        "text": "Mide qué tan bien funciona una forma de viaje bajo límites de presupuesto, tiempo, movilidad, carga de coordinación y tolerancia a la incertidumbre."
+      },
+      {
+        "name": "Complejidad operativa",
+        "text": "Mide la carga de planificación, la fragmentación de reservas, la dificultad de traslados, la carga documental y la coordinación que el viajero debe absorber personalmente."
+      },
+      {
+        "name": "Control vs apoyo",
+        "text": "Mide cuánta autonomía conserva el viajero frente a cuánta estructura, guía y reducción de riesgo ofrece el formato."
+      },
+      {
+        "name": "Profundidad de experiencia",
+        "text": "Mide si la forma de viaje privilegia amplitud, inmersión, flexibilidad, textura local o exposición altamente gestionada."
+      },
+      {
+        "name": "Previsibilidad",
+        "text": "Mide la estabilidad del itinerario, el riesgo de variación, la resiliencia ante interrupciones y la probabilidad de que el viaje real diverja materialmente del viaje previsto."
+      },
+      {
+        "name": "Adecuación por tipo de viajero",
+        "text": "Mide qué perfil de decisión sirve mejor el formato: planificador independiente, coordinador familiar, viajero primerizo, explorador sensible al costo, viajero orientado al confort o usuario adverso a la logística."
+      }
+    ],
+
+    "process_title": "Cómo se produce una página",
+    "steps": [
+      {
+        "title": "1. Definir las estructuras de viaje",
+        "text": "Cada página comienza con formas de viaje claramente delimitadas. El sistema no compara estados de ánimo vagos, sino estructuras con significado operativo estable."
+      },
+      {
+        "title": "2. Aplicar los mismos criterios",
+        "text": "Cada comparación pasa por la misma familia de criterios para que el sitio no cambie su lógica de forma oportunista entre páginas."
+      },
+      {
+        "title": "3. Explicar la compensación",
+        "text": "El resultado no es solo una etiqueta como mejor o peor. El sistema debe explicar qué se gana, qué se pierde y bajo qué condiciones cambia el ranking."
+      },
+      {
+        "title": "4. Publicar solo lo defendible",
+        "text": "Si una comparación no puede explicarse con claridad metodológica, no debe publicarse como conclusión de referencia."
+      }
+    ],
+
+    "evidence_title": "Jerarquía de evidencia",
+    "evidence_intro": "El sitio está diseñado para priorizar señales duraderas sobre ruido promocional. En orden descendente de autoridad, las páginas deben basarse en:",
+    "evidence": [
+      "Hechos operativos primarios: estructura del viaje, lógica del itinerario, carga de coordinación, requisitos formales y arquitectura de reserva.",
+      "Señales contextuales estables: rangos de costo, presión estacional, patrones de traslado y restricciones logísticas que afectan de forma real la adecuación del viajero.",
+      "Análisis sintético secundario: patrones derivados de una lógica de comparación repetible entre destinos y tipos de viaje.",
+      "Afirmaciones promocionales solo cuando se identifican claramente como insumos de baja autoridad y no como verdad decisional."
+    ],
+
+    "not_title": "Lo que este sitio no es",
+    "not_items": [
+      "No es un motor de reservas disfrazado de autoridad editorial.",
+      "No es una granja de listas optimizada solo para captar búsqueda.",
+      "No es un tablero emocional de imágenes aspiracionales.",
+      "No es una máquina de respuestas universales que ignora restricciones del viajero."
+    ],
+
+    "limits_title": "Límites conocidos",
+    "limits_text": "Ningún sistema metodológico elimina por completo la incertidumbre. Las decisiones de viaje siguen siendo sensibles al calendario, la salud, la composición del grupo, las fronteras, el clima, las disrupciones operativas y la tolerancia humana. El objetivo no es certeza falsa, sino una reducción disciplinada de la confusión.",
+
+    "closing_title": "Por qué importa",
+    "closing_text": "Un activo digital creíble gana valor cuando hace más que captar atención. Debe reducir ambigüedad, estructurar el juicio y volverse reutilizable. Ese es el papel de TourVsTravel: no amplificar el deseo de viajar a ciegas, sino hacer la elección más inteligente.",
+    "closing_note": "El valor de referencia emerge cuando el usuario vuelve porque el sistema aclara la realidad."
+  },
+
+  "de": {
+    "eyebrow": "Methodik",
+    "title": "Entscheidungsarchitektur vor Reisezielverlangen",
+    "summary": "TourVsTravel ist weder als Werbemagazin noch als Buchungstrichter gebaut. Die Plattform ist als Referenzsystem für Reiseentscheidungen konzipiert: eine strukturierte Ebene, die Reiseformen, Beschränkungen, Zielkonflikte und Eignung vergleicht, bevor Emotion, Marketing oder Bildsprache das Urteil verzerren.",
+    "identity_label": "Systemrolle",
+    "identity_value": "Neutrale Referenz für Reiseentscheidungen",
+    "framework_label": "Modell",
+    "framework_value": "Strukturen vergleichen, nicht Fantasien",
+    "output_label": "Primäres Ergebnis",
+    "output_value": "Klarere Reiseentscheidung unter realen Beschränkungen",
+
+    "scope_title": "Was diese Methodik leistet",
+    "scope_text": "Das System bewertet, wie unterschiedliche Reiseformen unter Druck funktionieren: Budget, Tempo, Komfort, Koordination, Autonomie, Vorhersehbarkeit, Komplexität und Erlebnistiefe. Sein Zweck ist nicht, allen dieselbe Antwort zu geben. Sein Zweck ist, die Antwort besser lesbar zu machen.",
+
+    "principles_title": "Redaktionelle Prinzipien",
+    "principles": [
+      "Methode vor Überredung.",
+      "Trade-off-Klarheit vor Empfehlung.",
+      "Vergleich vor Promotion.",
+      "Passung zu Beschränkungen vor Sehnsucht.",
+      "Wiederholbare Logik vor Meinung."
+    ],
+
+    "criteria_title": "Kernkriterien des Vergleichs",
+    "criteria": [
+      {
+        "name": "Constraint Fit",
+        "text": "Misst, wie gut eine Reiseform unter Budgetgrenzen, Zeitdruck, Mobilitätsanforderungen, Koordinationslast und Unsicherheitstoleranz funktioniert."
+      },
+      {
+        "name": "Operative Komplexität",
+        "text": "Misst Planungsaufwand, Buchungsfragmentierung, Transfer-Schwierigkeit, Dokumentationslast und den Koordinationsanteil, den der Reisende selbst tragen muss."
+      },
+      {
+        "name": "Kontrolle vs Unterstützung",
+        "text": "Misst, wie viel Autonomie der Reisende behält und wie viel Struktur, Führung und Risikoreduktion das Format bietet."
+      },
+      {
+        "name": "Erlebnistiefe",
+        "text": "Misst, ob die Reiseform Breite, Immersion, Flexibilität, lokale Textur oder stark gesteuerte Exposition bevorzugt."
+      },
+      {
+        "name": "Vorhersehbarkeit",
+        "text": "Misst Stabilität des Ablaufs, Varianzrisiko, Störungsresilienz und die Wahrscheinlichkeit, dass die reale Reise wesentlich von der geplanten abweicht."
+      },
+      {
+        "name": "Eignung nach Reisetyp",
+        "text": "Misst, welchem Entscheidungsprofil das Format am besten dient: unabhängiger Planer, Familienkoordinator, Erstreisender, kostensensibler Entdecker, komfortorientierter Reisender oder logistikaverser Nutzer."
+      }
+    ],
+
+    "process_title": "Wie eine Seite entsteht",
+    "steps": [
+      {
+        "title": "1. Reiseformen definieren",
+        "text": "Jede Seite beginnt mit klar abgegrenzten Reiseformen. Das System vergleicht keine vagen Stimmungen, sondern Strukturen mit stabiler operativer Bedeutung."
+      },
+      {
+        "title": "2. Dieselben Kriterien anwenden",
+        "text": "Jeder Vergleich läuft durch dieselbe Kriterienfamilie, damit die Plattform ihre Logik nicht opportunistisch von Seite zu Seite verändert."
+      },
+      {
+        "title": "3. Den Trade-off erklären",
+        "text": "Das Ergebnis ist nicht nur ein Etikett wie besser oder schlechter. Das System muss erklären, was gewonnen wird, was verloren geht und unter welchen Bedingungen sich das Ranking ändert."
+      },
+      {
+        "title": "4. Nur Verteidigbares veröffentlichen",
+        "text": "Wenn ein Vergleich nicht mit methodischer Klarheit erklärt werden kann, sollte er nicht als Referenzschluss veröffentlicht werden."
+      }
+    ],
+
+    "evidence_title": "Evidenzhierarchie",
+    "evidence_intro": "Die Plattform ist darauf ausgelegt, dauerhafte Signale vor Werbelärm zu priorisieren. In absteigender Autorität sollten Seiten gestützt werden auf:",
+    "evidence": [
+      "Primäre operative Fakten: Reiseform, Itinerarlogik, Koordinationslast, formale Anforderungen und Buchungsarchitektur.",
+      "Stabile Kontextsignale: Kostenkorridore, saisonaler Druck, Transfermuster und logistische Beschränkungen, die die Passung tatsächlich beeinflussen.",
+      "Sekundär synthetisierte Analyse: Muster aus wiederholbarer Vergleichslogik über Ziele und Reisetypen hinweg.",
+      "Werbliche oder operative Aussagen nur dann, wenn sie klar als niedrigere Autoritätsinputs markiert werden und nicht als Entscheidungswahrheit."
+    ],
+
+    "not_title": "Was diese Seite nicht ist",
+    "not_items": [
+      "Keine Buchungsmaschine im Gewand redaktioneller Autorität.",
+      "Keine Listicle-Farm, die nur auf Suchabgriff optimiert ist.",
+      "Kein emotionales Moodboard aus Reisebildern.",
+      "Keine universelle Antwortmaschine, die Reisebeschränkungen ignoriert."
+    ],
+
+    "limits_title": "Bekannte Grenzen",
+    "limits_text": "Kein methodisches System beseitigt Unsicherheit vollständig. Reiseentscheidungen bleiben abhängig von Timing, Gesundheit, Gruppenzusammensetzung, Grenzlagen, Wetter, operativen Störungen und menschlicher Toleranz. Ziel ist nicht falsche Gewissheit, sondern disziplinierte Reduktion von Verwirrung.",
+
+    "closing_title": "Warum das wichtig ist",
+    "closing_text": "Ein glaubwürdiger digitaler Vermögenswert gewinnt Wert, wenn er mehr tut als Aufmerksamkeit zu sammeln. Er muss Mehrdeutigkeit reduzieren, Urteil strukturieren und wiederverwendbar werden. Das ist die Rolle von TourVsTravel: nicht Reiselust blind zu verstärken, sondern Reiseentscheidung intelligenter zu machen.",
+    "closing_note": "Referenzwert entsteht, wenn der Nutzer zurückkehrt, weil das System die Realität klarer macht."
+  },
+
+  "zh": {
+    "eyebrow": "方法论",
+    "title": "先有决策架构，后有目的地欲望",
+    "summary": "TourVsTravel 不是宣传型旅游杂志，也不是预订漏斗。它被构建为一个旅行决策参考系统：在情绪、营销和视觉诱导扭曲判断之前，先比较旅行形态、约束条件、权衡关系与适配度。",
+    "identity_label": "系统角色",
+    "identity_value": "中立的旅行决策参考",
+    "framework_label": "模型",
+    "framework_value": "比较结构，而不是幻想",
+    "output_label": "核心输出",
+    "output_value": "在真实约束下做出更清晰的选择",
+
+    "scope_title": "这套方法论做什么",
+    "scope_text": "该系统评估不同旅行结构在压力下的表现：预算、节奏、舒适度、协调负担、自主性、可预测性、复杂度与体验深度。它的目的不是给所有人同一个答案，而是让答案更清晰、更可解释。",
+
+    "principles_title": "编辑原则",
+    "principles": [
+      "方法优先于说服。",
+      "先说明权衡，再给结论。",
+      "先比较，再呈现推荐。",
+      "约束适配优先于理想想象。",
+      "可重复的逻辑优先于个人意见。"
+    ],
+
+    "criteria_title": "核心比较标准",
+    "criteria": [
+      {
+        "name": "约束适配度",
+        "text": "衡量某种旅行形式在预算限制、时间限制、移动能力、协调负担与不确定性容忍度下的表现。"
+      },
+      {
+        "name": "操作复杂度",
+        "text": "衡量规划负担、预订碎片化、转运难度、文件要求，以及旅行者必须自行承担的协调工作量。"
+      },
+      {
+        "name": "控制与支持",
+        "text": "衡量旅行者保留多少自主权，以及该形式提供多少结构化支持、引导与风险缓冲。"
+      },
+      {
+        "name": "体验深度",
+        "text": "衡量该旅行形式更偏向广度、沉浸、灵活性、本地质感，还是高度管理式体验。"
+      },
+      {
+        "name": "可预测性",
+        "text": "衡量行程稳定性、偏差风险、抗干扰能力，以及实际旅行与预期旅行出现明显偏离的可能性。"
+      },
+      {
+        "name": "按旅行者类型的适配度",
+        "text": "衡量哪类决策型旅客最适合这种形式：独立规划者、家庭协调者、首次出行者、成本敏感型探索者、舒适优先型旅客或厌恶复杂物流的用户。"
+      }
+    ],
+
+    "process_title": "页面如何生成",
+    "steps": [
+      {
+        "title": "1. 明确定义旅行结构",
+        "text": "每个页面都从边界清晰的旅行形式开始。系统比较的不是模糊情绪，而是具有稳定操作意义的结构。"
+      },
+      {
+        "title": "2. 统一应用标准",
+        "text": "每一组比较都经过同一套标准，以确保平台不会在不同页面之间机会主义地改变逻辑。"
+      },
+      {
+        "title": "3. 解释权衡关系",
+        "text": "结果不能只是更好或更差这样的标签。系统必须说明获得了什么、失去了什么，以及在什么条件下排序会改变。"
+      },
+      {
+        "title": "4. 只发布可辩护的结论",
+        "text": "如果某项比较无法用清晰的方法论解释，就不应作为参考结论发布。"
+      }
+    ],
+
+    "evidence_title": "证据层级",
+    "evidence_intro": "本网站优先采用持久信号，而不是宣传噪音。按权威性从高到低，页面应建立在以下基础之上：",
+    "evidence": [
+      "一手操作事实：旅行结构、行程逻辑、协调负担、正式要求与预订架构。",
+      "稳定的情境信号：成本区间、季节压力、中转模式以及真正影响旅客适配度的物流限制。",
+      "二级综合分析：基于可重复比较逻辑，从目的地与旅行类型中提炼出的模式。",
+      "宣传性或运营性陈述只能作为低权威输入，并且必须被清楚标识，而不能当作决策真相。"
+    ],
+
+    "not_title": "这个网站不是什么",
+    "not_items": [
+      "不是披着编辑权威外衣的预订引擎。",
+      "不是只为搜索流量而建的清单工厂。",
+      "不是单纯追求旅行想象的情绪图片板。",
+      "不是无视旅客约束的万能答案机器。"
+    ],
+
+    "limits_title": "已知限制",
+    "limits_text": "任何方法论系统都无法彻底消除不确定性。旅行决策仍然受时间、健康、同行结构、边境条件、天气、运营中断与人的承受能力影响。目标不是制造虚假确定性，而是有纪律地减少混乱。",
+
+    "closing_title": "为什么这很重要",
+    "closing_text": "一个可信的数字资产只有在它不止于吸引注意力时才会真正增值。它必须减少模糊、组织判断、并可被反复使用。这正是 TourVsTravel 的角色：不是盲目放大旅行欲望，而是让旅行选择更聪明。",
+    "closing_note": "当用户因为系统能够澄清现实而反复返回时，参考价值才真正形成。"
+  },
+
+  "ja": {
+    "eyebrow": "方法論",
+    "title": "行き先への欲望より先に、意思決定の構造を置く",
+    "summary": "TourVsTravel は宣伝型の旅行雑誌でも、予約導線でもありません。これは旅行意思決定のための参照システムです。感情、マーケティング、視覚的魅力が判断を歪める前に、旅行の形式、制約、トレードオフ、適合性を比較するための構造化レイヤーです。",
+    "identity_label": "システムの役割",
+    "identity_value": "中立的な旅行意思決定リファレンス",
+    "framework_label": "モデル",
+    "framework_value": "幻想ではなく構造を比較する",
+    "output_label": "主要な成果",
+    "output_value": "現実の制約下でより明確な旅行選択",
+
+    "scope_title": "この方法論が行うこと",
+    "scope_text": "このシステムは、異なる旅行構造が予算、ペース、快適性、調整負荷、自律性、予測可能性、複雑性、体験の深さという圧力下でどう機能するかを評価します。目的は全員に同じ答えを与えることではありません。答えをより読み取りやすくすることです。",
+
+    "principles_title": "編集原則",
+    "principles": [
+      "説得より方法。",
+      "推奨より先にトレードオフの明確化。",
+      "宣伝より比較。",
+      "憧れより制約適合。",
+      "意見より再現可能な論理。"
+    ],
+
+    "criteria_title": "中核比較基準",
+    "criteria": [
+      {
+        "name": "制約適合性",
+        "text": "予算制限、時間制約、移動条件、調整負荷、不確実性への耐性の下で、その旅行形式がどれだけ機能するかを測定します。"
+      },
+      {
+        "name": "運用上の複雑性",
+        "text": "計画負担、予約の分断、移動の難しさ、書類負担、そして旅行者自身が吸収しなければならない調整作業量を測定します。"
+      },
+      {
+        "name": "コントロールと支援",
+        "text": "旅行者がどれだけ自律性を保てるか、そして形式がどれだけ構造、案内、リスク低減を提供するかを測定します。"
+      },
+      {
+        "name": "体験の深さ",
+        "text": "その旅行形式が、広さ、没入、柔軟性、ローカルな質感、または強く管理された体験のどれを優先するかを測定します。"
+      },
+      {
+        "name": "予測可能性",
+        "text": "日程の安定性、変動リスク、混乱への耐性、そして実際の旅行が意図した旅行からどれほどずれるかを測定します。"
+      },
+      {
+        "name": "旅行者タイプ別適合性",
+        "text": "独立型プランナー、家族の調整役、初回旅行者、コスト重視の探求者、快適性重視の旅行者、物流負担を嫌う利用者のどれに最も適しているかを測定します。"
+      }
+    ],
+
+    "process_title": "ページが作られる方法",
+    "steps": [
+      {
+        "title": "1. 旅行構造を定義する",
+        "text": "各ページは、境界が明確な旅行形式から始まります。システムが比較するのは曖昧な気分ではなく、安定した運用上の意味を持つ構造です。"
+      },
+      {
+        "title": "2. 同じ基準を適用する",
+        "text": "すべての比較は同じ基準群を通過します。これにより、ページごとに都合よく論理が変わることを防ぎます。"
+      },
+      {
+        "title": "3. トレードオフを説明する",
+        "text": "結果は単なる優劣ラベルではありません。何を得て、何を失い、どの条件で順位が変わるのかを説明しなければなりません。"
+      },
+      {
+        "title": "4. 擁護できるものだけを公開する",
+        "text": "方法論的な明確さで説明できない比較は、参照結論として公開すべきではありません。"
+      }
+    ],
+
+    "evidence_title": "証拠の階層",
+    "evidence_intro": "このサイトは、宣伝ノイズよりも持続的なシグナルを優先するよう設計されています。権威の高い順に、ページは次に基づくべきです。",
+    "evidence": [
+      "一次的な運用事実: 旅行構造、旅程ロジック、調整負荷、正式要件、予約アーキテクチャ。",
+      "安定した文脈シグナル: コスト帯、季節圧力、移動パターン、そして旅行者適合性に実際に影響する物流制約。",
+      "二次的な統合分析: 目的地や旅行タイプをまたいで再現可能な比較ロジックから得られるパターン。",
+      "宣伝的・事業者的主張は、意思決定の真実ではなく低権威の入力として明確に識別される場合にのみ使用する。"
+    ],
+
+    "not_title": "このサイトが違うもの",
+    "not_items": [
+      "編集権威を装った予約エンジンではない。",
+      "検索獲得だけを狙うリスト記事工場ではない。",
+      "憧れの旅行画像だけを並べる感情ボードではない。",
+      "旅行者の制約を無視する万能回答機ではない。"
+    ],
+
+    "limits_title": "既知の限界",
+    "limits_text": "どのような方法論システムでも不確実性を完全に消すことはできません。旅行の判断は、時期、健康、同行者構成、国境条件、天候、運用上の混乱、人間の許容度に依存します。目的は偽の確実性ではなく、混乱を規律的に減らすことです。",
+
+    "closing_title": "なぜ重要なのか",
+    "closing_text": "信頼できるデジタル資産は、注意を集めるだけでは価値を持ちません。曖昧さを減らし、判断を構造化し、繰り返し使えるものでなければなりません。それが TourVsTravel の役割です。旅行欲求を盲目的に増幅するのではなく、旅行選択をより知的にすることです。",
+    "closing_note": "ユーザーが現実を明確にするために再び戻ってくるとき、参照価値は生まれます。"
+  }
+} %}
+
+{% set t = methodology_copy.get(lang, methodology_copy["en"]) %}
+
+{% block content %}
+<article class="methodology-page">
+  <header class="methodology-hero">
+    <div class="container">
+      <p class="methodology-eyebrow">{{ t.eyebrow }}</p>
+      <h1 class="methodology-title">{{ t.title }}</h1>
+      <p class="methodology-summary">{{ t.summary }}</p>
+
+      <div class="methodology-hero-meta" aria-label="{{ t.eyebrow }}">
+        <div class="methodology-hero-meta-item">
+          <span class="methodology-meta-label">{{ t.identity_label }}</span>
+          <strong class="methodology-meta-value">{{ t.identity_value }}</strong>
+        </div>
+        <div class="methodology-hero-meta-item">
+          <span class="methodology-meta-label">{{ t.framework_label }}</span>
+          <strong class="methodology-meta-value">{{ t.framework_value }}</strong>
+        </div>
+        <div class="methodology-hero-meta-item">
+          <span class="methodology-meta-label">{{ t.output_label }}</span>
+          <strong class="methodology-meta-value">{{ t.output_value }}</strong>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="methodology-section">
+    <div class="container">
+      <div class="methodology-section-head">
+        <h2>{{ t.scope_title }}</h2>
+      </div>
+      <div class="methodology-callout">
+        <p>{{ t.scope_text }}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="methodology-section methodology-section--principles">
+    <div class="container">
+      <div class="methodology-section-head">
+        <h2>{{ t.principles_title }}</h2>
+      </div>
+      <ul class="methodology-principles-list">
+        {% for item in t.principles %}
+          <li class="methodology-principle-item">{{ item }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
+
+  <section class="methodology-section methodology-section--criteria">
+    <div class="container">
+      <div class="methodology-section-head">
+        <h2>{{ t.criteria_title }}</h2>
+      </div>
+      <div class="methodology-grid methodology-grid--criteria">
+        {% for criterion in t.criteria %}
+          <article class="methodology-card">
+            <h3>{{ criterion.name }}</h3>
+            <p>{{ criterion.text }}</p>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="methodology-section methodology-section--process">
+    <div class="container">
+      <div class="methodology-section-head">
+        <h2>{{ t.process_title }}</h2>
+      </div>
+      <div class="methodology-grid methodology-grid--steps">
+        {% for step in t.steps %}
+          <article class="methodology-step">
+            <h3>{{ step.title }}</h3>
+            <p>{{ step.text }}</p>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="methodology-section methodology-section--evidence">
+    <div class="container">
+      <div class="methodology-section-head">
+        <h2>{{ t.evidence_title }}</h2>
+      </div>
+      <p class="methodology-intro">{{ t.evidence_intro }}</p>
+      <ol class="methodology-evidence-list">
+        {% for item in t.evidence %}
+          <li>{{ item }}</li>
+        {% endfor %}
+      </ol>
+    </div>
+  </section>
+
+  <section class="methodology-section methodology-section--negative-definition">
+    <div class="container">
+      <div class="methodology-section-head">
+        <h2>{{ t.not_title }}</h2>
+      </div>
+      <ul class="methodology-not-list">
+        {% for item in t.not_items %}
+          <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
+
+  <section class="methodology-section methodology-section--limits">
+    <div class="container">
+      <div class="methodology-section-head">
+        <h2>{{ t.limits_title }}</h2>
+      </div>
+      <div class="methodology-callout methodology-callout--muted">
+        <p>{{ t.limits_text }}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="methodology-section methodology-section--closing">
+    <div class="container">
+      <div class="methodology-closing">
+        <h2>{{ t.closing_title }}</h2>
+        <p>{{ t.closing_text }}</p>
+        <p class="methodology-closing-note">{{ t.closing_note }}</p>
+      </div>
+    </div>
+  </section>
+</article>
+{% endblock %}

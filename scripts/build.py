@@ -44,6 +44,7 @@ from pathlib import Path
 from typing import Optional, Sequence
 
 from scripts.generate_home import GenerateHomeError, generate_home_pages
+from scripts.generate_methodology import GenerateMethodologyError, generate_methodology_pages
 from scripts.generate_robots import GenerateRobotsError, generate_robots_file
 from scripts.generate_sitemap import GenerateSitemapError, generate_sitemap_file
 

@@ -1268,6 +1268,7 @@ def build_experience_type_context(
         "site_name": site_name,
         "site_tagline": site_tagline,
         "site_summary": _resolve_site_summary(site_config, registry, lang),
+        "footer_note": _resolve_site_summary(site_config, registry, lang) or site_tagline or site_name,
         "theme_color": _resolve_theme_color(site_config),
         "referrer_policy": _resolve_referrer_policy(site_config),
         "csp_meta_policy": _resolve_csp_meta_policy(site_config),

@@ -484,7 +484,7 @@ main {
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.8fr);
   gap: var(--space-12);
-  padding
+  padding: clamp(2rem, 4vw, 3rem) 0;
 }
 
    /* ==========================================================================
@@ -924,7 +924,7 @@ main {
 
   .home-hero__vs {
     width: 3.8rem;
-    height: 3.8rem;ط
+    height: 3.8rem;
     font-size: 1.1rem;
   }
 
@@ -1997,5 +1997,675 @@ main {
     animation: none !important;
     transition: none !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* ==========================================================================
+   Experience Type Pages
+   Sovereign reference-layer styling for:
+   templates/pages/experience_type.html
+   ========================================================================== */
+
+.page-experience-type {
+  --exp-bg-0: var(--color-bg, #07111f);
+  --exp-bg-1: var(--color-surface, rgba(11, 23, 40, 0.88));
+  --exp-bg-2: var(--color-surface-elevated, rgba(18, 33, 56, 0.94));
+  --exp-bg-3: rgba(255, 255, 255, 0.03);
+  --exp-line-soft: rgba(255, 255, 255, 0.08);
+  --exp-line-strong: rgba(120, 180, 255, 0.22);
+  --exp-text-0: var(--color-text, #edf3ff);
+  --exp-text-1: var(--color-text-soft, rgba(237, 243, 255, 0.82));
+  --exp-text-2: rgba(237, 243, 255, 0.62);
+  --exp-accent: var(--color-accent, #67b7ff);
+  --exp-accent-soft: rgba(103, 183, 255, 0.14);
+  --exp-accent-strong: rgba(103, 183, 255, 0.26);
+  --exp-positive: rgba(86, 196, 141, 0.22);
+  --exp-negative: rgba(255, 122, 122, 0.18);
+  --exp-shadow-1: 0 24px 60px rgba(0, 0, 0, 0.28);
+  --exp-shadow-2: 0 12px 30px rgba(0, 0, 0, 0.2);
+  background:
+    radial-gradient(circle at top center, rgba(103, 183, 255, 0.08), transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0)),
+    var(--exp-bg-0);
+  color: var(--exp-text-0);
+}
+
+.page-experience-type .container {
+  width: min(1180px, calc(100% - 2rem));
+  margin-inline: auto;
+}
+
+.experience-type-page {
+  position: relative;
+}
+
+.experience-type-page::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  block-size: 38rem;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(103, 183, 255, 0.08), transparent 70%);
+  opacity: 0.65;
+}
+
+.experience-type-hero {
+  position: relative;
+  padding-block: clamp(3.75rem, 7vw, 6.5rem) clamp(2rem, 4vw, 3rem);
+  overflow: clip;
+}
+
+.experience-type-hero::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
+  block-size: 1px;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(103, 183, 255, 0.28),
+      transparent
+    );
+}
+
+.experience-type-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0 0 1.2rem;
+  padding: 0.5rem 0.8rem;
+  border: 1px solid var(--exp-line-soft);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--exp-text-2);
+  backdrop-filter: blur(14px);
+}
+
+.experience-type-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(290px, 0.95fr);
+  gap: clamp(1.2rem, 2.8vw, 2rem);
+  align-items: start;
+}
+
+.experience-type-hero-main,
+.experience-type-hero-side-card,
+.experience-type-definition-card,
+.experience-type-scope-card,
+.experience-type-criterion-card,
+.experience-type-profile-card,
+.experience-type-balance-card,
+.experience-type-fit-card,
+.experience-type-adjacent-card,
+.experience-type-tradeoff-card {
+  border: 1px solid var(--exp-line-soft);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.01)),
+    var(--exp-bg-1);
+  box-shadow: var(--exp-shadow-2);
+  backdrop-filter: blur(18px);
+}
+
+.experience-type-hero-main {
+  position: relative;
+  padding: clamp(1.5rem, 3vw, 2.2rem);
+  border-radius: 1.8rem;
+  overflow: hidden;
+}
+
+.experience-type-hero-main::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  inline-size: 100%;
+  block-size: 3px;
+  background: linear-gradient(
+    90deg,
+    rgba(103, 183, 255, 0.9),
+    rgba(140, 214, 255, 0.2),
+    transparent
+  );
+}
+
+.experience-type-title {
+  margin: 0;
+  max-width: 15ch;
+  font-size: clamp(2.1rem, 5.2vw, 4.4rem);
+  line-height: 0.95;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+
+.experience-type-short-label {
+  margin: 0.9rem 0 0;
+  color: var(--exp-accent);
+  font-size: 0.96rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.experience-type-summary {
+  margin: 1.25rem 0 0;
+  max-width: 66ch;
+  color: var(--exp-text-1);
+  font-size: clamp(1.02rem, 1.2vw, 1.13rem);
+  line-height: 1.82;
+}
+
+.experience-type-hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.experience-type-family-chip,
+.experience-type-ontology-chip {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 2.75rem;
+  padding-inline: 0.95rem;
+  border-radius: 999px;
+  border: 1px solid var(--exp-line-soft);
+  background: rgba(255, 255, 255, 0.035);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+}
+
+.experience-type-family-label,
+.experience-type-ontology-value {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--exp-text-0);
+}
+
+.experience-type-hero-side-card {
+  position: sticky;
+  top: 1.25rem;
+  padding: 1.4rem;
+  border-radius: 1.5rem;
+}
+
+.experience-type-hero-side-card h2,
+.experience-type-section-head h2,
+.experience-type-balance-card h2,
+.experience-type-tradeoff-card h2 {
+  margin: 0;
+  font-size: clamp(1.15rem, 2vw, 1.55rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.experience-type-hero-side-card > p,
+.experience-type-section-head > p,
+.experience-type-definition-note,
+.experience-type-criterion-description,
+.experience-type-tradeoff-card .experience-type-section-head > p {
+  margin: 0.7rem 0 0;
+  color: var(--exp-text-1);
+  line-height: 1.75;
+}
+
+.experience-type-axes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 1.2rem;
+}
+
+.experience-type-axis-chip {
+  padding: 0.9rem 0.95rem;
+  border-radius: 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background:
+    linear-gradient(180deg, rgba(103, 183, 255, 0.08), rgba(255, 255, 255, 0.01)),
+    rgba(255, 255, 255, 0.02);
+}
+
+.experience-type-axis-label {
+  display: block;
+  color: var(--exp-text-2);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.experience-type-axis-value {
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--exp-text-0);
+  font-size: 0.98rem;
+  line-height: 1.35;
+}
+
+.experience-type-section {
+  position: relative;
+  padding-block: clamp(1.25rem, 3vw, 2rem);
+}
+
+.experience-type-section + .experience-type-section {
+  margin-top: 0.35rem;
+}
+
+.experience-type-section-head {
+  max-width: 78ch;
+  margin-bottom: 1.15rem;
+}
+
+.experience-type-definition-card,
+.experience-type-tradeoff-card {
+  position: relative;
+  padding: clamp(1.35rem, 2.2vw, 1.8rem);
+  border-radius: 1.55rem;
+  overflow: hidden;
+}
+
+.experience-type-definition-card::before,
+.experience-type-tradeoff-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  inline-size: 4px;
+  background: linear-gradient(
+    180deg,
+    rgba(103, 183, 255, 0.95),
+    rgba(103, 183, 255, 0.18)
+  );
+}
+
+.experience-type-definition-text,
+.experience-type-tradeoff-text {
+  margin: 0;
+  max-width: 72ch;
+  font-size: clamp(1.03rem, 1.25vw, 1.14rem);
+  line-height: 1.85;
+  color: var(--exp-text-0);
+}
+
+.experience-type-definition-note {
+  max-width: 70ch;
+}
+
+.experience-type-scope-grid,
+.experience-type-strength-grid,
+.experience-type-fit-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.experience-type-scope-card,
+.experience-type-balance-card,
+.experience-type-fit-card {
+  padding: 1.35rem 1.35rem 1.2rem;
+  border-radius: 1.45rem;
+}
+
+.experience-type-scope-card h3,
+.experience-type-fit-card h3,
+.experience-type-adjacent-label,
+.experience-type-profile-card h3,
+.experience-type-criterion-card h3 {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.experience-type-scope-card--positive,
+.experience-type-balance-card--strengths,
+.experience-type-fit-card--best {
+  background:
+    linear-gradient(180deg, rgba(86, 196, 141, 0.08), rgba(255, 255, 255, 0.01)),
+    var(--exp-bg-1);
+  border-color: rgba(86, 196, 141, 0.18);
+}
+
+.experience-type-scope-card--negative,
+.experience-type-balance-card--weaknesses,
+.experience-type-fit-card--poor {
+  background:
+    linear-gradient(180deg, rgba(255, 122, 122, 0.08), rgba(255, 255, 255, 0.01)),
+    var(--exp-bg-1);
+  border-color: rgba(255, 122, 122, 0.16);
+}
+
+.experience-type-list {
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.72rem;
+}
+
+.experience-type-list li {
+  position: relative;
+  padding-inline-start: 1.1rem;
+  color: var(--exp-text-1);
+  line-height: 1.72;
+}
+
+.experience-type-list li::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  inset-block-start: 0.72em;
+  inline-size: 0.42rem;
+  block-size: 0.42rem;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--exp-accent), rgba(103, 183, 255, 0.35));
+  box-shadow: 0 0 0 0.2rem rgba(103, 183, 255, 0.08);
+}
+
+.experience-type-criteria-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.experience-type-criterion-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-block-size: 100%;
+  padding: 1.15rem 1.15rem 1.1rem;
+  border-radius: 1.35rem;
+  overflow: hidden;
+}
+
+.experience-type-criterion-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  block-size: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(103, 183, 255, 0.65),
+    transparent
+  );
+  opacity: 0.8;
+}
+
+.experience-type-criterion-card[data-score="5"] {
+  border-color: rgba(86, 196, 141, 0.24);
+}
+
+.experience-type-criterion-card[data-score="4"] {
+  border-color: rgba(103, 183, 255, 0.22);
+}
+
+.experience-type-criterion-card[data-score="3"] {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.experience-type-criterion-card[data-score="2"],
+.experience-type-criterion-card[data-score="1"] {
+  border-color: rgba(255, 122, 122, 0.16);
+}
+
+.experience-type-criterion-card-top,
+.experience-type-profile-card-top {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.experience-type-score-badge,
+.experience-type-profile-level {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-block-size: 2.1rem;
+  padding-inline: 0.8rem;
+  border-radius: 999px;
+  border: 1px solid var(--exp-line-soft);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--exp-text-0);
+  font-size: 0.84rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.experience-type-score-value {
+  white-space: nowrap;
+}
+
+.experience-type-criterion-meta {
+  display: grid;
+  gap: 0.8rem;
+  margin: 0;
+}
+
+.experience-type-criterion-meta div {
+  padding: 0.75rem 0.85rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.055);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.experience-type-criterion-meta dt {
+  margin: 0;
+  color: var(--exp-text-2);
+  font-size: 0.73rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.experience-type-criterion-meta dd {
+  margin: 0.32rem 0 0;
+  color: var(--exp-text-0);
+  line-height: 1.55;
+}
+
+.experience-type-profiles-grid,
+.experience-type-adjacent-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.experience-type-profile-card,
+.experience-type-adjacent-card {
+  padding: 1rem 1.05rem;
+  border-radius: 1.2rem;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.experience-type-profile-card[data-level="high"] {
+  border-color: rgba(86, 196, 141, 0.24);
+  background:
+    linear-gradient(180deg, rgba(86, 196, 141, 0.06), rgba(255, 255, 255, 0.01)),
+    var(--exp-bg-1);
+}
+
+.experience-type-profile-card[data-level="medium"] {
+  border-color: rgba(103, 183, 255, 0.18);
+  background:
+    linear-gradient(180deg, rgba(103, 183, 255, 0.05), rgba(255, 255, 255, 0.01)),
+    var(--exp-bg-1);
+}
+
+.experience-type-profile-card[data-level="low"] {
+  border-color: rgba(255, 255, 255, 0.08);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01)),
+    var(--exp-bg-1);
+}
+
+.experience-type-adjacent-card {
+  display: flex;
+  align-items: center;
+  min-block-size: 4.3rem;
+  color: var(--exp-text-0);
+  text-decoration: none;
+  background:
+    linear-gradient(180deg, rgba(103, 183, 255, 0.04), rgba(255, 255, 255, 0.01)),
+    var(--exp-bg-1);
+}
+
+.experience-type-adjacent-card:hover,
+.experience-type-adjacent-card:focus-visible,
+.experience-type-profile-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--exp-line-strong);
+  box-shadow: var(--exp-shadow-1);
+}
+
+.experience-type-adjacent-card:focus-visible,
+.experience-type-cta:focus-visible {
+  outline: 2px solid var(--exp-accent);
+  outline-offset: 2px;
+}
+
+.experience-type-tradeoff-card {
+  background:
+    radial-gradient(circle at top right, rgba(103, 183, 255, 0.12), transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01)),
+    var(--exp-bg-2);
+}
+
+.experience-type-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.3rem;
+}
+
+.experience-type-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-block-size: 3rem;
+  padding-inline: 1rem 1.15rem;
+  border-radius: 999px;
+  border: 1px solid var(--exp-line-soft);
+  text-decoration: none;
+  font-weight: 700;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.experience-type-cta--primary {
+  color: #06111d;
+  background: linear-gradient(180deg, #8fd1ff, #67b7ff);
+  border-color: rgba(143, 209, 255, 0.55);
+  box-shadow: 0 14px 34px rgba(103, 183, 255, 0.22);
+}
+
+.experience-type-cta--secondary {
+  color: var(--exp-text-0);
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.experience-type-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--exp-shadow-1);
+}
+
+.experience-type-cta--secondary:hover {
+  border-color: var(--exp-line-strong);
+  background: rgba(103, 183, 255, 0.08);
+}
+
+/* --------------------------------------------------------------------------
+   Responsive behavior
+   -------------------------------------------------------------------------- */
+@media (max-width: 1100px) {
+  .experience-type-criteria-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .experience-type-profiles-grid,
+  .experience-type-adjacent-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .experience-type-hero-grid,
+  .experience-type-scope-grid,
+  .experience-type-strength-grid,
+  .experience-type-fit-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-type-hero-side-card {
+    position: relative;
+    top: auto;
+  }
+}
+
+@media (max-width: 720px) {
+  .experience-type-title {
+    max-width: 100%;
+  }
+
+  .experience-type-axes-grid,
+  .experience-type-criteria-grid,
+  .experience-type-profiles-grid,
+  .experience-type-adjacent-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-type-criterion-card-top,
+  .experience-type-profile-card-top {
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .experience-type-score-badge,
+  .experience-type-profile-level {
+    min-block-size: 1.95rem;
+  }
+
+  .experience-type-hero-main,
+  .experience-type-hero-side-card,
+  .experience-type-definition-card,
+  .experience-type-scope-card,
+  .experience-type-criterion-card,
+  .experience-type-profile-card,
+  .experience-type-balance-card,
+  .experience-type-fit-card,
+  .experience-type-adjacent-card,
+  .experience-type-tradeoff-card {
+    border-radius: 1.15rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Reduced motion
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .experience-type-profile-card,
+  .experience-type-adjacent-card,
+  .experience-type-cta {
+    transition: none;
+  }
+
+  .experience-type-profile-card:hover,
+  .experience-type-adjacent-card:hover,
+  .experience-type-cta:hover {
+    transform: none;
   }
 }

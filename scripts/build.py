@@ -14,6 +14,7 @@ Phase 1 includes:
 - copy static assets into stage output
 - generate multilingual home pages
 - generate multilingual methodology pages
+- generate multilingual experience type pages
 - generate site-wide robots.txt
 - generate site-wide sitemap.xml
 
@@ -45,6 +46,10 @@ from pathlib import Path
 from typing import Optional, Sequence
 
 from scripts.generate_home import GenerateHomeError, generate_home_pages
+from scripts.generate_experience_types import (
+    GenerateExperienceTypesError,
+    generate_experience_type_pages,
+)
 from scripts.generate_methodology import GenerateMethodologyError, generate_methodology_pages
 from scripts.generate_robots import GenerateRobotsError, generate_robots_file
 from scripts.generate_sitemap import GenerateSitemapError, generate_sitemap_file
@@ -285,6 +290,20 @@ def _run_methodology_generation(
     return count
 
 
+def _run_experience_types_generation(
+    *,
+    requested_lang: Optional[str],
+    stage_dir: Path,
+) -> int:
+    written_experience_types = generate_experience_type_pages(
+        requested_lang=requested_lang,
+        output_dir=stage_dir,
+    )
+    count = len(written_experience_types)
+    log.info("Generated experience type pages: %d", count)
+    return count
+
+
 def _run_robots_generation(*, stage_dir: Path) -> Path:
     robots_path = generate_robots_file(output_dir=stage_dir)
     log.info("Generated robots.txt -> %s", robots_path)
@@ -335,13 +354,19 @@ def run_build(
             stage_dir=stage_dir,
         )
 
-        # Step 4: robots
+        # Step 4: experience type pages
+        _run_experience_types_generation(
+            requested_lang=requested_lang,
+            stage_dir=stage_dir,
+        )
+
+        # Step 5: robots
         _run_robots_generation(stage_dir=stage_dir)
 
-        # Step 5: sitemap
+        # Step 6: sitemap
         _run_sitemap_generation(stage_dir=stage_dir)
 
-        # Step 6: promote
+        # Step 7: promote
         _promote_stage_to_final(stage_dir, final_output_dir)
         log.info("Build promoted successfully -> %s", final_output_dir)
         return final_output_dir
@@ -398,7 +423,14 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             output_dir=args.output_dir.resolve(),
             keep_stage_on_failure=args.keep_stage_on_failure,
         )
-    except (BuildError, GenerateHomeError, GenerateMethodologyError, GenerateRobotsError, GenerateSitemapError) as exc:
+    except (
+        BuildError,
+        GenerateHomeError,
+        GenerateMethodologyError,
+        GenerateExperienceTypesError,
+        GenerateRobotsError,
+        GenerateSitemapError,
+    ) as exc:
         log.error("%s", exc)
         return 1
     except Exception as exc:

@@ -46,11 +46,11 @@ from pathlib import Path
 from typing import Optional, Sequence
 
 from scripts.generate_home import GenerateHomeError, generate_home_pages
+from scripts.generate_methodology import GenerateMethodologyError, generate_methodology_pages
 from scripts.generate_experience_types import (
     GenerateExperienceTypesError,
     generate_experience_type_pages,
 )
-from scripts.generate_methodology import GenerateMethodologyError, generate_methodology_pages
 from scripts.generate_robots import GenerateRobotsError, generate_robots_file
 from scripts.generate_sitemap import GenerateSitemapError, generate_sitemap_file
 
@@ -290,18 +290,16 @@ def _run_methodology_generation(
     return count
 
 
-def _run_experience_types_generation(
+def _run_experience_type_generation(
     *,
     requested_lang: Optional[str],
     stage_dir: Path,
-) -> int:
-    written_experience_types = generate_experience_type_pages(
+) -> None:
+    written = generate_experience_type_pages(
         requested_lang=requested_lang,
         output_dir=stage_dir,
     )
-    count = len(written_experience_types)
-    log.info("Generated experience type pages: %d", count)
-    return count
+    log.info("Generated experience type pages: %d", len(written))
 
 
 def _run_robots_generation(*, stage_dir: Path) -> Path:
@@ -355,7 +353,7 @@ def run_build(
         )
 
         # Step 4: experience type pages
-        _run_experience_types_generation(
+        _run_experience_type_generation(
             requested_lang=requested_lang,
             stage_dir=stage_dir,
         )

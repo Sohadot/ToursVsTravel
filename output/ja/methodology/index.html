@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="ja" dir="ltr">
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="format-detection" content="telephone=no">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#002B49">
+
+
+
+
+  <title>方法論 | TourVsTravel</title>
+  <meta name="description" content="TourVsTravel が再現可能な参照方法論によって旅行構造、制約、トレードオフ、旅行者適合性をどのように比較するかを説明します。">
+  <meta name="robots" content="index, follow">
+
+  <link rel="canonical" href="https://tourvstravel.com/ja/methodology/">
+
+        <link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/methodology/">
+        <link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/methodology/">
+        <link rel="alternate" hreflang="fr" href="https://tourvstravel.com/fr/methodology/">
+        <link rel="alternate" hreflang="es" href="https://tourvstravel.com/es/methodology/">
+        <link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/methodology/">
+        <link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/methodology/">
+        <link rel="alternate" hreflang="ja" href="https://tourvstravel.com/ja/methodology/">
+        <link rel="alternate" hreflang="x-default" href="https://tourvstravel.com/en/methodology/">
+
+  <meta property="og:title" content="方法論 | TourVsTravel">
+  <meta property="og:description" content="TourVsTravel が再現可能な参照方法論によって旅行構造、制約、トレードオフ、旅行者適合性をどのように比較するかを説明します。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tourvstravel.com/ja/methodology/">
+  <meta property="og:image" content="https://tourvstravel.com/static/img/og/default-og.jpg">
+  <meta property="og:site_name" content="TourVsTravel">
+
+
+    <meta property="og:locale" content="ja_JP">
+
+        <meta property="og:locale:alternate" content="en_US">
+        <meta property="og:locale:alternate" content="ar">
+        <meta property="og:locale:alternate" content="fr_FR">
+        <meta property="og:locale:alternate" content="es_ES">
+        <meta property="og:locale:alternate" content="de_DE">
+        <meta property="og:locale:alternate" content="zh_CN">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="方法論 | TourVsTravel">
+  <meta name="twitter:description" content="TourVsTravel が再現可能な参照方法論によって旅行構造、制約、トレードオフ、旅行者適合性をどのように比較するかを説明します。">
+  <meta name="twitter:image" content="https://tourvstravel.com/static/img/og/default-og.jpg">
+
+
+
+        <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"TourVsTravel","url":"https://tourvstravel.com","logo":"https://tourvstravel.com/static/img/brand/logo-icon.jpg"}</script>
+        <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"TourVsTravel","url":"https://tourvstravel.com/ja/","inLanguage":"ja"}</script>
+        <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"方法論 | TourVsTravel","description":"TourVsTravel が再現可能な参照方法論によって旅行構造、制約、トレードオフ、旅行者適合性をどのように比較するかを説明します。","url":"https://tourvstravel.com/ja/methodology/","inLanguage":"ja","isPartOf":{"@type":"WebSite","url":"https://tourvstravel.com/ja/"}}</script>
+
+
+
+<link rel="icon" href="/static/img/brand/logo-icon.jpg" type="image/jpeg">
+
+  <link rel="apple-touch-icon" href="/static/img/brand/logo-icon.jpg">
+
+    <link
+      rel="preload"
+      href="/static/css/main.css"
+      as="style"
+type="text/css"    >
+
+<link rel="stylesheet" href="/static/css/main.css">
+
+</head>
+<body class="page-methodology">
+  <a class="skip-link" href="#main-content">
+    コンテンツへ移動
+  </a>
+
+  <div class="site-frame">
+<header class="site-header" role="banner">
+  <div class="site-header__inner container">
+    <a href="https://tourvstravel.com/ja/"
+       class="brand-lockup"
+       aria-label="TourVsTravel">
+      <span class="brand-lockup__icon-wrap" aria-hidden="true">
+        <img
+          src="https://tourvstravel.com/static/img/brand/logo-icon.svg"
+          alt=""
+          class="brand-lockup__icon"
+          width="40"
+          height="40"
+          loading="eager"
+          decoding="async"
+        >
+      </span>
+
+      <span class="brand-lockup__wordmark">
+        <span class="brand-lockup__tour">Tour</span><span class="brand-lockup__vs">Vs</span><span class="brand-lockup__travel">Travel</span><span class="brand-lockup__tld">.com</span>
+      </span>
+    </a>
+
+    <nav class="primary-nav" aria-label="Primary navigation">
+      <button
+        class="primary-nav__toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="primary-nav-menu"
+        data-nav-toggle
+      >
+        <span class="primary-nav__toggle-line" aria-hidden="true"></span>
+        <span class="primary-nav__toggle-line" aria-hidden="true"></span>
+        <span class="primary-nav__toggle-line" aria-hidden="true"></span>
+        <span class="sr-only">Menu</span>
+      </button>
+
+      <div id="primary-nav-menu" class="primary-nav__menu" data-nav-menu>
+        <ul class="primary-nav__list" role="list">
+          <li class="primary-nav__item">
+            <a href="https://tourvstravel.com/ja/"
+               class="primary-nav__link ">
+              ホーム
+            </a>
+          </li>
+
+          <li class="primary-nav__item">
+            <a href="https://tourvstravel.com/ja/compare/"
+               class="primary-nav__link ">
+              比較
+            </a>
+          </li>
+
+          <li class="primary-nav__item">
+            <a href="https://tourvstravel.com/ja/destinations/"
+               class="primary-nav__link ">
+              目的地
+            </a>
+          </li>
+
+          <li class="primary-nav__item">
+            <a href="https://tourvstravel.com/ja/tools/"
+               class="primary-nav__link ">
+              ツール
+            </a>
+          </li>
+
+          <li class="primary-nav__item">
+            <a href="https://tourvstravel.com/ja/methodology/"
+               class="primary-nav__link is-active">
+              方法論
+            </a>
+          </li>
+
+          <li class="primary-nav__item">
+            <a href="https://tourvstravel.com/ja/reports/"
+               class="primary-nav__link ">
+              Report
+            </a>
+          </li>
+        </ul>
+
+        <div class="primary-nav__meta">
+          <div class="language-switcher" aria-label="Language switcher">
+              <a href="https://tourvstravel.com/en/methodology/"
+                 hreflang="en"
+                 class="language-switcher__link "
+>
+                EN
+              </a>
+              <a href="https://tourvstravel.com/ar/methodology/"
+                 hreflang="ar"
+                 class="language-switcher__link "
+>
+                AR
+              </a>
+              <a href="https://tourvstravel.com/fr/methodology/"
+                 hreflang="fr"
+                 class="language-switcher__link "
+>
+                FR
+              </a>
+              <a href="https://tourvstravel.com/es/methodology/"
+                 hreflang="es"
+                 class="language-switcher__link "
+>
+                ES
+              </a>
+              <a href="https://tourvstravel.com/de/methodology/"
+                 hreflang="de"
+                 class="language-switcher__link "
+>
+                DE
+              </a>
+              <a href="https://tourvstravel.com/zh/methodology/"
+                 hreflang="zh-CN"
+                 class="language-switcher__link "
+>
+                ZH-CN
+              </a>
+              <a href="https://tourvstravel.com/ja/methodology/"
+                 hreflang="ja"
+                 class="language-switcher__link is-active"
+aria-current="true">
+                JA
+              </a>
+              <a href="https://tourvstravel.com/en/methodology/"
+                 hreflang="x-default"
+                 class="language-switcher__link "
+>
+                X-DEFAULT
+              </a>
+          </div>
+
+          <a href="https://tourvstravel.com/ja/tools/travel-decision-compass/"
+             class="button button--primary site-header__cta">
+            Find Your Match
+          </a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+    <main id="main-content" class="site-main" tabindex="-1">
+<article class="methodology-page">
+  <header class="methodology-hero">
+    <div class="container">
+      <p class="methodology-eyebrow">方法論</p>
+      <h1 class="methodology-title">行き先への欲望より先に、意思決定の構造を置く</h1>
+      <p class="methodology-summary">TourVsTravel は宣伝型の旅行雑誌でも、予約導線でもありません。これは旅行意思決定のための参照システムです。感情、マーケティング、視覚的魅力が判断を歪める前に、旅行の形式、制約、トレードオフ、適合性を比較するための構造化レイヤーです。</p>
+
+      <div class="methodology-hero-meta" aria-label="方法論">
+        <div class="methodology-hero-meta-item">
+          <span class="methodology-meta-label">システムの役割</span>
+          <strong class="methodology-meta-value">中立的な旅行意思決定リファレンス</strong>
+        </div>
+        <div class="methodology-hero-meta-item">
+          <span class="methodology-meta-label">モデル</span>
+          <strong class="methodology-meta-value">幻想ではなく構造を比較する</strong>
+        </div>
+        <div class="methodology-hero-meta-item">
+          <span class="methodology-meta-label">主要な成果</span>
+          <strong class="methodology-meta-value">現実の制約下でより明確な旅行選択</strong>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="methodology-section">
+    <div class="container">
+      <div class="methodology-section-head">
+        <h2>この方法論が行うこと</h2>
+      </div>
+      <div class="methodology-callout">
+        <p>このシステムは、異なる旅行構造が予算、ペース、快適性、調整負荷、自律性、予測可能性、複雑性、体験の深さという圧力下でどう機能するかを評価します。目的は全員に同じ答えを与えることではありません。答えをより読み取りやすくすることです。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="methodology-section methodology-section--principles">
+    <div class="container">
+      <div class="methodology-section-head">
+        <h2>編集原則</h2>
+      </div>
+      <ul class="methodology-principles-list">
+          <li class="methodology-principle-item">説得より方法。</li>
+          <li class="methodology-principle-item">推奨より先にトレードオフの明確化。</li>
+          <li class="methodology-principle-item">宣伝より比較。</li>
+          <li class="methodology-principle-item">憧れより制約適合。</li>
+          <li class="methodology-principle-item">意見より再現可能な論理。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="methodology-section methodology-section--criteria">
+    <div class="container">
+      <div class="methodology-section-head">
+        <h2>中核比較基準</h2>
+      </div>
+      <div class="methodology-grid methodology-grid--criteria">
+          <article class="methodology-card">
+            <h3>制約適合性</h3>
+            <p>予算制限、時間制約、移動条件、調整負荷、不確実性への耐性の下で、その旅行形式がどれだけ機能するかを測定します。</p>
+          </article>
+          <article class="methodology-card">
+            <h3>運用上の複雑性</h3>
+            <p>計画負担、予約の分断、移動の難しさ、書類負担、そして旅行者自身が吸収しなければならない調整作業量を測定します。</p>
+          </article>
+          <article class="methodology-card">
+            <h3>コントロールと支援</h3>
+            <p>旅行者がどれだけ自律性を保てるか、そして形式がどれだけ構造、案内、リスク低減を提供するかを測定します。</p>
+          </article>
+          <article class="methodology-card">
+            <h3>体験の深さ</h3>
+            <p>その旅行形式が、広さ、没入、柔軟性、ローカルな質感、または強く管理された体験のどれを優先するかを測定します。</p>
+          </article>
+          <article class="methodology-card">
+            <h3>予測可能性</h3>
+            <p>日程の安定性、変動リスク、混乱への耐性、そして実際の旅行が意図した旅行からどれほどずれるかを測定します。</p>
+          </article>
+          <article class="methodology-card">
+            <h3>旅行者タイプ別適合性</h3>
+            <p>独立型プランナー、家族の調整役、初回旅行者、コスト重視の探求者、快適性重視の旅行者、物流負担を嫌う利用者のどれに最も適しているかを測定します。</p>
+          </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="methodology-section methodology-section--process">
+    <div class="container">
+      <div class="methodology-section-head">
+        <h2>ページが作られる方法</h2>
+      </div>
+      <div class="methodology-grid methodology-grid--steps">
+          <article class="methodology-step">
+            <h3>1. 旅行構造を定義する</h3>
+            <p>各ページは、境界が明確な旅行形式から始まります。システムが比較するのは曖昧な気分ではなく、安定した運用上の意味を持つ構造です。</p>
+          </article>
+          <article class="methodology-step">
+            <h3>2. 同じ基準を適用する</h3>
+            <p>すべての比較は同じ基準群を通過します。これにより、ページごとに都合よく論理が変わることを防ぎます。</p>
+          </article>
+          <article class="methodology-step">
+            <h3>3. トレードオフを説明する</h3>
+            <p>結果は単なる優劣ラベルではありません。何を得て、何を失い、どの条件で順位が変わるのかを説明しなければなりません。</p>
+          </article>
+          <article class="methodology-step">
+            <h3>4. 擁護できるものだけを公開する</h3>
+            <p>方法論的な明確さで説明できない比較は、参照結論として公開すべきではありません。</p>
+          </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="methodology-section methodology-section--evidence">
+    <div class="container">
+      <div class="methodology-section-head">
+        <h2>証拠の階層</h2>
+      </div>
+      <p class="methodology-intro">このサイトは、宣伝ノイズよりも持続的なシグナルを優先するよう設計されています。権威の高い順に、ページは次に基づくべきです。</p>
+      <ol class="methodology-evidence-list">
+          <li>一次的な運用事実: 旅行構造、旅程ロジック、調整負荷、正式要件、予約アーキテクチャ。</li>
+          <li>安定した文脈シグナル: コスト帯、季節圧力、移動パターン、そして旅行者適合性に実際に影響する物流制約。</li>
+          <li>二次的な統合分析: 目的地や旅行タイプをまたいで再現可能な比較ロジックから得られるパターン。</li>
+          <li>宣伝的・事業者的主張は、意思決定の真実ではなく低権威の入力として明確に識別される場合にのみ使用する。</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="methodology-section methodology-section--negative-definition">
+    <div class="container">
+      <div class="methodology-section-head">
+        <h2>このサイトが違うもの</h2>
+      </div>
+      <ul class="methodology-not-list">
+          <li>編集権威を装った予約エンジンではない。</li>
+          <li>検索獲得だけを狙うリスト記事工場ではない。</li>
+          <li>憧れの旅行画像だけを並べる感情ボードではない。</li>
+          <li>旅行者の制約を無視する万能回答機ではない。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="methodology-section methodology-section--limits">
+    <div class="container">
+      <div class="methodology-section-head">
+        <h2>既知の限界</h2>
+      </div>
+      <div class="methodology-callout methodology-callout--muted">
+        <p>どのような方法論システムでも不確実性を完全に消すことはできません。旅行の判断は、時期、健康、同行者構成、国境条件、天候、運用上の混乱、人間の許容度に依存します。目的は偽の確実性ではなく、混乱を規律的に減らすことです。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="methodology-section methodology-section--closing">
+    <div class="container">
+      <div class="methodology-closing">
+        <h2>なぜ重要なのか</h2>
+        <p>信頼できるデジタル資産は、注意を集めるだけでは価値を持ちません。曖昧さを減らし、判断を構造化し、繰り返し使えるものでなければなりません。それが TourVsTravel の役割です。旅行欲求を盲目的に増幅するのではなく、旅行選択をより知的にすることです。</p>
+        <p class="methodology-closing-note">ユーザーが現実を明確にするために再び戻ってくるとき、参照価値は生まれます。</p>
+      </div>
+    </div>
+  </section>
+</article>
+    </main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="site-footer__top container">
+    <div class="site-footer__brand">
+      <a href="https://tourvstravel.com/ja/"
+         class="brand-lockup brand-lockup--footer"
+         aria-label="TourVsTravel">
+        <span class="brand-lockup__icon-wrap" aria-hidden="true">
+          <img
+            src="https://tourvstravel.com/static/img/brand/logo-icon.svg"
+            alt=""
+            class="brand-lockup__icon"
+            width="36"
+            height="36"
+            loading="lazy"
+            decoding="async"
+          >
+        </span>
+
+        <span class="brand-lockup__wordmark">
+          <span class="brand-lockup__tour">Tour</span><span class="brand-lockup__vs">Vs</span><span class="brand-lockup__travel">Travel</span><span class="brand-lockup__tld">.com</span>
+        </span>
+      </a>
+
+      <p class="site-footer__tagline">
+        旅行判断のための中立的リファレンス
+      </p>
+
+      <p class="site-footer__summary">
+        TourVsTravel is a multilingual, evidence-led travel decision infrastructure built to compare how people move through the world across destinations, styles, and intentions.
+      </p>
+    </div>
+
+    <div class="site-footer__grid">
+      <section class="site-footer__column" aria-labelledby="footer-explore">
+        <h2 id="footer-explore" class="site-footer__heading">
+          Explore
+        </h2>
+        <ul class="site-footer__list" role="list">
+          <li><a href="https://tourvstravel.com/ja/compare/">比較</a></li>
+          <li><a href="https://tourvstravel.com/ja/destinations/">目的地</a></li>
+          <li><a href="https://tourvstravel.com/ja/experience/">17 Styles</a></li>
+          <li><a href="https://tourvstravel.com/ja/tools/">ツール</a></li>
+        </ul>
+      </section>
+
+      <section class="site-footer__column" aria-labelledby="footer-framework">
+        <h2 id="footer-framework" class="site-footer__heading">
+          Framework
+        </h2>
+        <ul class="site-footer__list" role="list">
+          <li><a href="https://tourvstravel.com/ja/methodology/">方法論</a></li>
+          <li><a href="https://tourvstravel.com/ja/methodology/source-policy/">Source Policy</a></li>
+          <li><a href="https://tourvstravel.com/ja/methodology/editorial-standards/">Editorial Standards</a></li>
+          <li><a href="https://tourvstravel.com/ja/reports/">Annual Report</a></li>
+        </ul>
+      </section>
+
+      <section class="site-footer__column" aria-labelledby="footer-practical">
+        <h2 id="footer-practical" class="site-footer__heading">
+          Practical
+        </h2>
+        <ul class="site-footer__list" role="list">
+          <li><a href="https://tourvstravel.com/ja/about/">About</a></li>
+          <li><a href="https://tourvstravel.com/ja/privacy/">Privacy</a></li>
+          <li><a href="https://tourvstravel.com/ja/contact/">Contact</a></li>
+          <li><a href="https://tourvstravel.com/ja/acquire/">Acquire Domain</a></li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <div class="site-footer__bottom container">
+    <p class="site-footer__legal">
+      &copy; 2026 TourVsTravel. All rights reserved.
+    </p>
+
+    <p class="site-footer__note">
+      目的地、スタイル、意図を横断して、人がどのように世界を旅するかを比較するために設計された、多言語・エビデンス主導の旅行判断インフラです。
+    </p>
+  </div>
+</footer>  </div>
+
+    <script
+      defer
+      src="/static/js/main.js"
+    ></script>
+
+
+</body>
+</html>

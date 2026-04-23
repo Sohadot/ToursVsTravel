@@ -664,6 +664,14 @@ def _resolve_site_name(site_config: Mapping[str, Any], registry: Mapping[str, An
     return _translate_node(site_config, registry, lang, node, "site_config.site.name")
 
 
+def _resolve_base_url(site_config: Mapping[str, Any]) -> str:
+    site_section = _ensure_mapping(site_config.get("site"), "site_config.site")
+    raw = site_section.get("base_url")
+    if raw is None:
+        raise ConfigError("site_config.site.base_url is missing.")
+    return _normalize_https_base_url(_ensure_string(raw, "site_config.site.base_url"))
+
+
 def _resolve_site_tagline(site_config: Mapping[str, Any], registry: Mapping[str, Any], lang: str) -> str:
     node = _get_nested(site_config, ("site", "tagline"))
     if node is None:
@@ -1159,6 +1167,7 @@ def build_experience_type_context(
         f"language_config[{lang}]",
     )
 
+    base_url = _resolve_base_url(site_config)
     site_name = _resolve_site_name(site_config, registry, lang)
     site_tagline = _resolve_site_tagline(site_config, registry, lang)
     assets = _resolve_core_asset_urls(site_config)
@@ -1244,6 +1253,7 @@ def build_experience_type_context(
 
     context: Dict[str, Any] = {
         # Core runtime
+        "base_url": base_url,
         "lang": lang,
         "is_rtl": _ensure_string(lang_conf.get("dir", "ltr"), f"language[{lang}].dir") == "rtl",
         "seo": seo_payload,

@@ -1,0 +1,339 @@
+{% extends "layouts/base.html" %}
+
+{% set experience_copy = {
+  "en": {
+    "eyebrow": "Travel Structure Profile",
+    "definition_title": "Formal definition",
+    "definition_note": "This page defines the travel form as a decision structure, not as a promotional category.",
+    "axes_title": "Structural signature",
+    "axes_intro": "These axes describe how the format behaves before destination-specific context changes the result.",
+    "scope_title": "Boundary of the type",
+    "scope_intro": "A reference system needs boundaries. The goal is to define what belongs inside this travel form and what does not.",
+    "inclusion_title": "Included in this type",
+    "exclusion_title": "Excluded from this type",
+    "criteria_title": "Baseline criterion profile",
+    "criteria_intro": "These scores are structural priors. They are not universal verdicts. They indicate how the format tends to behave before destination, traveler profile, and itinerary-specific conditions are layered in.",
+    "criteria_score_label": "Baseline score",
+    "criteria_band_label": "Band",
+    "criteria_direction_label": "Interpretation logic",
+    "profiles_title": "Traveler-profile affinity",
+    "profiles_intro": "Not every travel structure is meant for everyone. These affinities show where the format tends to fit naturally.",
+    "strengths_title": "Structural strengths",
+    "weaknesses_title": "Structural weaknesses",
+    "fit_title": "Fit boundaries",
+    "best_for_title": "Best fit for",
+    "poor_fit_for_title": "Poor fit for",
+    "adjacent_title": "Adjacent travel types",
+    "adjacent_intro": "These neighboring structures are related but not identical. They help preserve conceptual clarity across the ontology.",
+    "tradeoff_title": "Tradeoff signature",
+    "tradeoff_intro": "Every credible travel structure buys something and gives something up. This is the governing exchange.",
+    "methodology_cta": "Read the methodology",
+    "compare_cta": "Compare travel structures",
+    "directions": {
+      "higher_is_better": "Higher is stronger",
+      "lower_is_better": "Lower burden is stronger"
+    },
+    "levels": {
+      "low": "Low affinity",
+      "medium": "Moderate affinity",
+      "high": "High affinity"
+    }
+  },
+
+  "ar": {
+    "eyebrow": "ملف بنية السفر",
+    "definition_title": "التعريف الرسمي",
+    "definition_note": "هذه الصفحة تعرّف شكل السفر كبنية قرار، لا كتصنيف ترويجي.",
+    "axes_title": "البصمة البنيوية",
+    "axes_intro": "هذه المحاور تصف كيف يتصرف هذا الشكل قبل أن تغيّر سياقات الوجهة النتيجة.",
+    "scope_title": "حدود هذا النوع",
+    "scope_intro": "النظام المرجعي يحتاج حدودًا واضحة. الهدف هو تحديد ما الذي يدخل ضمن هذا الشكل وما الذي لا يدخل فيه.",
+    "inclusion_title": "ما يدخل ضمن هذا النوع",
+    "exclusion_title": "ما يُستبعد من هذا النوع",
+    "criteria_title": "الملف المعياري الأساسي",
+    "criteria_intro": "هذه الدرجات هي أولويات بنيوية وليست أحكامًا مطلقة. إنها تشير إلى الكيفية التي يميل بها هذا الشكل إلى التصرف قبل إضافة طبقة الوجهة ونوع المسافر وظروف البرنامج.",
+    "criteria_score_label": "الدرجة الأساسية",
+    "criteria_band_label": "النطاق",
+    "criteria_direction_label": "منطق التفسير",
+    "profiles_title": "الملاءمة حسب نوع المسافر",
+    "profiles_intro": "ليس كل شكل من أشكال السفر مناسبًا للجميع. هذه الملاءمات تُظهر أين يميل هذا الشكل إلى أن يكون طبيعيًا وملائمًا.",
+    "strengths_title": "نقاط القوة البنيوية",
+    "weaknesses_title": "نقاط الضعف البنيوية",
+    "fit_title": "حدود الملاءمة",
+    "best_for_title": "الأفضل لـ",
+    "poor_fit_for_title": "الملاءمة الضعيفة لـ",
+    "adjacent_title": "أنواع السفر المجاورة",
+    "adjacent_intro": "هذه البنى المجاورة مرتبطة بهذا النوع لكنها ليست مطابقة له، وهي تحافظ على الوضوح المفاهيمي عبر ontology الموقع.",
+    "tradeoff_title": "توقيع المفاضلة",
+    "tradeoff_intro": "كل بنية سفر موثوقة تشتري شيئًا وتتخلى عن شيء. هذه هي المبادلة الحاكمة.",
+    "methodology_cta": "اقرأ المنهجية",
+    "compare_cta": "قارن بين أشكال السفر",
+    "directions": {
+      "higher_is_better": "الدرجة الأعلى أقوى",
+      "lower_is_better": "العبء الأقل أقوى"
+    },
+    "levels": {
+      "low": "ملاءمة منخفضة",
+      "medium": "ملاءمة متوسطة",
+      "high": "ملاءمة عالية"
+    }
+  }
+} %}
+
+{% set t = experience_copy.get(lang, experience_copy["en"]) %}
+{% set experience = experience_type %}
+
+{% block content %}
+<article class="experience-type-page">
+  <header class="experience-type-hero">
+    <div class="container">
+      <p class="experience-type-eyebrow">{{ t.eyebrow }}</p>
+
+      <div class="experience-type-hero-grid">
+        <div class="experience-type-hero-main">
+          <h1 class="experience-type-title">{{ experience.label }}</h1>
+
+          {% if experience.short_label %}
+            <p class="experience-type-short-label">{{ experience.short_label }}</p>
+          {% endif %}
+
+          <p class="experience-type-summary">{{ experience.summary }}</p>
+
+          <div class="experience-type-hero-meta">
+            <div class="experience-type-family-chip">
+              <span class="experience-type-family-label">{{ experience.family_label }}</span>
+            </div>
+
+            {% if experience_type_count is defined and experience_type_count %}
+              <div class="experience-type-ontology-chip">
+                <span class="experience-type-ontology-value">{{ experience_type_count }}</span>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+
+        <aside class="experience-type-hero-side" aria-label="{{ t.axes_title }}">
+          <div class="experience-type-hero-side-card">
+            <h2>{{ t.axes_title }}</h2>
+            <p>{{ t.axes_intro }}</p>
+
+            <div class="experience-type-axes-grid">
+              {% for axis in experience.structural_axes_display %}
+                <div class="experience-type-axis-chip">
+                  <span class="experience-type-axis-label">{{ axis.label }}</span>
+                  <strong class="experience-type-axis-value">{{ axis.value }}</strong>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </header>
+
+  <section class="experience-type-section experience-type-section--definition">
+    <div class="container">
+      <div class="experience-type-section-head">
+        <h2>{{ t.definition_title }}</h2>
+      </div>
+
+      <div class="experience-type-definition-card">
+        <p class="experience-type-definition-text">{{ experience.formal_definition }}</p>
+        <p class="experience-type-definition-note">{{ t.definition_note }}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="experience-type-section experience-type-section--scope">
+    <div class="container">
+      <div class="experience-type-section-head">
+        <h2>{{ t.scope_title }}</h2>
+        <p>{{ t.scope_intro }}</p>
+      </div>
+
+      <div class="experience-type-scope-grid">
+        <article class="experience-type-scope-card experience-type-scope-card--positive">
+          <h3>{{ t.inclusion_title }}</h3>
+          <ul class="experience-type-list">
+            {% for item in experience.inclusion_scope %}
+              <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+        </article>
+
+        <article class="experience-type-scope-card experience-type-scope-card--negative">
+          <h3>{{ t.exclusion_title }}</h3>
+          <ul class="experience-type-list">
+            {% for item in experience.exclusion_scope %}
+              <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="experience-type-section experience-type-section--criteria">
+    <div class="container">
+      <div class="experience-type-section-head">
+        <h2>{{ t.criteria_title }}</h2>
+        <p>{{ t.criteria_intro }}</p>
+      </div>
+
+      <div class="experience-type-criteria-grid">
+        {% for item in experience.baseline_scores_display %}
+          <article class="experience-type-criterion-card" data-score="{{ item.score }}">
+            <div class="experience-type-criterion-card-top">
+              <h3>{{ item.name }}</h3>
+              <div class="experience-type-score-badge" aria-label="{{ t.criteria_score_label }}">
+                <span class="experience-type-score-value">{{ item.score }}/5</span>
+              </div>
+            </div>
+
+            <dl class="experience-type-criterion-meta">
+              <div>
+                <dt>{{ t.criteria_band_label }}</dt>
+                <dd>{{ item.band_label }}</dd>
+              </div>
+              <div>
+                <dt>{{ t.criteria_direction_label }}</dt>
+                <dd>
+                  {% if item.direction_label %}
+                    {{ item.direction_label }}
+                  {% else %}
+                    {{ t.directions.get(item.direction, item.direction) }}
+                  {% endif %}
+                </dd>
+              </div>
+            </dl>
+
+            {% if item.description %}
+              <p class="experience-type-criterion-description">{{ item.description }}</p>
+            {% endif %}
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="experience-type-section experience-type-section--profiles">
+    <div class="container">
+      <div class="experience-type-section-head">
+        <h2>{{ t.profiles_title }}</h2>
+        <p>{{ t.profiles_intro }}</p>
+      </div>
+
+      <div class="experience-type-profiles-grid">
+        {% for item in experience.profile_affinity_display %}
+          <article class="experience-type-profile-card" data-level="{{ item.level }}">
+            <div class="experience-type-profile-card-top">
+              <h3>{{ item.label }}</h3>
+              <span class="experience-type-profile-level">
+                {{ item.level_label if item.level_label else t.levels.get(item.level, item.level) }}
+              </span>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="experience-type-section experience-type-section--strengths-weaknesses">
+    <div class="container">
+      <div class="experience-type-strength-grid">
+        <article class="experience-type-balance-card experience-type-balance-card--strengths">
+          <h2>{{ t.strengths_title }}</h2>
+          <ul class="experience-type-list">
+            {% for item in experience.strengths %}
+              <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+        </article>
+
+        <article class="experience-type-balance-card experience-type-balance-card--weaknesses">
+          <h2>{{ t.weaknesses_title }}</h2>
+          <ul class="experience-type-list">
+            {% for item in experience.weaknesses %}
+              <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="experience-type-section experience-type-section--fit">
+    <div class="container">
+      <div class="experience-type-section-head">
+        <h2>{{ t.fit_title }}</h2>
+      </div>
+
+      <div class="experience-type-fit-grid">
+        <article class="experience-type-fit-card experience-type-fit-card--best">
+          <h3>{{ t.best_for_title }}</h3>
+          <ul class="experience-type-list">
+            {% for item in experience.best_for %}
+              <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+        </article>
+
+        <article class="experience-type-fit-card experience-type-fit-card--poor">
+          <h3>{{ t.poor_fit_for_title }}</h3>
+          <ul class="experience-type-list">
+            {% for item in experience.poor_fit_for %}
+              <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  {% if experience.adjacent_types_display %}
+    <section class="experience-type-section experience-type-section--adjacent">
+      <div class="container">
+        <div class="experience-type-section-head">
+          <h2>{{ t.adjacent_title }}</h2>
+          <p>{{ t.adjacent_intro }}</p>
+        </div>
+
+        <div class="experience-type-adjacent-grid">
+          {% for item in experience.adjacent_types_display %}
+            <a class="experience-type-adjacent-card" href="{{ item.url }}">
+              <span class="experience-type-adjacent-label">{{ item.label }}</span>
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+  {% endif %}
+
+  <section class="experience-type-section experience-type-section--tradeoff">
+    <div class="container">
+      <div class="experience-type-tradeoff-card">
+        <div class="experience-type-section-head">
+          <h2>{{ t.tradeoff_title }}</h2>
+          <p>{{ t.tradeoff_intro }}</p>
+        </div>
+
+        <p class="experience-type-tradeoff-text">{{ experience.tradeoff_signature }}</p>
+
+        <div class="experience-type-cta-row">
+          {% if methodology_url is defined and methodology_url %}
+            <a class="experience-type-cta experience-type-cta--primary" href="{{ methodology_url }}">
+              {{ t.methodology_cta }}
+            </a>
+          {% endif %}
+
+          {% if compare_url is defined and compare_url %}
+            <a class="experience-type-cta experience-type-cta--secondary" href="{{ compare_url }}">
+              {{ t.compare_cta }}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+</article>
+{% endblock %}

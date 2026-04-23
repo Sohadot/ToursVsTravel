@@ -60,6 +60,54 @@ DATA_DIR = PROJECT_ROOT / "data"
 MAX_YAML_FILE_SIZE_BYTES = 5 * 1024 * 1024  # 5 MiB
 ALLOWED_YAML_SUFFIXES = {".yaml", ".yml"}
 
+EXPERIENCE_TYPE_REQUIRED_FIELDS = {
+    "id",
+    "order",
+    "enabled",
+    "slug",
+    "family",
+    "label",
+    "summary",
+    "formal_definition",
+    "inclusion_scope",
+    "exclusion_scope",
+    "adjacent_types",
+    "structural_axes",
+    "baseline_scores",
+    "profile_affinity",
+    "strengths",
+    "weaknesses",
+    "best_for",
+    "poor_fit_for",
+    "tradeoff_signature",
+    "seo",
+}
+
+EXPERIENCE_TYPE_BASELINE_KEYS = {
+    "constraint_fit",
+    "operational_complexity",
+    "control_vs_support",
+    "depth_of_experience",
+    "predictability",
+    "traveler_type_fit",
+}
+
+EXPERIENCE_TYPE_PROFILE_KEYS = {
+    "independent_planner",
+    "family_coordinator",
+    "first_time_traveler",
+    "cost_sensitive_explorer",
+    "comfort_priority_traveler",
+    "logistics_averse_traveler",
+}
+
+EXPERIENCE_TYPE_ALLOWED_PROFILE_AFFINITY = {"low", "medium", "high"}
+
+EXPERIENCE_TYPE_ALLOWED_STRUCTURE_VALUES = {"low", "medium", "high"}
+EXPERIENCE_TYPE_ALLOWED_PACE_VALUES = {"fixed", "balanced", "flexible"}
+EXPERIENCE_TYPE_ALLOWED_IMMERSION_VALUES = {"surface", "balanced", "deep"}
+EXPERIENCE_TYPE_ALLOWED_PREDICTABILITY_VALUES = {"low", "medium", "high"}
+
 
 # ============================================================================
 # Generic YAML Loading
@@ -1024,6 +1072,291 @@ def _validate_unique_comparison_keys(items: List[Any]) -> None:
         seen.add(composite_key)
 
 
+def _validate_experience_type_multilingual_block(
+    value: Any,
+    path: Sequence[str | int],
+    required_langs: Sequence[str],
+) -> Dict[str, str]:
+    block = _ensure_mapping(value, path)
+    validated: Dict[str, str] = {}
+
+    for lang in required_langs:
+        if lang not in block:
+            _raise(f"{_path(path)} is missing required language key '{lang}'.")
+        validated[lang] = _ensure_string(block.get(lang), [*path, lang])
+
+    extra_keys = set(block.keys()) - set(required_langs)
+    if extra_keys:
+        _raise(f"{_path(path)} contains unsupported language keys: {sorted(extra_keys)}")
+
+    return validated
+
+
+def _validate_string_list(
+    value: Any,
+    path: Sequence[str | int],
+    *,
+    allow_empty: bool = False,
+) -> List[str]:
+    items = _ensure_list(value, path)
+    if not allow_empty and not items:
+        _raise(f"{_path(path)} must not be empty.")
+    return [_ensure_string(item, [*path, idx]) for idx, item in enumerate(items)]
+
+
+def _validate_experience_type_structural_axes(
+    value: Any,
+    path: Sequence[str | int],
+) -> Dict[str, str]:
+    axes = _ensure_mapping(value, path)
+
+    required_keys = {
+        "structure_intensity",
+        "autonomy_level",
+        "support_level",
+        "pace_profile",
+        "immersion_profile",
+        "predictability_profile",
+    }
+    missing = required_keys - set(axes.keys())
+    if missing:
+        _raise(f"{_path(path)} is missing required keys: {sorted(missing)}")
+
+    extra = set(axes.keys()) - required_keys
+    if extra:
+        _raise(f"{_path(path)} contains unknown keys: {sorted(extra)}")
+
+    structure_intensity = _ensure_string(axes.get("structure_intensity"), [*path, "structure_intensity"])
+    autonomy_level = _ensure_string(axes.get("autonomy_level"), [*path, "autonomy_level"])
+    support_level = _ensure_string(axes.get("support_level"), [*path, "support_level"])
+    pace_profile = _ensure_string(axes.get("pace_profile"), [*path, "pace_profile"])
+    immersion_profile = _ensure_string(axes.get("immersion_profile"), [*path, "immersion_profile"])
+    predictability_profile = _ensure_string(axes.get("predictability_profile"), [*path, "predictability_profile"])
+
+    if structure_intensity not in EXPERIENCE_TYPE_ALLOWED_STRUCTURE_VALUES:
+        _raise(
+            f"{_path([*path, 'structure_intensity'])} must be one of "
+            f"{sorted(EXPERIENCE_TYPE_ALLOWED_STRUCTURE_VALUES)}."
+        )
+    if autonomy_level not in EXPERIENCE_TYPE_ALLOWED_STRUCTURE_VALUES:
+        _raise(
+            f"{_path([*path, 'autonomy_level'])} must be one of "
+            f"{sorted(EXPERIENCE_TYPE_ALLOWED_STRUCTURE_VALUES)}."
+        )
+    if support_level not in EXPERIENCE_TYPE_ALLOWED_STRUCTURE_VALUES:
+        _raise(
+            f"{_path([*path, 'support_level'])} must be one of "
+            f"{sorted(EXPERIENCE_TYPE_ALLOWED_STRUCTURE_VALUES)}."
+        )
+    if pace_profile not in EXPERIENCE_TYPE_ALLOWED_PACE_VALUES:
+        _raise(
+            f"{_path([*path, 'pace_profile'])} must be one of "
+            f"{sorted(EXPERIENCE_TYPE_ALLOWED_PACE_VALUES)}."
+        )
+    if immersion_profile not in EXPERIENCE_TYPE_ALLOWED_IMMERSION_VALUES:
+        _raise(
+            f"{_path([*path, 'immersion_profile'])} must be one of "
+            f"{sorted(EXPERIENCE_TYPE_ALLOWED_IMMERSION_VALUES)}."
+        )
+    if predictability_profile not in EXPERIENCE_TYPE_ALLOWED_PREDICTABILITY_VALUES:
+        _raise(
+            f"{_path([*path, 'predictability_profile'])} must be one of "
+            f"{sorted(EXPERIENCE_TYPE_ALLOWED_PREDICTABILITY_VALUES)}."
+        )
+
+    return {
+        "structure_intensity": structure_intensity,
+        "autonomy_level": autonomy_level,
+        "support_level": support_level,
+        "pace_profile": pace_profile,
+        "immersion_profile": immersion_profile,
+        "predictability_profile": predictability_profile,
+    }
+
+
+def _validate_experience_type_baseline_scores(
+    value: Any,
+    path: Sequence[str | int],
+) -> Dict[str, int]:
+    scores = _ensure_mapping(value, path)
+
+    missing = EXPERIENCE_TYPE_BASELINE_KEYS - set(scores.keys())
+    if missing:
+        _raise(f"{_path(path)} is missing required keys: {sorted(missing)}")
+
+    extra = set(scores.keys()) - EXPERIENCE_TYPE_BASELINE_KEYS
+    if extra:
+        _raise(f"{_path(path)} contains unknown keys: {sorted(extra)}")
+
+    validated: Dict[str, int] = {}
+    for key in sorted(EXPERIENCE_TYPE_BASELINE_KEYS):
+        score = _ensure_int(scores.get(key), [*path, key])
+        if score < 1 or score > 5:
+            _raise(f"{_path([*path, key])} must be between 1 and 5 inclusive.")
+        validated[key] = score
+
+    return validated
+
+
+def _validate_experience_type_profile_affinity(
+    value: Any,
+    path: Sequence[str | int],
+) -> Dict[str, str]:
+    affinity = _ensure_mapping(value, path)
+
+    missing = EXPERIENCE_TYPE_PROFILE_KEYS - set(affinity.keys())
+    if missing:
+        _raise(f"{_path(path)} is missing required keys: {sorted(missing)}")
+
+    extra = set(affinity.keys()) - EXPERIENCE_TYPE_PROFILE_KEYS
+    if extra:
+        _raise(f"{_path(path)} contains unknown keys: {sorted(extra)}")
+
+    validated: Dict[str, str] = {}
+    for key in sorted(EXPERIENCE_TYPE_PROFILE_KEYS):
+        level = _ensure_string(affinity.get(key), [*path, key])
+        if level not in EXPERIENCE_TYPE_ALLOWED_PROFILE_AFFINITY:
+            _raise(
+                f"{_path([*path, key])} must be one of "
+                f"{sorted(EXPERIENCE_TYPE_ALLOWED_PROFILE_AFFINITY)}."
+            )
+        validated[key] = level
+
+    return validated
+
+
+def _validate_experience_type_seo(
+    value: Any,
+    path: Sequence[str | int],
+    required_langs: Sequence[str],
+) -> Dict[str, Any]:
+    seo = _ensure_mapping(value, path)
+
+    allowed_keys = {"title_template"}
+    extra = set(seo.keys()) - allowed_keys
+    if extra:
+        _raise(f"{_path(path)} contains unknown keys: {sorted(extra)}")
+
+    if "title_template" not in seo:
+        _raise(f"{_path(path)} is missing required key 'title_template'.")
+
+    title_template = _validate_experience_type_multilingual_block(
+        seo.get("title_template"),
+        [*path, "title_template"],
+        required_langs,
+    )
+
+    return {"title_template": title_template}
+
+
+def _validate_experience_type_item(
+    item: Any,
+    idx: int,
+    *,
+    families_by_id: Mapping[str, Mapping[str, Any]],
+    required_langs: Sequence[str],
+) -> Dict[str, Any]:
+    path = ["experience_types_yaml", "experience_types", idx]
+    exp = _ensure_mapping(item, path)
+
+    missing = EXPERIENCE_TYPE_REQUIRED_FIELDS - set(exp.keys())
+    if missing:
+        _raise(f"{_path(path)} is missing required keys: {sorted(missing)}")
+
+    allowed_fields = set(EXPERIENCE_TYPE_REQUIRED_FIELDS) | {"short_label"}
+    extra = set(exp.keys()) - allowed_fields
+    if extra:
+        _raise(f"{_path(path)} contains unknown keys: {sorted(extra)}")
+
+    exp_id = _ensure_string(exp.get("id"), [*path, "id"])
+    order = _ensure_int(exp.get("order"), [*path, "order"])
+    if order <= 0:
+        _raise(f"{_path([*path, 'order'])} must be > 0.")
+
+    enabled = exp.get("enabled")
+    if not isinstance(enabled, bool):
+        _raise(f"{_path([*path, 'enabled'])} must be a boolean.")
+    if not enabled:
+        _raise(f"{_path([*path, 'enabled'])} must be true in the current active dataset.")
+
+    slug = _ensure_string(exp.get("slug"), [*path, "slug"])
+    if "--vs--" in slug:
+        _raise(f"{_path([*path, 'slug'])} must not contain reserved substring '--vs--'.")
+
+    family = _ensure_string(exp.get("family"), [*path, "family"])
+    if family not in families_by_id:
+        _raise(f"{_path([*path, 'family'])} refers to unknown family id '{family}'.")
+
+    validated: Dict[str, Any] = {
+        "id": exp_id,
+        "order": order,
+        "enabled": enabled,
+        "slug": slug,
+        "family": family,
+        "label": _validate_experience_type_multilingual_block(
+            exp.get("label"),
+            [*path, "label"],
+            required_langs,
+        ),
+        "summary": _validate_experience_type_multilingual_block(
+            exp.get("summary"),
+            [*path, "summary"],
+            required_langs,
+        ),
+        "formal_definition": _ensure_string(
+            exp.get("formal_definition"),
+            [*path, "formal_definition"],
+        ),
+        "inclusion_scope": _validate_string_list(
+            exp.get("inclusion_scope"),
+            [*path, "inclusion_scope"],
+        ),
+        "exclusion_scope": _validate_string_list(
+            exp.get("exclusion_scope"),
+            [*path, "exclusion_scope"],
+        ),
+        "adjacent_types": _validate_string_list(
+            exp.get("adjacent_types"),
+            [*path, "adjacent_types"],
+            allow_empty=True,
+        ),
+        "structural_axes": _validate_experience_type_structural_axes(
+            exp.get("structural_axes"),
+            [*path, "structural_axes"],
+        ),
+        "baseline_scores": _validate_experience_type_baseline_scores(
+            exp.get("baseline_scores"),
+            [*path, "baseline_scores"],
+        ),
+        "profile_affinity": _validate_experience_type_profile_affinity(
+            exp.get("profile_affinity"),
+            [*path, "profile_affinity"],
+        ),
+        "strengths": _validate_string_list(exp.get("strengths"), [*path, "strengths"]),
+        "weaknesses": _validate_string_list(exp.get("weaknesses"), [*path, "weaknesses"]),
+        "best_for": _validate_string_list(exp.get("best_for"), [*path, "best_for"]),
+        "poor_fit_for": _validate_string_list(exp.get("poor_fit_for"), [*path, "poor_fit_for"]),
+        "tradeoff_signature": _ensure_string(
+            exp.get("tradeoff_signature"),
+            [*path, "tradeoff_signature"],
+        ),
+        "seo": _validate_experience_type_seo(
+            exp.get("seo"),
+            [*path, "seo"],
+            required_langs,
+        ),
+    }
+
+    if "short_label" in exp:
+        validated["short_label"] = _validate_experience_type_multilingual_block(
+            exp.get("short_label"),
+            [*path, "short_label"],
+            required_langs,
+        )
+
+    return validated
+
+
 def load_destinations() -> List[Dict[str, Any]]:
     log.info("Loading destinations.yaml")
     raw = load_yaml("destinations.yaml")
@@ -1036,16 +1369,156 @@ def load_destinations() -> List[Dict[str, Any]]:
     return [dict(item) for item in items]
 
 
-def load_experience_types() -> List[Dict[str, Any]]:
+def load_experience_types() -> Dict[str, Any]:
     log.info("Loading experience_types.yaml")
-    raw = load_yaml("experience_types.yaml")
-    root = _ensure_mapping(raw, ["experience_types_yaml"])
-    if "experience_types" not in root:
-        _raise("experience_types.yaml must contain top-level key 'experience_types'.")
-    items = _ensure_list(root["experience_types"], ["experience_types_yaml", "experience_types"])
-    _validate_unique_ids(items, "experience_types")
+    root = load_yaml("experience_types.yaml")
+    root = _ensure_mapping(root, ["experience_types_yaml"])
+
+    required_top_level = {
+        "schema_version",
+        "dataset",
+        "status",
+        "owner",
+        "last_reviewed",
+        "meta",
+        "defaults",
+        "families",
+        "experience_types",
+        "validation",
+        "generator_contract",
+    }
+    missing = required_top_level - set(root.keys())
+    if missing:
+        _raise(f"experience_types.yaml is missing top-level keys: {sorted(missing)}")
+
+    families_raw = _ensure_list(root.get("families"), ["experience_types_yaml", "families"])
+    if not families_raw:
+        _raise("experience_types.yaml.families must not be empty.")
+
+    defaults = _ensure_mapping(root.get("defaults"), ["experience_types_yaml", "defaults"])
+    required_langs_list = _ensure_list(
+        defaults.get("supported_languages"),
+        ["experience_types_yaml", "defaults", "supported_languages"],
+    )
+    required_langs = [
+        _ensure_string(lang, ["experience_types_yaml", "defaults", "supported_languages", idx])
+        for idx, lang in enumerate(required_langs_list)
+    ]
+    if not required_langs:
+        _raise("experience_types.yaml.defaults.supported_languages must not be empty.")
+
+    families: List[Dict[str, Any]] = []
+    family_ids_seen: Set[str] = set()
+
+    for idx, item in enumerate(families_raw):
+        path = ["experience_types_yaml", "families", idx]
+        fam = _ensure_mapping(item, path)
+
+        required_family_keys = {"id", "label"}
+        missing_family = required_family_keys - set(fam.keys())
+        if missing_family:
+            _raise(f"{_path(path)} is missing required keys: {sorted(missing_family)}")
+
+        extra_family = set(fam.keys()) - required_family_keys
+        if extra_family:
+            _raise(f"{_path(path)} contains unknown keys: {sorted(extra_family)}")
+
+        fam_id = _ensure_string(fam.get("id"), [*path, "id"])
+        if fam_id in family_ids_seen:
+            _raise(f"Duplicate family id detected: '{fam_id}'")
+        family_ids_seen.add(fam_id)
+
+        families.append(
+            {
+                "id": fam_id,
+                "label": _validate_experience_type_multilingual_block(
+                    fam.get("label"),
+                    [*path, "label"],
+                    required_langs,
+                ),
+            }
+        )
+
+    families_by_id = {fam["id"]: fam for fam in families}
+
+    experience_types_raw = _ensure_list(
+        root.get("experience_types"),
+        ["experience_types_yaml", "experience_types"],
+    )
+    if not experience_types_raw:
+        _raise("experience_types.yaml.experience_types must not be empty.")
+
+    experience_types: List[Dict[str, Any]] = [
+        _validate_experience_type_item(
+            item,
+            idx,
+            families_by_id=families_by_id,
+            required_langs=required_langs,
+        )
+        for idx, item in enumerate(experience_types_raw)
+    ]
+
+    ids_seen: Set[str] = set()
+    slugs_seen: Set[str] = set()
+    orders_seen: Set[int] = set()
+
+    for item in experience_types:
+        exp_id = item["id"]
+        slug = item["slug"]
+        order = item["order"]
+
+        if exp_id in ids_seen:
+            _raise(f"Duplicate experience type id detected: '{exp_id}'")
+        ids_seen.add(exp_id)
+
+        if slug in slugs_seen:
+            _raise(f"Duplicate experience type slug detected: '{slug}'")
+        slugs_seen.add(slug)
+
+        if order in orders_seen:
+            _raise(f"Duplicate experience type order detected: {order}")
+        orders_seen.add(order)
+
+    known_ids = {item["id"] for item in experience_types}
+    for idx, item in enumerate(experience_types):
+        for adjacent_id in item.get("adjacent_types", []):
+            if adjacent_id not in known_ids:
+                _raise(
+                    f"experience_types_yaml.experience_types[{idx}].adjacent_types contains "
+                    f"unknown id '{adjacent_id}'"
+                )
+            if adjacent_id == item["id"]:
+                _raise(
+                    f"experience_types_yaml.experience_types[{idx}].adjacent_types must not reference self."
+                )
+
+    validation = _ensure_mapping(root.get("validation"), ["experience_types_yaml", "validation"])
+    expected_count = _ensure_int(
+        validation.get("require_experience_type_count"),
+        ["experience_types_yaml", "validation", "require_experience_type_count"],
+    )
+    if len(experience_types) != expected_count:
+        _raise(
+            f"experience_types.yaml defines {len(experience_types)} experience types, "
+            f"but validation.require_experience_type_count is {expected_count}."
+        )
+
+    experience_types.sort(key=lambda item: item["order"])
+    experience_types_by_id = {item["id"]: item for item in experience_types}
+    experience_types_by_slug = {item["slug"]: item for item in experience_types}
+
     log.info("Loaded experience_types.yaml successfully")
-    return [dict(item) for item in items]
+    return {
+        **dict(root),
+        "families": families,
+        "families_by_id": families_by_id,
+        "experience_types": experience_types,
+        "experience_types_by_id": experience_types_by_id,
+        "experience_types_by_slug": experience_types_by_slug,
+        "active_experience_types": experience_types,
+        "active_experience_types_by_id": experience_types_by_id,
+        "active_experience_types_by_slug": experience_types_by_slug,
+    }
 
 
 def load_comparisons() -> List[Dict[str, Any]]:

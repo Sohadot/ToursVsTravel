@@ -13,6 +13,7 @@ Current build scope
 Phase 1 includes:
 - copy static assets into stage output
 - generate multilingual home pages
+- generate multilingual methodology pages
 - generate site-wide robots.txt
 - generate site-wide sitemap.xml
 
@@ -270,6 +271,20 @@ def _run_home_generation(
     return count
 
 
+def _run_methodology_generation(
+    *,
+    requested_lang: Optional[str],
+    stage_dir: Path,
+) -> int:
+    written_methodology = generate_methodology_pages(
+        requested_lang=requested_lang,
+        output_dir=stage_dir,
+    )
+    count = len(written_methodology)
+    log.info("Generated methodology pages: %d", count)
+    return count
+
+
 def _run_robots_generation(*, stage_dir: Path) -> Path:
     robots_path = generate_robots_file(output_dir=stage_dir)
     log.info("Generated robots.txt -> %s", robots_path)
@@ -308,19 +323,25 @@ def run_build(
         # Step 1: static assets
         _copy_static_tree(stage_dir)
 
-        # Step 2: pages
+        # Step 2: home pages
         _run_home_generation(
             requested_lang=requested_lang,
             stage_dir=stage_dir,
         )
 
-        # Step 3: robots
+        # Step 3: methodology pages
+        _run_methodology_generation(
+            requested_lang=requested_lang,
+            stage_dir=stage_dir,
+        )
+
+        # Step 4: robots
         _run_robots_generation(stage_dir=stage_dir)
 
-        # Step 4: sitemap
+        # Step 5: sitemap
         _run_sitemap_generation(stage_dir=stage_dir)
 
-        # Step 5: promote
+        # Step 6: promote
         _promote_stage_to_final(stage_dir, final_output_dir)
         log.info("Build promoted successfully -> %s", final_output_dir)
         return final_output_dir
@@ -377,7 +398,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             output_dir=args.output_dir.resolve(),
             keep_stage_on_failure=args.keep_stage_on_failure,
         )
-    except (BuildError, GenerateHomeError, GenerateRobotsError, GenerateSitemapError) as exc:
+    except (BuildError, GenerateHomeError, GenerateMethodologyError, GenerateRobotsError, GenerateSitemapError) as exc:
         log.error("%s", exc)
         return 1
     except Exception as exc:

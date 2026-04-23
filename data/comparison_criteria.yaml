@@ -1,0 +1,784 @@
+schema_version: "1.0.0"
+dataset: "comparison_criteria"
+status: "active"
+owner: "TourVsTravel"
+last_reviewed: "2026-04-08"
+
+meta:
+  purpose: "Canonical comparison criteria for TourVsTravel decision pages, tools, and future generators."
+  operating_principle: "Compare travel structures under real constraints, not promotional aspiration."
+  publication_posture: "reference-grade"
+  source_of_truth: true
+
+defaults:
+  scoring_model:
+    scale_id: "five_point_integer"
+    min: 1
+    max: 5
+    neutral: 3
+    allowed_values: [1, 2, 3, 4, 5]
+    allow_half_scores: false
+    missing_policy: "reject_publication"
+    aggregation_method: "weighted_mean"
+    weight_total_required: 100
+    ranking_normalization: "invert_lower_is_better_criteria_before_aggregation"
+    output_scale:
+      min: 0
+      max: 100
+      rounding: 2
+
+  comparison_rules:
+    require_all_enabled_criteria: true
+    require_unique_criterion_ids: true
+    require_unique_orders: true
+    require_unique_weights_sum: true
+    allow_disabled_criteria: false
+    enforce_deterministic_sort_order: true
+
+  publication_rules:
+    require_tradeoff_summary: true
+    require_explained_winner: true
+    require_evidence_notes: true
+    reject_if_any_core_criterion_unscored: true
+
+  display_rules:
+    show_weights_publicly: true
+    show_direction_publicly: false
+    show_score_bands_publicly: true
+    show_tradeoff_language: true
+    show_methodology_link: true
+
+rating_bands:
+  - id: "very_weak"
+    min: 1.00
+    max: 1.49
+    label:
+      en: "Very weak"
+      ar: "ضعيف جدًا"
+      fr: "Très faible"
+      es: "Muy débil"
+      de: "Sehr schwach"
+      zh: "非常弱"
+      ja: "非常に弱い"
+  - id: "weak"
+    min: 1.50
+    max: 2.49
+    label:
+      en: "Weak"
+      ar: "ضعيف"
+      fr: "Faible"
+      es: "Débil"
+      de: "Schwach"
+      zh: "较弱"
+      ja: "弱い"
+  - id: "balanced"
+    min: 2.50
+    max: 3.49
+    label:
+      en: "Balanced"
+      ar: "متوازن"
+      fr: "Équilibré"
+      es: "Equilibrado"
+      de: "Ausgewogen"
+      zh: "均衡"
+      ja: "均衡"
+  - id: "strong"
+    min: 3.50
+    max: 4.49
+    label:
+      en: "Strong"
+      ar: "قوي"
+      fr: "Fort"
+      es: "Fuerte"
+      de: "Stark"
+      zh: "较强"
+      ja: "強い"
+  - id: "very_strong"
+    min: 4.50
+    max: 5.00
+    label:
+      en: "Very strong"
+      ar: "قوي جدًا"
+      fr: "Très fort"
+      es: "Muy fuerte"
+      de: "Sehr stark"
+      zh: "非常强"
+      ja: "非常に強い"
+
+verdict_bands:
+  metric: "absolute_difference_on_weighted_five_point_score"
+  bands:
+    - id: "near_parity"
+      min_difference: 0.00
+      max_difference: 0.19
+      label:
+        en: "Near parity"
+        ar: "تقارب شديد"
+        fr: "Quasi-parité"
+        es: "Casi paridad"
+        de: "Nahezu gleich"
+        zh: "几乎持平"
+        ja: "ほぼ同等"
+    - id: "slight_advantage"
+      min_difference: 0.20
+      max_difference: 0.49
+      label:
+        en: "Slight advantage"
+        ar: "أفضلية طفيفة"
+        fr: "Léger avantage"
+        es: "Ventaja ligera"
+        de: "Leichter Vorteil"
+        zh: "轻微优势"
+        ja: "わずかな優位"
+    - id: "clear_advantage"
+      min_difference: 0.50
+      max_difference: 0.89
+      label:
+        en: "Clear advantage"
+        ar: "أفضلية واضحة"
+        fr: "Avantage clair"
+        es: "Ventaja clara"
+        de: "Klarer Vorteil"
+        zh: "明显优势"
+        ja: "明確な優位"
+    - id: "decisive_advantage"
+      min_difference: 0.90
+      max_difference: 5.00
+      label:
+        en: "Decisive advantage"
+        ar: "أفضلية حاسمة"
+        fr: "Avantage décisif"
+        es: "Ventaja decisiva"
+        de: "Entscheidender Vorteil"
+        zh: "决定性优势"
+        ja: "決定的優位"
+
+traveler_profiles:
+  - id: "independent_planner"
+    order: 1
+    label:
+      en: "Independent Planner"
+      ar: "المخطط المستقل"
+      fr: "Planificateur indépendant"
+      es: "Planificador independiente"
+      de: "Unabhängiger Planer"
+      zh: "独立规划者"
+      ja: "独立型プランナー"
+    description:
+      en: "Prefers autonomy, flexibility, and control over structure."
+      ar: "يفضل الاستقلالية والمرونة والتحكم على البنية الجاهزة."
+      fr: "Privilégie l'autonomie, la flexibilité et le contrôle."
+      es: "Prefiere autonomía, flexibilidad y control."
+      de: "Bevorzugt Autonomie, Flexibilität und Kontrolle."
+      zh: "偏好自主、灵活和控制权。"
+      ja: "自律性、柔軟性、コントロールを重視する。"
+
+  - id: "family_coordinator"
+    order: 2
+    label:
+      en: "Family Coordinator"
+      ar: "منسق العائلة"
+      fr: "Coordinateur familial"
+      es: "Coordinador familiar"
+      de: "Familienkoordinator"
+      zh: "家庭协调者"
+      ja: "家族の調整役"
+    description:
+      en: "Optimizes for predictability, coordination ease, and burden reduction."
+      ar: "يركز على قابلية التنبؤ وسهولة التنسيق وتقليل العبء."
+      fr: "Recherche la prévisibilité, la facilité de coordination et la réduction de charge."
+      es: "Prioriza previsibilidad, facilidad de coordinación y reducción de carga."
+      de: "Optimiert für Vorhersehbarkeit, Koordinationsleichtigkeit und Entlastung."
+      zh: "优先考虑可预测性、协调便利和负担降低。"
+      ja: "予測可能性、調整のしやすさ、負担軽減を重視する。"
+
+  - id: "first_time_traveler"
+    order: 3
+    label:
+      en: "First-Time Traveler"
+      ar: "المسافر لأول مرة"
+      fr: "Primo-voyageur"
+      es: "Viajero primerizo"
+      de: "Erstreisender"
+      zh: "首次出行者"
+      ja: "初回旅行者"
+    description:
+      en: "Values clarity, guidance, and lower decision pressure."
+      ar: "يقدّر الوضوح والإرشاد وتقليل ضغط القرار."
+      fr: "Valorise la clarté, l'accompagnement et une pression décisionnelle réduite."
+      es: "Valora claridad, guía y menor presión de decisión."
+      de: "Schätzt Klarheit, Führung und geringeren Entscheidungsdruck."
+      zh: "重视清晰度、指导性和更低的决策压力。"
+      ja: "明確さ、ガイダンス、低い意思決定負荷を重視する。"
+
+  - id: "cost_sensitive_explorer"
+    order: 4
+    label:
+      en: "Cost-Sensitive Explorer"
+      ar: "المستكشف الحساس للتكلفة"
+      fr: "Explorateur sensible au coût"
+      es: "Explorador sensible al costo"
+      de: "Kostensensibler Entdecker"
+      zh: "成本敏感型探索者"
+      ja: "コスト重視の探求者"
+    description:
+      en: "Optimizes hard around budget efficiency and value density."
+      ar: "يركز بقوة على كفاءة الميزانية وكثافة القيمة."
+      fr: "Optimise fortement l'efficacité budgétaire et la densité de valeur."
+      es: "Optimiza fuertemente la eficiencia del presupuesto y la densidad de valor."
+      de: "Optimiert stark auf Budgeteffizienz und Wertdichte."
+      zh: "高度关注预算效率与价值密度。"
+      ja: "予算効率と価値密度を強く重視する。"
+
+  - id: "comfort_priority_traveler"
+    order: 5
+    label:
+      en: "Comfort-Priority Traveler"
+      ar: "المسافر ذو أولوية الراحة"
+      fr: "Voyageur orienté confort"
+      es: "Viajero orientado al confort"
+      de: "Komfortorientierter Reisender"
+      zh: "舒适优先型旅客"
+      ja: "快適性重視の旅行者"
+    description:
+      en: "Values smoothness, support, lower friction, and reliable comfort."
+      ar: "يقدّر السلاسة والدعم وتقليل الاحتكاك وراحة موثوقة."
+      fr: "Valorise la fluidité, l'accompagnement, une faible friction et un confort fiable."
+      es: "Valora fluidez, apoyo, menor fricción y confort confiable."
+      de: "Schätzt Reibungslosigkeit, Unterstützung, geringe Friktion und verlässlichen Komfort."
+      zh: "重视顺畅性、支持、低摩擦和稳定舒适。"
+      ja: "滑らかさ、支援、低摩擦、安定した快適性を重視する。"
+
+  - id: "logistics_averse_traveler"
+    order: 6
+    label:
+      en: "Logistics-Averse Traveler"
+      ar: "المسافر الذي يتجنب التعقيد اللوجستي"
+      fr: "Voyageur réfractaire à la logistique"
+      es: "Viajero adverso a la logística"
+      de: "Logistikaverser Reisender"
+      zh: "厌恶复杂物流的旅客"
+      ja: "物流負担を嫌う旅行者"
+    description:
+      en: "Seeks low operational overhead and reduced coordination demand."
+      ar: "يبحث عن عبء تشغيلي منخفض وتقليل الحاجة إلى التنسيق."
+      fr: "Recherche une faible charge opérationnelle et une demande de coordination réduite."
+      es: "Busca baja carga operativa y menor demanda de coordinación."
+      de: "Sucht geringe operative Last und reduzierten Koordinationsbedarf."
+      zh: "追求更低的操作负担与更少的协调需求。"
+      ja: "低い運用負荷と少ない調整要求を求める。"
+
+criteria:
+  - id: "constraint_fit"
+    enabled: true
+    order: 1
+    weight: 24
+    family: "core"
+    ranking_direction: "higher_is_better"
+    score_semantics:
+      1: "poor_fit"
+      2: "weak_fit"
+      3: "mixed_fit"
+      4: "strong_fit"
+      5: "excellent_fit"
+    output:
+      show_in_summary: true
+      show_in_scorecards: true
+      show_in_tools: true
+      compare_as_tradeoff: true
+    inputs:
+      subfactors:
+        - "budget_pressure"
+        - "time_pressure"
+        - "mobility_constraints"
+        - "coordination_capacity"
+        - "uncertainty_tolerance"
+      expected_evidence:
+        - "budget sensitivity of the format"
+        - "time efficiency under real travel conditions"
+        - "fit under limited planning bandwidth"
+        - "fit under constrained mobility or group coordination"
+    copy:
+      name:
+        en: "Constraint Fit"
+        ar: "ملاءمة القيود"
+        fr: "Adéquation aux contraintes"
+        es: "Ajuste a restricciones"
+        de: "Passung zu Beschränkungen"
+        zh: "约束适配度"
+        ja: "制約適合性"
+      short_name:
+        en: "Constraints"
+        ar: "القيود"
+        fr: "Contraintes"
+        es: "Restricciones"
+        de: "Beschränkungen"
+        zh: "约束"
+        ja: "制約"
+      question:
+        en: "How well does this travel structure perform under real limits of budget, time, mobility, and coordination?"
+        ar: "ما مدى كفاءة هذا الشكل من السفر تحت حدود الميزانية والوقت والحركة والتنسيق؟"
+        fr: "Dans quelle mesure cette structure de voyage fonctionne-t-elle sous de vraies contraintes de budget, de temps, de mobilité et de coordination ?"
+        es: "¿Qué tan bien funciona esta estructura de viaje bajo límites reales de presupuesto, tiempo, movilidad y coordinación?"
+        de: "Wie gut funktioniert diese Reiseform unter realen Budget-, Zeit-, Mobilitäts- und Koordinationsgrenzen?"
+        zh: "这种旅行结构在预算、时间、行动与协调等真实限制下表现如何？"
+        ja: "この旅行構造は、予算・時間・移動・調整の現実的な制約下でどれほど機能するか。"
+      description:
+        en: "Measures whether the format remains viable when real-world limits tighten."
+        ar: "يقيس ما إذا كان هذا الشكل يبقى عمليًا عندما تشتد القيود الواقعية."
+        fr: "Mesure si le format reste viable lorsque les contraintes réelles se resserrent."
+        es: "Mide si el formato sigue siendo viable cuando las restricciones reales se intensifican."
+        de: "Misst, ob das Format tragfähig bleibt, wenn reale Beschränkungen enger werden."
+        zh: "衡量当现实约束收紧时，这种形式是否仍然可行。"
+        ja: "現実の制約が強まったときでも、この形式が有効に機能するかを測る。"
+      low_meaning:
+        en: "Breaks down quickly under pressure."
+        ar: "ينهار سريعًا تحت الضغط."
+        fr: "Se dégrade rapidement sous pression."
+        es: "Se deteriora rápidamente bajo presión."
+        de: "Bricht unter Druck schnell ein."
+        zh: "在压力下很快失效。"
+        ja: "圧力下で崩れやすい。"
+      high_meaning:
+        en: "Remains workable under real limits."
+        ar: "يبقى قابلًا للتنفيذ تحت قيود حقيقية."
+        fr: "Reste praticable sous contraintes réelles."
+        es: "Sigue siendo funcional bajo límites reales."
+        de: "Bleibt unter realen Grenzen praktikabel."
+        zh: "在真实限制下仍具可行性。"
+        ja: "現実的な制約下でも成立する。"
+
+  - id: "operational_complexity"
+    enabled: true
+    order: 2
+    weight: 16
+    family: "core"
+    ranking_direction: "lower_is_better"
+    score_semantics:
+      1: "very_complex"
+      2: "complex"
+      3: "moderate"
+      4: "simple"
+      5: "very_simple"
+    output:
+      show_in_summary: true
+      show_in_scorecards: true
+      show_in_tools: true
+      compare_as_tradeoff: true
+    inputs:
+      subfactors:
+        - "planning_load"
+        - "booking_fragmentation"
+        - "transfer_difficulty"
+        - "documentation_overhead"
+        - "self_coordination_burden"
+      expected_evidence:
+        - "number of moving parts"
+        - "booking fragmentation and dependency risk"
+        - "amount of self-management required"
+        - "difficulty of recovery after disruption"
+    copy:
+      name:
+        en: "Operational Complexity"
+        ar: "التعقيد التشغيلي"
+        fr: "Complexité opérationnelle"
+        es: "Complejidad operativa"
+        de: "Operative Komplexität"
+        zh: "操作复杂度"
+        ja: "運用上の複雑性"
+      short_name:
+        en: "Complexity"
+        ar: "التعقيد"
+        fr: "Complexité"
+        es: "Complejidad"
+        de: "Komplexität"
+        zh: "复杂度"
+        ja: "複雑性"
+      question:
+        en: "How much planning, coordination, and recovery burden does the traveler have to absorb personally?"
+        ar: "كم من التخطيط والتنسيق وعبء المعالجة يجب أن يتحمله المسافر بنفسه؟"
+        fr: "Quelle charge de planification, de coordination et de récupération le voyageur doit-il absorber lui-même ?"
+        es: "¿Cuánta carga de planificación, coordinación y recuperación debe asumir personalmente el viajero?"
+        de: "Wie viel Planungs-, Koordinations- und Wiederherstellungsaufwand muss der Reisende selbst tragen?"
+        zh: "旅行者需要亲自承担多少规划、协调和恢复负担？"
+        ja: "計画・調整・トラブル回復の負担を旅行者自身がどれだけ背負う必要があるか。"
+      description:
+        en: "Measures the amount of operational friction built into the travel format."
+        ar: "يقيس مقدار الاحتكاك التشغيلي المدمج في شكل السفر."
+        fr: "Mesure la quantité de friction opérationnelle intégrée au format de voyage."
+        es: "Mide la cantidad de fricción operativa incorporada al formato de viaje."
+        de: "Misst, wie viel operative Reibung in der Reiseform eingebaut ist."
+        zh: "衡量该旅行形式内在包含多少操作摩擦。"
+        ja: "旅行形式に内在する運用上の摩擦量を測る。"
+      low_meaning:
+        en: "Operationally heavy and coordination-intensive."
+        ar: "ثقيل تشغيليًا وكثيف التنسيق."
+        fr: "Lourd opérationnellement et exigeant en coordination."
+        es: "Operativamente pesado y exigente en coordinación."
+        de: "Operativ schwer und koordinationsintensiv."
+        zh: "操作负担重、协调要求高。"
+        ja: "運用負荷が高く、調整要求も大きい。"
+      high_meaning:
+        en: "Simple, legible, and easier to execute."
+        ar: "بسيط وواضح وأسهل في التنفيذ."
+        fr: "Simple, lisible et plus facile à exécuter."
+        es: "Simple, legible y más fácil de ejecutar."
+        de: "Einfach, klar und leichter umzusetzen."
+        zh: "简单、清晰、执行更容易。"
+        ja: "単純で理解しやすく、実行しやすい。"
+
+  - id: "control_vs_support"
+    enabled: true
+    order: 3
+    weight: 14
+    family: "core"
+    ranking_direction: "higher_is_better"
+    score_semantics:
+      1: "poor_balance"
+      2: "weak_balance"
+      3: "mixed_balance"
+      4: "strong_balance"
+      5: "excellent_balance"
+    output:
+      show_in_summary: true
+      show_in_scorecards: true
+      show_in_tools: true
+      compare_as_tradeoff: true
+    inputs:
+      subfactors:
+        - "autonomy_retained"
+        - "guidance_provided"
+        - "risk_reduction"
+        - "decision_burden"
+        - "structure_flexibility_balance"
+      expected_evidence:
+        - "level of traveler control"
+        - "level of built-in support"
+        - "quality of the balance between freedom and assistance"
+        - "format suitability for users with different decision tolerances"
+    copy:
+      name:
+        en: "Control vs Support"
+        ar: "التحكم مقابل الدعم"
+        fr: "Contrôle vs accompagnement"
+        es: "Control vs apoyo"
+        de: "Kontrolle vs Unterstützung"
+        zh: "控制与支持"
+        ja: "コントロールと支援"
+      short_name:
+        en: "Control/Support"
+        ar: "تحكم/دعم"
+        fr: "Contrôle/Accompagnement"
+        es: "Control/Apoyo"
+        de: "Kontrolle/Unterstützung"
+        zh: "控制/支持"
+        ja: "制御/支援"
+      question:
+        en: "Does this format strike a credible balance between traveler autonomy and useful built-in support?"
+        ar: "هل يحقق هذا الشكل توازنًا موثوقًا بين استقلالية المسافر والدعم المدمج المفيد؟"
+        fr: "Ce format atteint-il un équilibre crédible entre l'autonomie du voyageur et un accompagnement utile intégré ?"
+        es: "¿Este formato logra un equilibrio creíble entre la autonomía del viajero y el apoyo integrado útil?"
+        de: "Erreicht dieses Format ein glaubwürdiges Gleichgewicht zwischen Autonomie des Reisenden und nützlicher integrierter Unterstützung?"
+        zh: "这种形式是否在旅行者自主权与内置支持之间建立了可信平衡？"
+        ja: "この形式は、旅行者の自律性と有益な内蔵支援の間で信頼できるバランスを実現しているか。"
+      description:
+        en: "Measures whether the format either over-constrains the traveler or abandons them to excessive self-management."
+        ar: "يقيس ما إذا كان هذا الشكل يقيّد المسافر أكثر من اللازم أو يتركه لعبء إدارة ذاتية مفرط."
+        fr: "Mesure si le format contraint excessivement le voyageur ou l'abandonne à une auto-gestion excessive."
+        es: "Mide si el formato restringe demasiado al viajero o lo abandona a una autogestión excesiva."
+        de: "Misst, ob das Format den Reisenden übermäßig einschränkt oder ihn zu starker Selbststeuerung zwingt."
+        zh: "衡量该形式是否过度限制旅行者，或把其抛给过量的自我管理。"
+        ja: "この形式が旅行者を過度に拘束しているか、あるいは過剰な自己管理に委ねているかを測る。"
+      low_meaning:
+        en: "Either too rigid or too unsupported."
+        ar: "إما شديد التقييد أو ضعيف الدعم."
+        fr: "Soit trop rigide, soit insuffisamment accompagné."
+        es: "O demasiado rígido o con apoyo insuficiente."
+        de: "Entweder zu starr oder zu wenig unterstützend."
+        zh: "要么过于僵硬，要么支持不足。"
+        ja: "硬直的すぎるか、支援が不足している。"
+      high_meaning:
+        en: "Balanced autonomy with practical support."
+        ar: "استقلالية متوازنة مع دعم عملي."
+        fr: "Autonomie équilibrée avec soutien pratique."
+        es: "Autonomía equilibrada con apoyo práctico."
+        de: "Ausgewogene Autonomie mit praktischer Unterstützung."
+        zh: "在自主与实际支持之间取得平衡。"
+        ja: "自律性と実務的支援のバランスが取れている。"
+
+  - id: "depth_of_experience"
+    enabled: true
+    order: 4
+    weight: 14
+    family: "core"
+    ranking_direction: "higher_is_better"
+    score_semantics:
+      1: "surface_level"
+      2: "limited_depth"
+      3: "mixed_depth"
+      4: "strong_depth"
+      5: "high_immersion"
+    output:
+      show_in_summary: true
+      show_in_scorecards: true
+      show_in_tools: true
+      compare_as_tradeoff: true
+    inputs:
+      subfactors:
+        - "immersion_potential"
+        - "local_texture"
+        - "flexibility_of_exploration"
+        - "breadth_vs_depth_balance"
+        - "managed_vs_lived_experience"
+      expected_evidence:
+        - "amount of real immersion enabled"
+        - "quality of local contact or local texture"
+        - "freedom to shape the experience"
+        - "depth sacrificed or enabled by the format"
+    copy:
+      name:
+        en: "Depth of Experience"
+        ar: "عمق التجربة"
+        fr: "Profondeur d'expérience"
+        es: "Profundidad de experiencia"
+        de: "Erlebnistiefe"
+        zh: "体验深度"
+        ja: "体験の深さ"
+      short_name:
+        en: "Depth"
+        ar: "العمق"
+        fr: "Profondeur"
+        es: "Profundidad"
+        de: "Tiefe"
+        zh: "深度"
+        ja: "深さ"
+      question:
+        en: "How much meaningful immersion, texture, and experiential depth does this format enable?"
+        ar: "إلى أي حد يتيح هذا الشكل انغماسًا حقيقيًا وثراءً وعمقًا في التجربة؟"
+        fr: "Dans quelle mesure ce format permet-il une immersion réelle, de la texture et une profondeur d'expérience ?"
+        es: "¿Cuánta inmersión significativa, textura y profundidad experiencial permite este formato?"
+        de: "Wie viel echte Immersion, lokale Textur und Erlebnistiefe ermöglicht dieses Format?"
+        zh: "这种形式能够提供多少有意义的沉浸感、质感与体验深度？"
+        ja: "この形式は、意味のある没入感、質感、体験の深さをどれほど可能にするか。"
+      description:
+        en: "Measures whether the format produces only managed exposure or a fuller lived experience."
+        ar: "يقيس ما إذا كان هذا الشكل ينتج مجرد تعرض مُدار أو تجربة معيشة أعمق."
+        fr: "Mesure si le format produit une exposition simplement encadrée ou une expérience vécue plus riche."
+        es: "Mide si el formato produce solo exposición gestionada o una experiencia vivida más plena."
+        de: "Misst, ob das Format nur gesteuerte Exposition oder eine vollere gelebte Erfahrung ermöglicht."
+        zh: "衡量该形式提供的只是被管理的接触，还是更完整的真实体验。"
+        ja: "管理された接触に留まるのか、より充実した実体験を可能にするのかを測る。"
+      low_meaning:
+        en: "Mostly surface-level or tightly managed."
+        ar: "سطحي غالبًا أو شديد الإدارة."
+        fr: "Plutôt superficiel ou fortement encadré."
+        es: "Mayormente superficial o muy gestionado."
+        de: "Überwiegend oberflächlich oder stark gesteuert."
+        zh: "大多较表层，或被高度管理。"
+        ja: "表層的であるか、強く管理されている。"
+      high_meaning:
+        en: "Enables richer, more lived travel experience."
+        ar: "يتيح تجربة سفر أغنى وأكثر معيشية."
+        fr: "Permet une expérience de voyage plus riche et plus vécue."
+        es: "Permite una experiencia de viaje más rica y vivida."
+        de: "Ermöglicht eine reichere, stärker gelebte Reiseerfahrung."
+        zh: "能够带来更丰富、更真实的旅行体验。"
+        ja: "より豊かで実感のある旅行体験を可能にする。"
+
+  - id: "predictability"
+    enabled: true
+    order: 5
+    weight: 16
+    family: "core"
+    ranking_direction: "higher_is_better"
+    score_semantics:
+      1: "high_variance"
+      2: "unstable"
+      3: "mixed_stability"
+      4: "stable"
+      5: "highly_predictable"
+    output:
+      show_in_summary: true
+      show_in_scorecards: true
+      show_in_tools: true
+      compare_as_tradeoff: true
+    inputs:
+      subfactors:
+        - "schedule_stability"
+        - "variance_risk"
+        - "recovery_resilience"
+        - "dependency_count"
+        - "likelihood_of_real_world_deviation"
+      expected_evidence:
+        - "schedule certainty"
+        - "likelihood of material disruption"
+        - "recovery ease after delays or failures"
+        - "degree to which the format contains variance"
+    copy:
+      name:
+        en: "Predictability"
+        ar: "قابلية التنبؤ"
+        fr: "Prévisibilité"
+        es: "Previsibilidad"
+        de: "Vorhersehbarkeit"
+        zh: "可预测性"
+        ja: "予測可能性"
+      short_name:
+        en: "Predictability"
+        ar: "التنبؤ"
+        fr: "Prévisibilité"
+        es: "Previsibilidad"
+        de: "Vorhersehbarkeit"
+        zh: "可预测"
+        ja: "予測性"
+      question:
+        en: "How likely is this travel structure to behave close to plan under normal real-world conditions?"
+        ar: "ما مدى احتمال أن يسير هذا الشكل من السفر قريبًا من الخطة تحت الظروف الواقعية العادية؟"
+        fr: "Quelle est la probabilité que cette structure de voyage se déroule près du plan dans des conditions réelles normales ?"
+        es: "¿Qué tan probable es que esta estructura de viaje se mantenga cercana al plan bajo condiciones reales normales?"
+        de: "Wie wahrscheinlich ist es, dass diese Reiseform unter normalen realen Bedingungen nahe am Plan verläuft?"
+        zh: "在正常现实条件下，这种旅行结构有多大概率接近原计划运行？"
+        ja: "通常の現実条件下で、この旅行構造が計画に近い形で進む可能性はどれほど高いか。"
+      description:
+        en: "Measures how stable and disruption-resistant the format is in practice."
+        ar: "يقيس مدى استقرار هذا الشكل ومقاومته للاضطراب في التطبيق العملي."
+        fr: "Mesure le degré de stabilité et de résistance aux perturbations du format dans la pratique."
+        es: "Mide cuán estable y resistente a interrupciones es el formato en la práctica."
+        de: "Misst, wie stabil und störungsresistent das Format in der Praxis ist."
+        zh: "衡量这种形式在实践中有多稳定、抗干扰能力有多强。"
+        ja: "実際にどれほど安定しており、混乱に強いかを測る。"
+      low_meaning:
+        en: "High variance and easier to derail."
+        ar: "عالي التغير وأسهل في الانحراف."
+        fr: "Forte variance et plus facile à dérailler."
+        es: "Alta variación y más fácil de descarrilar."
+        de: "Hohe Varianz und leichter aus dem Takt zu bringen."
+        zh: "波动大，更容易偏离。"
+        ja: "変動が大きく、崩れやすい。"
+      high_meaning:
+        en: "Stable and more likely to deliver as intended."
+        ar: "مستقر وأكثر قابلية لتحقيق ما هو مقصود."
+        fr: "Stable et plus susceptible de livrer ce qui était prévu."
+        es: "Estable y con mayor probabilidad de entregar lo previsto."
+        de: "Stabil und wahrscheinlicher wie beabsichtigt umzusetzen."
+        zh: "更稳定，也更可能按预期实现。"
+        ja: "安定しており、意図どおりに実現しやすい。"
+
+  - id: "traveler_type_fit"
+    enabled: true
+    order: 6
+    weight: 16
+    family: "core"
+    ranking_direction: "higher_is_better"
+    score_semantics:
+      1: "poor_profile_fit"
+      2: "weak_profile_fit"
+      3: "mixed_profile_fit"
+      4: "strong_profile_fit"
+      5: "excellent_profile_fit"
+    output:
+      show_in_summary: true
+      show_in_scorecards: true
+      show_in_tools: true
+      compare_as_tradeoff: true
+      requires_profile_mapping: true
+    inputs:
+      subfactors:
+        - "independent_planner_fit"
+        - "family_coordinator_fit"
+        - "first_time_traveler_fit"
+        - "cost_sensitive_explorer_fit"
+        - "comfort_priority_traveler_fit"
+        - "logistics_averse_traveler_fit"
+      expected_evidence:
+        - "clear fit by traveler profile"
+        - "clear mismatch by traveler profile"
+        - "profile sensitivity of the format"
+        - "decision tolerance required from the user"
+    copy:
+      name:
+        en: "Traveler Type Fit"
+        ar: "الملاءمة حسب نوع المسافر"
+        fr: "Adéquation par profil de voyageur"
+        es: "Adecuación por tipo de viajero"
+        de: "Eignung nach Reisetyp"
+        zh: "按旅行者类型的适配度"
+        ja: "旅行者タイプ別適合性"
+      short_name:
+        en: "Traveler Fit"
+        ar: "ملاءمة المسافر"
+        fr: "Adéquation voyageur"
+        es: "Ajuste del viajero"
+        de: "Reisepassung"
+        zh: "旅客适配"
+        ja: "旅行者適合"
+      question:
+        en: "For which traveler profile is this format most appropriate, and how strong is that fit?"
+        ar: "لأي نمط من المسافرين يناسب هذا الشكل أكثر، وما مدى قوة هذه الملاءمة؟"
+        fr: "Pour quel profil de voyageur ce format est-il le plus approprié, et avec quelle force ?"
+        es: "¿Para qué perfil de viajero es más adecuado este formato y qué tan fuerte es ese ajuste?"
+        de: "Für welches Reisendenprofil ist dieses Format am passendsten, und wie stark ist diese Passung?"
+        zh: "这种形式最适合哪类旅行者，这种适配有多强？"
+        ja: "この形式はどの旅行者プロファイルに最も適しており、その適合性はどれほど強いか。"
+      description:
+        en: "Measures whether the format serves a clearly defined traveler profile rather than pretending to suit everyone equally."
+        ar: "يقيس ما إذا كان هذا الشكل يخدم نمطًا واضحًا من المسافرين بدل الادعاء بأنه يناسب الجميع بالتساوي."
+        fr: "Mesure si le format sert un profil de voyageur clairement défini au lieu de prétendre convenir également à tous."
+        es: "Mide si el formato sirve a un perfil de viajero claramente definido en lugar de fingir que se adapta igual a todos."
+        de: "Misst, ob das Format einem klar definierten Reisendenprofil dient, statt vorzugeben, für alle gleichermaßen zu passen."
+        zh: "衡量这种形式是否真正服务于明确的旅行者类型，而不是假装同样适合所有人。"
+        ja: "誰にでも同じように合うと装うのではなく、明確な旅行者タイプに実際に適しているかを測る。"
+      low_meaning:
+        en: "Weak or ambiguous fit by traveler profile."
+        ar: "ملاءمة ضعيفة أو ملتبسة حسب نمط المسافر."
+        fr: "Adéquation faible ou ambiguë selon le profil."
+        es: "Ajuste débil o ambiguo según el perfil."
+        de: "Schwache oder mehrdeutige Passung nach Reisendenprofil."
+        zh: "按旅行者类型看，适配较弱或含糊。"
+        ja: "旅行者タイプに対する適合が弱い、または曖昧。"
+      high_meaning:
+        en: "Strong fit for clearly defined traveler types."
+        ar: "ملاءمة قوية لأنماط مسافر محددة بوضوح."
+        fr: "Forte adéquation pour des profils de voyageurs clairement définis."
+        es: "Ajuste fuerte para perfiles de viajero claramente definidos."
+        de: "Starke Passung für klar definierte Reisendentypen."
+        zh: "对明确旅行者类型具有很强适配。"
+        ja: "明確な旅行者タイプに対して強い適合性を持つ。"
+
+validation:
+  require_criteria_count: 6
+  require_weights_sum: 100
+  require_all_enabled_true: true
+  require_known_ranking_directions:
+    - "higher_is_better"
+    - "lower_is_better"
+  require_supported_languages:
+    - "en"
+    - "ar"
+    - "fr"
+    - "es"
+    - "de"
+    - "zh"
+    - "ja"
+  require_traveler_profile_ids:
+    - "independent_planner"
+    - "family_coordinator"
+    - "first_time_traveler"
+    - "cost_sensitive_explorer"
+    - "comfort_priority_traveler"
+    - "logistics_averse_traveler"
+
+generator_contract:
+  intended_consumers:
+    - "generate_experience_types.py"
+    - "generate_comparisons.py"
+    - "generate_tools_data.py"
+    - "future scoring tools"
+  required_behaviors:
+    - "Load criteria in ascending order."
+    - "Reject publication if any enabled criterion is missing."
+    - "Invert lower_is_better criteria before weighted aggregation."
+    - "Expose criterion names in the current page language."
+    - "Expose tradeoff language rather than binary winner-only language."
+    - "Use verdict_bands for summary intensity labels."
+    - "Never fabricate scores for missing evidence."

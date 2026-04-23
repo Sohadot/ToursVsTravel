@@ -1257,6 +1257,10 @@ def build_experience_type_context(
         "lang": lang,
         "is_rtl": _ensure_string(lang_conf.get("dir", "ltr"), f"language[{lang}].dir") == "rtl",
         "seo": seo_payload,
+        "canonical_url": seo_payload.get("canonical_url"),
+        "hreflang": seo_payload.get("hreflang", []),
+        "meta_desc": seo_payload.get("description", ""),
+        "robots_directive": seo_payload.get("robots_directive", ""),
         "body_class": "page-experience-type",
         "current_year": datetime.now(timezone.utc).year,
 

@@ -1,0 +1,1677 @@
+schema_version: "1.0.0"
+dataset: "experience_types"
+status: "active"
+owner: "TourVsTravel"
+last_reviewed: "2026-04-08"
+
+meta:
+  purpose: "Canonical ontology for the 17 travel structures used across TourVsTravel reference pages, comparisons, and decision tools."
+  operating_principle: "Define travel forms as decision structures with stable operational meaning, not as loose marketing categories."
+  source_of_truth: true
+  publication_posture: "reference-grade"
+  notes:
+    - "Baseline scores are structural priors, not absolute universal verdicts."
+    - "All comparison outputs must still be explained contextually at destination or traveler-profile level."
+    - "This file defines what each travel type is, what it is not, and how it tends to behave under the canonical comparison criteria."
+
+defaults:
+  enabled: true
+  route_family: "experience_type"
+  slug_policy:
+    format: "ascii-kebab-case"
+    localized_slugs_required: false
+    reserved_substrings_forbidden:
+      - "--vs--"
+  supported_languages:
+    - "en"
+    - "ar"
+    - "fr"
+    - "es"
+    - "de"
+    - "zh"
+    - "ja"
+  profile_affinity_scale:
+    allowed_values:
+      - "low"
+      - "medium"
+      - "high"
+  structural_axes:
+    structure_intensity:
+      allowed_values:
+        - "low"
+        - "medium"
+        - "high"
+    autonomy_level:
+      allowed_values:
+        - "low"
+        - "medium"
+        - "high"
+    support_level:
+      allowed_values:
+        - "low"
+        - "medium"
+        - "high"
+    pace_profile:
+      allowed_values:
+        - "fixed"
+        - "balanced"
+        - "flexible"
+    immersion_profile:
+      allowed_values:
+        - "surface"
+        - "balanced"
+        - "deep"
+    predictability_profile:
+      allowed_values:
+        - "low"
+        - "medium"
+        - "high"
+  required_fields:
+    - "id"
+    - "order"
+    - "enabled"
+    - "slug"
+    - "label"
+    - "summary"
+    - "family"
+    - "structural_axes"
+    - "baseline_scores"
+    - "profile_affinity"
+    - "strengths"
+    - "weaknesses"
+    - "best_for"
+    - "poor_fit_for"
+    - "tradeoff_signature"
+
+families:
+  - id: "structured_supported"
+    label:
+      en: "Structured & Supported"
+      ar: "منظم ومدعوم"
+      fr: "Structuré et accompagné"
+      es: "Estructurado y asistido"
+      de: "Strukturiert und begleitet"
+      zh: "结构化与支持型"
+      ja: "構造化・支援型"
+
+  - id: "independent_autonomous"
+    label:
+      en: "Independent & Autonomous"
+      ar: "مستقل وذاتي"
+      fr: "Indépendant et autonome"
+      es: "Independiente y autónomo"
+      de: "Unabhängig und autonom"
+      zh: "独立自主型"
+      ja: "独立・自律型"
+
+  - id: "comfort_premium"
+    label:
+      en: "Comfort & Premium"
+      ar: "راحة وتميّز"
+      fr: "Confort et premium"
+      es: "Confort y premium"
+      de: "Komfort und Premium"
+      zh: "舒适与高端型"
+      ja: "快適・プレミアム型"
+
+  - id: "purpose_led"
+    label:
+      en: "Purpose-Led"
+      ar: "مدفوع بالغاية"
+      fr: "Orienté par une finalité"
+      es: "Orientado por propósito"
+      de: "Zweckorientiert"
+      zh: "目的导向型"
+      ja: "目的主導型"
+
+  - id: "mobility_led"
+    label:
+      en: "Mobility-Led"
+      ar: "مدفوع بالتنقل"
+      fr: "Orienté mobilité"
+      es: "Orientado a la movilidad"
+      de: "Mobilitätsorientiert"
+      zh: "移动方式导向型"
+      ja: "移動主導型"
+
+  - id: "values_led"
+    label:
+      en: "Values-Led"
+      ar: "مدفوع بالقيم"
+      fr: "Guidé par les valeurs"
+      es: "Guiado por valores"
+      de: "Wertegeleitet"
+      zh: "价值导向型"
+      ja: "価値主導型"
+
+experience_types:
+  - id: "guided_group_tour"
+    order: 1
+    enabled: true
+    slug: "guided-group-tour"
+    family: "structured_supported"
+    label:
+      en: "Guided Group Tour"
+      ar: "جولة جماعية موجهة"
+      fr: "Circuit en groupe guidé"
+      es: "Tour guiado en grupo"
+      de: "Geführte Gruppenreise"
+      zh: "导游团体游"
+      ja: "ガイド付き団体旅行"
+    short_label:
+      en: "Guided Tour"
+      ar: "جولة موجهة"
+      fr: "Circuit guidé"
+      es: "Tour guiado"
+      de: "Geführte Reise"
+      zh: "导游游"
+      ja: "ガイド旅行"
+    summary:
+      en: "A pre-structured travel format in which itinerary, coordination, and major logistics are handled by an operator or guide-led program."
+      ar: "صيغة سفر منظمة مسبقًا تُدار فيها الرحلة والتنسيق واللوجستيات الأساسية عبر منظم أو برنامج يقوده مرشد."
+      fr: "Format de voyage pré-structuré dans lequel l'itinéraire, la coordination et la logistique principale sont pris en charge par un opérateur ou un programme guidé."
+      es: "Formato de viaje preestructurado en el que el itinerario, la coordinación y la logística principal son gestionados por un operador o un programa con guía."
+      de: "Vorstrukturierte Reiseform, bei der Route, Koordination und zentrale Logistik von einem Veranstalter oder geführten Programm übernommen werden."
+      zh: "一种预先结构化的旅行形式，由运营方或导游项目负责行程、协调与主要后勤。"
+      ja: "行程、調整、主要な手配をオペレーターまたはガイド付きプログラムが担う、あらかじめ構造化された旅行形式。"
+    formal_definition: "Travel is delivered as an organized package or program with externally managed sequencing, coordination, and risk buffering."
+    inclusion_scope:
+      - "Escorted multi-stop tours"
+      - "Coach tours"
+      - "Operator-managed small group tours"
+      - "Guide-led destination circuits"
+    exclusion_scope:
+      - "Private bespoke travel planning without group structure"
+      - "Fully independent travel"
+      - "Cruise products unless the cruise itself is the primary structure"
+    adjacent_types:
+      - "luxury_travel"
+      - "family_travel"
+      - "cruise_experience"
+    structural_axes:
+      structure_intensity: "high"
+      autonomy_level: "low"
+      support_level: "high"
+      pace_profile: "fixed"
+      immersion_profile: "balanced"
+      predictability_profile: "high"
+    baseline_scores:
+      constraint_fit: 4
+      operational_complexity: 5
+      control_vs_support: 3
+      depth_of_experience: 3
+      predictability: 5
+      traveler_type_fit: 4
+    profile_affinity:
+      independent_planner: "low"
+      family_coordinator: "high"
+      first_time_traveler: "high"
+      cost_sensitive_explorer: "medium"
+      comfort_priority_traveler: "high"
+      logistics_averse_traveler: "high"
+    strengths:
+      - "Reduces planning and coordination burden."
+      - "Contains variance better than highly fragmented formats."
+      - "Useful for first-time or logistics-averse travelers."
+    weaknesses:
+      - "Reduces freedom and spontaneous route control."
+      - "Can compress places into managed exposure rather than lived depth."
+      - "Group pacing may mismatch individual travel rhythm."
+    best_for:
+      - "Travelers who value support, sequence clarity, and lower friction."
+      - "Users entering a destination with low prior familiarity."
+    poor_fit_for:
+      - "Travelers seeking high autonomy or highly self-shaped immersion."
+      - "Users who strongly resist externally fixed pacing."
+    tradeoff_signature: "Buys predictability and support at the cost of flexibility and traveler-controlled depth."
+    seo:
+      title_template:
+        en: "Guided Group Tour | Travel Structure Profile"
+        ar: "جولة جماعية موجهة | ملف بنية السفر"
+        fr: "Circuit en groupe guidé | Profil de structure de voyage"
+        es: "Tour guiado en grupo | Perfil de estructura de viaje"
+        de: "Geführte Gruppenreise | Profil der Reiseform"
+        zh: "导游团体游 | 旅行结构画像"
+        ja: "ガイド付き団体旅行 | 旅行構造プロフィール"
+
+  - id: "independent_travel"
+    order: 2
+    enabled: true
+    slug: "independent-travel"
+    family: "independent_autonomous"
+    label:
+      en: "Independent Travel"
+      ar: "السفر المستقل"
+      fr: "Voyage indépendant"
+      es: "Viaje independiente"
+      de: "Unabhängiges Reisen"
+      zh: "独立旅行"
+      ja: "独立旅行"
+    short_label:
+      en: "Independent"
+      ar: "مستقل"
+      fr: "Indépendant"
+      es: "Independiente"
+      de: "Unabhängig"
+      zh: "独立型"
+      ja: "独立型"
+    summary:
+      en: "A self-directed travel structure in which the traveler controls planning, booking, sequencing, and day-to-day decisions without a governing tour framework."
+      ar: "صيغة سفر ذاتية التوجيه يتحكم فيها المسافر بالتخطيط والحجز وتسلسل الرحلة والقرارات اليومية دون إطار جولة حاكم."
+      fr: "Structure de voyage auto-dirigée dans laquelle le voyageur contrôle la planification, la réservation, le séquençage et les décisions quotidiennes sans cadre de circuit gouvernant."
+      es: "Estructura de viaje autodirigida en la que el viajero controla planificación, reservas, secuencia y decisiones diarias sin un marco de tour dominante."
+      de: "Selbstgesteuerte Reiseform, bei der der Reisende Planung, Buchung, Ablauf und tägliche Entscheidungen ohne übergeordneten Tourrahmen selbst kontrolliert."
+      zh: "一种由旅行者自行控制规划、预订、节奏与日常决策的旅行结构，不受团体框架支配。"
+      ja: "旅行者自身が計画、予約、順序、日々の判断を管理し、ツアー枠組みに支配されない自己主導型の旅行構造。"
+    formal_definition: "Travel is organized by the traveler directly, with primary responsibility for logistics, sequencing, and adaptation remaining with the traveler."
+    inclusion_scope:
+      - "Self-booked multi-city trips"
+      - "Independent destination stays"
+      - "Self-shaped itineraries without operator control"
+    exclusion_scope:
+      - "Escorted or operator-led group tours"
+      - "Cruise-first travel structures"
+      - "Strict retreat or pilgrimage formats with externally imposed structure"
+    adjacent_types:
+      - "solo_travel"
+      - "road_trip_self_drive"
+      - "backpacking"
+    structural_axes:
+      structure_intensity: "low"
+      autonomy_level: "high"
+      support_level: "low"
+      pace_profile: "flexible"
+      immersion_profile: "deep"
+      predictability_profile: "low"
+    baseline_scores:
+      constraint_fit: 3
+      operational_complexity: 2
+      control_vs_support: 4
+      depth_of_experience: 4
+      predictability: 2
+      traveler_type_fit: 3
+    profile_affinity:
+      independent_planner: "high"
+      family_coordinator: "medium"
+      first_time_traveler: "low"
+      cost_sensitive_explorer: "high"
+      comfort_priority_traveler: "medium"
+      logistics_averse_traveler: "low"
+    strengths:
+      - "Maximizes autonomy and route control."
+      - "Can produce stronger fit to personal priorities."
+      - "Allows high flexibility and local texture."
+    weaknesses:
+      - "Places planning and recovery burden on the traveler."
+      - "Higher variance and disruption sensitivity."
+      - "Quality depends heavily on traveler capability."
+    best_for:
+      - "Users with planning confidence and tolerance for uncertainty."
+      - "Travelers optimizing around self-defined value."
+    poor_fit_for:
+      - "Users who need structure, support, or lower decision burden."
+      - "Travelers with low tolerance for fragmented logistics."
+    tradeoff_signature: "Buys autonomy and adaptability at the cost of simplicity, support, and variance control."
+    seo:
+      title_template:
+        en: "Independent Travel | Travel Structure Profile"
+        ar: "السفر المستقل | ملف بنية السفر"
+        fr: "Voyage indépendant | Profil de structure de voyage"
+        es: "Viaje independiente | Perfil de estructura de viaje"
+        de: "Unabhängiges Reisen | Profil der Reiseform"
+        zh: "独立旅行 | 旅行结构画像"
+        ja: "独立旅行 | 旅行構造プロフィール"
+
+  - id: "solo_travel"
+    order: 3
+    enabled: true
+    slug: "solo-travel"
+    family: "independent_autonomous"
+    label:
+      en: "Solo Travel"
+      ar: "السفر الفردي"
+      fr: "Voyage en solo"
+      es: "Viaje en solitario"
+      de: "Alleinreisen"
+      zh: "独自旅行"
+      ja: "一人旅"
+    short_label:
+      en: "Solo"
+      ar: "فردي"
+      fr: "Solo"
+      es: "Solo"
+      de: "Solo"
+      zh: "独行"
+      ja: "ソロ"
+    summary:
+      en: "Travel undertaken primarily alone, where the traveler carries both autonomy and decision burden without in-group coordination support."
+      ar: "سفر يُنجز أساسًا بشكل فردي، حيث يتحمل المسافر الاستقلالية وعبء القرار دون دعم تنسيقي من مجموعة."
+      fr: "Voyage entrepris principalement seul, où le voyageur assume à la fois l'autonomie et la charge décisionnelle sans soutien de coordination de groupe."
+      es: "Viaje realizado principalmente en solitario, donde el viajero asume tanto la autonomía como la carga de decisión sin apoyo coordinativo de grupo."
+      de: "Reiseform, die überwiegend allein unternommen wird und bei der der Reisende sowohl Autonomie als auch Entscheidungsbelastung ohne Gruppensupport trägt."
+      zh: "主要由个人单独完成的旅行形式，旅行者同时承担自主权与决策负担，缺少群体协调支持。"
+      ja: "主に一人で行う旅行形式で、旅行者が自律性と意思決定負荷の両方をグループ支援なしで担う。"
+    formal_definition: "Solo travel is defined primarily by party structure rather than by support model, but operationally it often amplifies autonomy, self-reliance, and sensitivity to friction."
+    inclusion_scope:
+      - "Independent solo trips"
+      - "Solo city breaks"
+      - "Long-form solo itineraries"
+    exclusion_scope:
+      - "Group tours where the traveler merely joins alone"
+      - "Family travel"
+      - "Shared-party travel with a primary companion structure"
+    adjacent_types:
+      - "independent_travel"
+      - "backpacking"
+      - "transformational_wellness"
+    structural_axes:
+      structure_intensity: "low"
+      autonomy_level: "high"
+      support_level: "low"
+      pace_profile: "flexible"
+      immersion_profile: "deep"
+      predictability_profile: "medium"
+    baseline_scores:
+      constraint_fit: 3
+      operational_complexity: 3
+      control_vs_support: 4
+      depth_of_experience: 4
+      predictability: 3
+      traveler_type_fit: 3
+    profile_affinity:
+      independent_planner: "high"
+      family_coordinator: "low"
+      first_time_traveler: "low"
+      cost_sensitive_explorer: "medium"
+      comfort_priority_traveler: "medium"
+      logistics_averse_traveler: "low"
+    strengths:
+      - "High autonomy and self-shaped pacing."
+      - "Can intensify personal reflection and immersion."
+      - "Avoids group coordination drag."
+    weaknesses:
+      - "No built-in distribution of decision burden."
+      - "Risk management and friction sit with one person."
+      - "Can amplify loneliness or fatigue for some users."
+    best_for:
+      - "Self-reliant travelers comfortable with independent judgment."
+      - "Users valuing autonomy over shared coordination."
+    poor_fit_for:
+      - "Travelers needing shared logistics support."
+      - "Users uncomfortable carrying all decisions alone."
+    tradeoff_signature: "Buys maximum personal autonomy and reflective depth, but concentrates all coordination and recovery burden in one traveler."
+    seo:
+      title_template:
+        en: "Solo Travel | Travel Structure Profile"
+        ar: "السفر الفردي | ملف بنية السفر"
+        fr: "Voyage en solo | Profil de structure de voyage"
+        es: "Viaje en solitario | Perfil de estructura de viaje"
+        de: "Alleinreisen | Profil der Reiseform"
+        zh: "独自旅行 | 旅行结构画像"
+        ja: "一人旅 | 旅行構造プロフィール"
+
+  - id: "backpacking"
+    order: 4
+    enabled: true
+    slug: "backpacking"
+    family: "independent_autonomous"
+    label:
+      en: "Backpacking"
+      ar: "الرحلات بحقيبة الظهر"
+      fr: "Backpacking"
+      es: "Backpacking"
+      de: "Backpacking"
+      zh: "背包旅行"
+      ja: "バックパッキング"
+    short_label:
+      en: "Backpacking"
+      ar: "حقيبة الظهر"
+      fr: "Backpacking"
+      es: "Backpacking"
+      de: "Backpacking"
+      zh: "背包"
+      ja: "バックパック"
+    summary:
+      en: "A mobility-light, budget-sensitive, autonomy-heavy travel format that prioritizes flexibility, route adaptability, and value density over comfort and support."
+      ar: "صيغة سفر خفيفة الحركة وحساسة للميزانية وعالية الاستقلالية، تفضل المرونة وقابلية تعديل المسار وكثافة القيمة على الراحة والدعم."
+      fr: "Format de voyage léger, sensible au budget et fortement autonome, qui privilégie la flexibilité, l'adaptabilité de l'itinéraire et la densité de valeur sur le confort et l'accompagnement."
+      es: "Formato de viaje ligero, sensible al presupuesto y con alta autonomía, que prioriza flexibilidad, adaptabilidad de ruta y densidad de valor sobre confort y apoyo."
+      de: "Leichte, budgetsensible und stark autonome Reiseform, die Flexibilität, Routenanpassung und Wertdichte über Komfort und Unterstützung stellt."
+      zh: "一种轻装、预算敏感且自主性高的旅行形式，更强调灵活性、路线可调性与价值密度，而非舒适与支持。"
+      ja: "軽装・予算重視・高自律の旅行形式で、快適性や支援よりも柔軟性、ルート適応、価値密度を優先する。"
+    formal_definition: "Backpacking is a flexible, low-structure travel mode oriented around budget efficiency, mobility, and route adaptability."
+    inclusion_scope:
+      - "Low-cost multi-stop travel"
+      - "Hostel-based or mobility-light routes"
+      - "Flexible open-ended itineraries"
+    exclusion_scope:
+      - "Luxury mobility formats"
+      - "Structured escorted tours"
+      - "Retreat-first or comfort-first formats"
+    adjacent_types:
+      - "solo_travel"
+      - "independent_travel"
+      - "adventure_travel"
+    structural_axes:
+      structure_intensity: "low"
+      autonomy_level: "high"
+      support_level: "low"
+      pace_profile: "flexible"
+      immersion_profile: "deep"
+      predictability_profile: "low"
+    baseline_scores:
+      constraint_fit: 3
+      operational_complexity: 2
+      control_vs_support: 4
+      depth_of_experience: 4
+      predictability: 2
+      traveler_type_fit: 3
+    profile_affinity:
+      independent_planner: "high"
+      family_coordinator: "low"
+      first_time_traveler: "low"
+      cost_sensitive_explorer: "high"
+      comfort_priority_traveler: "low"
+      logistics_averse_traveler: "low"
+    strengths:
+      - "High flexibility and route adaptability."
+      - "Strong value density for budget-sensitive travelers."
+      - "Can unlock longer duration travel under limited cost ceilings."
+    weaknesses:
+      - "Lower comfort and higher operational friction."
+      - "Weak fit for travelers needing predictability or support."
+      - "Quality depends heavily on personal tolerance for uncertainty."
+    best_for:
+      - "Budget-sensitive explorers with high autonomy tolerance."
+      - "Travelers willing to trade comfort for duration or freedom."
+    poor_fit_for:
+      - "Comfort-first travelers."
+      - "Users needing lower variance and low coordination burden."
+    tradeoff_signature: "Buys duration, flexibility, and value density at the cost of comfort, predictability, and operational simplicity."
+    seo:
+      title_template:
+        en: "Backpacking | Travel Structure Profile"
+        ar: "الرحلات بحقيبة الظهر | ملف بنية السفر"
+        fr: "Backpacking | Profil de structure de voyage"
+        es: "Backpacking | Perfil de estructura de viaje"
+        de: "Backpacking | Profil der Reiseform"
+        zh: "背包旅行 | 旅行结构画像"
+        ja: "バックパッキング | 旅行構造プロフィール"
+
+  - id: "luxury_travel"
+    order: 5
+    enabled: true
+    slug: "luxury-travel"
+    family: "comfort_premium"
+    label:
+      en: "Luxury Travel"
+      ar: "السفر الفاخر"
+      fr: "Voyage de luxe"
+      es: "Viaje de lujo"
+      de: "Luxusreisen"
+      zh: "奢华旅行"
+      ja: "ラグジュアリー旅行"
+    short_label:
+      en: "Luxury"
+      ar: "فاخر"
+      fr: "Luxe"
+      es: "Lujo"
+      de: "Luxus"
+      zh: "奢华"
+      ja: "ラグジュアリー"
+    summary:
+      en: "A premium travel format optimized around comfort, service quality, friction reduction, and curated high-standard delivery."
+      ar: "صيغة سفر متميزة تُحسَّن حول الراحة وجودة الخدمة وتقليل الاحتكاك وتقديم مُنسق عالي المستوى."
+      fr: "Format de voyage premium optimisé autour du confort, de la qualité de service, de la réduction de friction et d'une exécution haut de gamme."
+      es: "Formato de viaje premium optimizado en torno al confort, la calidad del servicio, la reducción de fricción y una ejecución curada de alto nivel."
+      de: "Premium-Reiseform, optimiert auf Komfort, Servicequalität, geringe Friktion und kuratierte hochwertige Umsetzung."
+      zh: "一种围绕舒适、服务质量、降低摩擦与高标准交付而优化的高端旅行形式。"
+      ja: "快適性、サービス品質、摩擦の低減、高水準のキュレーションされた提供を重視するプレミアム旅行形式。"
+    formal_definition: "Luxury travel is defined less by price alone than by deliberate friction reduction, service density, reliability, and elevated comfort."
+    inclusion_scope:
+      - "High-service hotels and premium routing"
+      - "Private guiding and concierge-heavy planning"
+      - "Comfort-first premium itineraries"
+    exclusion_scope:
+      - "Budget-focused independent travel"
+      - "Adventure-first hardship formats"
+      - "Low-service backpacking structures"
+    adjacent_types:
+      - "guided_group_tour"
+      - "cruise_experience"
+      - "transformational_wellness"
+    structural_axes:
+      structure_intensity: "medium"
+      autonomy_level: "medium"
+      support_level: "high"
+      pace_profile: "balanced"
+      immersion_profile: "balanced"
+      predictability_profile: "high"
+    baseline_scores:
+      constraint_fit: 4
+      operational_complexity: 4
+      control_vs_support: 4
+      depth_of_experience: 4
+      predictability: 4
+      traveler_type_fit: 4
+    profile_affinity:
+      independent_planner: "medium"
+      family_coordinator: "medium"
+      first_time_traveler: "high"
+      cost_sensitive_explorer: "low"
+      comfort_priority_traveler: "high"
+      logistics_averse_traveler: "high"
+    strengths:
+      - "High comfort and low-friction execution."
+      - "Better support and reliability than low-service formats."
+      - "Can absorb complexity through purchased service layers."
+    weaknesses:
+      - "Higher cost floor."
+      - "May reduce raw spontaneity or value density."
+      - "Can become consumption-heavy rather than experience-deep if poorly designed."
+    best_for:
+      - "Comfort-priority travelers."
+      - "Users who want service quality and reduced coordination strain."
+    poor_fit_for:
+      - "Strict budget-constrained travelers."
+      - "Users who define value mainly through low-cost autonomy."
+    tradeoff_signature: "Buys comfort, service, and lower friction at the cost of cost efficiency and sometimes experiential rawness."
+    seo:
+      title_template:
+        en: "Luxury Travel | Travel Structure Profile"
+        ar: "السفر الفاخر | ملف بنية السفر"
+        fr: "Voyage de luxe | Profil de structure de voyage"
+        es: "Viaje de lujo | Perfil de estructura de viaje"
+        de: "Luxusreisen | Profil der Reiseform"
+        zh: "奢华旅行 | 旅行结构画像"
+        ja: "ラグジュアリー旅行 | 旅行構造プロフィール"
+
+  - id: "family_travel"
+    order: 6
+    enabled: true
+    slug: "family-travel"
+    family: "structured_supported"
+    label:
+      en: "Family Travel"
+      ar: "السفر العائلي"
+      fr: "Voyage en famille"
+      es: "Viaje familiar"
+      de: "Familienreisen"
+      zh: "家庭旅行"
+      ja: "家族旅行"
+    short_label:
+      en: "Family"
+      ar: "عائلي"
+      fr: "Famille"
+      es: "Familiar"
+      de: "Familie"
+      zh: "家庭"
+      ja: "家族"
+    summary:
+      en: "A travel structure shaped by shared-party coordination, age diversity, practical convenience, and the need to reduce friction across multiple travelers."
+      ar: "صيغة سفر تتشكل عبر تنسيق جماعي وتنوع الأعمار والراحة العملية والحاجة إلى تقليل الاحتكاك عبر عدة مسافرين."
+      fr: "Structure de voyage façonnée par la coordination d'un groupe partagé, la diversité d'âges, la commodité pratique et la nécessité de réduire la friction pour plusieurs voyageurs."
+      es: "Estructura de viaje determinada por la coordinación de grupo compartido, la diversidad de edades, la conveniencia práctica y la necesidad de reducir fricción para varios viajeros."
+      de: "Reiseform, die von geteilter Gruppenkordination, Altersvielfalt, praktischer Bequemlichkeit und dem Bedarf an geringerer Friktion für mehrere Reisende geprägt ist."
+      zh: "一种由多人协调、年龄差异、实际便利性以及降低多人摩擦需求所塑造的旅行结构。"
+      ja: "複数人の調整、年齢構成の多様性、実務的な利便性、摩擦低減の必要性によって形づくられる旅行構造。"
+    formal_definition: "Family travel is defined by the need to optimize across multiple participants rather than for a single traveler’s ideal autonomy."
+    inclusion_scope:
+      - "Parent-child travel"
+      - "Multi-generational trips"
+      - "Household-coordinated itineraries"
+    exclusion_scope:
+      - "Solo and autonomy-first travel logic"
+      - "Highly austere adventure formats with poor multi-age fit"
+    adjacent_types:
+      - "guided_group_tour"
+      - "luxury_travel"
+      - "cruise_experience"
+    structural_axes:
+      structure_intensity: "medium"
+      autonomy_level: "medium"
+      support_level: "medium"
+      pace_profile: "balanced"
+      immersion_profile: "balanced"
+      predictability_profile: "high"
+    baseline_scores:
+      constraint_fit: 4
+      operational_complexity: 3
+      control_vs_support: 3
+      depth_of_experience: 3
+      predictability: 4
+      traveler_type_fit: 5
+    profile_affinity:
+      independent_planner: "medium"
+      family_coordinator: "high"
+      first_time_traveler: "medium"
+      cost_sensitive_explorer: "medium"
+      comfort_priority_traveler: "high"
+      logistics_averse_traveler: "medium"
+    strengths:
+      - "Optimizes around group coordination realities."
+      - "Makes practical fit more visible than aspiration-first formats."
+      - "Can balance comfort, support, and predictability well."
+    weaknesses:
+      - "Lower freedom for individually optimized pacing."
+      - "Compromise-heavy by design."
+      - "Complexity can rise sharply if poorly planned."
+    best_for:
+      - "Groups with mixed ages or mixed coordination tolerance."
+      - "Users optimizing for collective rather than individual fit."
+    poor_fit_for:
+      - "Travelers prioritizing unilateral freedom."
+      - "Formats demanding extreme spontaneity or hardship tolerance."
+    tradeoff_signature: "Buys collective fit and predictability at the cost of individual autonomy and sharper personalized optimization."
+    seo:
+      title_template:
+        en: "Family Travel | Travel Structure Profile"
+        ar: "السفر العائلي | ملف بنية السفر"
+        fr: "Voyage en famille | Profil de structure de voyage"
+        es: "Viaje familiar | Perfil de estructura de viaje"
+        de: "Familienreisen | Profil der Reiseform"
+        zh: "家庭旅行 | 旅行结构画像"
+        ja: "家族旅行 | 旅行構造プロフィール"
+
+  - id: "adventure_travel"
+    order: 7
+    enabled: true
+    slug: "adventure-travel"
+    family: "purpose_led"
+    label:
+      en: "Adventure Travel"
+      ar: "سفر المغامرة"
+      fr: "Voyage d'aventure"
+      es: "Viaje de aventura"
+      de: "Abenteuerreisen"
+      zh: "探险旅行"
+      ja: "アドベンチャー旅行"
+    short_label:
+      en: "Adventure"
+      ar: "مغامرة"
+      fr: "Aventure"
+      es: "Aventura"
+      de: "Abenteuer"
+      zh: "探险"
+      ja: "アドベンチャー"
+    summary:
+      en: "A purpose-driven travel form that prioritizes challenge, physical engagement, novelty, terrain exposure, or edge conditions over ease and routine comfort."
+      ar: "صيغة سفر مدفوعة بالغاية تفضل التحدي والانخراط الجسدي والجدة والتعرض للميدان أو الظروف الحدية على السهولة والراحة الروتينية."
+      fr: "Forme de voyage guidée par un objectif qui privilégie le défi, l'engagement physique, la nouveauté, l'exposition au terrain ou aux conditions limites plutôt que la facilité et le confort routinier."
+      es: "Forma de viaje impulsada por un propósito que prioriza desafío, compromiso físico, novedad, exposición al terreno o condiciones límite sobre facilidad y confort rutinario."
+      de: "Zweckgetriebene Reiseform, die Herausforderung, körperliche Beteiligung, Neuheit, Geländekontakt oder Randbedingungen über Leichtigkeit und Routinekomfort stellt."
+      zh: "一种以目的为驱动的旅行形式，优先考虑挑战、身体参与、新奇性、地形暴露或边缘条件，而非轻松与常规舒适。"
+      ja: "挑戦、身体的関与、新規性、地形への接触、限界条件を、容易さや日常的快適性より優先する目的主導型の旅行形式。"
+    formal_definition: "Adventure travel is defined by meaningful uncertainty, challenge, or intensity as part of the travel value proposition."
+    inclusion_scope:
+      - "Trekking and expedition-style trips"
+      - "Activity-heavy remote travel"
+      - "Challenge-oriented outdoor itineraries"
+    exclusion_scope:
+      - "Comfort-first tourism"
+      - "Purely passive scenic travel"
+      - "Light city-break formats without challenge dimension"
+    adjacent_types:
+      - "backpacking"
+      - "road_trip_self_drive"
+      - "eco_sustainable_travel"
+    structural_axes:
+      structure_intensity: "medium"
+      autonomy_level: "medium"
+      support_level: "medium"
+      pace_profile: "balanced"
+      immersion_profile: "deep"
+      predictability_profile: "low"
+    baseline_scores:
+      constraint_fit: 2
+      operational_complexity: 2
+      control_vs_support: 3
+      depth_of_experience: 5
+      predictability: 2
+      traveler_type_fit: 3
+    profile_affinity:
+      independent_planner: "medium"
+      family_coordinator: "low"
+      first_time_traveler: "low"
+      cost_sensitive_explorer: "medium"
+      comfort_priority_traveler: "low"
+      logistics_averse_traveler: "low"
+    strengths:
+      - "High experiential intensity and memorability."
+      - "Can create strong embodied engagement with place."
+      - "Distinctive value for challenge-seeking travelers."
+    weaknesses:
+      - "Weak fit under strict comfort, mobility, or predictability constraints."
+      - "Higher risk of disruption or capability mismatch."
+      - "Can be unforgiving to low-tolerance users."
+    best_for:
+      - "Travelers who actively value challenge and terrain engagement."
+      - "Users willing to accept uncertainty for intensity."
+    poor_fit_for:
+      - "Comfort-priority and logistics-averse travelers."
+      - "Family formats requiring low-friction coordination."
+    tradeoff_signature: "Buys challenge, intensity, and deep embodied experience at the cost of predictability, simplicity, and broad traveler fit."
+    seo:
+      title_template:
+        en: "Adventure Travel | Travel Structure Profile"
+        ar: "سفر المغامرة | ملف بنية السفر"
+        fr: "Voyage d'aventure | Profil de structure de voyage"
+        es: "Viaje de aventura | Perfil de estructura de viaje"
+        de: "Abenteuerreisen | Profil der Reiseform"
+        zh: "探险旅行 | 旅行结构画像"
+        ja: "アドベンチャー旅行 | 旅行構造プロフィール"
+
+  - id: "regenerative_community_led"
+    order: 8
+    enabled: true
+    slug: "regenerative-community-led"
+    family: "values_led"
+    label:
+      en: "Regenerative & Community-Led"
+      ar: "سفر تجديدي ومقاده المجتمع"
+      fr: "Régénératif et porté par la communauté"
+      es: "Regenerativo y liderado por la comunidad"
+      de: "Regenerativ und gemeinschaftsgeführt"
+      zh: "再生型与社区主导旅行"
+      ja: "再生型・コミュニティ主導の旅行"
+    short_label:
+      en: "Regenerative"
+      ar: "تجديدي"
+      fr: "Régénératif"
+      es: "Regenerativo"
+      de: "Regenerativ"
+      zh: "再生型"
+      ja: "再生型"
+    summary:
+      en: "A values-led travel form that seeks reciprocal local benefit, slower extraction logic, and stronger alignment with community agency and place stewardship."
+      ar: "صيغة سفر مدفوعة بالقيم تسعى إلى منفعة محلية متبادلة ومنطق أقل استخلاصًا ومواءمة أقوى مع فاعلية المجتمع ورعاية المكان."
+      fr: "Forme de voyage guidée par les valeurs qui recherche un bénéfice local réciproque, une logique moins extractive et un meilleur alignement avec l'autonomie communautaire et l'intendance du lieu."
+      es: "Forma de viaje guiada por valores que busca beneficio local recíproco, una lógica menos extractiva y una mayor alineación con la agencia comunitaria y el cuidado del lugar."
+      de: "Wertegeleitete Reiseform, die auf gegenseitigen lokalen Nutzen, geringere Extraktionslogik und stärkere Ausrichtung auf Gemeinschaftsautonomie und Ortsverantwortung zielt."
+      zh: "一种价值导向的旅行形式，追求地方互惠、降低提取式逻辑，并更强地对齐社区主体性与场所守护。"
+      ja: "相互的な地域利益、低い収奪性、コミュニティの主体性と場所の保全との整合を重視する価値主導型の旅行形式。"
+    formal_definition: "Regenerative and community-led travel is defined by local benefit logic, participation ethics, and stronger concern for host-community agency."
+    inclusion_scope:
+      - "Community-led stays and experiences"
+      - "Place stewardship-oriented travel"
+      - "Locally anchored regenerative travel programs"
+    exclusion_scope:
+      - "Generic eco-branding without community agency"
+      - "Mass tourism formats using sustainability only as surface messaging"
+    adjacent_types:
+      - "eco_sustainable_travel"
+      - "cultural_immersion_homestay"
+      - "slow_travel_quietcations"
+    structural_axes:
+      structure_intensity: "medium"
+      autonomy_level: "medium"
+      support_level: "medium"
+      pace_profile: "balanced"
+      immersion_profile: "deep"
+      predictability_profile: "medium"
+    baseline_scores:
+      constraint_fit: 3
+      operational_complexity: 3
+      control_vs_support: 4
+      depth_of_experience: 5
+      predictability: 3
+      traveler_type_fit: 3
+    profile_affinity:
+      independent_planner: "medium"
+      family_coordinator: "medium"
+      first_time_traveler: "low"
+      cost_sensitive_explorer: "medium"
+      comfort_priority_traveler: "medium"
+      logistics_averse_traveler: "low"
+    strengths:
+      - "Higher ethical coherence and local reciprocity potential."
+      - "Can create deeper place relationship than extractive formats."
+      - "Strong fit for values-led travelers."
+    weaknesses:
+      - "Operational consistency may vary by local context."
+      - "Not all travelers want or understand the participation logic."
+      - "Can be misrepresented if not genuinely community-led."
+    best_for:
+      - "Travelers who care about local agency and stewardship."
+      - "Users seeking meaning beyond consumption."
+    poor_fit_for:
+      - "Travelers seeking maximum convenience with minimal engagement."
+      - "Users who treat destination purely as a frictionless product."
+    tradeoff_signature: "Buys ethical depth and local reciprocity at the cost of uniformity, simplicity, and sometimes mass-market convenience."
+    seo:
+      title_template:
+        en: "Regenerative & Community-Led Travel | Travel Structure Profile"
+        ar: "سفر تجديدي ومقاده المجتمع | ملف بنية السفر"
+        fr: "Voyage régénératif et porté par la communauté | Profil de structure de voyage"
+        es: "Viaje regenerativo y liderado por la comunidad | Perfil de estructura de viaje"
+        de: "Regenerativ und gemeinschaftsgeführt | Profil der Reiseform"
+        zh: "再生型与社区主导旅行 | 旅行结构画像"
+        ja: "再生型・コミュニティ主導の旅行 | 旅行構造プロフィール"
+
+  - id: "slow_travel_quietcations"
+    order: 9
+    enabled: true
+    slug: "slow-travel-quietcations"
+    family: "purpose_led"
+    label:
+      en: "Slow Travel & Quietcations"
+      ar: "السفر البطيء والرحلات الهادئة"
+      fr: "Slow travel et quietcations"
+      es: "Viaje lento y quietcations"
+      de: "Slow Travel und Quietcations"
+      zh: "慢旅行与安静度假"
+      ja: "スロートラベルと静かな滞在"
+    short_label:
+      en: "Slow & Quiet"
+      ar: "بطيء وهادئ"
+      fr: "Lent et calme"
+      es: "Lento y tranquilo"
+      de: "Langsam & ruhig"
+      zh: "慢与静"
+      ja: "ゆっくり・静か"
+    summary:
+      en: "A low-rush, low-extraction travel form that privileges pace reduction, fewer transitions, restorative rhythm, and more durable contact with place."
+      ar: "صيغة سفر منخفضة العجلة وقليلة الاستخلاص تفضل تخفيف الوتيرة وتقليل الانتقالات والإيقاع الترميمي وعلاقة أكثر دوامًا بالمكان."
+      fr: "Forme de voyage à faible précipitation et faible extraction qui privilégie la réduction du rythme, moins de transitions, un tempo réparateur et un contact plus durable avec le lieu."
+      es: "Forma de viaje de bajo apuro y baja extracción que prioriza reducir el ritmo, menos transiciones, un ritmo reparador y un contacto más duradero con el lugar."
+      de: "Reiseform mit geringer Eile und geringer Extraktionslogik, die verlangsamtes Tempo, weniger Übergänge, regenerativen Rhythmus und dauerhaft stärkeren Ortskontakt bevorzugt."
+      zh: "一种低匆忙、低提取式的旅行形式，强调降低节奏、减少转换、恢复性节律和更持久的地方联系。"
+      ja: "急がず、収奪性も低い旅行形式で、移動回数の少なさ、回復的なリズム、場所との持続的な接触を重視する。"
+    formal_definition: "Slow travel and quietcations are defined by reduced churn, longer stays, lower pace, and stronger restoration or attentional recovery."
+    inclusion_scope:
+      - "Longer single-base stays"
+      - "Quiet retreat-like low-rush travel without strict transformation framing"
+      - "Low-transition regional stays"
+    exclusion_scope:
+      - "Rapid checklist tourism"
+      - "Dense multi-stop rushed itineraries"
+      - "Purely activity-maximizing structures"
+    adjacent_types:
+      - "transformational_wellness"
+      - "eco_sustainable_travel"
+      - "cultural_immersion_homestay"
+    structural_axes:
+      structure_intensity: "medium"
+      autonomy_level: "medium"
+      support_level: "medium"
+      pace_profile: "flexible"
+      immersion_profile: "deep"
+      predictability_profile: "high"
+    baseline_scores:
+      constraint_fit: 4
+      operational_complexity: 4
+      control_vs_support: 4
+      depth_of_experience: 5
+      predictability: 4
+      traveler_type_fit: 4
+    profile_affinity:
+      independent_planner: "high"
+      family_coordinator: "medium"
+      first_time_traveler: "medium"
+      cost_sensitive_explorer: "medium"
+      comfort_priority_traveler: "high"
+      logistics_averse_traveler: "high"
+    strengths:
+      - "Strong restorative and low-friction potential."
+      - "Reduces transition fatigue."
+      - "Supports more durable contact with place."
+    weaknesses:
+      - "Can under-serve travelers who want breadth or high activity density."
+      - "Perceived value may feel low to checklist-oriented users."
+      - "Requires willingness to privilege depth over coverage."
+    best_for:
+      - "Travelers needing recovery, calm, or lower tempo."
+      - "Users prioritizing sustained place experience over volume."
+    poor_fit_for:
+      - "Travelers who define value through maximum attraction coverage."
+      - "Users wanting high novelty turnover."
+    tradeoff_signature: "Buys restoration, stability, and deeper place relationship at the cost of breadth, speed, and attraction density."
+    seo:
+      title_template:
+        en: "Slow Travel & Quietcations | Travel Structure Profile"
+        ar: "السفر البطيء والرحلات الهادئة | ملف بنية السفر"
+        fr: "Slow travel et quietcations | Profil de structure de voyage"
+        es: "Viaje lento y quietcations | Perfil de estructura de viaje"
+        de: "Slow Travel und Quietcations | Profil der Reiseform"
+        zh: "慢旅行与安静度假 | 旅行结构画像"
+        ja: "スロートラベルと静かな滞在 | 旅行構造プロフィール"
+
+  - id: "cultural_immersion_homestay"
+    order: 10
+    enabled: true
+    slug: "cultural-immersion-homestay"
+    family: "purpose_led"
+    label:
+      en: "Cultural Immersion & Homestay"
+      ar: "الانغماس الثقافي والإقامة المنزلية"
+      fr: "Immersion culturelle et séjour chez l'habitant"
+      es: "Inmersión cultural y alojamiento en familia"
+      de: "Kulturelle Immersion und Homestay"
+      zh: "文化沉浸与寄宿"
+      ja: "文化没入とホームステイ"
+    short_label:
+      en: "Immersion & Homestay"
+      ar: "انغماس وإقامة منزلية"
+      fr: "Immersion & homestay"
+      es: "Inmersión y homestay"
+      de: "Immersion & Homestay"
+      zh: "沉浸与寄宿"
+      ja: "没入とホームステイ"
+    summary:
+      en: "A deep-contact travel form that seeks cultural texture, lived local context, and closer host-guest interaction than standard accommodation-based tourism."
+      ar: "صيغة سفر ذات احتكاك عميق تسعى إلى النسيج الثقافي والسياق المحلي المعاش وتفاعل أوثق بين المضيف والضيف من السياحة المعتمدة على الإقامة القياسية."
+      fr: "Forme de voyage à contact profond qui recherche la texture culturelle, le contexte local vécu et une interaction hôte-invité plus étroite que le tourisme standard basé sur l'hébergement."
+      es: "Forma de viaje de contacto profundo que busca textura cultural, contexto local vivido y una interacción anfitrión-huésped más cercana que el turismo estándar basado en alojamiento."
+      de: "Reiseform mit tieferem Kontakt, die kulturelle Textur, gelebten lokalen Kontext und engere Gastgeber-Gast-Interaktion als standardisierte Unterkunftsreisen sucht."
+      zh: "一种追求文化质感、在地生活语境与更紧密主客互动的深接触旅行形式。"
+      ja: "文化的な質感、生活された地域文脈、標準的な宿泊観光より密接なホストとゲストの関係を求める深接触型の旅行形式。"
+    formal_definition: "This format is defined by intentional closeness to local life rather than by standard tourism distance."
+    inclusion_scope:
+      - "Homestays"
+      - "Cultural exchange stays"
+      - "Locally embedded experiential accommodation"
+    exclusion_scope:
+      - "Standard hotel-first tourism"
+      - "Surface-level cultural sightseeing without local embeddedness"
+    adjacent_types:
+      - "regenerative_community_led"
+      - "slow_travel_quietcations"
+      - "ancestry_legacy_travel"
+    structural_axes:
+      structure_intensity: "medium"
+      autonomy_level: "medium"
+      support_level: "medium"
+      pace_profile: "balanced"
+      immersion_profile: "deep"
+      predictability_profile: "medium"
+    baseline_scores:
+      constraint_fit: 3
+      operational_complexity: 3
+      control_vs_support: 4
+      depth_of_experience: 5
+      predictability: 3
+      traveler_type_fit: 4
+    profile_affinity:
+      independent_planner: "high"
+      family_coordinator: "medium"
+      first_time_traveler: "medium"
+      cost_sensitive_explorer: "medium"
+      comfort_priority_traveler: "low"
+      logistics_averse_traveler: "low"
+    strengths:
+      - "High potential for lived local texture."
+      - "Stronger cultural contact than accommodation-only tourism."
+      - "Can generate deeper memory value than surface sightseeing."
+    weaknesses:
+      - "Comfort, privacy, or predictability may be lower."
+      - "Fit depends strongly on host quality and traveler expectations."
+      - "Not all travelers want relational intensity."
+    best_for:
+      - "Travelers seeking real cultural proximity."
+      - "Users who value depth over polished standardization."
+    poor_fit_for:
+      - "Travelers who require high privacy or uniform comfort."
+      - "Users uncomfortable with relational or contextual unpredictability."
+    tradeoff_signature: "Buys cultural depth and local texture at the cost of uniformity, privacy, and sometimes comfort predictability."
+    seo:
+      title_template:
+        en: "Cultural Immersion & Homestay | Travel Structure Profile"
+        ar: "الانغماس الثقافي والإقامة المنزلية | ملف بنية السفر"
+        fr: "Immersion culturelle et séjour chez l'habitant | Profil de structure de voyage"
+        es: "Inmersión cultural y alojamiento en familia | Perfil de estructura de viaje"
+        de: "Kulturelle Immersion und Homestay | Profil der Reiseform"
+        zh: "文化沉浸与寄宿 | 旅行结构画像"
+        ja: "文化没入とホームステイ | 旅行構造プロフィール"
+
+  - id: "ancestry_legacy_travel"
+    order: 11
+    enabled: true
+    slug: "ancestry-legacy-travel"
+    family: "purpose_led"
+    label:
+      en: "Ancestry & Legacy Travel"
+      ar: "سفر الأنساب والإرث"
+      fr: "Voyage d'ascendance et d'héritage"
+      es: "Viaje de ascendencia y legado"
+      de: "Ahnen- und Vermächtnisreisen"
+      zh: "祖源与传承旅行"
+      ja: "祖先・レガシー旅行"
+    short_label:
+      en: "Ancestry & Legacy"
+      ar: "الأنساب والإرث"
+      fr: "Ascendance & héritage"
+      es: "Ascendencia y legado"
+      de: "Ahnen & Vermächtnis"
+      zh: "祖源与传承"
+      ja: "祖先・継承"
+    summary:
+      en: "A purpose-led travel form oriented around lineage, identity, family memory, inherited place connection, or intergenerational meaning."
+      ar: "صيغة سفر مدفوعة بالغاية تتمحور حول السلالة والهوية والذاكرة العائلية والارتباط الموروث بالمكان أو المعنى بين الأجيال."
+      fr: "Forme de voyage orientée par une finalité autour de la lignée, de l'identité, de la mémoire familiale, du lien hérité au lieu ou du sens intergénérationnel."
+      es: "Forma de viaje orientada por propósito en torno al linaje, la identidad, la memoria familiar, la conexión heredada con un lugar o el significado intergeneracional."
+      de: "Zweckorientierte Reiseform rund um Abstammung, Identität, Familienerinnerung, geerbte Ortsbindung oder generationenübergreifende Bedeutung."
+      zh: "一种围绕血缘、身份、家族记忆、继承的地方联系或代际意义展开的目的导向旅行形式。"
+      ja: "血統、アイデンティティ、家族の記憶、受け継がれた場所とのつながり、世代間の意味を中心とする目的主導型旅行形式。"
+    formal_definition: "Ancestry and legacy travel is defined by identity recovery or lineage connection rather than generic leisure optimization."
+    inclusion_scope:
+      - "Genealogy-driven trips"
+      - "Family homeland visits"
+      - "Legacy route tracing"
+    exclusion_scope:
+      - "Generic heritage sightseeing without personal lineage relevance"
+      - "Purely leisure-first travel with no identity dimension"
+    adjacent_types:
+      - "cultural_immersion_homestay"
+      - "religious_spiritual_pilgrimage"
+      - "shrine_saints_tourism"
+    structural_axes:
+      structure_intensity: "medium"
+      autonomy_level: "medium"
+      support_level: "medium"
+      pace_profile: "balanced"
+      immersion_profile: "deep"
+      predictability_profile: "medium"
+    baseline_scores:
+      constraint_fit: 3
+      operational_complexity: 2
+      control_vs_support: 3
+      depth_of_experience: 5
+      predictability: 3
+      traveler_type_fit: 3
+    profile_affinity:
+      independent_planner: "medium"
+      family_coordinator: "medium"
+      first_time_traveler: "low"
+      cost_sensitive_explorer: "low"
+      comfort_priority_traveler: "medium"
+      logistics_averse_traveler: "low"
+    strengths:
+      - "High personal meaning density."
+      - "Can produce uniquely deep emotional relevance."
+      - "Strong fit where identity or family continuity matters."
+    weaknesses:
+      - "Research burden can be heavy."
+      - "Operational ambiguity may be high."
+      - "Weak universal fit outside travelers with genuine lineage motive."
+    best_for:
+      - "Travelers with clear ancestral or family-place goals."
+      - "Users seeking meaning rather than generic tourism coverage."
+    poor_fit_for:
+      - "Travelers looking for lightweight convenience-first trips."
+      - "Users without identity or lineage motivation."
+    tradeoff_signature: "Buys identity depth and personal meaning at the cost of simplicity, universality, and often planning certainty."
+    seo:
+      title_template:
+        en: "Ancestry & Legacy Travel | Travel Structure Profile"
+        ar: "سفر الأنساب والإرث | ملف بنية السفر"
+        fr: "Voyage d'ascendance et d'héritage | Profil de structure de voyage"
+        es: "Viaje de ascendencia y legado | Perfil de estructura de viaje"
+        de: "Ahnen- und Vermächtnisreisen | Profil der Reiseform"
+        zh: "祖源与传承旅行 | 旅行结构画像"
+        ja: "祖先・レガシー旅行 | 旅行構造プロフィール"
+
+  - id: "transformational_wellness"
+    order: 12
+    enabled: true
+    slug: "transformational-wellness"
+    family: "purpose_led"
+    label:
+      en: "Transformational & Wellness"
+      ar: "التحول والرفاه"
+      fr: "Transformation et bien-être"
+      es: "Transformación y bienestar"
+      de: "Transformation und Wellness"
+      zh: "转化与健康旅行"
+      ja: "変容・ウェルネス旅行"
+    short_label:
+      en: "Wellness"
+      ar: "رفاه"
+      fr: "Bien-être"
+      es: "Bienestar"
+      de: "Wellness"
+      zh: "健康"
+      ja: "ウェルネス"
+    summary:
+      en: "A purpose-led format focused on restoration, personal reset, inner work, healing routines, or structured wellbeing outcomes."
+      ar: "صيغة مدفوعة بالغاية تركز على الاستعادة وإعادة الضبط الشخصي والعمل الداخلي وروتينات التعافي أو نتائج الرفاه المنظمة."
+      fr: "Format orienté par une finalité centré sur la restauration, le reset personnel, le travail intérieur, les routines de guérison ou des résultats structurés de bien-être."
+      es: "Formato orientado por propósito centrado en restauración, reinicio personal, trabajo interior, rutinas de sanación o resultados estructurados de bienestar."
+      de: "Zweckorientiertes Format mit Fokus auf Regeneration, persönlichem Reset, innerer Arbeit, Heilroutinen oder strukturierten Wellbeing-Ergebnissen."
+      zh: "一种以恢复、个人重置、内在工作、疗愈节律或结构化健康结果为核心的目的导向形式。"
+      ja: "回復、個人のリセット、内面的な取り組み、癒やしの習慣、構造化されたウェルビーイング成果を重視する目的主導型の形式。"
+    formal_definition: "This format is defined not by luxury alone but by restoration or inner-state change as a primary travel objective."
+    inclusion_scope:
+      - "Wellness retreats"
+      - "Healing and restoration stays"
+      - "Structured reset-oriented travel"
+    exclusion_scope:
+      - "Generic spa add-ons within standard leisure travel"
+      - "Purely luxury-first travel without transformation or wellness objective"
+    adjacent_types:
+      - "slow_travel_quietcations"
+      - "luxury_travel"
+      - "religious_spiritual_pilgrimage"
+    structural_axes:
+      structure_intensity: "medium"
+      autonomy_level: "medium"
+      support_level: "high"
+      pace_profile: "balanced"
+      immersion_profile: "balanced"
+      predictability_profile: "high"
+    baseline_scores:
+      constraint_fit: 3
+      operational_complexity: 4
+      control_vs_support: 3
+      depth_of_experience: 4
+      predictability: 4
+      traveler_type_fit: 4
+    profile_affinity:
+      independent_planner: "medium"
+      family_coordinator: "low"
+      first_time_traveler: "medium"
+      cost_sensitive_explorer: "low"
+      comfort_priority_traveler: "high"
+      logistics_averse_traveler: "high"
+    strengths:
+      - "High restorative and support potential."
+      - "Can be operationally legible when structured well."
+      - "Strong fit for travelers seeking reset rather than coverage."
+    weaknesses:
+      - "Can be expensive."
+      - "May feel narrow to travelers wanting breadth or exploration."
+      - "Quality varies sharply by provider substance versus branding."
+    best_for:
+      - "Travelers seeking restoration, reset, or structured wellbeing."
+      - "Users preferring supportive environments over constant movement."
+    poor_fit_for:
+      - "Budget-sensitive exploration-first travelers."
+      - "Users who value broad destination coverage over inner-state outcomes."
+    tradeoff_signature: "Buys restoration, containment, and support at the cost of breadth, budget efficiency, and sometimes exploratory freedom."
+    seo:
+      title_template:
+        en: "Transformational & Wellness Travel | Travel Structure Profile"
+        ar: "التحول والرفاه | ملف بنية السفر"
+        fr: "Transformation et bien-être | Profil de structure de voyage"
+        es: "Transformación y bienestar | Perfil de estructura de viaje"
+        de: "Transformation und Wellness | Profil der Reiseform"
+        zh: "转化与健康旅行 | 旅行结构画像"
+        ja: "変容・ウェルネス旅行 | 旅行構造プロフィール"
+
+  - id: "road_trip_self_drive"
+    order: 13
+    enabled: true
+    slug: "road-trip-self-drive"
+    family: "mobility_led"
+    label:
+      en: "Road Trip & Self-Drive"
+      ar: "الرحلات البرية والقيادة الذاتية"
+      fr: "Road trip et conduite autonome"
+      es: "Road trip y conducción propia"
+      de: "Roadtrip und Selbstfahrerreise"
+      zh: "公路旅行与自驾"
+      ja: "ロードトリップと自動運転旅行"
+    short_label:
+      en: "Road Trip"
+      ar: "رحلة برية"
+      fr: "Road trip"
+      es: "Road trip"
+      de: "Roadtrip"
+      zh: "公路旅行"
+      ja: "ロードトリップ"
+    summary:
+      en: "A mobility-led travel structure in which route control, stop sequencing, and temporal flexibility are organized around self-directed surface movement."
+      ar: "صيغة سفر مدفوعة بالتنقل تُنظم فيها السيطرة على المسار وتسلسل التوقفات والمرونة الزمنية حول الحركة البرية الذاتية."
+      fr: "Structure de voyage orientée par la mobilité dans laquelle le contrôle de l'itinéraire, le séquençage des arrêts et la flexibilité temporelle s'organisent autour du déplacement terrestre auto-dirigé."
+      es: "Estructura de viaje orientada por la movilidad en la que el control de ruta, la secuencia de paradas y la flexibilidad temporal se organizan alrededor del movimiento terrestre autodirigido."
+      de: "Mobilitätsorientierte Reiseform, bei der Routensteuerung, Stoppreihenfolge und zeitliche Flexibilität um selbstgesteuerte Fortbewegung auf dem Landweg organisiert sind."
+      zh: "一种以移动方式为核心的旅行结构，路线控制、停靠顺序与时间弹性围绕自我主导的地面移动展开。"
+      ja: "ルートの制御、立ち寄り順、時間的柔軟性を、自ら運転・移動する地上交通に基づいて構成する移動主導型の旅行構造。"
+    formal_definition: "Road trip and self-drive travel is defined by personal control over movement infrastructure rather than dependence on fixed third-party sequencing."
+    inclusion_scope:
+      - "Self-drive regional touring"
+      - "Car-based multi-stop travel"
+      - "Surface-route exploratory itineraries"
+    exclusion_scope:
+      - "Rail-first travel"
+      - "Cruise-first travel"
+      - "Fully escorted motor coach tours"
+    adjacent_types:
+      - "independent_travel"
+      - "adventure_travel"
+      - "slow_travel_quietcations"
+    structural_axes:
+      structure_intensity: "low"
+      autonomy_level: "high"
+      support_level: "low"
+      pace_profile: "flexible"
+      immersion_profile: "balanced"
+      predictability_profile: "medium"
+    baseline_scores:
+      constraint_fit: 3
+      operational_complexity: 3
+      control_vs_support: 5
+      depth_of_experience: 4
+      predictability: 3
+      traveler_type_fit: 4
+    profile_affinity:
+      independent_planner: "high"
+      family_coordinator: "medium"
+      first_time_traveler: "low"
+      cost_sensitive_explorer: "medium"
+      comfort_priority_traveler: "medium"
+      logistics_averse_traveler: "low"
+    strengths:
+      - "Very high movement control and stop flexibility."
+      - "Strong fit for route customization."
+      - "Can balance independence with comfort if well designed."
+    weaknesses:
+      - "Driving burden and navigation strain remain with traveler."
+      - "Not universally accessible or low-stress."
+      - "Route quality depends heavily on infrastructure and traveler stamina."
+    best_for:
+      - "Travelers who value route sovereignty."
+      - "Users wanting flexible surface exploration."
+    poor_fit_for:
+      - "Travelers who dislike driving or navigation load."
+      - "Users seeking passive support-heavy travel."
+    tradeoff_signature: "Buys route sovereignty and stop flexibility at the cost of driving burden, navigation responsibility, and uneven simplicity."
+    seo:
+      title_template:
+        en: "Road Trip & Self-Drive | Travel Structure Profile"
+        ar: "الرحلات البرية والقيادة الذاتية | ملف بنية السفر"
+        fr: "Road trip et conduite autonome | Profil de structure de voyage"
+        es: "Road trip y conducción propia | Perfil de estructura de viaje"
+        de: "Roadtrip und Selbstfahrerreise | Profil der Reiseform"
+        zh: "公路旅行与自驾 | 旅行结构画像"
+        ja: "ロードトリップと自動運転旅行 | 旅行構造プロフィール"
+
+  - id: "cruise_experience"
+    order: 14
+    enabled: true
+    slug: "cruise-experience"
+    family: "mobility_led"
+    label:
+      en: "Cruise Experience"
+      ar: "تجربة الرحلات البحرية"
+      fr: "Expérience de croisière"
+      es: "Experiencia de crucero"
+      de: "Kreuzfahrterlebnis"
+      zh: "邮轮体验"
+      ja: "クルーズ体験"
+    short_label:
+      en: "Cruise"
+      ar: "رحلة بحرية"
+      fr: "Croisière"
+      es: "Crucero"
+      de: "Kreuzfahrt"
+      zh: "邮轮"
+      ja: "クルーズ"
+    summary:
+      en: "A vessel-centered travel structure that combines transport, lodging, and managed itinerary rhythm into a highly integrated support-heavy format."
+      ar: "صيغة سفر تتمحور حول السفينة وتجمع النقل والإقامة وإيقاع الرحلة المُدار في نموذج شديد التكامل وكثيف الدعم."
+      fr: "Structure de voyage centrée sur le navire qui combine transport, hébergement et rythme d'itinéraire encadré dans un format très intégré et fortement accompagné."
+      es: "Estructura de viaje centrada en la embarcación que combina transporte, alojamiento y ritmo de itinerario gestionado en un formato altamente integrado y muy asistido."
+      de: "Schiffszentrierte Reiseform, die Transport, Unterkunft und gesteuerten Itinerar-Rhythmus zu einem stark integrierten, unterstützungsintensiven Format bündelt."
+      zh: "一种以船舶为中心的旅行结构，将交通、住宿和被管理的行程节奏整合为高度一体化且支持密集的形式。"
+      ja: "輸送、宿泊、管理された旅程リズムを船という中心構造に統合した、高度に一体化された支援重視の旅行形式。"
+    formal_definition: "Cruise travel is defined by a vessel acting as the primary mobility and accommodation platform, with major logistics bundled into one structure."
+    inclusion_scope:
+      - "Ocean cruises"
+      - "River cruises"
+      - "Expedition cruises where the vessel remains the organizing core"
+    exclusion_scope:
+      - "Ferry transport used only as a transfer mechanism"
+      - "Independent coastal travel without vessel-centered structure"
+    adjacent_types:
+      - "guided_group_tour"
+      - "luxury_travel"
+      - "family_travel"
+    structural_axes:
+      structure_intensity: "high"
+      autonomy_level: "low"
+      support_level: "high"
+      pace_profile: "fixed"
+      immersion_profile: "surface"
+      predictability_profile: "high"
+    baseline_scores:
+      constraint_fit: 4
+      operational_complexity: 5
+      control_vs_support: 2
+      depth_of_experience: 3
+      predictability: 5
+      traveler_type_fit: 4
+    profile_affinity:
+      independent_planner: "low"
+      family_coordinator: "high"
+      first_time_traveler: "high"
+      cost_sensitive_explorer: "low"
+      comfort_priority_traveler: "high"
+      logistics_averse_traveler: "high"
+    strengths:
+      - "Very strong logistics bundling and simplicity."
+      - "High predictability and low coordination friction."
+      - "Strong fit for users wanting packaged movement plus lodging."
+    weaknesses:
+      - "Lower autonomy and often lower place depth."
+      - "Destination contact may be shallow or schedule-constrained."
+      - "Not ideal for travelers who prioritize local spontaneity."
+    best_for:
+      - "Travelers valuing convenience and integrated logistics."
+      - "Users preferring structured multi-stop exposure with low friction."
+    poor_fit_for:
+      - "Travelers wanting local depth and route sovereignty."
+      - "Users who resist tightly managed movement."
+    tradeoff_signature: "Buys integration, simplicity, and predictability at the cost of autonomy and often at the cost of deeper place immersion."
+    seo:
+      title_template:
+        en: "Cruise Experience | Travel Structure Profile"
+        ar: "تجربة الرحلات البحرية | ملف بنية السفر"
+        fr: "Expérience de croisière | Profil de structure de voyage"
+        es: "Experiencia de crucero | Perfil de estructura de viaje"
+        de: "Kreuzfahrterlebnis | Profil der Reiseform"
+        zh: "邮轮体验 | 旅行结构画像"
+        ja: "クルーズ体験 | 旅行構造プロフィール"
+
+  - id: "eco_sustainable_travel"
+    order: 15
+    enabled: true
+    slug: "eco-sustainable-travel"
+    family: "values_led"
+    label:
+      en: "Eco & Sustainable Travel"
+      ar: "السفر البيئي والمستدام"
+      fr: "Voyage éco et durable"
+      es: "Viaje ecológico y sostenible"
+      de: "Öko- und nachhaltiges Reisen"
+      zh: "生态与可持续旅行"
+      ja: "エコ・サステナブル旅行"
+    short_label:
+      en: "Eco & Sustainable"
+      ar: "بيئي ومستدام"
+      fr: "Éco & durable"
+      es: "Eco y sostenible"
+      de: "Öko & nachhaltig"
+      zh: "生态可持续"
+      ja: "エコ・持続可能"
+    summary:
+      en: "A values-led travel form that seeks to reduce environmental harm, moderate extractive behavior, and align travel choices with sustainability principles."
+      ar: "صيغة سفر مدفوعة بالقيم تسعى إلى تقليل الضرر البيئي والحد من السلوك الاستخلاصي ومواءمة الخيارات مع مبادئ الاستدامة."
+      fr: "Forme de voyage guidée par les valeurs qui cherche à réduire le dommage environnemental, à modérer les comportements extractifs et à aligner les choix de voyage avec les principes de durabilité."
+      es: "Forma de viaje guiada por valores que busca reducir el daño ambiental, moderar el comportamiento extractivo y alinear las decisiones con principios de sostenibilidad."
+      de: "Wertegeleitete Reiseform, die Umweltschäden reduzieren, extraktives Verhalten begrenzen und Reiseentscheidungen an Nachhaltigkeitsprinzipien ausrichten will."
+      zh: "一种价值导向的旅行形式，旨在减少环境伤害、抑制提取式行为，并使旅行选择与可持续原则对齐。"
+      ja: "環境への害を減らし、収奪的な行動を抑え、旅行の選択を持続可能性の原則に整合させることを目指す価値主導型の旅行形式。"
+    formal_definition: "Eco and sustainable travel is defined by reduced-harm logic, lower extraction patterns, and more conscious operational choice."
+    inclusion_scope:
+      - "Lower-impact itinerary design"
+      - "Sustainability-oriented accommodation and movement choices"
+      - "Conscious lower-extraction travel planning"
+    exclusion_scope:
+      - "Surface green branding without operational substance"
+      - "Generic tourism merely using eco language"
+    adjacent_types:
+      - "regenerative_community_led"
+      - "slow_travel_quietcations"
+      - "adventure_travel"
+    structural_axes:
+      structure_intensity: "medium"
+      autonomy_level: "medium"
+      support_level: "medium"
+      pace_profile: "balanced"
+      immersion_profile: "balanced"
+      predictability_profile: "medium"
+    baseline_scores:
+      constraint_fit: 3
+      operational_complexity: 3
+      control_vs_support: 4
+      depth_of_experience: 4
+      predictability: 3
+      traveler_type_fit: 3
+    profile_affinity:
+      independent_planner: "medium"
+      family_coordinator: "medium"
+      first_time_traveler: "medium"
+      cost_sensitive_explorer: "medium"
+      comfort_priority_traveler: "medium"
+      logistics_averse_traveler: "low"
+    strengths:
+      - "Better ethical coherence for sustainability-oriented users."
+      - "Can improve quality of decision framing beyond price alone."
+      - "Often aligns well with lower-churn travel patterns."
+    weaknesses:
+      - "Operational proof can be inconsistent."
+      - "May introduce additional decision burden."
+      - "Not all low-impact options are convenient or cheap."
+    best_for:
+      - "Travelers who want lower-impact choices with real operational substance."
+      - "Users willing to trade some convenience for sustainability alignment."
+    poor_fit_for:
+      - "Travelers who optimize only for lowest friction or lowest headline price."
+      - "Users indifferent to environmental or extraction concerns."
+    tradeoff_signature: "Buys ethical and sustainability alignment at the cost of some convenience, simplicity, and occasionally price efficiency."
+    seo:
+      title_template:
+        en: "Eco & Sustainable Travel | Travel Structure Profile"
+        ar: "السفر البيئي والمستدام | ملف بنية السفر"
+        fr: "Voyage éco et durable | Profil de structure de voyage"
+        es: "Viaje ecológico y sostenible | Perfil de estructura de viaje"
+        de: "Öko- und nachhaltiges Reisen | Profil der Reiseform"
+        zh: "生态与可持续旅行 | 旅行结构画像"
+        ja: "エコ・サステナブル旅行 | 旅行構造プロフィール"
+
+  - id: "religious_spiritual_pilgrimage"
+    order: 16
+    enabled: true
+    slug: "religious-spiritual-pilgrimage"
+    family: "purpose_led"
+    label:
+      en: "Religious & Spiritual Pilgrimage"
+      ar: "الحج الديني والروحي"
+      fr: "Pèlerinage religieux et spirituel"
+      es: "Peregrinación religiosa y espiritual"
+      de: "Religiöse und spirituelle Pilgerreise"
+      zh: "宗教与精神朝圣"
+      ja: "宗教・精神的巡礼"
+    short_label:
+      en: "Pilgrimage"
+      ar: "حج"
+      fr: "Pèlerinage"
+      es: "Peregrinación"
+      de: "Pilgerreise"
+      zh: "朝圣"
+      ja: "巡礼"
+    summary:
+      en: "A purpose-led travel form organized around devotion, ritual, sacred obligation, spiritual discipline, or transcendent meaning rather than generic leisure optimization."
+      ar: "صيغة سفر مدفوعة بالغاية تُنظم حول التعبد أو الطقس أو الواجب المقدس أو الانضباط الروحي أو المعنى المتعالي بدل تحسين الترفيه العام."
+      fr: "Forme de voyage orientée par une finalité organisée autour de la dévotion, du rituel, de l'obligation sacrée, de la discipline spirituelle ou d'un sens transcendant plutôt que d'une optimisation de loisir générique."
+      es: "Forma de viaje orientada por propósito organizada en torno a devoción, ritual, obligación sagrada, disciplina espiritual o significado trascendente, más que al ocio genérico."
+      de: "Zweckorientierte Reiseform, die um Hingabe, Ritual, sakrale Verpflichtung, spirituelle Disziplin oder transzendente Bedeutung organisiert ist statt um generische Freizeitoptimierung."
+      zh: "一种以虔敬、仪式、神圣义务、精神修持或超越性意义为核心，而非一般休闲优化的目的导向旅行形式。"
+      ja: "一般的な余暇最適化ではなく、信仰、儀礼、聖なる義務、精神的鍛錬、超越的意味を中心に組織される目的主導型の旅行形式。"
+    formal_definition: "Pilgrimage travel is defined by sacred motive and devotional or spiritual orientation as the primary organizing logic."
+    inclusion_scope:
+      - "Formal pilgrimage routes"
+      - "Religious obligation travel"
+      - "Spiritual devotion journeys"
+    exclusion_scope:
+      - "Generic heritage tourism without devotional core"
+      - "Temple or shrine sightseeing as passive tourism only"
+    adjacent_types:
+      - "shrine_saints_tourism"
+      - "transformational_wellness"
+      - "ancestry_legacy_travel"
+    structural_axes:
+      structure_intensity: "medium"
+      autonomy_level: "medium"
+      support_level: "medium"
+      pace_profile: "balanced"
+      immersion_profile: "deep"
+      predictability_profile: "high"
+    baseline_scores:
+      constraint_fit: 3
+      operational_complexity: 3
+      control_vs_support: 3
+      depth_of_experience: 5
+      predictability: 4
+      traveler_type_fit: 4
+    profile_affinity:
+      independent_planner: "medium"
+      family_coordinator: "medium"
+      first_time_traveler: "medium"
+      cost_sensitive_explorer: "low"
+      comfort_priority_traveler: "medium"
+      logistics_averse_traveler: "medium"
+    strengths:
+      - "Very high meaning density for motive-aligned travelers."
+      - "Strong narrative and ritual coherence."
+      - "Can provide clarity of purpose that generic tourism lacks."
+    weaknesses:
+      - "Weak fit for travelers without devotional orientation."
+      - "Operational constraints may be non-negotiable."
+      - "Comfort and flexibility may be secondary to sacred purpose."
+    best_for:
+      - "Travelers with genuine devotional or spiritual motive."
+      - "Users for whom sacred meaning outweighs leisure optimization."
+    poor_fit_for:
+      - "Travelers seeking generic low-friction sightseeing."
+      - "Users indifferent to ritual or sacred structure."
+    tradeoff_signature: "Buys sacred purpose, ritual coherence, and meaning depth at the cost of neutrality, flexibility, and purely leisure-based optimization."
+    seo:
+      title_template:
+        en: "Religious & Spiritual Pilgrimage | Travel Structure Profile"
+        ar: "الحج الديني والروحي | ملف بنية السفر"
+        fr: "Pèlerinage religieux et spirituel | Profil de structure de voyage"
+        es: "Peregrinación religiosa y espiritual | Perfil de estructura de viaje"
+        de: "Religiöse und spirituelle Pilgerreise | Profil der Reiseform"
+        zh: "宗教与精神朝圣 | 旅行结构画像"
+        ja: "宗教・精神的巡礼 | 旅行構造プロフィール"
+
+  - id: "shrine_saints_tourism"
+    order: 17
+    enabled: true
+    slug: "shrine-saints-tourism"
+    family: "purpose_led"
+    label:
+      en: "Shrine & Saints Tourism"
+      ar: "سياحة الأضرحة والأولياء"
+      fr: "Tourisme des sanctuaires et des saints"
+      es: "Turismo de santuarios y santos"
+      de: "Schrein- und Heiligentourismus"
+      zh: "圣地与圣人旅游"
+      ja: "聖地・聖人観光"
+    short_label:
+      en: "Shrine & Saints"
+      ar: "الأضرحة والأولياء"
+      fr: "Sanctuaires et saints"
+      es: "Santuarios y santos"
+      de: "Schreine & Heilige"
+      zh: "圣地与圣人"
+      ja: "聖地・聖人"
+    summary:
+      en: "A sacred-site-oriented travel form focused on shrines, saints, relics, holy tombs, or localized devotional geographies that may blend faith, memory, and heritage."
+      ar: "صيغة سفر متمحورة حول المواقع المقدسة تركز على الأضرحة والأولياء والآثار والقبور المقدسة أو الجغرافيات التعبدية المحلية التي قد تمزج الإيمان والذاكرة والتراث."
+      fr: "Forme de voyage orientée vers les sites sacrés centrée sur les sanctuaires, les saints, les reliques, les tombeaux sacrés ou des géographies dévotionnelles localisées mêlant parfois foi, mémoire et héritage."
+      es: "Forma de viaje orientada a sitios sagrados centrada en santuarios, santos, reliquias, tumbas sagradas o geografías devocionales localizadas que pueden mezclar fe, memoria y patrimonio."
+      de: "Auf sakrale Orte ausgerichtete Reiseform, die sich auf Schreine, Heilige, Reliquien, heilige Gräber oder lokalisierte Andachtslandschaften konzentriert, in denen Glaube, Erinnerung und Erbe zusammenlaufen können."
+      zh: "一种以神圣场所为中心的旅行形式，聚焦圣地、圣人、圣物、圣墓或地方性敬拜地理，可交织信仰、记忆与遗产。"
+      ja: "聖地、聖人、聖遺物、聖墓、あるいは信仰・記憶・遺産が交差する局所的な崇敬地理を中心とする聖域志向の旅行形式。"
+    formal_definition: "This format is distinct from broad pilgrimage by its tighter focus on saintly, shrine-centered, relic-centered, or sacred-place visitation patterns."
+    inclusion_scope:
+      - "Shrine visitation circuits"
+      - "Saints and relics visitation travel"
+      - "Sacred tomb and holy-site visitation routes"
+    exclusion_scope:
+      - "General religious travel without shrine or saint-centered focus"
+      - "Secular heritage tourism of sacred sites absent devotional logic"
+    adjacent_types:
+      - "religious_spiritual_pilgrimage"
+      - "ancestry_legacy_travel"
+      - "cultural_immersion_homestay"
+    structural_axes:
+      structure_intensity: "medium"
+      autonomy_level: "medium"
+      support_level: "medium"
+      pace_profile: "balanced"
+      immersion_profile: "deep"
+      predictability_profile: "high"
+    baseline_scores:
+      constraint_fit: 4
+      operational_complexity: 4
+      control_vs_support: 3
+      depth_of_experience: 4
+      predictability: 4
+      traveler_type_fit: 4
+    profile_affinity:
+      independent_planner: "medium"
+      family_coordinator: "medium"
+      first_time_traveler: "medium"
+      cost_sensitive_explorer: "low"
+      comfort_priority_traveler: "medium"
+      logistics_averse_traveler: "medium"
+    strengths:
+      - "High sacred-site clarity and thematic coherence."
+      - "Can combine devotion, memory, and place specificity strongly."
+      - "Often more legible in route design than diffuse spiritual travel."
+    weaknesses:
+      - "Narrower relevance outside travelers with shrine or saint-centered interest."
+      - "Meaning depends on motive alignment."
+      - "Can be mistaken for generic heritage tourism if poorly framed."
+    best_for:
+      - "Travelers with shrine-, relic-, or saint-centered motives."
+      - "Users seeking sacred place specificity rather than broad spiritual framing."
+    poor_fit_for:
+      - "Travelers seeking generic leisure with no sacred orientation."
+      - "Users wanting fully secular destination optimization."
+    tradeoff_signature: "Buys thematic sacred-place coherence and devotional specificity at the cost of broad-market universality and neutral leisure framing."
+    seo:
+      title_template:
+        en: "Shrine & Saints Tourism | Travel Structure Profile"
+        ar: "سياحة الأضرحة والأولياء | ملف بنية السفر"
+        fr: "Tourisme des sanctuaires et des saints | Profil de structure de voyage"
+        es: "Turismo de santuarios y santos | Perfil de estructura de viaje"
+        de: "Schrein- und Heiligentourismus | Profil der Reiseform"
+        zh: "圣地与圣人旅游 | 旅行结构画像"
+        ja: "聖地・聖人観光 | 旅行構造プロフィール"
+
+validation:
+  require_experience_type_count: 17
+  require_unique_ids: true
+  require_unique_orders: true
+  require_unique_slugs: true
+  require_all_enabled_true: true
+  require_known_families:
+    - "structured_supported"
+    - "independent_autonomous"
+    - "comfort_premium"
+    - "purpose_led"
+    - "mobility_led"
+    - "values_led"
+  require_baseline_score_keys:
+    - "constraint_fit"
+    - "operational_complexity"
+    - "control_vs_support"
+    - "depth_of_experience"
+    - "predictability"
+    - "traveler_type_fit"
+  require_profile_affinity_keys:
+    - "independent_planner"
+    - "family_coordinator"
+    - "first_time_traveler"
+    - "cost_sensitive_explorer"
+    - "comfort_priority_traveler"
+    - "logistics_averse_traveler"
+
+generator_contract:
+  intended_consumers:
+    - "loaders.py"
+    - "generate_experience_types.py"
+    - "generate_comparisons.py"
+    - "future travel decision tools"
+  required_behaviors:
+    - "Load experience types in ascending order."
+    - "Reject publication if any required field is missing."
+    - "Treat baseline_scores as structural priors, not universal verdicts."
+    - "Expose multilingual labels and summaries in the current page language."
+    - "Use structural_axes to drive explanatory language and future filters."
+    - "Use profile_affinity as compatibility guidance, not as binary truth."
+    - "Never invent additional experience types outside this file without explicit schema update."

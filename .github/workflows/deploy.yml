@@ -1,0 +1,96 @@
+name: Build and Deploy Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build site artifact
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install build dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --upgrade pip
+          python -m pip install pyyaml jinja2
+
+      - name: Run disciplined build pipeline
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m scripts.build
+
+      - name: Prevent Jekyll interference
+        shell: bash
+        run: |
+          set -euo pipefail
+          touch output/.nojekyll
+
+      - name: Verify critical output contract
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          test -d output
+          test -d output/static
+          test -f output/robots.txt
+          test -f output/sitemap.xml
+          test -f output/CNAME
+          test -f output/.nojekyll
+
+          test -f output/en/index.html
+          test -f output/ar/index.html
+          test -f output/fr/index.html
+          test -f output/es/index.html
+          test -f output/de/index.html
+          test -f output/zh/index.html
+          test -f output/ja/index.html
+
+          test -f output/en/methodology/index.html
+
+          find output/en/styles -mindepth 2 -maxdepth 2 -type f -name index.html | grep .
+
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./output
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy Pages artifact
+        id: deployment
+        uses: actions/deploy-pages@v4

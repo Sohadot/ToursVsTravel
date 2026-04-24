@@ -1,50 +1,64 @@
 #!/usr/bin/env python3
 """
-TourVsTravel — Local Build Orchestrator
-=======================================
+TourVsTravel — Production Build Orchestrator
+============================================
 
 Purpose
 -------
-Run the disciplined local build pipeline into a staging directory, then
-promote the build to the final output directory only after all steps succeed.
+Run the complete local and CI build pipeline for TourVsTravel.
 
-Current build scope
--------------------
-Phase 1 includes:
-- copy static assets into stage output
-- generate multilingual home pages
-- generate multilingual methodology pages
-- generate multilingual experience type pages
-- generate site-wide robots.txt
-- generate site-wide sitemap.xml
+This file is the official build orchestrator. It does not generate content
+directly. It coordinates approved generators in a strict order, writes everything
+to a temporary staging directory, validates the generated output contract, and
+then promotes the stage into the final output directory.
 
-Build policy
-------------
-- build into staging first
-- never write directly into final output during generation
-- promote staging -> final only after all generation steps succeed
-- inside the repository, only ROOT_DIR/output is allowed as build output
-- any other in-repo output target is rejected
-- outside-repo targets are allowed if safe
+Production output contract
+--------------------------
+A successful build must produce at least:
 
-Execution
----------
-Run from repository root:
+    output/index.html
+    output/en/index.html
+    output/ar/index.html
+    output/fr/index.html
+    output/es/index.html
+    output/de/index.html
+    output/zh/index.html
+    output/ja/index.html
 
-    python -m scripts.build
-    python -m scripts.build --lang en
-    python -m scripts.build --verbose
+    output/en/methodology/index.html
+    output/en/styles/guided-group-tour/index.html
+
+    output/static/css/main.css
+    output/static/js/main.js
+    output/robots.txt
+    output/sitemap.xml
+    output/.nojekyll
+
+Design principles
+-----------------
+- no partial production builds
+- no direct writes to output/ before staging validation
+- no publishing broken output
+- no silent failure
+- no symlink-based static asset copying
+- no broken root entrypoint
+- no relative static asset paths in generated HTML
+- no known-bad language root links such as /en/.
 """
 
 from __future__ import annotations
 
 import argparse
 import logging
+import os
 import shutil
 import tempfile
+import time
 from pathlib import Path
-from typing import Optional, Sequence
+from typing import List, Optional, Sequence
 
+
+from scripts.generate_root import GenerateRootError, generate_root_entrypoint
 from scripts.generate_home import GenerateHomeError, generate_home_pages
 from scripts.generate_methodology import GenerateMethodologyError, generate_methodology_pages
 from scripts.generate_experience_types import (
@@ -56,29 +70,6 @@ from scripts.generate_sitemap import GenerateSitemapError, generate_sitemap_file
 
 
 # ============================================================================
-# Paths
-# ============================================================================
-
-ROOT_DIR = Path(__file__).resolve().parents[1]
-STATIC_DIR = ROOT_DIR / "static"
-DEFAULT_OUTPUT_DIR = ROOT_DIR / "output"
-
-# Only this in-repo output target is sanctioned.
-ALLOWED_IN_REPO_OUTPUT_DIR = DEFAULT_OUTPUT_DIR.resolve()
-
-EXPLICIT_SENSITIVE_PATHS = {
-    ROOT_DIR.resolve(),
-    (ROOT_DIR / ".git").resolve(),
-    (ROOT_DIR / ".github").resolve(),
-    (ROOT_DIR / "data").resolve(),
-    (ROOT_DIR / "templates").resolve(),
-    (ROOT_DIR / "static").resolve(),
-    (ROOT_DIR / "scripts").resolve(),
-    (ROOT_DIR / "tests").resolve(),
-}
-
-
-# ============================================================================
 # Logging
 # ============================================================================
 
@@ -87,11 +78,38 @@ log = logging.getLogger("build")
 
 def configure_logging(*, verbose: bool = False) -> None:
     level = logging.DEBUG if verbose else logging.INFO
-    logging.basicConfig(
-        level=level,
-        format="%(asctime)s [%(levelname)s] %(message)s",
-        datefmt="%H:%M:%S",
-    )
+
+    if not logging.getLogger().handlers:
+        logging.basicConfig(
+            level=level,
+            format="%(asctime)s [%(levelname)s] %(message)s",
+            datefmt="%H:%M:%S",
+        )
+    else:
+        logging.getLogger().setLevel(level)
+
+
+# ============================================================================
+# Paths and constants
+# ============================================================================
+
+ROOT_DIR = Path(__file__).resolve().parents[1]
+STATIC_DIR = ROOT_DIR / "static"
+DEFAULT_OUTPUT_DIR = ROOT_DIR / "output"
+
+SUPPORTED_LANGUAGES = ("en", "ar", "fr", "es", "de", "zh", "ja")
+DEFAULT_ROOT_LANG = "en"
+EXPECTED_EXPERIENCE_TYPE_COUNT = 17
+
+SENSITIVE_REPO_PATHS = {
+    ROOT_DIR,
+    ROOT_DIR / ".git",
+    ROOT_DIR / ".github",
+    ROOT_DIR / "data",
+    ROOT_DIR / "scripts",
+    ROOT_DIR / "templates",
+    ROOT_DIR / "static",
+}
 
 
 # ============================================================================
@@ -99,283 +117,427 @@ def configure_logging(*, verbose: bool = False) -> None:
 # ============================================================================
 
 class BuildError(Exception):
-    """Base build exception."""
+    """Base build error."""
 
 
 class BuildSafetyError(BuildError):
-    """Raised when a build path is unsafe."""
+    """Raised when a filesystem safety rule is violated."""
 
 
 class BuildStepError(BuildError):
-    """Raised when a build step fails."""
+    """Raised when a build step fails or output contract is invalid."""
+
+
+class BuildPromotionError(BuildError):
+    """Raised when staging output cannot be promoted safely."""
 
 
 # ============================================================================
-# Helpers
+# Filesystem helpers
 # ============================================================================
 
-def _is_within(path: Path, ancestor: Path) -> bool:
+def _is_relative_to(child: Path, parent: Path) -> bool:
     try:
-        path.relative_to(ancestor)
+        child.relative_to(parent)
         return True
     except ValueError:
         return False
 
 
 def _ensure_safe_output_dir(output_dir: Path) -> Path:
-    """
-    Validate the requested output directory.
-
-    Rules:
-    - must be absolute
-    - must not be filesystem root
-    - inside repo: only ROOT_DIR/output is allowed
-    - outside repo: allowed if not itself a sensitive path
-    """
     resolved = output_dir.resolve()
     repo_root = ROOT_DIR.resolve()
+    allowed_in_repo_output = DEFAULT_OUTPUT_DIR.resolve()
 
     if not resolved.is_absolute():
-        raise BuildSafetyError(f"Output directory must be absolute. Got: {output_dir}")
+        raise BuildSafetyError(f"Output directory must resolve to an absolute path: {output_dir}")
 
     if str(resolved) == resolved.anchor:
         raise BuildSafetyError(f"Refusing to use filesystem root as output directory: {resolved}")
 
-    if _is_within(resolved, repo_root):
-        if resolved != ALLOWED_IN_REPO_OUTPUT_DIR:
+    if resolved.exists() and resolved.is_symlink():
+        raise BuildSafetyError(f"Refusing symlink output directory: {resolved}")
+
+    parent = resolved.parent
+    if parent.exists() and parent.is_symlink():
+        raise BuildSafetyError(f"Refusing output directory with symlink parent: {parent}")
+
+    if _is_relative_to(resolved, repo_root):
+        if resolved != allowed_in_repo_output:
             raise BuildSafetyError(
-                f"Refusing in-repo output directory outside the sanctioned build target. "
-                f"Allowed in-repo output is only: {ALLOWED_IN_REPO_OUTPUT_DIR} ; got: {resolved}"
+                "Refusing in-repository output directory outside the sanctioned build target. "
+                f"Allowed: {allowed_in_repo_output}; got: {resolved}"
             )
 
-    if resolved in EXPLICIT_SENSITIVE_PATHS:
-        raise BuildSafetyError(f"Refusing to use sensitive path as output directory: {resolved}")
+    for sensitive in SENSITIVE_REPO_PATHS:
+        sensitive_resolved = sensitive.resolve()
+        if resolved == sensitive_resolved:
+            raise BuildSafetyError(f"Refusing sensitive output directory: {resolved}")
+        if _is_relative_to(resolved, sensitive_resolved):
+            raise BuildSafetyError(
+                f"Refusing output directory inside sensitive repository path: {resolved}"
+            )
 
     return resolved
 
 
-def _require_static_tree() -> Path:
+def _reject_symlinks_under(path: Path) -> None:
+    if not path.exists():
+        return
+
+    for candidate in path.rglob("*"):
+        if candidate.is_symlink():
+            raise BuildSafetyError(f"Refusing symlink inside build input tree: {candidate}")
+
+
+def _make_stage_dir(final_output_dir: Path) -> Path:
+    parent = final_output_dir.parent
+    parent.mkdir(parents=True, exist_ok=True)
+
+    if parent.is_symlink():
+        raise BuildSafetyError(f"Refusing staging parent symlink: {parent}")
+
+    stage = Path(
+        tempfile.mkdtemp(
+            prefix=".build-stage-",
+            dir=str(parent),
+        )
+    ).resolve()
+
+    if not stage.exists() or not stage.is_dir():
+        raise BuildSafetyError(f"Failed to create staging directory: {stage}")
+
+    if stage == final_output_dir:
+        raise BuildSafetyError("Staging directory must not equal final output directory.")
+
+    log.info("Created staging directory -> %s", stage)
+    return stage
+
+
+def _remove_tree_if_exists(path: Path) -> None:
+    if not path.exists():
+        return
+
+    try:
+        shutil.rmtree(path)
+    except Exception as exc:
+        log.warning("Failed to remove directory %s: %s", path, exc)
+
+
+def _copy_static_tree(stage_dir: Path) -> Path:
     if not STATIC_DIR.exists():
         raise BuildStepError(f"Missing static directory: {STATIC_DIR}")
     if not STATIC_DIR.is_dir():
         raise BuildStepError(f"Static path is not a directory: {STATIC_DIR}")
-    return STATIC_DIR
+
+    _reject_symlinks_under(STATIC_DIR)
+
+    target = stage_dir / "static"
+
+    if target.exists():
+        raise BuildStepError(f"Static target already exists in staging directory: {target}")
+
+    shutil.copytree(STATIC_DIR, target, symlinks=False)
+
+    log.info("Copied static assets -> %s", target)
+    return target
 
 
-def _make_stage_dir(final_output_dir: Path) -> Path:
-    """
-    Create a staging directory safely and unpredictably as a sibling of the
-    final output directory.
-    """
-    stage_parent = final_output_dir.parent.resolve()
-
-    if stage_parent in EXPLICIT_SENSITIVE_PATHS and stage_parent != ROOT_DIR.resolve():
-        raise BuildSafetyError(
-            f"Refusing to create build stage under a sensitive parent directory: {stage_parent}"
-        )
-
-    try:
-        stage_path_str = tempfile.mkdtemp(prefix=".build-stage-", dir=str(stage_parent))
-    except Exception as exc:
-        raise BuildStepError(f"Failed to create staging directory under {stage_parent}: {exc}") from exc
-
-    return Path(stage_path_str)
-
-
-def _remove_tree_if_exists(path: Path) -> None:
-    if path.exists():
-        try:
-            shutil.rmtree(path)
-        except Exception as exc:
-            log.warning("Failed to remove directory %s: %s", path, exc)
-
-
-def _copy_static_tree(stage_output_dir: Path) -> None:
-    """
-    Copy /static into stage_output_dir/static
-    """
-    source = _require_static_tree()
-    destination = stage_output_dir / "static"
-
-    if destination.exists():
-        raise BuildStepError(f"Stage static destination already exists unexpectedly: {destination}")
-
-    try:
-        shutil.copytree(source, destination)
-    except Exception as exc:
-        raise BuildStepError(f"Failed to copy static assets to {destination}: {exc}") from exc
-
-    log.info("Copied static assets -> %s", destination)
-
-
-def _promote_stage_to_final(stage_dir: Path, final_output_dir: Path) -> None:
-    """
-    Promote a successful staging build into the final output directory.
-
-    Strategy:
-    - if final output exists, move it to a sibling backup
-    - move stage -> final
-    - verify final now exists
-    - remove backup after successful promotion
-    - restore backup if promotion fails after backup creation
-    """
-    backup_dir = Path(
-        tempfile.mkdtemp(prefix=".output-backup-", dir=str(final_output_dir.parent.resolve()))
-    )
-    backup_dir_created = True
-
-    try:
-        # mkdtemp created a directory; remove it so the path can receive replace().
-        shutil.rmtree(backup_dir)
-
-        if final_output_dir.exists():
-            final_output_dir.replace(backup_dir)
-            log.debug("Moved existing final output to backup: %s", backup_dir)
-        else:
-            backup_dir_created = False
-
-        stage_dir.replace(final_output_dir)
-
-        if not final_output_dir.exists():
-            raise BuildStepError(
-                f"Promotion completed without exception but final output is missing: {final_output_dir}"
-            )
-
-        if backup_dir_created and backup_dir.exists():
-            shutil.rmtree(backup_dir)
-
-    except Exception as exc:
-        if backup_dir_created and backup_dir.exists() and not final_output_dir.exists():
-            try:
-                backup_dir.replace(final_output_dir)
-                log.warning("Rollback succeeded after failed promotion.")
-            except Exception as rollback_exc:
-                raise BuildStepError(
-                    f"Build promotion failed and rollback also failed. "
-                    f"Promotion error: {exc}; Rollback error: {rollback_exc}"
-                ) from rollback_exc
-
-        raise BuildStepError(f"Failed to promote staging build to final output: {exc}") from exc
+def _write_nojekyll(stage_dir: Path) -> Path:
+    path = stage_dir / ".nojekyll"
+    path.write_text("", encoding="utf-8")
+    log.info("Created .nojekyll -> %s", path)
+    return path
 
 
 # ============================================================================
 # Build steps
 # ============================================================================
 
-def _run_home_generation(
-    *,
-    requested_lang: Optional[str],
-    stage_dir: Path,
-) -> int:
-    written_home = generate_home_pages(
-        requested_lang=requested_lang,
+def _run_root_generation(*, stage_dir: Path) -> Path:
+    written = generate_root_entrypoint(
+        output_dir=stage_dir,
+        default_lang=DEFAULT_ROOT_LANG,
+    )
+    log.info("Generated root entrypoint -> %s", written)
+    return written
+
+
+def _run_home_generation(*, stage_dir: Path) -> int:
+    written = generate_home_pages(
+        requested_lang=None,
         output_dir=stage_dir,
     )
-    count = len(written_home)
+    count = len(written)
     log.info("Generated home pages: %d", count)
     return count
 
 
-def _run_methodology_generation(
-    *,
-    requested_lang: Optional[str],
-    stage_dir: Path,
-) -> int:
-    written_methodology = generate_methodology_pages(
-        requested_lang=requested_lang,
+def _run_methodology_generation(*, stage_dir: Path) -> int:
+    written = generate_methodology_pages(
+        requested_lang=None,
         output_dir=stage_dir,
     )
-    count = len(written_methodology)
+    count = len(written)
     log.info("Generated methodology pages: %d", count)
     return count
 
 
-def _run_experience_type_generation(
-    *,
-    requested_lang: Optional[str],
-    stage_dir: Path,
-) -> None:
+def _run_experience_type_generation(*, stage_dir: Path) -> int:
     written = generate_experience_type_pages(
-        requested_lang=requested_lang,
+        requested_lang=None,
+        requested_type_id=None,
         output_dir=stage_dir,
     )
-    log.info("Generated experience type pages: %d", len(written))
+    count = len(written)
+    log.info("Generated experience type pages: %d", count)
+    return count
 
 
 def _run_robots_generation(*, stage_dir: Path) -> Path:
-    robots_path = generate_robots_file(output_dir=stage_dir)
-    log.info("Generated robots.txt -> %s", robots_path)
-    return robots_path
+    written = generate_robots_file(
+        output_dir=stage_dir,
+    )
+    log.info("Generated robots.txt -> %s", written)
+    return written
 
 
 def _run_sitemap_generation(*, stage_dir: Path) -> Path:
-    sitemap_path = generate_sitemap_file(output_dir=stage_dir)
-    log.info("Generated sitemap.xml -> %s", sitemap_path)
-    return sitemap_path
+    written = generate_sitemap_file(
+        output_dir=stage_dir,
+    )
+    log.info("Generated sitemap.xml -> %s", written)
+    return written
 
 
 # ============================================================================
-# Build pipeline
+# Output contract validation
+# ============================================================================
+
+def _require_file(path: Path) -> None:
+    if not path.exists():
+        raise BuildStepError(f"Required file is missing: {path}")
+    if not path.is_file():
+        raise BuildStepError(f"Required path is not a file: {path}")
+
+
+def _require_dir(path: Path) -> None:
+    if not path.exists():
+        raise BuildStepError(f"Required directory is missing: {path}")
+    if not path.is_dir():
+        raise BuildStepError(f"Required path is not a directory: {path}")
+
+
+def _scan_html_forbidden_fragments(stage_dir: Path) -> None:
+    forbidden_fragments = [
+        'href="/en/."',
+        'href="/ar/."',
+        'href="/fr/."',
+        'href="/es/."',
+        'href="/de/."',
+        'href="/zh/."',
+        'href="/ja/."',
+        "href='/en/.'",
+        "href='/ar/.'",
+        "href='/fr/.'",
+        "href='/es/.'",
+        "href='/de/.'",
+        "href='/zh/.'",
+        "href='/ja/.'",
+        'src="static/',
+        "src='static/",
+        'href="static/',
+        "href='static/",
+        'src="../static/',
+        "src='../static/",
+        'href="../static/',
+        "href='../static/",
+    ]
+
+    for html_file in stage_dir.rglob("*.html"):
+        try:
+            text = html_file.read_text(encoding="utf-8")
+        except UnicodeDecodeError as exc:
+            raise BuildStepError(f"Generated HTML is not valid UTF-8: {html_file}") from exc
+
+        for fragment in forbidden_fragments:
+            if fragment in text:
+                raise BuildStepError(
+                    f"Forbidden generated HTML fragment {fragment!r} found in {html_file}"
+                )
+
+
+def _verify_sitemap_contract(stage_dir: Path) -> None:
+    sitemap_path = stage_dir / "sitemap.xml"
+    _require_file(sitemap_path)
+
+    text = sitemap_path.read_text(encoding="utf-8")
+
+    required_fragments = [
+        "/en/",
+        "/en/methodology/",
+        "/en/styles/guided-group-tour/",
+    ]
+
+    for fragment in required_fragments:
+        if fragment not in text:
+            raise BuildStepError(f"sitemap.xml is missing required URL fragment: {fragment}")
+
+
+def _verify_experience_type_count(stage_dir: Path) -> None:
+    styles_dir = stage_dir / "en" / "styles"
+    _require_dir(styles_dir)
+
+    pages = sorted(styles_dir.glob("*/index.html"))
+
+    if len(pages) != EXPECTED_EXPERIENCE_TYPE_COUNT:
+        raise BuildStepError(
+            f"Expected {EXPECTED_EXPERIENCE_TYPE_COUNT} English experience type pages, "
+            f"found {len(pages)} in {styles_dir}"
+        )
+
+
+def _verify_output_contract(stage_dir: Path) -> None:
+    log.info("Verifying staged output contract")
+
+    _require_dir(stage_dir)
+    _require_dir(stage_dir / "static")
+    _require_dir(stage_dir / "static" / "css")
+    _require_dir(stage_dir / "static" / "js")
+
+    _require_file(stage_dir / "index.html")
+    _require_file(stage_dir / ".nojekyll")
+    _require_file(stage_dir / "robots.txt")
+    _require_file(stage_dir / "sitemap.xml")
+    _require_file(stage_dir / "static" / "css" / "main.css")
+    _require_file(stage_dir / "static" / "js" / "main.js")
+
+    for lang in SUPPORTED_LANGUAGES:
+        _require_file(stage_dir / lang / "index.html")
+        _require_file(stage_dir / lang / "methodology" / "index.html")
+
+    _require_file(stage_dir / "en" / "styles" / "guided-group-tour" / "index.html")
+
+    _verify_experience_type_count(stage_dir)
+    _verify_sitemap_contract(stage_dir)
+    _scan_html_forbidden_fragments(stage_dir)
+
+    log.info("Staged output contract verified successfully")
+
+
+# ============================================================================
+# Promotion
+# ============================================================================
+
+def _promote_stage_to_final(stage_dir: Path, final_output_dir: Path) -> None:
+    stage_dir = stage_dir.resolve()
+    final_output_dir = final_output_dir.resolve()
+
+    if not stage_dir.exists() or not stage_dir.is_dir():
+        raise BuildPromotionError(f"Stage directory is missing: {stage_dir}")
+
+    if stage_dir == final_output_dir:
+        raise BuildPromotionError("Stage directory must not equal final output directory.")
+
+    parent = final_output_dir.parent
+    backup_dir: Optional[Path] = None
+
+    log.info("Promoting stage to final output -> %s", final_output_dir)
+
+    try:
+        if final_output_dir.exists():
+            if final_output_dir.is_symlink():
+                raise BuildPromotionError(f"Refusing to replace symlink output directory: {final_output_dir}")
+            if not final_output_dir.is_dir():
+                raise BuildPromotionError(f"Final output path exists but is not a directory: {final_output_dir}")
+
+            backup_dir = parent / f".build-backup-{os.getpid()}-{time.time_ns()}"
+            final_output_dir.replace(backup_dir)
+            log.info("Existing output moved to backup -> %s", backup_dir)
+
+        stage_dir.replace(final_output_dir)
+
+        if not final_output_dir.exists() or not final_output_dir.is_dir():
+            raise BuildPromotionError(
+                "Promotion appeared to succeed but final output directory is missing."
+            )
+
+        if backup_dir is not None and backup_dir.exists():
+            shutil.rmtree(backup_dir)
+            log.info("Removed backup -> %s", backup_dir)
+
+        log.info("Build promoted successfully -> %s", final_output_dir)
+
+    except Exception as exc:
+        log.error("Promotion failed: %s", exc)
+
+        if final_output_dir.exists() and final_output_dir != stage_dir:
+            _remove_tree_if_exists(final_output_dir)
+
+        if backup_dir is not None and backup_dir.exists():
+            try:
+                backup_dir.replace(final_output_dir)
+                log.warning("Restored previous output from backup -> %s", final_output_dir)
+            except Exception as restore_exc:
+                raise BuildPromotionError(
+                    f"Promotion failed and rollback also failed: {restore_exc}"
+                ) from exc
+
+        raise
+
+
+# ============================================================================
+# Public build API
 # ============================================================================
 
 def run_build(
     *,
-    requested_lang: Optional[str] = None,
     output_dir: Path = DEFAULT_OUTPUT_DIR,
     keep_stage_on_failure: bool = False,
 ) -> Path:
-    """
-    Execute the local build pipeline into a staging directory,
-    then promote it to the final output directory.
-    """
     final_output_dir = _ensure_safe_output_dir(output_dir)
+
     stage_dir = _make_stage_dir(final_output_dir)
 
-    log.info("Build started")
-    log.info("Repository root : %s", ROOT_DIR)
-    log.info("Final output    : %s", final_output_dir)
-    log.info("Stage output    : %s", stage_dir)
-
     try:
-        # Step 1: static assets
+        log.info("Step 1: Copy static assets")
         _copy_static_tree(stage_dir)
 
-        # Step 2: home pages
-        _run_home_generation(
-            requested_lang=requested_lang,
-            stage_dir=stage_dir,
-        )
+        log.info("Step 2: Generate root entrypoint")
+        _run_root_generation(stage_dir=stage_dir)
 
-        # Step 3: methodology pages
-        _run_methodology_generation(
-            requested_lang=requested_lang,
-            stage_dir=stage_dir,
-        )
+        log.info("Step 3: Generate multilingual home pages")
+        _run_home_generation(stage_dir=stage_dir)
 
-        # Step 4: experience type pages
-        _run_experience_type_generation(
-            requested_lang=requested_lang,
-            stage_dir=stage_dir,
-        )
+        log.info("Step 4: Generate multilingual methodology pages")
+        _run_methodology_generation(stage_dir=stage_dir)
 
-        # Step 5: robots
+        log.info("Step 5: Generate multilingual experience type pages")
+        _run_experience_type_generation(stage_dir=stage_dir)
+
+        log.info("Step 6: Generate robots.txt")
         _run_robots_generation(stage_dir=stage_dir)
 
-        # Step 6: sitemap
+        log.info("Step 7: Generate sitemap.xml")
         _run_sitemap_generation(stage_dir=stage_dir)
 
-        # Step 7: promote
+        log.info("Step 8: Create .nojekyll")
+        _write_nojekyll(stage_dir)
+
+        log.info("Step 9: Verify staged output")
+        _verify_output_contract(stage_dir)
+
+        log.info("Step 10: Promote staged output")
         _promote_stage_to_final(stage_dir, final_output_dir)
-        log.info("Build promoted successfully -> %s", final_output_dir)
-        return final_output_dir
 
     except Exception:
         if keep_stage_on_failure:
-            log.error("Build failed. Staging directory kept at: %s", stage_dir)
+            log.error("Build failed. Staging directory preserved for inspection: %s", stage_dir)
         else:
             _remove_tree_if_exists(stage_dir)
-            log.error("Build failed. Staging directory removed.")
         raise
+
+    return final_output_dir
 
 
 # ============================================================================
@@ -384,13 +546,7 @@ def run_build(
 
 def parse_args(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Run the TourVsTravel local build pipeline."
-    )
-    parser.add_argument(
-        "--lang",
-        type=str,
-        default=None,
-        help="Build only one enabled language code (e.g. en, ar, fr).",
+        description="Run the full TourVsTravel production build pipeline."
     )
     parser.add_argument(
         "--output-dir",
@@ -401,7 +557,7 @@ def parse_args(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
     parser.add_argument(
         "--keep-stage-on-failure",
         action="store_true",
-        help="Keep the staging directory for debugging when a build step fails.",
+        help="Preserve the temporary staging directory if the build fails.",
     )
     parser.add_argument(
         "--verbose",
@@ -417,25 +573,25 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
 
     try:
         final_output = run_build(
-            requested_lang=args.lang,
             output_dir=args.output_dir.resolve(),
             keep_stage_on_failure=args.keep_stage_on_failure,
         )
     except (
         BuildError,
+        GenerateRootError,
         GenerateHomeError,
         GenerateMethodologyError,
         GenerateExperienceTypesError,
         GenerateRobotsError,
         GenerateSitemapError,
     ) as exc:
-        log.error("%s", exc)
+        log.error(str(exc))
         return 1
     except Exception as exc:
-        log.exception("Unhandled build error: %s", exc)
+        log.exception("Unexpected build failure: %s", exc)
         return 1
 
-    log.info("Build completed successfully: %s", final_output)
+    log.info("Production build completed successfully -> %s", final_output)
     return 0
 
 

@@ -43,6 +43,14 @@ jobs:
           set -euo pipefail
           python -m scripts.build
 
+      - name: Carry custom domain into published artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f CNAME
+          test -d output
+          cp CNAME output/CNAME
+
       - name: Prevent Jekyll interference
         shell: bash
         run: |

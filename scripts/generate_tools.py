@@ -286,13 +286,13 @@ TOOL_COPY: Dict[str, List[Dict[str, Any]]] = {
         },
         {
             "title": "Find Your Match",
-            "type": "Structured decision framework",
-            "status": "Framework",
-            "status_key": "framework",
-            "description": "A guided matching layer that will convert traveler constraints into recommended travel-style directions.",
+            "type": "Live decision tool",
+            "status": "Available",
+            "status_key": "available",
+            "description": "A guided matching layer that converts traveler constraints into recommended travel-style directions.",
             "signals": ["Traveler intent", "Budget and burden", "Autonomy preference"],
-            "route": "compare",
-            "action": "Start from comparison",
+            "route": "find_your_match",
+            "action": "Open Find Your Match",
         },
     ],
     "ar": [
@@ -328,13 +328,13 @@ TOOL_COPY: Dict[str, List[Dict[str, Any]]] = {
         },
         {
             "title": "اعرف الأنسب لك",
-            "type": "إطار قرار منظم",
-            "status": "إطار",
-            "status_key": "framework",
+            "type": "أداة قرار مباشرة",
+            "status": "متاح",
+            "status_key": "available",
             "description": "طبقة مطابقة موجهة تحول قيود المسافر إلى اتجاهات أنماط سفر مقترحة.",
             "signals": ["نية المسافر", "الميزانية والعبء", "تفضيل الاستقلالية"],
-            "route": "compare",
-            "action": "ابدأ من المقارنة",
+            "route": "find_your_match",
+            "action": "افتح أداة الملاءمة",
         },
     ],
 }
@@ -361,6 +361,7 @@ ROUTES = {
     "compare": "compare",
     "styles": "styles",
     "methodology": "methodology",
+    "find_your_match": "tools/find-your-match",
 }
 
 

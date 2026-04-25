@@ -1,0 +1,148 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}{{ seo.title }}{% endblock %}
+{% block meta_description %}{{ seo.description }}{% endblock %}
+{% block canonical %}{{ canonical_url }}{% endblock %}
+
+{% block content %}
+<div class="find-match-page page-find-match" dir="{{ page_dir }}" data-match-tool>
+  <script id="find-match-config" type="application/json">{{ tool_config | tojson }}</script>
+
+  <section class="find-match-hero" aria-labelledby="find-match-title">
+    <div class="find-match-hero__inner">
+      <div class="find-match-hero__content">
+        <p class="find-match-eyebrow">{{ copy.eyebrow }}</p>
+        <h1 id="find-match-title" class="find-match-title">{{ copy.title }}</h1>
+        <p class="find-match-lead">{{ copy.lead }}</p>
+
+        <div class="find-match-actions">
+          <a class="find-match-button find-match-button--secondary" href="/{{ lang }}/compare/">{{ copy.compare_action }}</a>
+          <a class="find-match-button find-match-button--ghost" href="/{{ lang }}/styles/">{{ copy.styles_action }}</a>
+        </div>
+      </div>
+
+      <aside class="find-match-hero__panel" aria-label="{{ copy.panel_label }}">
+        <article>
+          <span>{{ copy.panel_card_1_label }}</span>
+          <strong>{{ copy.panel_card_1_value }}</strong>
+        </article>
+        <article>
+          <span>{{ copy.panel_card_2_label }}</span>
+          <strong>{{ style_count }} {{ copy.panel_card_2_value }}</strong>
+        </article>
+        <article>
+          <span>{{ copy.panel_card_3_label }}</span>
+          <strong>{{ copy.panel_card_3_value }}</strong>
+        </article>
+      </aside>
+    </div>
+  </section>
+
+  <section class="find-match-tool" aria-labelledby="find-match-tool-title">
+    <div class="find-match-tool__inner">
+      <div class="find-match-tool__head">
+        <p class="find-match-section-kicker">{{ copy.tool_kicker }}</p>
+        <h2 id="find-match-tool-title">{{ copy.tool_title }}</h2>
+        <p>{{ copy.tool_lead }}</p>
+      </div>
+
+      <div class="find-match-progress" aria-label="{{ copy.progress_label }}">
+        <div class="find-match-progress__bar">
+          <span data-match-progress-bar></span>
+        </div>
+        <p data-match-progress-text>{{ copy.progress_initial }}</p>
+      </div>
+
+      <form class="find-match-form" data-match-form>
+        {% for question in questions %}
+          <fieldset class="find-match-question" data-question-id="{{ question.id }}">
+            <legend><span>{{ question.number }}</span>{{ question.label }}</legend>
+            <p class="find-match-question__hint">{{ question.hint }}</p>
+
+            <div class="find-match-options">
+              {% for option in question.options %}
+                <label class="find-match-option">
+                  <input type="radio" name="{{ question.id }}" value="{{ option.id }}" data-question-id="{{ question.id }}">
+                  <span>
+                    <strong>{{ option.label }}</strong>
+                    <em>{{ option.description }}</em>
+                  </span>
+                </label>
+              {% endfor %}
+            </div>
+          </fieldset>
+        {% endfor %}
+
+        <div class="find-match-form__actions">
+          <button class="find-match-button find-match-button--primary" type="submit">{{ copy.submit_label }}</button>
+          <button class="find-match-button find-match-button--ghost" type="button" data-match-reset>{{ copy.reset_label }}</button>
+        </div>
+
+        <p class="find-match-form__notice" data-match-notice hidden>{{ copy.incomplete_notice }}</p>
+      </form>
+
+      <noscript>
+        <div class="find-match-noscript">
+          <h3>{{ copy.noscript_title }}</h3>
+          <p>{{ copy.noscript_body }}</p>
+          <a href="/{{ lang }}/compare/">{{ copy.compare_action }}</a>
+        </div>
+      </noscript>
+    </div>
+  </section>
+
+  <section class="find-match-results" aria-labelledby="find-match-results-title" data-match-results hidden>
+    <div class="find-match-results__inner">
+      <div class="find-match-results__head">
+        <p class="find-match-section-kicker">{{ copy.results_kicker }}</p>
+        <h2 id="find-match-results-title">{{ copy.results_title }}</h2>
+        <p>{{ copy.results_lead }}</p>
+      </div>
+
+      <div class="find-match-results__grid" data-match-results-grid></div>
+
+      <div class="find-match-results__actions">
+        <a class="find-match-button find-match-button--primary" href="/{{ lang }}/compare/">{{ copy.compare_action }}</a>
+        <a class="find-match-button find-match-button--secondary" href="/{{ lang }}/styles/">{{ copy.styles_action }}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="find-match-method" aria-labelledby="find-match-method-title">
+    <div class="find-match-method__inner">
+      <div>
+        <p class="find-match-section-kicker">{{ copy.method_kicker }}</p>
+        <h2 id="find-match-method-title">{{ copy.method_title }}</h2>
+        <p>{{ copy.method_lead }}</p>
+      </div>
+
+      <div class="find-match-method__cards">
+        {% for method in method_cards %}
+          <article>
+            <span>{{ method.label }}</span>
+            <strong>{{ method.value }}</strong>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="find-match-final" aria-labelledby="find-match-final-title">
+    <div class="find-match-final__inner">
+      <p class="find-match-section-kicker">{{ copy.final_kicker }}</p>
+      <h2 id="find-match-final-title">{{ copy.final_title }}</h2>
+      <p>{{ copy.final_lead }}</p>
+
+      <div class="find-match-actions">
+        <a class="find-match-button find-match-button--primary" href="/{{ lang }}/tools/">{{ copy.tools_action }}</a>
+        <a class="find-match-button find-match-button--secondary" href="/{{ lang }}/methodology/">{{ copy.methodology_action }}</a>
+      </div>
+    </div>
+  </section>
+
+  <script src="/static/js/find-your-match.js" defer></script>
+</div>
+{% endblock %}
+
+{% block main %}{{ self.content() }}{% endblock %}
+{% block body %}{{ self.content() }}{% endblock %}

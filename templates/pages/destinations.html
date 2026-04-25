@@ -1,0 +1,153 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}{{ seo.title }}{% endblock %}
+{% block meta_description %}{{ seo.description }}{% endblock %}
+{% block canonical %}{{ canonical_url }}{% endblock %}
+
+{% block content %}
+<div class="destinations-page page-destinations" dir="{{ page_dir }}">
+  <section class="destinations-hero" aria-labelledby="destinations-title">
+    <div class="destinations-hero__inner">
+      <div class="destinations-hero__content">
+        <p class="destinations-eyebrow">{{ copy.eyebrow }}</p>
+
+        <h1 id="destinations-title" class="destinations-title">
+          {{ copy.title }}
+        </h1>
+
+        <p class="destinations-lead">
+          {{ copy.lead }}
+        </p>
+
+        <div class="destinations-actions" aria-label="{{ copy.actions_label }}">
+          <a class="destinations-button destinations-button--primary" href="/{{ lang }}/tools/find-your-match/">
+            {{ copy.primary_action }}
+          </a>
+          <a class="destinations-button destinations-button--secondary" href="/{{ lang }}/styles/">
+            {{ copy.secondary_action }}
+          </a>
+        </div>
+      </div>
+
+      <aside class="destinations-hero__panel" aria-label="{{ copy.panel_label }}">
+        <article>
+          <span>{{ copy.panel_card_1_label }}</span>
+          <strong>{{ copy.panel_card_1_value }}</strong>
+        </article>
+        <article>
+          <span>{{ copy.panel_card_2_label }}</span>
+          <strong>{{ style_count }} {{ copy.panel_card_2_value }}</strong>
+        </article>
+        <article>
+          <span>{{ copy.panel_card_3_label }}</span>
+          <strong>{{ copy.panel_card_3_value }}</strong>
+        </article>
+      </aside>
+    </div>
+  </section>
+
+  <section class="destinations-section" aria-labelledby="destinations-thesis-title">
+    <div class="destinations-section__inner destinations-thesis">
+      <div>
+        <p class="destinations-section__kicker">{{ copy.thesis_kicker }}</p>
+        <h2 id="destinations-thesis-title">{{ copy.thesis_title }}</h2>
+        <p>{{ copy.thesis_lead }}</p>
+      </div>
+
+      <div class="destinations-thesis__cards">
+        {% for step in interpretation_steps %}
+          <article>
+            <span>{{ step.label }}</span>
+            <strong>{{ step.title }}</strong>
+            <p>{{ step.description }}</p>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="destinations-section" aria-labelledby="destinations-lenses-title">
+    <div class="destinations-section__inner">
+      <div class="destinations-section__head">
+        <p class="destinations-section__kicker">{{ copy.lenses_kicker }}</p>
+        <h2 id="destinations-lenses-title">{{ copy.lenses_title }}</h2>
+        <p>{{ copy.lenses_lead }}</p>
+      </div>
+
+      <div class="destinations-lens-grid">
+        {% for lens in destination_lenses %}
+          <article class="destination-lens-card">
+            <div class="destination-lens-card__top">
+              <span>{{ lens.number }}</span>
+              <em>{{ lens.label }}</em>
+            </div>
+            <h3>{{ lens.title }}</h3>
+            <p>{{ lens.description }}</p>
+            <strong>{{ lens.signal }}</strong>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="destinations-section destinations-style-layer" aria-labelledby="destinations-style-title">
+    <div class="destinations-section__inner">
+      <div class="destinations-section__head">
+        <p class="destinations-section__kicker">{{ copy.styles_kicker }}</p>
+        <h2 id="destinations-style-title">{{ copy.styles_title }}</h2>
+        <p>{{ copy.styles_lead }}</p>
+      </div>
+
+      <div class="destinations-style-grid">
+        {% for style in style_lenses %}
+          <a class="destination-style-card" href="{{ style.href }}">
+            <span>{{ style.signal }}</span>
+            <h3>{{ style.title }}</h3>
+            <p>{{ style.description }}</p>
+            <strong>{{ copy.open_style_label }}</strong>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="destinations-section destinations-method" aria-labelledby="destinations-method-title">
+    <div class="destinations-method__inner">
+      <div>
+        <p class="destinations-section__kicker">{{ copy.method_kicker }}</p>
+        <h2 id="destinations-method-title">{{ copy.method_title }}</h2>
+        <p>{{ copy.method_lead }}</p>
+      </div>
+
+      <div class="destinations-method__cards">
+        {% for method in method_cards %}
+          <article>
+            <span>{{ method.label }}</span>
+            <strong>{{ method.value }}</strong>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="destinations-final" aria-labelledby="destinations-final-title">
+    <div class="destinations-final__inner">
+      <p class="destinations-section__kicker">{{ copy.final_kicker }}</p>
+      <h2 id="destinations-final-title">{{ copy.final_title }}</h2>
+      <p>{{ copy.final_lead }}</p>
+
+      <div class="destinations-actions">
+        <a class="destinations-button destinations-button--primary" href="/{{ lang }}/compare/">
+          {{ copy.compare_action }}
+        </a>
+        <a class="destinations-button destinations-button--secondary" href="/{{ lang }}/tools/find-your-match/">
+          {{ copy.primary_action }}
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}
+
+{% block main %}{{ self.content() }}{% endblock %}
+{% block body %}{{ self.content() }}{% endblock %}

@@ -116,7 +116,7 @@
         <a class="home-hero__button home-hero__button--primary" href="/{{ page_lang }}/#match">
           {{ hero.primary }}
         </a>
-        <a class="home-hero__button home-hero__button--secondary" href="/{{ page_lang }}/#compare">
+        <a class="home-hero__button home-hero__button--secondary" href="/{{ page_lang }}/compare/">
           {{ hero.secondary }}
         </a>
       </div>
@@ -248,7 +248,7 @@
     </div>
 
     <div class="home-section-cta">
-      <a href="{{ url_experience_types_index|default(base_url ~ '/' ~ lang ~ '/experience/') }}"
+      <a href="/{{ page_lang }}/styles/"
          class="button button--secondary">
         {{ styles_cta|default('Explore All 17 Styles') }}
       </a>

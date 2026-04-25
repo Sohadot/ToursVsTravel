@@ -1,0 +1,124 @@
+{% extends "layouts/base.html" %}
+{% block title %}{{ seo.title }}{% endblock %}
+{% block meta_description %}{{ seo.description }}{% endblock %}
+{% block canonical %}{{ canonical_url }}{% endblock %}
+{% block content %}
+<div class="compare-page page-compare" dir="{{ page_dir }}">
+  <section class="compare-hero" aria-labelledby="compare-title">
+    <div class="compare-hero__inner">
+      <div class="compare-hero__content">
+        <p class="compare-eyebrow">
+          {{ copy.eyebrow }}
+        </p>
+        <h1 id="compare-title" class="compare-title">
+          {{ copy.title }}
+        </h1>
+        <p class="compare-lead">
+          {{ copy.lead }}
+        </p>
+        <div class="compare-actions" aria-label="{{ copy.actions_label }}">
+          <a class="compare-button compare-button--primary" href="/{{ lang }}/styles/">
+            {{ copy.primary_action }}
+          </a>
+          <a class="compare-button compare-button--secondary" href="/{{ lang }}/methodology/">
+            {{ copy.secondary_action }}
+          </a>
+        </div>
+      </div>
+      <aside class="compare-hero__panel" aria-label="{{ copy.system_panel_label }}">
+        {% for item in system_cards %}
+          <article class="compare-system-card">
+            <span>{{ item.label }}</span>
+            <strong>{{ item.value }}</strong>
+          </article>
+        {% endfor %}
+      </aside>
+    </div>
+  </section>
+
+  <section class="compare-section" aria-labelledby="compare-criteria-title">
+    <div class="compare-section__head">
+      <p class="compare-section__kicker">{{ copy.criteria_kicker }}</p>
+      <h2 id="compare-criteria-title">{{ copy.criteria_title }}</h2>
+      <p>{{ copy.criteria_lead }}</p>
+    </div>
+    <div class="compare-criteria-grid">
+      {% for criterion in criteria %}
+        <article class="compare-criterion-card">
+          <div class="compare-criterion-card__top">
+            <span>{{ criterion.display_order }}</span>
+            <strong>{{ criterion.weight }}%</strong>
+          </div>
+          <h3>{{ criterion.title }}</h3>
+          <p>{{ criterion.description }}</p>
+          <div class="compare-criterion-card__meaning">
+            <span>{{ copy.low_label }}: {{ criterion.low_meaning }}</span>
+            <span>{{ copy.high_label }}: {{ criterion.high_meaning }}</span>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="compare-section compare-pairs" aria-labelledby="compare-pairs-title">
+    <div class="compare-section__head">
+      <p class="compare-section__kicker">{{ copy.pairs_kicker }}</p>
+      <h2 id="compare-pairs-title">{{ copy.pairs_title }}</h2>
+      <p>{{ copy.pairs_lead }}</p>
+    </div>
+    <div class="compare-pair-grid">
+      {% for pair in featured_pairs %}
+        <article class="compare-pair-card">
+          <div class="compare-pair-card__styles">
+            <a href="{{ pair.a.href }}">{{ pair.a.title }}</a>
+            <span aria-hidden="true">vs</span>
+            <a href="{{ pair.b.href }}">{{ pair.b.title }}</a>
+          </div>
+          <p>{{ pair.summary }}</p>
+          <div class="compare-pair-card__signals">
+            <span>{{ copy.signal_label }}: {{ pair.signal }}</span>
+            <a href="/{{ lang }}/styles/">{{ copy.explore_styles_label }}</a>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="compare-method" aria-labelledby="compare-method-title">
+    <div class="compare-method__inner">
+      <div>
+        <p class="compare-section__kicker">{{ copy.method_kicker }}</p>
+        <h2 id="compare-method-title">{{ copy.method_title }}</h2>
+        <p>{{ copy.method_lead }}</p>
+      </div>
+      <div class="compare-method__steps">
+        {% for step in method_steps %}
+          <article>
+            <span>{{ step.number }}</span>
+            <strong>{{ step.title }}</strong>
+            <p>{{ step.text }}</p>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="compare-final-cta" aria-labelledby="compare-final-title">
+    <div class="compare-final-cta__inner">
+      <p class="compare-section__kicker">{{ copy.final_kicker }}</p>
+      <h2 id="compare-final-title">{{ copy.final_title }}</h2>
+      <p>{{ copy.final_lead }}</p>
+      <div class="compare-actions">
+        <a class="compare-button compare-button--primary" href="/{{ lang }}/styles/">
+          {{ copy.primary_action }}
+        </a>
+        <a class="compare-button compare-button--secondary" href="/{{ lang }}/methodology/">
+          {{ copy.secondary_action }}
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}
+{% block main %}{{ self.content() }}{% endblock %}
+{% block body %}{{ self.content() }}{% endblock %}

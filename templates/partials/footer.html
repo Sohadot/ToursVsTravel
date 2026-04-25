@@ -38,7 +38,7 @@
         <ul class="site-footer__list" role="list">
           <li><a href="{{ url_compare_index|default(base_url ~ '/' ~ lang ~ '/compare/') }}">{{ nav_compare|default('Compare') }}</a></li>
           <li><a href="{{ url_destinations_index|default(base_url ~ '/' ~ lang ~ '/destinations/') }}">{{ nav_destinations|default('Destinations') }}</a></li>
-          <li><a href="{{ url_experience_types_index|default(base_url ~ '/' ~ lang ~ '/experience/') }}">{{ footer_styles_label|default('17 Styles') }}</a></li>
+          <li><a href="/{{ lang|default('en') }}/styles/">{{ footer_styles_label|default('17 Styles') }}</a></li>
           <li><a href="{{ url_tools_index|default(base_url ~ '/' ~ lang ~ '/tools/') }}">{{ nav_tools|default('Tools') }}</a></li>
         </ul>
       </section>

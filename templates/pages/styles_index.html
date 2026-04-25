@@ -1,0 +1,115 @@
+{% extends "layouts/base.html" %}
+{% block title %}{{ seo.title }}{% endblock %}
+{% block meta_description %}{{ seo.description }}{% endblock %}
+{% block canonical %}{{ canonical_url }}{% endblock %}
+{% block content %}
+<div class="styles-index-page page-styles-index" dir="{{ page_dir }}">
+  <section class="styles-index-hero" aria-labelledby="styles-index-title">
+    <div class="styles-index-hero__inner">
+      <div class="styles-index-hero__content">
+        <p class="styles-index-eyebrow">
+          {{ style_count }} {{ copy.styles_label }} · {{ copy.criteria_label }} · {{ copy.reference_label }}
+        </p>
+        <h1 id="styles-index-title" class="styles-index-title">
+          {{ copy.title }}
+        </h1>
+        <p class="styles-index-lead">
+          {{ copy.lead }}
+        </p>
+        <div class="styles-index-actions" aria-label="{{ copy.actions_label }}">
+          <a class="styles-index-button styles-index-button--primary" href="/{{ lang }}/#comparison-entry">
+            {{ copy.primary_action }}
+          </a>
+          <a class="styles-index-button styles-index-button--secondary" href="/{{ lang }}/methodology/">
+            {{ copy.secondary_action }}
+          </a>
+        </div>
+      </div>
+      <aside class="styles-index-hero__panel" aria-label="{{ copy.system_panel_label }}">
+        <div class="styles-index-system-card">
+          <span>{{ copy.system_label }}</span>
+          <strong>{{ copy.system_value }}</strong>
+        </div>
+        <div class="styles-index-system-card">
+          <span>{{ copy.output_label }}</span>
+          <strong>{{ copy.output_value }}</strong>
+        </div>
+        <div class="styles-index-system-card">
+          <span>{{ copy.scope_label }}</span>
+          <strong>{{ style_count }} {{ copy.scope_value }}</strong>
+        </div>
+      </aside>
+    </div>
+  </section>
+  <section class="styles-index-section" aria-labelledby="styles-index-grid-title">
+    <div class="styles-index-section__head">
+      <p class="styles-index-section__kicker">{{ copy.grid_kicker }}</p>
+      <h2 id="styles-index-grid-title">{{ copy.grid_title }}</h2>
+      <p>{{ copy.grid_lead }}</p>
+    </div>
+    <div class="styles-index-grid">
+      {% for style in styles %}
+        <a class="styles-index-card" href="{{ style.href }}" aria-label="{{ style.title }}">
+          <div class="styles-index-card__top">
+            <span class="styles-index-card__number">{{ style.display_order }}</span>
+            <span class="styles-index-card__family">{{ style.family_label }}</span>
+          </div>
+          <h3>{{ style.title }}</h3>
+          {% if style.short_label %}
+            <p class="styles-index-card__short">{{ style.short_label }}</p>
+          {% endif %}
+          <p class="styles-index-card__summary">
+            {{ style.summary }}
+          </p>
+          <div class="styles-index-card__meta">
+            {% if style.primary_strength %}
+              <span>{{ copy.strength_label }}: {{ style.primary_strength }}</span>
+            {% endif %}
+            <span>{{ copy.open_label }}</span>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </section>
+  <section class="styles-index-section styles-index-method" aria-labelledby="styles-method-title">
+    <div class="styles-index-method__inner">
+      <div>
+        <p class="styles-index-section__kicker">{{ copy.method_kicker }}</p>
+        <h2 id="styles-method-title">{{ copy.method_title }}</h2>
+        <p>{{ copy.method_lead }}</p>
+      </div>
+      <div class="styles-index-method__cards">
+        <article>
+          <span>{{ copy.method_card_1_label }}</span>
+          <strong>{{ copy.method_card_1_value }}</strong>
+        </article>
+        <article>
+          <span>{{ copy.method_card_2_label }}</span>
+          <strong>{{ copy.method_card_2_value }}</strong>
+        </article>
+        <article>
+          <span>{{ copy.method_card_3_label }}</span>
+          <strong>{{ copy.method_card_3_value }}</strong>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section class="styles-index-final-cta" aria-labelledby="styles-final-title">
+    <div class="styles-index-final-cta__inner">
+      <p class="styles-index-section__kicker">{{ copy.final_kicker }}</p>
+      <h2 id="styles-final-title">{{ copy.final_title }}</h2>
+      <p>{{ copy.final_lead }}</p>
+      <div class="styles-index-actions">
+        <a class="styles-index-button styles-index-button--primary" href="/{{ lang }}/#comparison-entry">
+          {{ copy.primary_action }}
+        </a>
+        <a class="styles-index-button styles-index-button--secondary" href="/{{ lang }}/methodology/">
+          {{ copy.secondary_action }}
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}
+{% block main %}{{ self.content() }}{% endblock %}
+{% block body %}{{ self.content() }}{% endblock %}

@@ -9,6 +9,12 @@
     return JSON.parse(node.textContent);
   }
 
+  function formatTemplate(template, values) {
+    return String(template || "")
+      .replace(/\{answered\}/g, String(values.answered))
+      .replace(/\{total\}/g, String(values.total));
+  }
+
   function normalizeCriterion(score, direction, positive) {
     var numeric = Number(score);
     if (!Number.isFinite(numeric)) {
@@ -145,6 +151,7 @@
     var total = Number(config.questionCount || 6);
     var answered = selected.length;
     var percent = Math.min(100, Math.round((answered / total) * 100));
+
     var bar = root.querySelector("[data-match-progress-bar]");
     var text = root.querySelector("[data-match-progress-text]");
 
@@ -153,10 +160,15 @@
     }
 
     if (text) {
-      var template = config.copy && config.copy.progressTemplate;
-      text.textContent = template
-        ? template.replace("{answered}", String(answered)).replace("{total}", String(total))
-        : answered + " of " + total + " questions answered";
+      var template =
+        config.copy && config.copy.progressTemplate
+          ? config.copy.progressTemplate
+          : "{answered} of {total} questions answered";
+
+      text.textContent = formatTemplate(template, {
+        answered: answered,
+        total: total
+      });
     }
   }
 

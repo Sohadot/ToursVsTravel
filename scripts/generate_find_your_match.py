@@ -179,13 +179,439 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
 
 QUESTION_COPY: Dict[str, List[Dict[str, Any]]] = {
     "en": [
-        {"id": "structure", "label": "How much structure do you want?", "hint": "Structure determines whether the trip feels planned, flexible, or fully self-directed.", "options": [{"id": "high", "label": "High structure", "description": "I want a defined plan, route, or operating frame."}, {"id": "balanced", "label": "Balanced structure", "description": "I want structure, but not rigidity."}, {"id": "low", "label": "Low structure", "description": "I want freedom to shape the trip as it unfolds."}]},
-        {"id": "autonomy", "label": "How much autonomy do you want?", "hint": "Autonomy measures how much control you want over timing, movement, and decisions.", "options": [{"id": "guided", "label": "Low autonomy", "description": "I prefer someone else to handle many decisions."}, {"id": "mixed", "label": "Shared autonomy", "description": "I want guidance but still want meaningful choice."}, {"id": "high", "label": "High autonomy", "description": "I want to control the experience directly."}]},
-        {"id": "support", "label": "How much support do you need?", "hint": "Support includes logistics, safety, translation, local access, and problem-solving.", "options": [{"id": "high", "label": "High support", "description": "I want strong assistance and reduced friction."}, {"id": "medium", "label": "Moderate support", "description": "I can manage some things, but not everything."}, {"id": "low", "label": "Low support", "description": "I am comfortable solving problems myself."}]},
-        {"id": "complexity", "label": "How much complexity can you manage?", "hint": "Some styles require planning, adaptation, uncertainty, and operational effort.", "options": [{"id": "low", "label": "Low complexity", "description": "I want the trip to be easy to operate."}, {"id": "medium", "label": "Moderate complexity", "description": "I can handle some moving parts."}, {"id": "high", "label": "High complexity", "description": "I can handle uncertainty, planning, and adaptation."}]},
-        {"id": "depth", "label": "How deep do you want the experience to be?", "hint": "Depth measures whether the trip is primarily comfortable, balanced, or immersive.", "options": [{"id": "surface", "label": "Light experience", "description": "I want comfort, ease, and selected highlights."}, {"id": "balanced", "label": "Balanced experience", "description": "I want both comfort and meaningful exposure."}, {"id": "deep", "label": "Deep experience", "description": "I want immersion, texture, and direct contact with place."}]},
-        {"id": "predictability", "label": "How predictable should the trip feel?", "hint": "Predictability affects comfort, risk, flexibility, and emotional load.", "options": [{"id": "high", "label": "Highly predictable", "description": "I want clarity before I commit."}, {"id": "medium", "label": "Moderately predictable", "description": "I accept some uncertainty."}, {"id": "low", "label": "Low predictability", "description": "I welcome discovery, ambiguity, and change."}]},
-    ]
+        {
+            "id": "structure",
+            "label": "How much structure do you want?",
+            "hint": "Structure determines whether the trip feels planned, flexible, or fully self-directed.",
+            "options": [
+                {"id": "high", "label": "High structure", "description": "I want a defined plan, route, or operating frame."},
+                {"id": "balanced", "label": "Balanced structure", "description": "I want structure, but not rigidity."},
+                {"id": "low", "label": "Low structure", "description": "I want freedom to shape the trip as it unfolds."},
+            ],
+        },
+        {
+            "id": "autonomy",
+            "label": "How much autonomy do you want?",
+            "hint": "Autonomy measures how much control you want over timing, movement, and decisions.",
+            "options": [
+                {"id": "guided", "label": "Low autonomy", "description": "I prefer someone else to handle many decisions."},
+                {"id": "mixed", "label": "Shared autonomy", "description": "I want guidance but still want meaningful choice."},
+                {"id": "high", "label": "High autonomy", "description": "I want to control the experience directly."},
+            ],
+        },
+        {
+            "id": "support",
+            "label": "How much support do you need?",
+            "hint": "Support includes logistics, safety, translation, local access, and problem-solving.",
+            "options": [
+                {"id": "high", "label": "High support", "description": "I want strong assistance and reduced friction."},
+                {"id": "medium", "label": "Moderate support", "description": "I can manage some things, but not everything."},
+                {"id": "low", "label": "Low support", "description": "I am comfortable solving problems myself."},
+            ],
+        },
+        {
+            "id": "complexity",
+            "label": "How much complexity can you manage?",
+            "hint": "Some styles require planning, adaptation, uncertainty, and operational effort.",
+            "options": [
+                {"id": "low", "label": "Low complexity", "description": "I want the trip to be easy to operate."},
+                {"id": "medium", "label": "Moderate complexity", "description": "I can handle some moving parts."},
+                {"id": "high", "label": "High complexity", "description": "I can handle uncertainty, planning, and adaptation."},
+            ],
+        },
+        {
+            "id": "depth",
+            "label": "How deep do you want the experience to be?",
+            "hint": "Depth measures whether the trip is primarily comfortable, balanced, or immersive.",
+            "options": [
+                {"id": "surface", "label": "Light experience", "description": "I want comfort, ease, and selected highlights."},
+                {"id": "balanced", "label": "Balanced experience", "description": "I want both comfort and meaningful exposure."},
+                {"id": "deep", "label": "Deep experience", "description": "I want immersion, texture, and direct contact with place."},
+            ],
+        },
+        {
+            "id": "predictability",
+            "label": "How predictable should the trip feel?",
+            "hint": "Predictability affects comfort, risk, flexibility, and emotional load.",
+            "options": [
+                {"id": "high", "label": "Highly predictable", "description": "I want clarity before I commit."},
+                {"id": "medium", "label": "Moderately predictable", "description": "I accept some uncertainty."},
+                {"id": "low", "label": "Low predictability", "description": "I welcome discovery, ambiguity, and change."},
+            ],
+        },
+    ],
+    "ar": [
+        {
+            "id": "structure",
+            "label": "ما مقدار البنية التي تريدها في الرحلة؟",
+            "hint": "البنية تحدد هل تبدو الرحلة مخططة، مرنة، أم موجهة بالكامل من طرفك.",
+            "options": [
+                {"id": "high", "label": "بنية عالية", "description": "أريد خطة واضحة أو مسارًا محددًا أو إطارًا منظّمًا."},
+                {"id": "balanced", "label": "بنية متوازنة", "description": "أريد تنظيمًا يساعدني، لكن دون صرامة زائدة."},
+                {"id": "low", "label": "بنية منخفضة", "description": "أريد حرية تشكيل الرحلة حسب ما يحدث في الطريق."},
+            ],
+        },
+        {
+            "id": "autonomy",
+            "label": "ما مقدار الاستقلالية التي تريدها؟",
+            "hint": "الاستقلالية تعني مقدار التحكم الذي تريده في الوقت والحركة والقرارات.",
+            "options": [
+                {"id": "guided", "label": "استقلالية منخفضة", "description": "أفضل أن يتولى شخص أو نظام آخر جزءًا كبيرًا من القرارات."},
+                {"id": "mixed", "label": "استقلالية مشتركة", "description": "أريد توجيهًا واضحًا مع بقاء مساحة حقيقية للاختيار."},
+                {"id": "high", "label": "استقلالية عالية", "description": "أريد التحكم المباشر في التجربة ومسارها."},
+            ],
+        },
+        {
+            "id": "support",
+            "label": "ما مقدار الدعم الذي تحتاجه؟",
+            "hint": "الدعم يشمل اللوجستيك، السلامة، اللغة، الوصول المحلي، وحل المشاكل.",
+            "options": [
+                {"id": "high", "label": "دعم عالٍ", "description": "أريد مساعدة قوية وتقليل الاحتكاك والتعقيد."},
+                {"id": "medium", "label": "دعم متوسط", "description": "أستطيع تدبير بعض الأمور، لكن لا أريد تحمل كل شيء وحدي."},
+                {"id": "low", "label": "دعم منخفض", "description": "أنا مرتاح في حل المشاكل والتعامل مع المواقف بنفسي."},
+            ],
+        },
+        {
+            "id": "complexity",
+            "label": "ما مقدار التعقيد الذي تستطيع تحمّله؟",
+            "hint": "بعض أنماط السفر تحتاج تخطيطًا، تكيّفًا، عدم يقين، وجهدًا تشغيليًا.",
+            "options": [
+                {"id": "low", "label": "تعقيد منخفض", "description": "أريد رحلة سهلة التشغيل وقليلة المشاكل."},
+                {"id": "medium", "label": "تعقيد متوسط", "description": "أستطيع التعامل مع بعض التفاصيل المتحركة."},
+                {"id": "high", "label": "تعقيد عالٍ", "description": "أستطيع تحمل عدم اليقين والتخطيط والتكيّف المستمر."},
+            ],
+        },
+        {
+            "id": "depth",
+            "label": "ما عمق التجربة الذي تريده؟",
+            "hint": "عمق التجربة يحدد هل تبحث عن راحة، توازن، أم انغماس مباشر في المكان.",
+            "options": [
+                {"id": "surface", "label": "تجربة خفيفة", "description": "أريد راحة وسهولة وأبرز النقاط المختارة."},
+                {"id": "balanced", "label": "تجربة متوازنة", "description": "أريد راحة مع تعرض حقيقي ومعنى أعمق."},
+                {"id": "deep", "label": "تجربة عميقة", "description": "أريد انغماسًا واحتكاكًا مباشرًا بالمكان وتفاصيله."},
+            ],
+        },
+        {
+            "id": "predictability",
+            "label": "إلى أي درجة يجب أن تكون الرحلة قابلة للتوقع؟",
+            "hint": "قابلية التوقع تؤثر على الراحة، المخاطرة، المرونة، والضغط النفسي.",
+            "options": [
+                {"id": "high", "label": "قابلية توقع عالية", "description": "أريد وضوحًا كبيرًا قبل الالتزام."},
+                {"id": "medium", "label": "قابلية توقع متوسطة", "description": "أقبل قدرًا محدودًا من عدم اليقين."},
+                {"id": "low", "label": "قابلية توقع منخفضة", "description": "أرحب بالاكتشاف والغموض والتغير."},
+            ],
+        },
+    ],
+    "fr": [
+        {
+            "id": "structure",
+            "label": "Quel niveau de structure souhaitez-vous ?",
+            "hint": "La structure détermine si le voyage est planifié, flexible ou entièrement autonome.",
+            "options": [
+                {"id": "high", "label": "Structure élevée", "description": "Je veux un plan, un itinéraire ou un cadre clair."},
+                {"id": "balanced", "label": "Structure équilibrée", "description": "Je veux de la structure, mais sans rigidité excessive."},
+                {"id": "low", "label": "Structure faible", "description": "Je veux façonner le voyage au fur et à mesure."},
+            ],
+        },
+        {
+            "id": "autonomy",
+            "label": "Quel niveau d’autonomie souhaitez-vous ?",
+            "hint": "L’autonomie mesure le contrôle voulu sur le temps, les déplacements et les décisions.",
+            "options": [
+                {"id": "guided", "label": "Faible autonomie", "description": "Je préfère que beaucoup de décisions soient prises pour moi."},
+                {"id": "mixed", "label": "Autonomie partagée", "description": "Je veux être guidé tout en gardant de vrais choix."},
+                {"id": "high", "label": "Forte autonomie", "description": "Je veux contrôler directement l’expérience."},
+            ],
+        },
+        {
+            "id": "support",
+            "label": "De quel niveau de soutien avez-vous besoin ?",
+            "hint": "Le soutien inclut la logistique, la sécurité, la langue, l’accès local et la résolution de problèmes.",
+            "options": [
+                {"id": "high", "label": "Soutien élevé", "description": "Je veux une assistance forte et moins de friction."},
+                {"id": "medium", "label": "Soutien modéré", "description": "Je peux gérer certaines choses, mais pas tout."},
+                {"id": "low", "label": "Soutien faible", "description": "Je suis à l’aise pour résoudre les problèmes moi-même."},
+            ],
+        },
+        {
+            "id": "complexity",
+            "label": "Quel niveau de complexité pouvez-vous gérer ?",
+            "hint": "Certains styles demandent planification, adaptation, incertitude et effort opérationnel.",
+            "options": [
+                {"id": "low", "label": "Complexité faible", "description": "Je veux un voyage facile à gérer."},
+                {"id": "medium", "label": "Complexité modérée", "description": "Je peux gérer quelques éléments mouvants."},
+                {"id": "high", "label": "Complexité élevée", "description": "Je peux gérer incertitude, planification et adaptation."},
+            ],
+        },
+        {
+            "id": "depth",
+            "label": "Quelle profondeur d’expérience recherchez-vous ?",
+            "hint": "La profondeur indique si le voyage est confortable, équilibré ou immersif.",
+            "options": [
+                {"id": "surface", "label": "Expérience légère", "description": "Je veux confort, simplicité et points forts sélectionnés."},
+                {"id": "balanced", "label": "Expérience équilibrée", "description": "Je veux à la fois confort et exposition significative."},
+                {"id": "deep", "label": "Expérience profonde", "description": "Je veux immersion, texture et contact direct avec le lieu."},
+            ],
+        },
+        {
+            "id": "predictability",
+            "label": "À quel point le voyage doit-il être prévisible ?",
+            "hint": "La prévisibilité influence le confort, le risque, la flexibilité et la charge émotionnelle.",
+            "options": [
+                {"id": "high", "label": "Très prévisible", "description": "Je veux de la clarté avant de m’engager."},
+                {"id": "medium", "label": "Modérément prévisible", "description": "J’accepte une part d’incertitude."},
+                {"id": "low", "label": "Peu prévisible", "description": "J’accueille découverte, ambiguïté et changement."},
+            ],
+        },
+    ],
+    "es": [
+        {
+            "id": "structure",
+            "label": "¿Cuánta estructura quieres?",
+            "hint": "La estructura determina si el viaje se siente planificado, flexible o completamente autodirigido.",
+            "options": [
+                {"id": "high", "label": "Alta estructura", "description": "Quiero un plan, ruta o marco definido."},
+                {"id": "balanced", "label": "Estructura equilibrada", "description": "Quiero estructura, pero sin rigidez."},
+                {"id": "low", "label": "Baja estructura", "description": "Quiero libertad para moldear el viaje sobre la marcha."},
+            ],
+        },
+        {
+            "id": "autonomy",
+            "label": "¿Cuánta autonomía quieres?",
+            "hint": "La autonomía mide cuánto control quieres sobre tiempos, movimientos y decisiones.",
+            "options": [
+                {"id": "guided", "label": "Baja autonomía", "description": "Prefiero que muchas decisiones las gestione otra persona o sistema."},
+                {"id": "mixed", "label": "Autonomía compartida", "description": "Quiero orientación, pero también elecciones reales."},
+                {"id": "high", "label": "Alta autonomía", "description": "Quiero controlar directamente la experiencia."},
+            ],
+        },
+        {
+            "id": "support",
+            "label": "¿Cuánto apoyo necesitas?",
+            "hint": "El apoyo incluye logística, seguridad, idioma, acceso local y resolución de problemas.",
+            "options": [
+                {"id": "high", "label": "Alto apoyo", "description": "Quiero asistencia fuerte y menos fricción."},
+                {"id": "medium", "label": "Apoyo moderado", "description": "Puedo manejar algunas cosas, pero no todo."},
+                {"id": "low", "label": "Bajo apoyo", "description": "Me siento cómodo resolviendo problemas por mi cuenta."},
+            ],
+        },
+        {
+            "id": "complexity",
+            "label": "¿Cuánta complejidad puedes manejar?",
+            "hint": "Algunos estilos requieren planificación, adaptación, incertidumbre y esfuerzo operativo.",
+            "options": [
+                {"id": "low", "label": "Baja complejidad", "description": "Quiero un viaje fácil de gestionar."},
+                {"id": "medium", "label": "Complejidad moderada", "description": "Puedo manejar algunas partes móviles."},
+                {"id": "high", "label": "Alta complejidad", "description": "Puedo manejar incertidumbre, planificación y adaptación."},
+            ],
+        },
+        {
+            "id": "depth",
+            "label": "¿Qué profundidad de experiencia buscas?",
+            "hint": "La profundidad indica si el viaje es cómodo, equilibrado o inmersivo.",
+            "options": [
+                {"id": "surface", "label": "Experiencia ligera", "description": "Quiero comodidad, facilidad y puntos destacados."},
+                {"id": "balanced", "label": "Experiencia equilibrada", "description": "Quiero comodidad y exposición significativa."},
+                {"id": "deep", "label": "Experiencia profunda", "description": "Quiero inmersión y contacto directo con el lugar."},
+            ],
+        },
+        {
+            "id": "predictability",
+            "label": "¿Qué tan predecible debe sentirse el viaje?",
+            "hint": "La previsibilidad afecta comodidad, riesgo, flexibilidad y carga emocional.",
+            "options": [
+                {"id": "high", "label": "Muy predecible", "description": "Quiero claridad antes de comprometerme."},
+                {"id": "medium", "label": "Moderadamente predecible", "description": "Acepto algo de incertidumbre."},
+                {"id": "low", "label": "Poco predecible", "description": "Acepto descubrimiento, ambigüedad y cambio."},
+            ],
+        },
+    ],
+    "de": [
+        {
+            "id": "structure",
+            "label": "Wie viel Struktur möchtest du?",
+            "hint": "Struktur bestimmt, ob die Reise geplant, flexibel oder vollständig selbstgesteuert wirkt.",
+            "options": [
+                {"id": "high", "label": "Hohe Struktur", "description": "Ich möchte einen klaren Plan, eine Route oder einen Rahmen."},
+                {"id": "balanced", "label": "Ausgewogene Struktur", "description": "Ich möchte Struktur, aber keine starre Planung."},
+                {"id": "low", "label": "Geringe Struktur", "description": "Ich möchte die Reise unterwegs frei gestalten."},
+            ],
+        },
+        {
+            "id": "autonomy",
+            "label": "Wie viel Autonomie möchtest du?",
+            "hint": "Autonomie misst, wie viel Kontrolle du über Zeit, Bewegung und Entscheidungen willst.",
+            "options": [
+                {"id": "guided", "label": "Geringe Autonomie", "description": "Ich bevorzuge, dass viele Entscheidungen übernommen werden."},
+                {"id": "mixed", "label": "Geteilte Autonomie", "description": "Ich möchte Führung, aber weiterhin echte Wahlmöglichkeiten."},
+                {"id": "high", "label": "Hohe Autonomie", "description": "Ich möchte die Erfahrung direkt kontrollieren."},
+            ],
+        },
+        {
+            "id": "support",
+            "label": "Wie viel Unterstützung brauchst du?",
+            "hint": "Unterstützung umfasst Logistik, Sicherheit, Sprache, lokalen Zugang und Problemlösung.",
+            "options": [
+                {"id": "high", "label": "Hohe Unterstützung", "description": "Ich möchte starke Hilfe und weniger Reibung."},
+                {"id": "medium", "label": "Mäßige Unterstützung", "description": "Ich kann einiges selbst regeln, aber nicht alles."},
+                {"id": "low", "label": "Geringe Unterstützung", "description": "Ich löse Probleme gern selbst."},
+            ],
+        },
+        {
+            "id": "complexity",
+            "label": "Wie viel Komplexität kannst du bewältigen?",
+            "hint": "Einige Stile erfordern Planung, Anpassung, Unsicherheit und operativen Aufwand.",
+            "options": [
+                {"id": "low", "label": "Geringe Komplexität", "description": "Ich möchte eine leicht zu organisierende Reise."},
+                {"id": "medium", "label": "Mittlere Komplexität", "description": "Ich kann einige bewegliche Teile handhaben."},
+                {"id": "high", "label": "Hohe Komplexität", "description": "Ich kann Unsicherheit, Planung und Anpassung bewältigen."},
+            ],
+        },
+        {
+            "id": "depth",
+            "label": "Wie tief soll die Erfahrung sein?",
+            "hint": "Tiefe beschreibt, ob die Reise komfortabel, ausgewogen oder immersiv ist.",
+            "options": [
+                {"id": "surface", "label": "Leichte Erfahrung", "description": "Ich möchte Komfort, Einfachheit und ausgewählte Höhepunkte."},
+                {"id": "balanced", "label": "Ausgewogene Erfahrung", "description": "Ich möchte Komfort und sinnvolle Begegnung."},
+                {"id": "deep", "label": "Tiefe Erfahrung", "description": "Ich möchte Immersion und direkten Kontakt mit dem Ort."},
+            ],
+        },
+        {
+            "id": "predictability",
+            "label": "Wie vorhersehbar soll die Reise sein?",
+            "hint": "Vorhersehbarkeit beeinflusst Komfort, Risiko, Flexibilität und emotionale Belastung.",
+            "options": [
+                {"id": "high", "label": "Sehr vorhersehbar", "description": "Ich möchte Klarheit, bevor ich mich festlege."},
+                {"id": "medium", "label": "Mäßig vorhersehbar", "description": "Ich akzeptiere etwas Unsicherheit."},
+                {"id": "low", "label": "Wenig vorhersehbar", "description": "Ich begrüße Entdeckung, Mehrdeutigkeit und Veränderung."},
+            ],
+        },
+    ],
+    "zh": [
+        {
+            "id": "structure",
+            "label": "你希望旅程有多少结构？",
+            "hint": "结构决定旅程是计划明确、灵活，还是完全由你自主推动。",
+            "options": [
+                {"id": "high", "label": "高度结构化", "description": "我希望有明确计划、路线或运行框架。"},
+                {"id": "balanced", "label": "平衡结构", "description": "我希望有结构，但不想过度僵化。"},
+                {"id": "low", "label": "低结构", "description": "我希望旅程可以随着过程自由展开。"},
+            ],
+        },
+        {
+            "id": "autonomy",
+            "label": "你希望有多少自主性？",
+            "hint": "自主性衡量你想控制时间、移动和决策的程度。",
+            "options": [
+                {"id": "guided", "label": "低自主性", "description": "我希望很多决策由他人或系统处理。"},
+                {"id": "mixed", "label": "共享自主性", "description": "我需要指导，但也希望保留真正选择。"},
+                {"id": "high", "label": "高自主性", "description": "我希望直接控制体验本身。"},
+            ],
+        },
+        {
+            "id": "support",
+            "label": "你需要多少支持？",
+            "hint": "支持包括物流、安全、语言、本地接入和问题解决。",
+            "options": [
+                {"id": "high", "label": "高支持", "description": "我希望有强支持并减少摩擦。"},
+                {"id": "medium", "label": "中等支持", "description": "我能处理一些事情，但不想全部自己承担。"},
+                {"id": "low", "label": "低支持", "description": "我可以自己解决问题。"},
+            ],
+        },
+        {
+            "id": "complexity",
+            "label": "你能处理多少复杂度？",
+            "hint": "一些旅行方式需要计划、适应、不确定性和操作努力。",
+            "options": [
+                {"id": "low", "label": "低复杂度", "description": "我希望旅程容易操作。"},
+                {"id": "medium", "label": "中等复杂度", "description": "我可以处理一些变化因素。"},
+                {"id": "high", "label": "高复杂度", "description": "我可以处理不确定性、计划和适应。"},
+            ],
+        },
+        {
+            "id": "depth",
+            "label": "你希望体验有多深？",
+            "hint": "深度衡量旅程主要是舒适、平衡，还是沉浸式体验。",
+            "options": [
+                {"id": "surface", "label": "轻度体验", "description": "我想要舒适、轻松和精选亮点。"},
+                {"id": "balanced", "label": "平衡体验", "description": "我想兼顾舒适与有意义的接触。"},
+                {"id": "deep", "label": "深度体验", "description": "我想要沉浸、细节和与地点直接接触。"},
+            ],
+        },
+        {
+            "id": "predictability",
+            "label": "旅程需要多可预测？",
+            "hint": "可预测性影响舒适、风险、灵活性和情绪负担。",
+            "options": [
+                {"id": "high", "label": "高度可预测", "description": "我希望在决定前有清晰预期。"},
+                {"id": "medium", "label": "中等可预测", "description": "我接受一定不确定性。"},
+                {"id": "low", "label": "低可预测", "description": "我欢迎发现、模糊和变化。"},
+            ],
+        },
+    ],
+    "ja": [
+        {
+            "id": "structure",
+            "label": "どの程度の構造を望みますか？",
+            "hint": "構造は、旅が計画的、柔軟、または完全に自己主導かを決めます。",
+            "options": [
+                {"id": "high", "label": "高い構造", "description": "明確な計画、ルート、または運用枠組みが欲しい。"},
+                {"id": "balanced", "label": "バランス型構造", "description": "構造は欲しいが、硬直的すぎるのは避けたい。"},
+                {"id": "low", "label": "低い構造", "description": "旅の流れに合わせて自由に形作りたい。"},
+            ],
+        },
+        {
+            "id": "autonomy",
+            "label": "どの程度の自律性を望みますか？",
+            "hint": "自律性は、時間、移動、意思決定をどれだけ自分で制御したいかを示します。",
+            "options": [
+                {"id": "guided", "label": "低い自律性", "description": "多くの判断は他者や仕組みに任せたい。"},
+                {"id": "mixed", "label": "共有型自律性", "description": "案内は欲しいが、意味のある選択も残したい。"},
+                {"id": "high", "label": "高い自律性", "description": "体験を直接コントロールしたい。"},
+            ],
+        },
+        {
+            "id": "support",
+            "label": "どの程度の支援が必要ですか？",
+            "hint": "支援には、物流、安全、言語、現地アクセス、問題解決が含まれます。",
+            "options": [
+                {"id": "high", "label": "高い支援", "description": "強い支援と少ない摩擦を望む。"},
+                {"id": "medium", "label": "中程度の支援", "description": "一部は自分で対応できるが、全部は避けたい。"},
+                {"id": "low", "label": "低い支援", "description": "問題を自分で解決することに抵抗がない。"},
+            ],
+        },
+        {
+            "id": "complexity",
+            "label": "どの程度の複雑さを扱えますか？",
+            "hint": "一部のスタイルは、計画、適応、不確実性、運用努力を必要とします。",
+            "options": [
+                {"id": "low", "label": "低い複雑さ", "description": "運用しやすい旅にしたい。"},
+                {"id": "medium", "label": "中程度の複雑さ", "description": "いくつかの変動要素には対応できる。"},
+                {"id": "high", "label": "高い複雑さ", "description": "不確実性、計画、適応を扱える。"},
+            ],
+        },
+        {
+            "id": "depth",
+            "label": "どの程度深い体験を望みますか？",
+            "hint": "深度は、旅が快適中心、バランス型、または没入型かを示します。",
+            "options": [
+                {"id": "surface", "label": "軽い体験", "description": "快適さ、簡単さ、選ばれた見どころを重視したい。"},
+                {"id": "balanced", "label": "バランス型体験", "description": "快適さと意味のある接触の両方が欲しい。"},
+                {"id": "deep", "label": "深い体験", "description": "没入感、土地の質感、直接的な接触を求めたい。"},
+            ],
+        },
+        {
+            "id": "predictability",
+            "label": "旅はどの程度予測可能であるべきですか？",
+            "hint": "予測可能性は、快適さ、リスク、柔軟性、心理的負荷に影響します。",
+            "options": [
+                {"id": "high", "label": "高い予測可能性", "description": "決める前に明確さが欲しい。"},
+                {"id": "medium", "label": "中程度の予測可能性", "description": "ある程度の不確実性は受け入れられる。"},
+                {"id": "low", "label": "低い予測可能性", "description": "発見、曖昧さ、変化を歓迎する。"},
+            ],
+        },
+    ],
 }
 
 ANSWER_SCORING: Dict[str, Dict[str, Dict[str, Any]]] = {
@@ -228,6 +654,52 @@ CRITERIA_DIRECTIONS = {
     "depth_of_experience": "higher",
     "predictability": "higher",
     "traveler_type_fit": "higher",
+}
+
+
+TOOL_UI_COPY: Dict[str, Dict[str, str]] = {
+    "en": {
+        "scoreLabel": "Match score",
+        "openLabel": "Open reference page",
+        "alsoConsider": "Also consider",
+        "progressTemplate": "{answered} of {total} questions answered",
+    },
+    "ar": {
+        "scoreLabel": "درجة الملاءمة",
+        "openLabel": "افتح الصفحة المرجعية",
+        "alsoConsider": "ضع في الاعتبار أيضًا",
+        "progressTemplate": "{answered} من {total} أسئلة تمت الإجابة عنها",
+    },
+    "fr": {
+        "scoreLabel": "Score d’adéquation",
+        "openLabel": "Ouvrir la page de référence",
+        "alsoConsider": "À considérer aussi",
+        "progressTemplate": "{answered} question(s) sur {total} répondue(s)",
+    },
+    "es": {
+        "scoreLabel": "Puntuación de ajuste",
+        "openLabel": "Abrir página de referencia",
+        "alsoConsider": "También considerar",
+        "progressTemplate": "{answered} de {total} preguntas respondidas",
+    },
+    "de": {
+        "scoreLabel": "Passungswert",
+        "openLabel": "Referenzseite öffnen",
+        "alsoConsider": "Auch erwägen",
+        "progressTemplate": "{answered} von {total} Fragen beantwortet",
+    },
+    "zh": {
+        "scoreLabel": "匹配分数",
+        "openLabel": "打开参考页面",
+        "alsoConsider": "也可考虑",
+        "progressTemplate": "已回答 {answered} / {total} 个问题",
+    },
+    "ja": {
+        "scoreLabel": "適合スコア",
+        "openLabel": "参照ページを開く",
+        "alsoConsider": "こちらも検討",
+        "progressTemplate": "{total}問中{answered}問回答済み",
+    },
 }
 
 
@@ -403,7 +875,7 @@ def _normalize_styles(payload: Mapping[str, Any], lang: str) -> List[Dict[str, A
 
 
 def _method_cards(lang: str) -> List[Dict[str, str]]:
-    cards = {
+    cards: Dict[str, List[Dict[str, str]]] = {
         "en": [
             {"label": "Criteria", "value": "Answers weight the six TourVsTravel comparison criteria."},
             {"label": "Axes", "value": "Structural traits such as autonomy, support, and predictability refine the match."},
@@ -415,11 +887,32 @@ def _method_cards(lang: str) -> List[Dict[str, str]]:
             {"label": "المخرج", "value": "يظهر أقوى نمط مع بدائل قريبة وروابط مرجعية مباشرة."},
         ],
         "fr": [
-            {"label": "Critères", "value": "Les réponses pondèrent les six critères TourVsTravel."},
-            {"label": "Axes", "value": "Autonomie, soutien et prévisibilité affinent le résultat."},
-            {"label": "Sortie", "value": "Le style le plus fort et des alternatives proches sont affichés."},
+            {"label": "Critères", "value": "Les réponses pondèrent les six critères de comparaison TourVsTravel."},
+            {"label": "Axes", "value": "L’autonomie, le soutien et la prévisibilité affinent le résultat."},
+            {"label": "Sortie", "value": "Le style le plus fort et des alternatives proches sont affichés avec des liens directs."},
+        ],
+        "es": [
+            {"label": "Criterios", "value": "Las respuestas ponderan los seis criterios de comparación de TourVsTravel."},
+            {"label": "Ejes", "value": "Autonomía, apoyo y previsibilidad refinan el ajuste."},
+            {"label": "Resultado", "value": "Se muestra el estilo más fuerte y alternativas cercanas con enlaces directos."},
+        ],
+        "de": [
+            {"label": "Kriterien", "value": "Die Antworten gewichten die sechs TourVsTravel-Vergleichskriterien."},
+            {"label": "Achsen", "value": "Autonomie, Unterstützung und Vorhersehbarkeit verfeinern die Passung."},
+            {"label": "Ausgabe", "value": "Der stärkste Stil und nahe Alternativen werden mit direkten Referenzlinks gezeigt."},
+        ],
+        "zh": [
+            {"label": "标准", "value": "答案会为 TourVsTravel 的六项比较标准赋予权重。"},
+            {"label": "轴线", "value": "自主性、支持和可预测性等结构特征会细化匹配结果。"},
+            {"label": "输出", "value": "显示最强匹配以及相近备选项，并提供直接参考链接。"},
+        ],
+        "ja": [
+            {"label": "基準", "value": "回答は TourVsTravel の6つの比較基準に重みを与えます。"},
+            {"label": "軸", "value": "自律性、支援、予測可能性などの構造的特徴が一致を調整します。"},
+            {"label": "出力", "value": "最も強いスタイルと近い代替案が参照リンク付きで表示されます。"},
         ],
     }
+
     return cards.get(lang, cards["en"])
 
 
@@ -517,6 +1010,7 @@ def _build_context(site_config: Mapping[str, Any], styles_payload: Mapping[str, 
     copy = PAGE_COPY.get(lang, PAGE_COPY["en"])
     questions = _fallback_questions(lang)
     styles = _normalize_styles(styles_payload, lang)
+    tool_ui_copy = TOOL_UI_COPY.get(lang, TOOL_UI_COPY["en"])
     logo_url = _resolve_logo_path(site_config)
     canonical_url = f"{base_url}/{lang}/tools/find-your-match/"
     title = f"{copy['title']} | {site_name}"
@@ -543,7 +1037,7 @@ def _build_context(site_config: Mapping[str, Any], styles_payload: Mapping[str, 
         "style_count": len(styles),
         "tool_config": {
             "lang": lang,
-            "copy": {"scoreLabel": copy["score_label"], "openLabel": copy["open_label"], "progressTemplate": copy["progress_template"]},
+            "copy": tool_ui_copy,
             "criteriaDirections": CRITERIA_DIRECTIONS,
             "answerScoring": ANSWER_SCORING,
             "styles": styles,

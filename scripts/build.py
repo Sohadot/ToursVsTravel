@@ -168,6 +168,7 @@ def _ensure_safe_output_dir(output_dir: Path) -> Path:
                 "Refusing in-repository output directory outside the sanctioned build target. "
                 f"Allowed: {allowed_in_repo_output}; got: {resolved}"
             )
+        return resolved
 
     for sensitive in SENSITIVE_REPO_PATHS:
         sensitive_resolved = sensitive.resolve()

@@ -67,6 +67,7 @@ from scripts.generate_styles_index import (
     generate_styles_index_pages,
 )
 from scripts.generate_compare import GenerateCompareError, generate_compare_pages
+from scripts.generate_tools import GenerateToolsError, generate_tools_pages
 from scripts.generate_experience_types import (
     GenerateExperienceTypesError,
     generate_experience_type_pages,
@@ -310,6 +311,16 @@ def _run_compare_generation(*, stage_dir: Path) -> int:
     return count
 
 
+def _run_tools_generation(*, stage_dir: Path) -> int:
+    written = generate_tools_pages(
+        requested_lang=None,
+        output_dir=stage_dir,
+    )
+    count = len(written)
+    log.info("Generated tools pages: %d", count)
+    return count
+
+
 def _run_experience_type_generation(*, stage_dir: Path) -> int:
     written = generate_experience_type_pages(
         requested_lang=None,
@@ -431,6 +442,7 @@ def _verify_sitemap_contract(stage_dir: Path) -> None:
         "/en/",
         "/en/methodology/",
         "/en/compare/",
+        "/en/tools/",
         "/en/styles/guided-group-tour/",
     ]
 
@@ -472,6 +484,7 @@ def _verify_output_contract(stage_dir: Path) -> None:
         _require_file(stage_dir / lang / "methodology" / "index.html")
         _require_file(stage_dir / lang / "styles" / "index.html")
         _require_file(stage_dir / lang / "compare" / "index.html")
+        _require_file(stage_dir / lang / "tools" / "index.html")
 
     _require_file(stage_dir / "en" / "styles" / "guided-group-tour" / "index.html")
 
@@ -576,22 +589,25 @@ def run_build(
         log.info("Step 6: Generate multilingual compare pages")
         _run_compare_generation(stage_dir=stage_dir)
 
-        log.info("Step 7: Generate multilingual experience type pages")
+        log.info("Step 7: Generate multilingual tools pages")
+        _run_tools_generation(stage_dir=stage_dir)
+
+        log.info("Step 8: Generate multilingual experience type pages")
         _run_experience_type_generation(stage_dir=stage_dir)
 
-        log.info("Step 8: Generate robots.txt")
+        log.info("Step 9: Generate robots.txt")
         _run_robots_generation(stage_dir=stage_dir)
 
-        log.info("Step 9: Generate sitemap.xml")
+        log.info("Step 10: Generate sitemap.xml")
         _run_sitemap_generation(stage_dir=stage_dir)
 
-        log.info("Step 10: Create .nojekyll")
+        log.info("Step 11: Create .nojekyll")
         _write_nojekyll(stage_dir)
 
-        log.info("Step 11: Verify staged output")
+        log.info("Step 12: Verify staged output")
         _verify_output_contract(stage_dir)
 
-        log.info("Step 12: Promote staged output")
+        log.info("Step 13: Promote staged output")
         _promote_stage_to_final(stage_dir, final_output_dir)
 
     except Exception:
@@ -647,6 +663,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         GenerateMethodologyError,
         GenerateStylesIndexError,
         GenerateCompareError,
+        GenerateToolsError,
         GenerateExperienceTypesError,
         GenerateRobotsError,
         GenerateSitemapError,

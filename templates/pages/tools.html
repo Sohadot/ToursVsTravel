@@ -1,0 +1,130 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}{{ seo.title }}{% endblock %}
+{% block meta_description %}{{ seo.description }}{% endblock %}
+{% block canonical %}{{ canonical_url }}{% endblock %}
+
+{% block content %}
+<div class="tools-page page-tools" dir="{{ page_dir }}">
+  <section class="tools-hero" aria-labelledby="tools-title">
+    <div class="tools-hero__inner">
+      <div class="tools-hero__content">
+        <p class="tools-eyebrow">
+          {{ copy.eyebrow }}
+        </p>
+
+        <h1 id="tools-title" class="tools-title">
+          {{ copy.title }}
+        </h1>
+
+        <p class="tools-lead">
+          {{ copy.lead }}
+        </p>
+
+        <div class="tools-actions" aria-label="{{ copy.actions_label }}">
+          <a class="tools-button tools-button--primary" href="/{{ lang }}/compare/">
+            {{ copy.primary_action }}
+          </a>
+          <a class="tools-button tools-button--secondary" href="/{{ lang }}/styles/">
+            {{ copy.secondary_action }}
+          </a>
+        </div>
+      </div>
+
+      <aside class="tools-hero__panel" aria-label="{{ copy.panel_label }}">
+        <article class="tools-signal-card">
+          <span>{{ copy.panel_card_1_label }}</span>
+          <strong>{{ copy.panel_card_1_value }}</strong>
+        </article>
+
+        <article class="tools-signal-card">
+          <span>{{ copy.panel_card_2_label }}</span>
+          <strong>{{ copy.panel_card_2_value }}</strong>
+        </article>
+
+        <article class="tools-signal-card">
+          <span>{{ copy.panel_card_3_label }}</span>
+          <strong>{{ tool_count }} {{ copy.panel_card_3_value }}</strong>
+        </article>
+      </aside>
+    </div>
+  </section>
+
+  <section class="tools-section" aria-labelledby="tools-grid-title">
+    <div class="tools-section__head">
+      <p class="tools-section__kicker">{{ copy.grid_kicker }}</p>
+      <h2 id="tools-grid-title">{{ copy.grid_title }}</h2>
+      <p>{{ copy.grid_lead }}</p>
+    </div>
+
+    <div class="tools-grid">
+      {% for tool in tools %}
+        <article class="tool-card tool-card--{{ tool.status_key }}">
+          <div class="tool-card__top">
+            <span class="tool-card__status">{{ tool.status }}</span>
+            <span class="tool-card__type">{{ tool.type }}</span>
+          </div>
+
+          <h3>{{ tool.title }}</h3>
+          <p>{{ tool.description }}</p>
+
+          <ul class="tool-card__signals" aria-label="{{ copy.signals_label }}">
+            {% for signal in tool.signals %}
+              <li>{{ signal }}</li>
+            {% endfor %}
+          </ul>
+
+          {% if tool.href %}
+            <a class="tool-card__link" href="{{ tool.href }}">
+              {{ tool.action }}
+            </a>
+          {% else %}
+            <span class="tool-card__link tool-card__link--disabled">
+              {{ tool.action }}
+            </span>
+          {% endif %}
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="tools-section tools-system" aria-labelledby="tools-system-title">
+    <div class="tools-system__inner">
+      <div>
+        <p class="tools-section__kicker">{{ copy.system_kicker }}</p>
+        <h2 id="tools-system-title">{{ copy.system_title }}</h2>
+        <p>{{ copy.system_lead }}</p>
+      </div>
+
+      <div class="tools-system__steps">
+        {% for step in system_steps %}
+          <article>
+            <span>{{ step.label }}</span>
+            <strong>{{ step.value }}</strong>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="tools-section tools-final" aria-labelledby="tools-final-title">
+    <div class="tools-final__inner">
+      <p class="tools-section__kicker">{{ copy.final_kicker }}</p>
+      <h2 id="tools-final-title">{{ copy.final_title }}</h2>
+      <p>{{ copy.final_lead }}</p>
+
+      <div class="tools-actions">
+        <a class="tools-button tools-button--primary" href="/{{ lang }}/compare/">
+          {{ copy.primary_action }}
+        </a>
+        <a class="tools-button tools-button--secondary" href="/{{ lang }}/methodology/">
+          {{ copy.methodology_action }}
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}
+
+{% block main %}{{ self.content() }}{% endblock %}
+{% block body %}{{ self.content() }}{% endblock %}

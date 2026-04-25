@@ -702,13 +702,17 @@ def _resolve_manifest_url(site_config: Mapping[str, Any]) -> Optional[str]:
 
 
 def _resolve_brand_asset_urls(site_config: Mapping[str, Any]) -> Dict[str, Optional[str]]:
-    brand_logo = _get_nested(site_config, ("brand", "logo"), default={})
-    brand_logo = _ensure_mapping(brand_logo, "site_config.brand.logo") if brand_logo else {}
+    brand_logo = _get_nested(
+        site_config,
+        ("branding", "logo"),
+        default=_get_nested(site_config, ("brand", "logo"), default={}),
+    )
+    brand_logo = _ensure_mapping(brand_logo, "site_config.branding.logo") if brand_logo else {}
 
-    icon_path = brand_logo.get("icon_path", "/static/img/brand/logo-icon.jpg")
+    icon_path = brand_logo.get("icon_path", "/static/img/brand/logo-icon.webp")
     icon_url = _require_existing_asset(
-        _ensure_string(icon_path, "site_config.brand.logo.icon_path"),
-        "brand.logo.icon_path",
+        _ensure_string(icon_path, "site_config.branding.logo.icon_path"),
+        "branding.logo.icon_path",
     )
 
     lockup_url: Optional[str] = None
@@ -716,14 +720,14 @@ def _resolve_brand_asset_urls(site_config: Mapping[str, Any]) -> Dict[str, Optio
 
     if "lockup_path" in brand_logo:
         lockup_url = _require_existing_asset(
-            _ensure_string(brand_logo["lockup_path"], "site_config.brand.logo.lockup_path"),
-            "brand.logo.lockup_path",
+            _ensure_string(brand_logo["lockup_path"], "site_config.branding.logo.lockup_path"),
+            "branding.logo.lockup_path",
         )
 
     if "wordmark_path" in brand_logo:
         wordmark_url = _require_existing_asset(
-            _ensure_string(brand_logo["wordmark_path"], "site_config.brand.logo.wordmark_path"),
-            "brand.logo.wordmark_path",
+            _ensure_string(brand_logo["wordmark_path"], "site_config.branding.logo.wordmark_path"),
+            "branding.logo.wordmark_path",
         )
 
     return {

@@ -1,105 +1,70 @@
-<header class="site-header" role="banner">
-  <div class="site-header__inner container">
-    <a href="{{ url_home|default(base_url ~ '/' ~ lang ~ '/') }}"
-       class="brand-lockup"
-       aria-label="{{ site_name|default('TourVsTravel') }}">
-      <span class="brand-lockup__icon-wrap" aria-hidden="true">
-        <img
-          src="{{ base_url }}/static/img/brand/logo-icon.svg"
-          alt=""
-          class="brand-lockup__icon"
-          width="40"
-          height="40"
-          loading="eager"
-          decoding="async"
-        >
-      </span>
+{% set page_lang = lang|default(current_lang|default(language|default('en'))) %}
 
-      <span class="brand-lockup__wordmark">
-        <span class="brand-lockup__tour">Tour</span><span class="brand-lockup__vs">Vs</span><span class="brand-lockup__travel">Travel</span><span class="brand-lockup__tld">.com</span>
+<header class="site-header" role="banner">
+  <div class="site-header__inner">
+    <a class="site-brand" href="/{{ page_lang }}/" aria-label="TourVsTravel home">
+      <img
+        class="site-brand__icon"
+        src="/static/img/brand/logo-icon.webp"
+        alt=""
+        width="44"
+        height="44"
+        decoding="async"
+      >
+      <span class="site-brand__wordmark">
+        <span class="site-brand__tour">Tour</span><span class="site-brand__vs">VS</span><span class="site-brand__travel">Travel</span><span class="site-brand__dot">.com</span>
       </span>
     </a>
 
-    <nav class="primary-nav" aria-label="{{ primary_nav_label|default('Primary navigation') }}">
-      <button
-        class="primary-nav__toggle"
-        type="button"
-        aria-expanded="false"
-        aria-controls="primary-nav-menu"
-        data-nav-toggle
-      >
-        <span class="primary-nav__toggle-line" aria-hidden="true"></span>
-        <span class="primary-nav__toggle-line" aria-hidden="true"></span>
-        <span class="primary-nav__toggle-line" aria-hidden="true"></span>
-        <span class="sr-only">{{ menu_label|default('Menu') }}</span>
-      </button>
-
-      <div id="primary-nav-menu" class="primary-nav__menu" data-nav-menu>
-        <ul class="primary-nav__list" role="list">
-          <li class="primary-nav__item">
-            <a href="{{ url_home|default(base_url ~ '/' ~ lang ~ '/') }}"
-               class="primary-nav__link {% if active_nav == 'home' %}is-active{% endif %}">
-              {{ nav_home|default('Home') }}
-            </a>
-          </li>
-
-          <li class="primary-nav__item">
-            <a href="{{ url_compare_index|default(base_url ~ '/' ~ lang ~ '/compare/') }}"
-               class="primary-nav__link {% if active_nav == 'compare' %}is-active{% endif %}">
-              {{ nav_compare|default('Compare') }}
-            </a>
-          </li>
-
-          <li class="primary-nav__item">
-            <a href="{{ url_destinations_index|default(base_url ~ '/' ~ lang ~ '/destinations/') }}"
-               class="primary-nav__link {% if active_nav == 'destinations' %}is-active{% endif %}">
-              {{ nav_destinations|default('Destinations') }}
-            </a>
-          </li>
-
-          <li class="primary-nav__item">
-            <a href="{{ url_tools_index|default(base_url ~ '/' ~ lang ~ '/tools/') }}"
-               class="primary-nav__link {% if active_nav == 'tools' %}is-active{% endif %}">
-              {{ nav_tools|default('Tools') }}
-            </a>
-          </li>
-
-          <li class="primary-nav__item">
-            <a href="{{ url_methodology|default(base_url ~ '/' ~ lang ~ '/methodology/') }}"
-               class="primary-nav__link {% if active_nav == 'methodology' %}is-active{% endif %}">
-              {{ nav_methodology|default('Methodology') }}
-            </a>
-          </li>
-
-          <li class="primary-nav__item">
-            <a href="{{ url_report_index|default(base_url ~ '/' ~ lang ~ '/reports/') }}"
-               class="primary-nav__link {% if active_nav == 'report' %}is-active{% endif %}">
-              {{ nav_report|default('Report') }}
-            </a>
-          </li>
-        </ul>
-
-        <div class="primary-nav__meta">
-          {% if hreflang and hreflang|length > 1 %}
-          <div class="language-switcher" aria-label="{{ language_switcher_label|default('Language switcher') }}">
-            {% for h in hreflang %}
-              {% set is_current_lang = (h.lang == lang) or (h.lang == current_hreflang|default(lang)) %}
-              <a href="{{ h.url }}"
-                 hreflang="{{ h.lang }}"
-                 class="language-switcher__link {% if is_current_lang %}is-active{% endif %}"
-                 {% if is_current_lang %}aria-current="true"{% endif %}>
-                {{ h.lang|upper }}
-              </a>
-            {% endfor %}
-          </div>
-          {% endif %}
-
-          <a href="{{ url_primary_cta|default(base_url ~ '/' ~ lang ~ '/tools/travel-decision-compass/') }}"
-             class="button button--primary site-header__cta">
-            {{ primary_cta_label|default('Find Your Match') }}
-          </a>
-        </div>
-      </div>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="/{{ page_lang }}/" class="site-nav__link">Home</a>
+      <a href="/{{ page_lang }}/#compare" class="site-nav__link">Compare</a>
+      <a href="/{{ page_lang }}/#destinations" class="site-nav__link">Destinations</a>
+      <a href="/{{ page_lang }}/#tools" class="site-nav__link">Tools</a>
+      <a href="/{{ page_lang }}/methodology/" class="site-nav__link">Methodology</a>
+      <a href="/{{ page_lang }}/#report" class="site-nav__link">Report</a>
     </nav>
+
+    <div class="site-header__right">
+      <nav class="language-switcher" aria-label="Language selection">
+        <a class="language-switcher__item{% if page_lang == 'en' %} is-active{% endif %}" href="/en/">EN</a>
+        <a class="language-switcher__item{% if page_lang == 'ar' %} is-active{% endif %}" href="/ar/">AR</a>
+        <a class="language-switcher__item{% if page_lang == 'fr' %} is-active{% endif %}" href="/fr/">FR</a>
+        <a class="language-switcher__item{% if page_lang == 'es' %} is-active{% endif %}" href="/es/">ES</a>
+        <a class="language-switcher__item{% if page_lang == 'de' %} is-active{% endif %}" href="/de/">DE</a>
+        <a class="language-switcher__item{% if page_lang == 'zh' %} is-active{% endif %}" href="/zh/">ZH-CN</a>
+        <a class="language-switcher__item{% if page_lang == 'ja' %} is-active{% endif %}" href="/ja/">JA</a>
+      </nav>
+
+      <a class="site-header__cta" href="/{{ page_lang }}/#comparison-entry">
+        Find Your Match
+      </a>
+
+      <details class="mobile-menu">
+        <summary class="mobile-menu__button" aria-label="Open navigation menu">
+          Menu
+        </summary>
+
+        <div class="mobile-menu__panel">
+          <a href="/{{ page_lang }}/">Home</a>
+          <a href="/{{ page_lang }}/#compare">Compare</a>
+          <a href="/{{ page_lang }}/#destinations">Destinations</a>
+          <a href="/{{ page_lang }}/#tools">Tools</a>
+          <a href="/{{ page_lang }}/methodology/">Methodology</a>
+          <a href="/{{ page_lang }}/#report">Report</a>
+          <a class="mobile-menu__cta" href="/{{ page_lang }}/#comparison-entry">Find Your Match</a>
+
+          <div class="mobile-menu__langs" aria-label="Language selection">
+            <a href="/en/">EN</a>
+            <a href="/ar/">AR</a>
+            <a href="/fr/">FR</a>
+            <a href="/es/">ES</a>
+            <a href="/de/">DE</a>
+            <a href="/zh/">ZH-CN</a>
+            <a href="/ja/">JA</a>
+          </div>
+        </div>
+      </details>
+    </div>
   </div>
 </header>

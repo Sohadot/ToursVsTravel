@@ -1,53 +1,157 @@
 {% extends "layouts/base.html" %}
 
 {% block content %}
-<section class="section">
-  <div class="container">
-    <div class="home-hero surface-card">
-      <div class="home-hero__inner">
-        <div class="home-hero__copy">
-          <p class="home-hero__eyebrow">
-            {{ home_eyebrow|default('17 travel styles • 200 destinations • evidence-led comparison') }}
-          </p>
+{% set page_lang = lang|default(current_lang|default(language|default('en'))) %}
 
-          <h1 class="section__heading">
-            {{ home_heading|default('Same Destination. Different Stories.') }}
-          </h1>
+{% set hero_copy = {
+  'en': {
+    'eyebrow': '17 Travel Styles • 200 Destinations • Evidence-Led Comparison',
+    'title': 'Same Destination. Different Stories.',
+    'body': 'TourVsTravel helps you compare how people move through the world across distinct travel styles. We do not sell one answer. We help you choose the path that fits your intent, your budget, and your way of experiencing place.',
+    'primary': 'Find Your Match',
+    'secondary': 'Start Comparing',
+    'principle_1_label': 'System role',
+    'principle_1_text': 'Decision architecture for travel choices',
+    'principle_2_label': 'Method',
+    'principle_2_text': 'Compare constraints, tradeoffs, and fit',
+    'principle_3_label': 'Output',
+    'principle_3_text': 'Clearer choice before commitment'
+  },
+  'ar': {
+    'eyebrow': '17 نمط سفر • 200 وجهة • مقارنة مبنية على الدليل',
+    'title': 'نفس الوجهة. قصص مختلفة.',
+    'body': 'يساعدك TourVsTravel على مقارنة الطرق المختلفة التي يتحرك بها الناس عبر العالم. نحن لا نبيع جوابًا واحدًا. نحن نساعدك على اختيار المسار الذي يناسب نيتك وميزانيتك وطريقتك في عيش المكان.',
+    'primary': 'اعرف الأنسب لك',
+    'secondary': 'ابدأ المقارنة',
+    'principle_1_label': 'دور النظام',
+    'principle_1_text': 'هندسة قرار لاختيار شكل السفر',
+    'principle_2_label': 'المنهج',
+    'principle_2_text': 'مقارنة القيود والمفاضلات والملاءمة',
+    'principle_3_label': 'النتيجة',
+    'principle_3_text': 'اختيار أوضح قبل الالتزام'
+  },
+  'fr': {
+    'eyebrow': '17 styles de voyage • 200 destinations • comparaison fondée sur des critères',
+    'title': 'Même destination. Histoires différentes.',
+    'body': 'TourVsTravel compare les différentes façons de voyager selon les contraintes, les intentions, le budget et la manière d’expérimenter un lieu.',
+    'primary': 'Trouver mon style',
+    'secondary': 'Commencer la comparaison',
+    'principle_1_label': 'Rôle du système',
+    'principle_1_text': 'Architecture de décision pour les choix de voyage',
+    'principle_2_label': 'Méthode',
+    'principle_2_text': 'Comparer contraintes, compromis et adéquation',
+    'principle_3_label': 'Résultat',
+    'principle_3_text': 'Un choix plus clair avant l’engagement'
+  },
+  'es': {
+    'eyebrow': '17 estilos de viaje • 200 destinos • comparación basada en evidencia',
+    'title': 'Mismo destino. Historias diferentes.',
+    'body': 'TourVsTravel compara distintas formas de viajar según intención, presupuesto, restricciones y manera de experimentar un lugar.',
+    'primary': 'Encuentra tu ajuste',
+    'secondary': 'Empezar a comparar',
+    'principle_1_label': 'Rol del sistema',
+    'principle_1_text': 'Arquitectura de decisión para elegir cómo viajar',
+    'principle_2_label': 'Método',
+    'principle_2_text': 'Comparar restricciones, compensaciones y ajuste',
+    'principle_3_label': 'Resultado',
+    'principle_3_text': 'Una elección más clara antes de comprometerse'
+  },
+  'de': {
+    'eyebrow': '17 Reisestile • 200 Reiseziele • evidenzbasierter Vergleich',
+    'title': 'Gleiches Ziel. Andere Geschichten.',
+    'body': 'TourVsTravel vergleicht verschiedene Arten des Reisens nach Absicht, Budget, Einschränkungen und Art der Erfahrung.',
+    'primary': 'Passenden Stil finden',
+    'secondary': 'Vergleich starten',
+    'principle_1_label': 'Systemrolle',
+    'principle_1_text': 'Entscheidungsarchitektur für Reiseformen',
+    'principle_2_label': 'Methode',
+    'principle_2_text': 'Einschränkungen, Kompromisse und Passung vergleichen',
+    'principle_3_label': 'Ergebnis',
+    'principle_3_text': 'Klarere Wahl vor der Entscheidung'
+  },
+  'zh': {
+    'eyebrow': '17种旅行方式 • 200个目的地 • 基于证据的比较',
+    'title': '同一个目的地。不同的故事。',
+    'body': 'TourVsTravel 帮助你根据目的、预算、限制与体验方式比较不同旅行形态。',
+    'primary': '找到适合方式',
+    'secondary': '开始比较',
+    'principle_1_label': '系统角色',
+    'principle_1_text': '旅行选择的决策架构',
+    'principle_2_label': '方法',
+    'principle_2_text': '比较限制、取舍与适配度',
+    'principle_3_label': '输出',
+    'principle_3_text': '在承诺之前获得更清晰的选择'
+  },
+  'ja': {
+    'eyebrow': '17の旅行スタイル • 200の目的地 • 根拠に基づく比較',
+    'title': '同じ目的地。異なる物語。',
+    'body': 'TourVsTravel は、目的、予算、制約、場所の体験方法に応じて旅行スタイルを比較するための参照システムです。',
+    'primary': '自分に合う旅を探す',
+    'secondary': '比較を始める',
+    'principle_1_label': 'システムの役割',
+    'principle_1_text': '旅行選択のための意思決定設計',
+    'principle_2_label': '方法',
+    'principle_2_text': '制約、トレードオフ、適合性を比較',
+    'principle_3_label': '結果',
+    'principle_3_text': '決定前により明確な選択へ'
+  }
+} %}
 
-          <p class="section__intro">
-            {{ home_intro|default('TourVsTravel helps you compare how people move through the world across 17 distinct travel styles. We do not sell one answer. We help you choose the path that fits your intent, your budget, and your way of experiencing place.') }}
-          </p>
+{% set hero = hero_copy.get(page_lang, hero_copy['en']) %}
 
-          <div class="home-hero__actions">
-            <a href="{{ url_primary_cta|default(base_url ~ '/' ~ lang ~ '/tools/travel-decision-compass/') }}"
-               class="button button--primary">
-              {{ primary_cta_label|default('Find Your Match') }}
-            </a>
+<section class="home-hero" id="comparison-entry">
+  <div class="home-hero__shell">
+    <div class="home-hero__content">
+      <p class="home-hero__eyebrow">{{ hero.eyebrow }}</p>
 
-            <a href="{{ url_compare_index|default(base_url ~ '/' ~ lang ~ '/compare/') }}"
-               class="button button--secondary">
-              {{ home_secondary_cta|default('Start Comparing') }}
-            </a>
-          </div>
-        </div>
+      <h1 class="home-hero__title">
+        {{ hero.title }}
+      </h1>
 
-        <div class="home-hero__visual surface-card surface-card--soft" aria-hidden="true">
-          <div class="home-hero__visual-frame">
-            <div class="home-hero__vs">VS</div>
-            <div class="home-hero__symbol home-hero__symbol--tour">
-              {{ hero_tour_label|default('Tour') }}
-            </div>
-            <div class="home-hero__symbol home-hero__symbol--travel">
-              {{ hero_travel_label|default('Travel') }}
-            </div>
-          </div>
-        </div>
+      <p class="home-hero__lead">
+        {{ hero.body }}
+      </p>
+
+      <div class="home-hero__actions" aria-label="Primary actions">
+        <a class="home-hero__button home-hero__button--primary" href="/{{ page_lang }}/#match">
+          {{ hero.primary }}
+        </a>
+        <a class="home-hero__button home-hero__button--secondary" href="/{{ page_lang }}/#compare">
+          {{ hero.secondary }}
+        </a>
+      </div>
+
+      <div class="home-hero__principles" aria-label="TourVsTravel operating principles">
+        <article class="home-hero__principle">
+          <span>{{ hero.principle_1_label }}</span>
+          <strong>{{ hero.principle_1_text }}</strong>
+        </article>
+        <article class="home-hero__principle">
+          <span>{{ hero.principle_2_label }}</span>
+          <strong>{{ hero.principle_2_text }}</strong>
+        </article>
+        <article class="home-hero__principle">
+          <span>{{ hero.principle_3_label }}</span>
+          <strong>{{ hero.principle_3_text }}</strong>
+        </article>
       </div>
     </div>
+
+    <aside class="home-hero__visual-card" aria-label="TourVsTravel symbolic journey visual">
+      <img
+        class="home-hero__brand-visual"
+        src="/static/img/brand/brand-journey-visual.webp"
+        alt="Tour versus Travel visual showing a symbolic road between a suitcase and a travel boot"
+        width="1200"
+        height="1200"
+        loading="eager"
+        decoding="async"
+      >
+    </aside>
   </div>
 </section>
 
-<section class="section" id="compare-engine">
+<section class="section" id="compare">
   <div class="container">
     <div class="home-section-head">
       <h2 class="section__heading">
@@ -89,7 +193,7 @@
   </div>
 </section>
 
-<section class="section" id="travel-styles">
+<section class="section" id="destinations">
   <div class="container">
     <div class="home-section-head">
       <h2 class="section__heading">

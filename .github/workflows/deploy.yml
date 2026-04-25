@@ -68,6 +68,7 @@ jobs:
           test -f output/sitemap.xml
           test -f output/CNAME
           test -f output/.nojekyll
+          test -f output/index.html
 
           test -f output/en/index.html
           test -f output/ar/index.html

@@ -51,6 +51,7 @@ from __future__ import annotations
 import argparse
 import logging
 import os
+import re
 import shutil
 import tempfile
 import time
@@ -368,6 +369,33 @@ def _scan_html_forbidden_fragments(stage_dir: Path) -> None:
                 )
 
 
+def _verify_static_asset_references(stage_dir: Path) -> None:
+    static_ref_pattern = re.compile(
+        r"""(?:src|href)=["'](?:https://tourvstravel\.com)?(/static/[^"'\?#]+)""",
+        re.IGNORECASE,
+    )
+
+    for html_file in stage_dir.rglob("*.html"):
+        try:
+            text = html_file.read_text(encoding="utf-8")
+        except UnicodeDecodeError as exc:
+            raise BuildStepError(f"Generated HTML is not valid UTF-8: {html_file}") from exc
+
+        for match in static_ref_pattern.finditer(text):
+            static_path = match.group(1).lstrip("/")
+            asset_path = (stage_dir / static_path).resolve()
+
+            if not _is_relative_to(asset_path, stage_dir.resolve()):
+                raise BuildStepError(
+                    f"Generated HTML references unsafe static asset path {match.group(1)!r} in {html_file}"
+                )
+
+            if not asset_path.is_file():
+                raise BuildStepError(
+                    f"Generated HTML references missing static asset {match.group(1)!r} in {html_file}"
+                )
+
+
 def _verify_sitemap_contract(stage_dir: Path) -> None:
     sitemap_path = stage_dir / "sitemap.xml"
     _require_file(sitemap_path)
@@ -422,6 +450,7 @@ def _verify_output_contract(stage_dir: Path) -> None:
     _verify_experience_type_count(stage_dir)
     _verify_sitemap_contract(stage_dir)
     _scan_html_forbidden_fragments(stage_dir)
+    _verify_static_asset_references(stage_dir)
 
     log.info("Staged output contract verified successfully")
 

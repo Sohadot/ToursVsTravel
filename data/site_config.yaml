@@ -32,9 +32,9 @@ branding:
     text_muted: "#5D6B77"
 
   logo:
-    icon_path: "/static/img/brand/logo-icon.jpg"
-    lockup_path: "/static/img/brand/logo-lockup.jpg"
-    wordmark_path: "/static/img/brand/logo-wordmark.jpg"
+    icon_path: "/static/img/brand/logo-icon.webp"
+    lockup_path: "/static/img/brand/logo-icon.webp"
+    wordmark_path: "/static/img/brand/logo-icon.webp"
 
   wordmark:
     tour: "Tour"

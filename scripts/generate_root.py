@@ -320,7 +320,7 @@ def build_root_entrypoint_html(
 <head>
   <meta charset="utf-8">
   <meta http-equiv="refresh" content="0; url={safe_target_path}">
-  <meta name="robots" content="noindex, follow">
+  <meta name="robots" content="index, follow">
   <link rel="canonical" href="{safe_canonical_url}">
   <title>{safe_site_name}</title>
   <script>

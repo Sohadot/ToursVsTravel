@@ -521,8 +521,6 @@ def build_robots_text(site_config: Mapping[str, Any]) -> str:
             if group.disallow:
                 for item in group.disallow:
                     lines.append(f"Disallow: {item}")
-            else:
-                lines.append("Disallow:")
 
             if group.crawl_delay is not None:
                 lines.append(f"Crawl-delay: {group.crawl_delay}")

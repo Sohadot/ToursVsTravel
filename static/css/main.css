@@ -174,6 +174,35 @@ main {
   flex: 1 0 auto;
 }
 
+.site-frame {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Editorial “authority” pages: dark theme lives on the inner .*-page.page-* shell only.
+   body.page-* remains the global cream layer from base `body` (avoids header/chrome drift). */
+body.page-report .site-main,
+body.page-destinations .site-main,
+body.page-find-match .site-main,
+body.page-compare .site-main,
+body.page-styles-index .site-main {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+body.page-report .report-page.page-report,
+body.page-destinations .destinations-page.page-destinations,
+body.page-find-match .find-match-page.page-find-match,
+body.page-compare .compare-page.page-compare,
+body.page-styles-index .styles-index-page.page-styles-index {
+  flex: 1 0 auto;
+  width: 100%;
+  min-width: 0;
+}
+
 /* ==========================================================================
    5. Header / Navigation
    ========================================================================== */
@@ -3319,7 +3348,7 @@ img {
    templates/pages/styles_index.html
    ========================================================================== */
 
-.page-styles-index {
+.styles-index-page.page-styles-index {
   --styles-bg: #07111f;
   --styles-bg-soft: #0b1728;
   --styles-surface: rgba(255, 255, 255, 0.055);
@@ -3693,15 +3722,15 @@ img {
 }
 
 /* RTL refinement */
-.page-styles-index[dir="rtl"] {
+.styles-index-page.page-styles-index[dir="rtl"] {
   text-align: right;
 }
 
-.page-styles-index[dir="rtl"] .styles-index-system-card::before {
+.styles-index-page.page-styles-index[dir="rtl"] .styles-index-system-card::before {
   inset: 0 0 0 auto;
 }
 
-.page-styles-index[dir="rtl"] .styles-index-card__family {
+.styles-index-page.page-styles-index[dir="rtl"] .styles-index-card__family {
   text-align: left;
 }
 
@@ -3787,7 +3816,7 @@ img {
    templates/pages/compare.html
    ========================================================================== */
 
-.page-compare {
+.compare-page.page-compare {
   --compare-bg: #07111f;
   --compare-bg-soft: #0b1728;
   --compare-surface: rgba(255, 255, 255, 0.058);
@@ -4207,11 +4236,11 @@ img {
   box-shadow: var(--compare-shadow);
 }
 
-.page-compare[dir="rtl"] {
+.compare-page.page-compare[dir="rtl"] {
   text-align: right;
 }
 
-.page-compare[dir="rtl"] .compare-system-card::before {
+.compare-page.page-compare[dir="rtl"] .compare-system-card::before {
   inset: 0 0 0 auto;
 }
 
@@ -4289,7 +4318,7 @@ img {
    templates/pages/find_your_match.html
    ========================================================================== */
 
-.page-find-match {
+.find-match-page.page-find-match {
   --match-bg: #07111f;
   --match-bg-soft: #0b1728;
   --match-surface: rgba(255, 255, 255, 0.055);
@@ -4709,7 +4738,7 @@ img {
   box-shadow: var(--match-shadow);
 }
 
-.page-find-match[dir="rtl"] {
+.find-match-page.page-find-match[dir="rtl"] {
   text-align: right;
 }
 
@@ -4765,7 +4794,7 @@ img {
    “The same place is not the same trip.”
    ========================================================================== */
 
-.page-destinations {
+.destinations-page.page-destinations {
   --dest-bg: #07111f;
   --dest-bg-soft: #0b1728;
   --dest-surface: rgba(255, 255, 255, 0.055);
@@ -5358,7 +5387,7 @@ img {
    Institutional map for templates/pages/report.html
    ========================================================================== */
 
-.page-report {
+.report-page.page-report {
   --rep-bg: #060e18;
   --rep-line: rgba(255, 255, 255, 0.12);
   --rep-line-strong: rgba(201, 166, 70, 0.32);

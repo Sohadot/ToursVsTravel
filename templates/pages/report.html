@@ -1,0 +1,146 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}{{ seo.title }}{% endblock %}
+{% block meta_description %}{{ seo.description }}{% endblock %}
+{% block canonical %}{{ canonical_url }}{% endblock %}
+
+{% block content %}
+<div class="report-page page-report" dir="{{ page_dir }}">
+  <section class="report-hero" aria-labelledby="report-title">
+    <div class="report-hero__inner">
+      <div class="report-hero__content">
+        <p class="report-eyebrow">{{ copy.eyebrow }}</p>
+        <h1 id="report-title" class="report-title">{{ copy.title }}</h1>
+        <p class="report-lead">{{ copy.lead }}</p>
+      </div>
+      <aside class="report-hero__panel" aria-label="{{ copy.panel_label }}">
+        <article>
+          <span>{{ copy.card_thesis }}</span>
+          <strong>{{ copy.card_thesis_value }}</strong>
+        </article>
+        <article>
+          <span>{{ copy.card_layers }}</span>
+          <strong>{{ copy.card_layers_value }}</strong>
+        </article>
+        <article>
+          <span>{{ copy.card_phase }}</span>
+          <strong>{{ copy.card_phase_value }}</strong>
+        </article>
+      </aside>
+    </div>
+  </section>
+
+  <nav class="report-toc" aria-label="{{ copy.toc_title }}">
+    <div class="report-toc__inner">
+      <p class="report-toc__title">{{ copy.toc_title }}</p>
+      <ol class="report-toc__list">
+        {% for section in report_sections %}
+          <li><a href="#report-{{ section.id }}">{{ section.title }}</a></li>
+        {% endfor %}
+      </ol>
+    </div>
+  </nav>
+
+  {% for section in report_sections %}
+    <section
+      class="report-section{% if section.section_type == 'styles' %} report-section--styles{% elif section.section_type == 'criteria' %} report-section--criteria{% endif %}"
+      id="report-{{ section.id }}"
+      aria-labelledby="report-{{ section.id }}-title"
+    >
+      <div class="report-section__inner">
+        <h2 id="report-{{ section.id }}-title" class="report-section__title">{{ section.title }}</h2>
+
+        {% if section.section_type == 'narrative' %}
+          {% if section.paragraphs is defined %}
+            {% for p in section.paragraphs %}
+              <p class="report-section__p">{{ p }}</p>
+            {% endfor %}
+          {% endif %}
+          {% if section.pullquote is defined and section.pullquote %}
+            <blockquote class="report-pullquote">{{ section.pullquote }}</blockquote>
+          {% endif %}
+          {% if section.intro is defined and section.intro %}
+            <p class="report-section__p">{{ section.intro }}</p>
+          {% endif %}
+          {% if section.bullets is defined %}
+            <ul class="report-bullets">
+              {% for item in section.bullets %}
+                <li>{{ item }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+          {% if section.closing is defined and section.closing %}
+            <p class="report-section__p">{{ section.closing }}</p>
+          {% endif %}
+        {% elif section.section_type == 'styles' %}
+          <p class="report-section__p">{{ section.intro }}</p>
+          <div class="report-style-index">
+            <ol class="report-style-index__list">
+              {% for row in section.rows %}
+                <li>
+                  <a href="{{ row.href }}">{{ row.title }}</a>
+                  {% if row.summary %}
+                    <span class="report-style-index__summary">{{ row.summary }}</span>
+                  {% endif %}
+                </li>
+              {% endfor %}
+            </ol>
+            <p class="report-section__cta-inline">
+              <a class="report-button report-button--secondary" href="{{ url_styles }}">{{ copy.cta_styles }}</a>
+            </p>
+          </div>
+        {% elif section.section_type == 'criteria' %}
+          <p class="report-section__p">{{ section.intro }}</p>
+          <div class="report-criteria-grid">
+            {% for row in section.rows %}
+              <article class="report-criterion-card">
+                <div class="report-criterion-card__top">
+                  <span class="report-criterion-card__weight">{{ row.weight }}%</span>
+                  <span class="report-criterion-card__id">{{ row.id }}</span>
+                </div>
+                <h3>{{ row.name }}</h3>
+                <p>{{ row.description }}</p>
+              </article>
+            {% endfor %}
+          </div>
+          <p class="report-section__cta-inline">
+            <a class="report-button report-button--secondary" href="{{ url_compare }}">{{ copy.cta_compare }}</a>
+          </p>
+        {% endif %}
+      </div>
+    </section>
+  {% endfor %}
+
+  <section class="report-system-map" aria-labelledby="report-map-title">
+    <div class="report-system-map__inner">
+      <h2 id="report-map-title">{{ copy.system_map_title }}</h2>
+      <p>{{ copy.system_map_intro }}</p>
+      <ul class="report-system-map__list" role="list">
+        <li><a href="{{ url_styles }}">{{ copy.map_styles }}</a></li>
+        <li><a href="{{ url_compare }}">{{ copy.map_compare }}</a></li>
+        <li><a href="{{ url_tools }}">{{ copy.map_tools }}</a></li>
+        <li><a href="{{ url_find_match }}">{{ copy.map_find_match }}</a></li>
+        <li><a href="{{ url_destinations }}">{{ copy.map_destinations }}</a></li>
+        <li><a href="{{ url_methodology }}">{{ copy.map_methodology }}</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="report-final" aria-labelledby="report-final-title">
+    <div class="report-final__inner">
+      <p class="report-section__kicker">{{ copy.final_kicker }}</p>
+      <h2 id="report-final-title">{{ copy.final_title }}</h2>
+      <p>{{ copy.final_lead }}</p>
+      <div class="report-actions">
+        <a class="report-button report-button--primary" href="{{ url_compare }}">{{ copy.cta_compare }}</a>
+        <a class="report-button report-button--secondary" href="{{ url_find_match }}">{{ copy.cta_match }}</a>
+        <a class="report-button report-button--secondary" href="{{ url_destinations }}">{{ copy.cta_destinations }}</a>
+        <a class="report-button report-button--secondary" href="{{ url_methodology }}">{{ copy.cta_methodology }}</a>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}
+
+{% block main %}{{ self.content() }}{% endblock %}
+{% block body %}{{ self.content() }}{% endblock %}

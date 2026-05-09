@@ -51,7 +51,7 @@
           <li><a href="{{ url_methodology|default(base_url ~ '/' ~ lang ~ '/methodology/') }}">{{ nav_methodology|default('Methodology') }}</a></li>
           <li><a href="{{ url_source_policy|default(base_url ~ '/' ~ lang ~ '/methodology/source-policy/') }}">{{ footer_source_policy_label|default('Source Policy') }}</a></li>
           <li><a href="{{ url_editorial_standards|default(base_url ~ '/' ~ lang ~ '/methodology/editorial-standards/') }}">{{ footer_editorial_label|default('Editorial Standards') }}</a></li>
-          <li><a href="{{ url_report_index|default(base_url ~ '/' ~ lang ~ '/reports/') }}">{{ nav_report|default('Annual Report') }}</a></li>
+          <li><a href="/{{ lang|default('en') }}/report/">{{ footer_reference_report_label|default('Reference Report') }}</a></li>
         </ul>
       </section>
 

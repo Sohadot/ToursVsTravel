@@ -82,6 +82,7 @@ from scripts.seo import (
     build_webpage_jsonld,
     build_website_jsonld,
 )
+from scripts.loaders import resolve_footer_reference_report_label, resolve_nav_report_label
 
 
 # ============================================================================
@@ -1005,6 +1006,7 @@ def build_home_context(
         "nav_tools": _resolve_nav_label(site_config, registry, lang, "tools", "nav_tools"),
         "nav_methodology": _resolve_nav_label(site_config, registry, lang, "methodology", "nav_methodology"),
         "nav_acquire": _resolve_nav_label(site_config, registry, lang, "acquire", "nav_acquire"),
+        "nav_report_label": resolve_nav_report_label(site_config, lang),
 
         # Footer labels
         "footer_about": _resolve_footer_label(site_config, registry, lang, "about", "footer_about"),
@@ -1012,6 +1014,7 @@ def build_home_context(
         "footer_privacy": _resolve_footer_label(site_config, registry, lang, "privacy", "footer_privacy"),
         "footer_terms": _resolve_footer_label(site_config, registry, lang, "terms", "footer_terms"),
         "footer_acquire": _resolve_footer_label(site_config, registry, lang, "acquire", "footer_acquire"),
+        "footer_reference_report_label": resolve_footer_reference_report_label(site_config, lang),
         "footer_note": _resolve_site_summary(site_config, registry, lang) or site_tagline or site_name,
 
         # Accessibility / language switching

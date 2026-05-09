@@ -33,7 +33,12 @@ from urllib.parse import urlparse
 
 from jinja2 import Environment, FileSystemLoader, StrictUndefined, TemplateError, select_autoescape
 
-from scripts.loaders import load_experience_types, load_site_config
+from scripts.loaders import (
+    load_experience_types,
+    load_site_config,
+    resolve_footer_reference_report_label,
+    resolve_nav_report_label,
+)
 
 
 # ============================================================================
@@ -878,6 +883,8 @@ def _build_page_context(
         "page_css_assets": [],
         "page_js_assets": [],
         "active_nav": "styles",
+        "nav_report_label": resolve_nav_report_label(site_config, lang),
+        "footer_reference_report_label": resolve_footer_reference_report_label(site_config, lang),
         "footer_note": "",
     }
 

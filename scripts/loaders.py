@@ -1551,6 +1551,41 @@ def load_comparison_criteria() -> Dict[str, Any]:
     return dict(root)
 
 
+def resolve_nav_report_label(site_config: Mapping[str, Any], lang: str) -> str:
+    """Short nav label for /report/ (ui.nav.report)."""
+    ui = site_config.get("ui")
+    if isinstance(ui, Mapping):
+        nav = ui.get("nav")
+        if isinstance(nav, Mapping):
+            rep = nav.get("report")
+            if isinstance(rep, Mapping):
+                lab = rep.get(lang) or rep.get("en")
+                if isinstance(lab, str) and lab.strip():
+                    return lab.strip()
+    return "Report"
+
+
+def resolve_footer_reference_report_label(site_config: Mapping[str, Any], lang: str) -> str:
+    """
+    Localized label for the Reference Report page link in the footer.
+
+    Source of truth: site_config.ui.footer.reference_report (multilingual map).
+    """
+    ui = site_config.get("ui")
+    if not isinstance(ui, Mapping):
+        return "Reference Report"
+    footer = ui.get("footer")
+    if not isinstance(footer, Mapping):
+        return "Reference Report"
+    ref = footer.get("reference_report")
+    if not isinstance(ref, Mapping):
+        return "Reference Report"
+    label = ref.get(lang) or ref.get("en")
+    if isinstance(label, str) and label.strip():
+        return label
+    return "Reference Report"
+
+
 # ============================================================================
 # Bundled Core Loader
 # ============================================================================

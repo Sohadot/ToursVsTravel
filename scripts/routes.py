@@ -76,6 +76,7 @@ __all__ = [
     "build_tools_index_path",
     "build_methodology_path",
     "build_acquire_path",
+    "build_reference_report_path",
     # Generated route builders
     "build_destination_path",
     "build_experience_type_path",
@@ -129,6 +130,7 @@ SYSTEM_ROUTE_TEMPLATES: Dict[str, str] = {
     "tools": "/{lang}/tools/",
     "methodology": "/{lang}/methodology/",
     "acquire": "/{lang}/acquire/",
+    "reference_report": "/{lang}/report/",
 
     # Generated page families (immutable — cannot be overridden by site_config)
     "destination": "/{lang}/destinations/{destination_id}/",
@@ -144,6 +146,7 @@ STATIC_ROUTE_KEYS: FrozenSet[str] = frozenset({
     "tools",
     "methodology",
     "acquire",
+    "reference_report",
 })
 
 GENERATED_ROUTE_KEYS: FrozenSet[str] = frozenset({
@@ -575,6 +578,28 @@ def build_acquire_path(
     if absolute:
         return build_absolute_route(site_config, "acquire", lang, registry=registry)
     return build_path_from_template(site_config, "acquire", lang, registry=registry)
+
+
+def build_reference_report_path(
+    site_config: Mapping[str, Any],
+    lang: str,
+    *,
+    absolute: bool = False,
+    registry: Optional[Mapping[str, Any]] = None,
+) -> str:
+    if absolute:
+        return build_absolute_route(
+            site_config,
+            "reference_report",
+            lang,
+            registry=registry,
+        )
+    return build_path_from_template(
+        site_config,
+        "reference_report",
+        lang,
+        registry=registry,
+    )
 
 
 # ============================================================================

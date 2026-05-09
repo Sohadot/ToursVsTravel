@@ -106,6 +106,7 @@ routes:
   experience_types_index: "/{lang}/experience/"
   tools_index: "/{lang}/tools/"
   methodology: "/{lang}/methodology/"
+  reference_report: "/{lang}/report/"
   reports_index: "/{lang}/reports/"
   source_policy: "/{lang}/methodology/source-policy/"
   editorial_standards: "/{lang}/methodology/editorial-standards/"
@@ -239,15 +240,6 @@ ui:
       zh: "工具"
       ja: "ツール"
 
-    methodology:
-      en: "Methodology"
-      ar: "المنهجية"
-      fr: "Méthodologie"
-      es: "Metodología"
-      de: "Methodik"
-      zh: "方法论"
-      ja: "方法論"
-
     report:
       en: "Report"
       ar: "التقرير"
@@ -256,6 +248,15 @@ ui:
       de: "Bericht"
       zh: "报告"
       ja: "レポート"
+
+    methodology:
+      en: "Methodology"
+      ar: "المنهجية"
+      fr: "Méthodologie"
+      es: "Metodología"
+      de: "Methodik"
+      zh: "方法论"
+      ja: "方法論"
 
   cta:
     primary:
@@ -357,6 +358,15 @@ ui:
       de: "Redaktionelle Standards"
       zh: "编辑标准"
       ja: "編集基準"
+
+    reference_report:
+      en: "Reference Report"
+      ar: "التقرير المرجعي"
+      fr: "Rapport de référence"
+      es: "Informe de referencia"
+      de: "Referenzbericht"
+      zh: "参考报告"
+      ja: "リファレンスレポート"
 
     about:
       en: "About"

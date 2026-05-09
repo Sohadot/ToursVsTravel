@@ -51,7 +51,12 @@ from scripts.i18n import (
     get_language_config,
     translate_string,
 )
-from scripts.loaders import load_experience_types, load_yaml
+from scripts.loaders import (
+    load_experience_types,
+    load_yaml,
+    resolve_footer_reference_report_label,
+    resolve_nav_report_label,
+)
 from scripts.routes import (
     build_acquire_path,
     build_compare_index_path,
@@ -1307,11 +1312,13 @@ def build_experience_type_context(
         "nav_tools": _resolve_nav_label(site_config, registry, lang, "tools", "nav_tools"),
         "nav_methodology": _resolve_nav_label(site_config, registry, lang, "methodology", "nav_methodology"),
         "nav_acquire": _resolve_nav_label(site_config, registry, lang, "acquire", "nav_acquire"),
+        "nav_report_label": resolve_nav_report_label(site_config, lang),
         "footer_about": _resolve_footer_label(site_config, registry, lang, "about", "footer_about"),
         "footer_contact": _resolve_footer_label(site_config, registry, lang, "contact", "footer_contact"),
         "footer_privacy": _resolve_footer_label(site_config, registry, lang, "privacy", "footer_privacy"),
         "footer_terms": _resolve_footer_label(site_config, registry, lang, "terms", "footer_terms"),
         "footer_acquire": _resolve_footer_label(site_config, registry, lang, "acquire", "footer_acquire"),
+        "footer_reference_report_label": resolve_footer_reference_report_label(site_config, lang),
 
         # Accessibility / language switcher
         "ui_skip_to_content_label": _resolve_ui_label(

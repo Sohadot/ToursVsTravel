@@ -23,7 +23,7 @@
       <a href="/{{ page_lang }}/methodology/" class="site-nav__link">Methodology</a>
       <a href="/{{ page_lang }}/destinations/" class="site-nav__link">Destinations</a>
       <a href="/{{ page_lang }}/tools/" class="site-nav__link">Tools</a>
-      <a href="/{{ page_lang }}/#report" class="site-nav__link">Report</a>
+      <a href="/{{ page_lang }}/report/" class="site-nav__link">{{ nav_report_label|default('Report') }}</a>
     </nav>
 
     <div class="site-header__right">
@@ -53,7 +53,7 @@
           <a href="/{{ page_lang }}/methodology/">Methodology</a>
           <a href="/{{ page_lang }}/destinations/">Destinations</a>
           <a href="/{{ page_lang }}/tools/">Tools</a>
-          <a href="/{{ page_lang }}/#report">Report</a>
+          <a href="/{{ page_lang }}/report/">{{ nav_report_label|default('Report') }}</a>
           <a class="mobile-menu__cta" href="/{{ page_lang }}/#comparison-entry">Find Your Match</a>
 
           <div class="mobile-menu__langs" aria-label="Language selection">

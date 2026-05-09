@@ -27,6 +27,7 @@ A successful build must produce at least:
 
     output/en/methodology/index.html
     output/en/styles/guided-group-tour/index.html
+    output/en/report/index.html
 
     output/static/css/main.css
     output/static/js/main.js
@@ -76,6 +77,7 @@ from scripts.generate_destinations import (
     GenerateDestinationsError,
     generate_destinations_pages,
 )
+from scripts.generate_report import GenerateReportError, generate_report_pages
 from scripts.generate_experience_types import (
     GenerateExperienceTypesError,
     generate_experience_type_pages,
@@ -360,6 +362,16 @@ def _run_experience_type_generation(*, stage_dir: Path) -> int:
     return count
 
 
+def _run_report_generation(*, stage_dir: Path) -> int:
+    written = generate_report_pages(
+        requested_lang=None,
+        output_dir=stage_dir,
+    )
+    count = len(written)
+    log.info("Generated reference report pages: %d", count)
+    return count
+
+
 def _run_robots_generation(*, stage_dir: Path) -> Path:
     written = generate_robots_file(
         output_dir=stage_dir,
@@ -473,6 +485,7 @@ def _verify_sitemap_contract(stage_dir: Path) -> None:
         "/en/tools/",
         "/en/tools/find-your-match/",
         "/en/destinations/",
+        "/en/report/",
         "/en/styles/guided-group-tour/",
     ]
 
@@ -517,6 +530,7 @@ def _verify_output_contract(stage_dir: Path) -> None:
         _require_file(stage_dir / lang / "tools" / "index.html")
         _require_file(stage_dir / lang / "tools" / "find-your-match" / "index.html")
         _require_file(stage_dir / lang / "destinations" / "index.html")
+        _require_file(stage_dir / lang / "report" / "index.html")
 
     _require_file(stage_dir / "en" / "styles" / "guided-group-tour" / "index.html")
 
@@ -633,19 +647,22 @@ def run_build(
         log.info("Step 10: Generate multilingual experience type pages")
         _run_experience_type_generation(stage_dir=stage_dir)
 
-        log.info("Step 11: Generate robots.txt")
+        log.info("Step 11: Generate multilingual reference report pages")
+        _run_report_generation(stage_dir=stage_dir)
+
+        log.info("Step 12: Generate robots.txt")
         _run_robots_generation(stage_dir=stage_dir)
 
-        log.info("Step 12: Generate sitemap.xml")
+        log.info("Step 13: Generate sitemap.xml")
         _run_sitemap_generation(stage_dir=stage_dir)
 
-        log.info("Step 13: Create .nojekyll")
+        log.info("Step 14: Create .nojekyll")
         _write_nojekyll(stage_dir)
 
-        log.info("Step 14: Verify staged output")
+        log.info("Step 15: Verify staged output")
         _verify_output_contract(stage_dir)
 
-        log.info("Step 15: Promote staged output")
+        log.info("Step 16: Promote staged output")
         _promote_stage_to_final(stage_dir, final_output_dir)
 
     except Exception:
@@ -704,6 +721,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         GenerateToolsError,
         GenerateFindYourMatchError,
         GenerateDestinationsError,
+        GenerateReportError,
         GenerateExperienceTypesError,
         GenerateRobotsError,
         GenerateSitemapError,

@@ -77,6 +77,8 @@ __all__ = [
     "build_methodology_path",
     "build_acquire_path",
     "build_reference_report_path",
+    "build_contact_path",
+    "build_reports_index_path",
     # Generated route builders
     "build_destination_path",
     "build_experience_type_path",
@@ -131,6 +133,8 @@ SYSTEM_ROUTE_TEMPLATES: Dict[str, str] = {
     "methodology": "/{lang}/methodology/",
     "acquire": "/{lang}/acquire/",
     "reference_report": "/{lang}/report/",
+    "contact": "/{lang}/contact/",
+    "reports_index": "/{lang}/reports/",
 
     # Generated page families (immutable — cannot be overridden by site_config)
     "destination": "/{lang}/destinations/{destination_id}/",
@@ -147,6 +151,8 @@ STATIC_ROUTE_KEYS: FrozenSet[str] = frozenset({
     "methodology",
     "acquire",
     "reference_report",
+    "contact",
+    "reports_index",
 })
 
 GENERATED_ROUTE_KEYS: FrozenSet[str] = frozenset({
@@ -597,6 +603,40 @@ def build_reference_report_path(
     return build_path_from_template(
         site_config,
         "reference_report",
+        lang,
+        registry=registry,
+    )
+
+
+def build_contact_path(
+    site_config: Mapping[str, Any],
+    lang: str,
+    *,
+    absolute: bool = False,
+    registry: Optional[Mapping[str, Any]] = None,
+) -> str:
+    if absolute:
+        return build_absolute_route(site_config, "contact", lang, registry=registry)
+    return build_path_from_template(site_config, "contact", lang, registry=registry)
+
+
+def build_reports_index_path(
+    site_config: Mapping[str, Any],
+    lang: str,
+    *,
+    absolute: bool = False,
+    registry: Optional[Mapping[str, Any]] = None,
+) -> str:
+    if absolute:
+        return build_absolute_route(
+            site_config,
+            "reports_index",
+            lang,
+            registry=registry,
+        )
+    return build_path_from_template(
+        site_config,
+        "reports_index",
         lang,
         registry=registry,
     )

@@ -1,0 +1,24 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+<div class="page-acquire-root container" dir="{{ page_dir }}">
+  <header class="page-hero page-hero--compact">
+    <p class="page-hero__eyebrow">{{ site_name }}</p>
+    <h1>{{ copy.title }}</h1>
+    <p class="page-hero__lead">{{ copy.lead }}</p>
+  </header>
+
+  <section class="acquire-section" aria-labelledby="acquire-details-title">
+    <h2 id="acquire-details-title">{{ copy.details_label }}</h2>
+    <p>{{ copy.details_body }}</p>
+  </section>
+
+  <section class="acquire-next" aria-labelledby="acquire-next-title">
+    <h2 id="acquire-next-title">{{ copy.next_label }}</h2>
+    <ul class="acquire-next__list">
+      <li><a href="{{ url_methodology }}">{{ copy.ln_methodology }}</a></li>
+      <li><a href="{{ url_contact }}">{{ copy.ln_contact }}</a></li>
+    </ul>
+  </section>
+</div>
+{% endblock %}

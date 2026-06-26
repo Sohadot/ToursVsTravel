@@ -79,6 +79,10 @@ __all__ = [
     "build_reference_report_path",
     "build_contact_path",
     "build_reports_index_path",
+    "build_about_path",
+    "build_privacy_path",
+    "build_source_policy_path",
+    "build_editorial_standards_path",
     # Generated route builders
     "build_destination_path",
     "build_experience_type_path",
@@ -135,6 +139,10 @@ SYSTEM_ROUTE_TEMPLATES: Dict[str, str] = {
     "reference_report": "/{lang}/report/",
     "contact": "/{lang}/contact/",
     "reports_index": "/{lang}/reports/",
+    "about": "/{lang}/about/",
+    "privacy": "/{lang}/privacy/",
+    "source_policy": "/{lang}/methodology/source-policy/",
+    "editorial_standards": "/{lang}/methodology/editorial-standards/",
 
     # Generated page families (immutable — cannot be overridden by site_config)
     "destination": "/{lang}/destinations/{destination_id}/",
@@ -153,6 +161,10 @@ STATIC_ROUTE_KEYS: FrozenSet[str] = frozenset({
     "reference_report",
     "contact",
     "reports_index",
+    "about",
+    "privacy",
+    "source_policy",
+    "editorial_standards",
 })
 
 GENERATED_ROUTE_KEYS: FrozenSet[str] = frozenset({
@@ -640,6 +652,54 @@ def build_reports_index_path(
         lang,
         registry=registry,
     )
+
+
+def build_about_path(
+    site_config: Mapping[str, Any],
+    lang: str,
+    *,
+    absolute: bool = False,
+    registry: Optional[Mapping[str, Any]] = None,
+) -> str:
+    if absolute:
+        return build_absolute_route(site_config, "about", lang, registry=registry)
+    return build_path_from_template(site_config, "about", lang, registry=registry)
+
+
+def build_privacy_path(
+    site_config: Mapping[str, Any],
+    lang: str,
+    *,
+    absolute: bool = False,
+    registry: Optional[Mapping[str, Any]] = None,
+) -> str:
+    if absolute:
+        return build_absolute_route(site_config, "privacy", lang, registry=registry)
+    return build_path_from_template(site_config, "privacy", lang, registry=registry)
+
+
+def build_source_policy_path(
+    site_config: Mapping[str, Any],
+    lang: str,
+    *,
+    absolute: bool = False,
+    registry: Optional[Mapping[str, Any]] = None,
+) -> str:
+    if absolute:
+        return build_absolute_route(site_config, "source_policy", lang, registry=registry)
+    return build_path_from_template(site_config, "source_policy", lang, registry=registry)
+
+
+def build_editorial_standards_path(
+    site_config: Mapping[str, Any],
+    lang: str,
+    *,
+    absolute: bool = False,
+    registry: Optional[Mapping[str, Any]] = None,
+) -> str:
+    if absolute:
+        return build_absolute_route(site_config, "editorial_standards", lang, registry=registry)
+    return build_path_from_template(site_config, "editorial_standards", lang, registry=registry)
 
 
 # ============================================================================

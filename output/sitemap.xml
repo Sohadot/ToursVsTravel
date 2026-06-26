@@ -2,11 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://tourvstravel.com/</loc>
-    <lastmod>2026-05-09T16:12:09Z</lastmod>
+    <lastmod>2026-06-26T20:17:38Z</lastmod>
   </url>
   <url>
     <loc>https://tourvstravel.com/ar/</loc>
-    <lastmod>2026-05-09T16:12:09Z</lastmod>
+    <lastmod>2026-06-26T20:17:38Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/" />
@@ -16,8 +16,30 @@
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/" />
   </url>
   <url>
+    <loc>https://tourvstravel.com/ar/about/</loc>
+    <lastmod>2026-06-26T20:17:48Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/about/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/about/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/about/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourvstravel.com/es/about/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourvstravel.com/fr/about/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tourvstravel.com/ja/about/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/about/" />
+  </url>
+  <url>
+    <loc>https://tourvstravel.com/ar/acquire/</loc>
+    <lastmod>2026-06-26T20:17:50Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/acquire/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/acquire/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/acquire/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourvstravel.com/es/acquire/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourvstravel.com/fr/acquire/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tourvstravel.com/ja/acquire/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/acquire/" />
+  </url>
+  <url>
     <loc>https://tourvstravel.com/ar/compare/</loc>
-    <lastmod>2026-05-09T16:12:12Z</lastmod>
+    <lastmod>2026-06-26T20:17:41Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/compare/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/compare/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/compare/" />
@@ -28,7 +50,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ar/contact/</loc>
-    <lastmod>2026-05-09T16:12:19Z</lastmod>
+    <lastmod>2026-06-26T20:17:47Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/contact/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/contact/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/contact/" />
@@ -39,7 +61,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ar/destinations/</loc>
-    <lastmod>2026-05-09T16:12:15Z</lastmod>
+    <lastmod>2026-06-26T20:17:44Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/destinations/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/destinations/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/destinations/" />
@@ -50,7 +72,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ar/methodology/</loc>
-    <lastmod>2026-05-09T16:12:09Z</lastmod>
+    <lastmod>2026-06-26T20:17:39Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/methodology/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/methodology/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/methodology/" />
@@ -60,8 +82,41 @@
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/methodology/" />
   </url>
   <url>
+    <loc>https://tourvstravel.com/ar/methodology/editorial-standards/</loc>
+    <lastmod>2026-06-26T20:17:51Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/methodology/editorial-standards/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/methodology/editorial-standards/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/methodology/editorial-standards/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourvstravel.com/es/methodology/editorial-standards/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourvstravel.com/fr/methodology/editorial-standards/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tourvstravel.com/ja/methodology/editorial-standards/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/methodology/editorial-standards/" />
+  </url>
+  <url>
+    <loc>https://tourvstravel.com/ar/methodology/source-policy/</loc>
+    <lastmod>2026-06-26T20:17:51Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/methodology/source-policy/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/methodology/source-policy/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/methodology/source-policy/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourvstravel.com/es/methodology/source-policy/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourvstravel.com/fr/methodology/source-policy/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tourvstravel.com/ja/methodology/source-policy/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/methodology/source-policy/" />
+  </url>
+  <url>
+    <loc>https://tourvstravel.com/ar/privacy/</loc>
+    <lastmod>2026-06-26T20:17:49Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/privacy/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/privacy/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/privacy/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourvstravel.com/es/privacy/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourvstravel.com/fr/privacy/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tourvstravel.com/ja/privacy/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/privacy/" />
+  </url>
+  <url>
     <loc>https://tourvstravel.com/ar/report/</loc>
-    <lastmod>2026-05-09T16:12:18Z</lastmod>
+    <lastmod>2026-06-26T20:17:47Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/report/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/report/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/report/" />
@@ -72,7 +127,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ar/reports/</loc>
-    <lastmod>2026-05-09T16:12:19Z</lastmod>
+    <lastmod>2026-06-26T20:17:48Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/reports/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/reports/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/reports/" />
@@ -83,7 +138,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ar/styles/</loc>
-    <lastmod>2026-05-09T16:12:10Z</lastmod>
+    <lastmod>2026-06-26T20:17:40Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/" />
@@ -94,7 +149,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ar/styles/adventure-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/adventure-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/adventure-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/adventure-travel/" />
@@ -105,7 +160,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ar/styles/ancestry-legacy-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/ancestry-legacy-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/ancestry-legacy-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/ancestry-legacy-travel/" />
@@ -116,7 +171,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ar/styles/backpacking/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/backpacking/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/backpacking/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/backpacking/" />
@@ -127,7 +182,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ar/styles/cruise-experience/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/cruise-experience/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/cruise-experience/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/cruise-experience/" />
@@ -138,7 +193,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ar/styles/cultural-immersion-homestay/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/cultural-immersion-homestay/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/cultural-immersion-homestay/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/cultural-immersion-homestay/" />
@@ -149,7 +204,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ar/styles/eco-sustainable-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/eco-sustainable-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/eco-sustainable-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/eco-sustainable-travel/" />
@@ -160,7 +215,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ar/styles/family-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/family-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/family-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/family-travel/" />
@@ -171,7 +226,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ar/styles/guided-group-tour/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:45Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/guided-group-tour/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/guided-group-tour/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/guided-group-tour/" />
@@ -182,7 +237,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ar/styles/independent-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:45Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/independent-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/independent-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/independent-travel/" />
@@ -193,7 +248,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ar/styles/luxury-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/luxury-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/luxury-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/luxury-travel/" />
@@ -204,7 +259,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ar/styles/regenerative-community-led/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/regenerative-community-led/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/regenerative-community-led/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/regenerative-community-led/" />
@@ -215,7 +270,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ar/styles/religious-spiritual-pilgrimage/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/religious-spiritual-pilgrimage/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/religious-spiritual-pilgrimage/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/religious-spiritual-pilgrimage/" />
@@ -226,7 +281,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ar/styles/road-trip-self-drive/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/road-trip-self-drive/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/road-trip-self-drive/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/road-trip-self-drive/" />
@@ -237,7 +292,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ar/styles/shrine-saints-tourism/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/shrine-saints-tourism/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/shrine-saints-tourism/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/shrine-saints-tourism/" />
@@ -248,7 +303,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ar/styles/slow-travel-quietcations/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/slow-travel-quietcations/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/slow-travel-quietcations/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/slow-travel-quietcations/" />
@@ -259,7 +314,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ar/styles/solo-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:45Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/solo-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/solo-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/solo-travel/" />
@@ -270,7 +325,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ar/styles/transformational-wellness/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/transformational-wellness/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/transformational-wellness/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/transformational-wellness/" />
@@ -281,7 +336,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ar/tools/</loc>
-    <lastmod>2026-05-09T16:12:13Z</lastmod>
+    <lastmod>2026-06-26T20:17:42Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/tools/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/tools/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/tools/" />
@@ -292,7 +347,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ar/tools/find-your-match/</loc>
-    <lastmod>2026-05-09T16:12:14Z</lastmod>
+    <lastmod>2026-06-26T20:17:43Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/tools/find-your-match/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/tools/find-your-match/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/tools/find-your-match/" />
@@ -303,7 +358,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/de/</loc>
-    <lastmod>2026-05-09T16:12:09Z</lastmod>
+    <lastmod>2026-06-26T20:17:38Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/" />
@@ -313,8 +368,30 @@
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/" />
   </url>
   <url>
+    <loc>https://tourvstravel.com/de/about/</loc>
+    <lastmod>2026-06-26T20:17:49Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/about/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/about/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/about/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourvstravel.com/es/about/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourvstravel.com/fr/about/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tourvstravel.com/ja/about/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/about/" />
+  </url>
+  <url>
+    <loc>https://tourvstravel.com/de/acquire/</loc>
+    <lastmod>2026-06-26T20:17:50Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/acquire/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/acquire/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/acquire/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourvstravel.com/es/acquire/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourvstravel.com/fr/acquire/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tourvstravel.com/ja/acquire/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/acquire/" />
+  </url>
+  <url>
     <loc>https://tourvstravel.com/de/compare/</loc>
-    <lastmod>2026-05-09T16:12:12Z</lastmod>
+    <lastmod>2026-06-26T20:17:41Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/compare/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/compare/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/compare/" />
@@ -325,7 +402,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/de/contact/</loc>
-    <lastmod>2026-05-09T16:12:19Z</lastmod>
+    <lastmod>2026-06-26T20:17:48Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/contact/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/contact/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/contact/" />
@@ -336,7 +413,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/de/destinations/</loc>
-    <lastmod>2026-05-09T16:12:15Z</lastmod>
+    <lastmod>2026-06-26T20:17:44Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/destinations/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/destinations/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/destinations/" />
@@ -347,7 +424,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/de/methodology/</loc>
-    <lastmod>2026-05-09T16:12:09Z</lastmod>
+    <lastmod>2026-06-26T20:17:39Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/methodology/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/methodology/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/methodology/" />
@@ -357,8 +434,41 @@
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/methodology/" />
   </url>
   <url>
+    <loc>https://tourvstravel.com/de/methodology/editorial-standards/</loc>
+    <lastmod>2026-06-26T20:17:52Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/methodology/editorial-standards/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/methodology/editorial-standards/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/methodology/editorial-standards/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourvstravel.com/es/methodology/editorial-standards/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourvstravel.com/fr/methodology/editorial-standards/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tourvstravel.com/ja/methodology/editorial-standards/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/methodology/editorial-standards/" />
+  </url>
+  <url>
+    <loc>https://tourvstravel.com/de/methodology/source-policy/</loc>
+    <lastmod>2026-06-26T20:17:51Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/methodology/source-policy/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/methodology/source-policy/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/methodology/source-policy/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourvstravel.com/es/methodology/source-policy/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourvstravel.com/fr/methodology/source-policy/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tourvstravel.com/ja/methodology/source-policy/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/methodology/source-policy/" />
+  </url>
+  <url>
+    <loc>https://tourvstravel.com/de/privacy/</loc>
+    <lastmod>2026-06-26T20:17:49Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/privacy/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/privacy/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/privacy/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourvstravel.com/es/privacy/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourvstravel.com/fr/privacy/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tourvstravel.com/ja/privacy/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/privacy/" />
+  </url>
+  <url>
     <loc>https://tourvstravel.com/de/report/</loc>
-    <lastmod>2026-05-09T16:12:18Z</lastmod>
+    <lastmod>2026-06-26T20:17:47Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/report/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/report/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/report/" />
@@ -369,7 +479,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/de/reports/</loc>
-    <lastmod>2026-05-09T16:12:19Z</lastmod>
+    <lastmod>2026-06-26T20:17:48Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/reports/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/reports/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/reports/" />
@@ -380,7 +490,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/de/styles/</loc>
-    <lastmod>2026-05-09T16:12:10Z</lastmod>
+    <lastmod>2026-06-26T20:17:40Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/" />
@@ -391,7 +501,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/de/styles/adventure-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/adventure-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/adventure-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/adventure-travel/" />
@@ -402,7 +512,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/de/styles/ancestry-legacy-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/ancestry-legacy-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/ancestry-legacy-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/ancestry-legacy-travel/" />
@@ -413,7 +523,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/de/styles/backpacking/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/backpacking/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/backpacking/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/backpacking/" />
@@ -424,7 +534,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/de/styles/cruise-experience/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/cruise-experience/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/cruise-experience/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/cruise-experience/" />
@@ -435,7 +545,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/de/styles/cultural-immersion-homestay/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/cultural-immersion-homestay/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/cultural-immersion-homestay/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/cultural-immersion-homestay/" />
@@ -446,7 +556,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/de/styles/eco-sustainable-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/eco-sustainable-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/eco-sustainable-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/eco-sustainable-travel/" />
@@ -457,7 +567,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/de/styles/family-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/family-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/family-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/family-travel/" />
@@ -468,7 +578,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/de/styles/guided-group-tour/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:45Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/guided-group-tour/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/guided-group-tour/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/guided-group-tour/" />
@@ -479,7 +589,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/de/styles/independent-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:45Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/independent-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/independent-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/independent-travel/" />
@@ -490,7 +600,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/de/styles/luxury-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/luxury-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/luxury-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/luxury-travel/" />
@@ -501,7 +611,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/de/styles/regenerative-community-led/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/regenerative-community-led/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/regenerative-community-led/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/regenerative-community-led/" />
@@ -512,7 +622,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/de/styles/religious-spiritual-pilgrimage/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/religious-spiritual-pilgrimage/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/religious-spiritual-pilgrimage/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/religious-spiritual-pilgrimage/" />
@@ -523,7 +633,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/de/styles/road-trip-self-drive/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/road-trip-self-drive/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/road-trip-self-drive/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/road-trip-self-drive/" />
@@ -534,7 +644,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/de/styles/shrine-saints-tourism/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/shrine-saints-tourism/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/shrine-saints-tourism/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/shrine-saints-tourism/" />
@@ -545,7 +655,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/de/styles/slow-travel-quietcations/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/slow-travel-quietcations/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/slow-travel-quietcations/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/slow-travel-quietcations/" />
@@ -556,7 +666,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/de/styles/solo-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:45Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/solo-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/solo-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/solo-travel/" />
@@ -567,7 +677,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/de/styles/transformational-wellness/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/transformational-wellness/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/transformational-wellness/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/transformational-wellness/" />
@@ -578,7 +688,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/de/tools/</loc>
-    <lastmod>2026-05-09T16:12:13Z</lastmod>
+    <lastmod>2026-06-26T20:17:42Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/tools/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/tools/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/tools/" />
@@ -589,7 +699,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/de/tools/find-your-match/</loc>
-    <lastmod>2026-05-09T16:12:14Z</lastmod>
+    <lastmod>2026-06-26T20:17:43Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/tools/find-your-match/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/tools/find-your-match/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/tools/find-your-match/" />
@@ -600,7 +710,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/en/</loc>
-    <lastmod>2026-05-09T16:12:09Z</lastmod>
+    <lastmod>2026-06-26T20:17:38Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/" />
@@ -610,8 +720,30 @@
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/" />
   </url>
   <url>
+    <loc>https://tourvstravel.com/en/about/</loc>
+    <lastmod>2026-06-26T20:17:48Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/about/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/about/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/about/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourvstravel.com/es/about/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourvstravel.com/fr/about/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tourvstravel.com/ja/about/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/about/" />
+  </url>
+  <url>
+    <loc>https://tourvstravel.com/en/acquire/</loc>
+    <lastmod>2026-06-26T20:17:50Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/acquire/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/acquire/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/acquire/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourvstravel.com/es/acquire/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourvstravel.com/fr/acquire/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tourvstravel.com/ja/acquire/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/acquire/" />
+  </url>
+  <url>
     <loc>https://tourvstravel.com/en/compare/</loc>
-    <lastmod>2026-05-09T16:12:12Z</lastmod>
+    <lastmod>2026-06-26T20:17:41Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/compare/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/compare/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/compare/" />
@@ -622,7 +754,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/en/contact/</loc>
-    <lastmod>2026-05-09T16:12:19Z</lastmod>
+    <lastmod>2026-06-26T20:17:47Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/contact/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/contact/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/contact/" />
@@ -633,7 +765,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/en/destinations/</loc>
-    <lastmod>2026-05-09T16:12:15Z</lastmod>
+    <lastmod>2026-06-26T20:17:44Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/destinations/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/destinations/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/destinations/" />
@@ -644,7 +776,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/en/methodology/</loc>
-    <lastmod>2026-05-09T16:12:09Z</lastmod>
+    <lastmod>2026-06-26T20:17:39Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/methodology/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/methodology/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/methodology/" />
@@ -654,8 +786,41 @@
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/methodology/" />
   </url>
   <url>
+    <loc>https://tourvstravel.com/en/methodology/editorial-standards/</loc>
+    <lastmod>2026-06-26T20:17:51Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/methodology/editorial-standards/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/methodology/editorial-standards/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/methodology/editorial-standards/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourvstravel.com/es/methodology/editorial-standards/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourvstravel.com/fr/methodology/editorial-standards/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tourvstravel.com/ja/methodology/editorial-standards/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/methodology/editorial-standards/" />
+  </url>
+  <url>
+    <loc>https://tourvstravel.com/en/methodology/source-policy/</loc>
+    <lastmod>2026-06-26T20:17:50Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/methodology/source-policy/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/methodology/source-policy/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/methodology/source-policy/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourvstravel.com/es/methodology/source-policy/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourvstravel.com/fr/methodology/source-policy/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tourvstravel.com/ja/methodology/source-policy/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/methodology/source-policy/" />
+  </url>
+  <url>
+    <loc>https://tourvstravel.com/en/privacy/</loc>
+    <lastmod>2026-06-26T20:17:49Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/privacy/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/privacy/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/privacy/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourvstravel.com/es/privacy/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourvstravel.com/fr/privacy/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tourvstravel.com/ja/privacy/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/privacy/" />
+  </url>
+  <url>
     <loc>https://tourvstravel.com/en/report/</loc>
-    <lastmod>2026-05-09T16:12:18Z</lastmod>
+    <lastmod>2026-06-26T20:17:47Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/report/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/report/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/report/" />
@@ -666,7 +831,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/en/reports/</loc>
-    <lastmod>2026-05-09T16:12:19Z</lastmod>
+    <lastmod>2026-06-26T20:17:48Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/reports/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/reports/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/reports/" />
@@ -677,7 +842,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/en/styles/</loc>
-    <lastmod>2026-05-09T16:12:10Z</lastmod>
+    <lastmod>2026-06-26T20:17:40Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/" />
@@ -688,7 +853,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/en/styles/adventure-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/adventure-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/adventure-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/adventure-travel/" />
@@ -699,7 +864,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/en/styles/ancestry-legacy-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/ancestry-legacy-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/ancestry-legacy-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/ancestry-legacy-travel/" />
@@ -710,7 +875,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/en/styles/backpacking/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/backpacking/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/backpacking/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/backpacking/" />
@@ -721,7 +886,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/en/styles/cruise-experience/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/cruise-experience/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/cruise-experience/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/cruise-experience/" />
@@ -732,7 +897,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/en/styles/cultural-immersion-homestay/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/cultural-immersion-homestay/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/cultural-immersion-homestay/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/cultural-immersion-homestay/" />
@@ -743,7 +908,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/en/styles/eco-sustainable-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/eco-sustainable-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/eco-sustainable-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/eco-sustainable-travel/" />
@@ -754,7 +919,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/en/styles/family-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/family-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/family-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/family-travel/" />
@@ -765,7 +930,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/en/styles/guided-group-tour/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:45Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/guided-group-tour/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/guided-group-tour/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/guided-group-tour/" />
@@ -776,7 +941,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/en/styles/independent-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:45Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/independent-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/independent-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/independent-travel/" />
@@ -787,7 +952,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/en/styles/luxury-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/luxury-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/luxury-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/luxury-travel/" />
@@ -798,7 +963,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/en/styles/regenerative-community-led/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/regenerative-community-led/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/regenerative-community-led/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/regenerative-community-led/" />
@@ -809,7 +974,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/en/styles/religious-spiritual-pilgrimage/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/religious-spiritual-pilgrimage/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/religious-spiritual-pilgrimage/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/religious-spiritual-pilgrimage/" />
@@ -820,7 +985,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/en/styles/road-trip-self-drive/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/road-trip-self-drive/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/road-trip-self-drive/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/road-trip-self-drive/" />
@@ -831,7 +996,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/en/styles/shrine-saints-tourism/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/shrine-saints-tourism/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/shrine-saints-tourism/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/shrine-saints-tourism/" />
@@ -842,7 +1007,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/en/styles/slow-travel-quietcations/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/slow-travel-quietcations/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/slow-travel-quietcations/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/slow-travel-quietcations/" />
@@ -853,7 +1018,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/en/styles/solo-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:45Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/solo-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/solo-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/solo-travel/" />
@@ -864,7 +1029,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/en/styles/transformational-wellness/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/transformational-wellness/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/transformational-wellness/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/transformational-wellness/" />
@@ -875,7 +1040,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/en/tools/</loc>
-    <lastmod>2026-05-09T16:12:13Z</lastmod>
+    <lastmod>2026-06-26T20:17:42Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/tools/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/tools/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/tools/" />
@@ -886,7 +1051,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/en/tools/find-your-match/</loc>
-    <lastmod>2026-05-09T16:12:14Z</lastmod>
+    <lastmod>2026-06-26T20:17:43Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/tools/find-your-match/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/tools/find-your-match/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/tools/find-your-match/" />
@@ -897,7 +1062,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/es/</loc>
-    <lastmod>2026-05-09T16:12:09Z</lastmod>
+    <lastmod>2026-06-26T20:17:38Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/" />
@@ -907,8 +1072,30 @@
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/" />
   </url>
   <url>
+    <loc>https://tourvstravel.com/es/about/</loc>
+    <lastmod>2026-06-26T20:17:48Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/about/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/about/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/about/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourvstravel.com/es/about/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourvstravel.com/fr/about/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tourvstravel.com/ja/about/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/about/" />
+  </url>
+  <url>
+    <loc>https://tourvstravel.com/es/acquire/</loc>
+    <lastmod>2026-06-26T20:17:50Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/acquire/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/acquire/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/acquire/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourvstravel.com/es/acquire/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourvstravel.com/fr/acquire/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tourvstravel.com/ja/acquire/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/acquire/" />
+  </url>
+  <url>
     <loc>https://tourvstravel.com/es/compare/</loc>
-    <lastmod>2026-05-09T16:12:12Z</lastmod>
+    <lastmod>2026-06-26T20:17:41Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/compare/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/compare/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/compare/" />
@@ -919,7 +1106,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/es/contact/</loc>
-    <lastmod>2026-05-09T16:12:19Z</lastmod>
+    <lastmod>2026-06-26T20:17:48Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/contact/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/contact/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/contact/" />
@@ -930,7 +1117,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/es/destinations/</loc>
-    <lastmod>2026-05-09T16:12:15Z</lastmod>
+    <lastmod>2026-06-26T20:17:44Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/destinations/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/destinations/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/destinations/" />
@@ -941,7 +1128,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/es/methodology/</loc>
-    <lastmod>2026-05-09T16:12:09Z</lastmod>
+    <lastmod>2026-06-26T20:17:39Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/methodology/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/methodology/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/methodology/" />
@@ -951,8 +1138,41 @@
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/methodology/" />
   </url>
   <url>
+    <loc>https://tourvstravel.com/es/methodology/editorial-standards/</loc>
+    <lastmod>2026-06-26T20:17:52Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/methodology/editorial-standards/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/methodology/editorial-standards/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/methodology/editorial-standards/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourvstravel.com/es/methodology/editorial-standards/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourvstravel.com/fr/methodology/editorial-standards/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tourvstravel.com/ja/methodology/editorial-standards/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/methodology/editorial-standards/" />
+  </url>
+  <url>
+    <loc>https://tourvstravel.com/es/methodology/source-policy/</loc>
+    <lastmod>2026-06-26T20:17:51Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/methodology/source-policy/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/methodology/source-policy/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/methodology/source-policy/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourvstravel.com/es/methodology/source-policy/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourvstravel.com/fr/methodology/source-policy/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tourvstravel.com/ja/methodology/source-policy/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/methodology/source-policy/" />
+  </url>
+  <url>
+    <loc>https://tourvstravel.com/es/privacy/</loc>
+    <lastmod>2026-06-26T20:17:49Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/privacy/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/privacy/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/privacy/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourvstravel.com/es/privacy/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourvstravel.com/fr/privacy/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tourvstravel.com/ja/privacy/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/privacy/" />
+  </url>
+  <url>
     <loc>https://tourvstravel.com/es/report/</loc>
-    <lastmod>2026-05-09T16:12:18Z</lastmod>
+    <lastmod>2026-06-26T20:17:47Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/report/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/report/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/report/" />
@@ -963,7 +1183,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/es/reports/</loc>
-    <lastmod>2026-05-09T16:12:19Z</lastmod>
+    <lastmod>2026-06-26T20:17:48Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/reports/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/reports/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/reports/" />
@@ -974,7 +1194,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/es/styles/</loc>
-    <lastmod>2026-05-09T16:12:10Z</lastmod>
+    <lastmod>2026-06-26T20:17:40Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/" />
@@ -985,7 +1205,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/es/styles/adventure-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/adventure-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/adventure-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/adventure-travel/" />
@@ -996,7 +1216,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/es/styles/ancestry-legacy-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/ancestry-legacy-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/ancestry-legacy-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/ancestry-legacy-travel/" />
@@ -1007,7 +1227,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/es/styles/backpacking/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/backpacking/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/backpacking/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/backpacking/" />
@@ -1018,7 +1238,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/es/styles/cruise-experience/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/cruise-experience/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/cruise-experience/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/cruise-experience/" />
@@ -1029,7 +1249,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/es/styles/cultural-immersion-homestay/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/cultural-immersion-homestay/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/cultural-immersion-homestay/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/cultural-immersion-homestay/" />
@@ -1040,7 +1260,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/es/styles/eco-sustainable-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/eco-sustainable-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/eco-sustainable-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/eco-sustainable-travel/" />
@@ -1051,7 +1271,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/es/styles/family-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/family-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/family-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/family-travel/" />
@@ -1062,7 +1282,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/es/styles/guided-group-tour/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:45Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/guided-group-tour/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/guided-group-tour/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/guided-group-tour/" />
@@ -1073,7 +1293,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/es/styles/independent-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:45Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/independent-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/independent-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/independent-travel/" />
@@ -1084,7 +1304,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/es/styles/luxury-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/luxury-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/luxury-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/luxury-travel/" />
@@ -1095,7 +1315,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/es/styles/regenerative-community-led/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/regenerative-community-led/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/regenerative-community-led/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/regenerative-community-led/" />
@@ -1106,7 +1326,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/es/styles/religious-spiritual-pilgrimage/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/religious-spiritual-pilgrimage/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/religious-spiritual-pilgrimage/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/religious-spiritual-pilgrimage/" />
@@ -1117,7 +1337,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/es/styles/road-trip-self-drive/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/road-trip-self-drive/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/road-trip-self-drive/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/road-trip-self-drive/" />
@@ -1128,7 +1348,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/es/styles/shrine-saints-tourism/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/shrine-saints-tourism/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/shrine-saints-tourism/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/shrine-saints-tourism/" />
@@ -1139,7 +1359,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/es/styles/slow-travel-quietcations/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/slow-travel-quietcations/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/slow-travel-quietcations/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/slow-travel-quietcations/" />
@@ -1150,7 +1370,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/es/styles/solo-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:45Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/solo-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/solo-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/solo-travel/" />
@@ -1161,7 +1381,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/es/styles/transformational-wellness/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/transformational-wellness/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/transformational-wellness/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/transformational-wellness/" />
@@ -1172,7 +1392,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/es/tools/</loc>
-    <lastmod>2026-05-09T16:12:13Z</lastmod>
+    <lastmod>2026-06-26T20:17:42Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/tools/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/tools/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/tools/" />
@@ -1183,7 +1403,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/es/tools/find-your-match/</loc>
-    <lastmod>2026-05-09T16:12:14Z</lastmod>
+    <lastmod>2026-06-26T20:17:43Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/tools/find-your-match/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/tools/find-your-match/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/tools/find-your-match/" />
@@ -1194,7 +1414,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/fr/</loc>
-    <lastmod>2026-05-09T16:12:09Z</lastmod>
+    <lastmod>2026-06-26T20:17:38Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/" />
@@ -1204,8 +1424,30 @@
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/" />
   </url>
   <url>
+    <loc>https://tourvstravel.com/fr/about/</loc>
+    <lastmod>2026-06-26T20:17:48Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/about/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/about/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/about/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourvstravel.com/es/about/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourvstravel.com/fr/about/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tourvstravel.com/ja/about/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/about/" />
+  </url>
+  <url>
+    <loc>https://tourvstravel.com/fr/acquire/</loc>
+    <lastmod>2026-06-26T20:17:50Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/acquire/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/acquire/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/acquire/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourvstravel.com/es/acquire/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourvstravel.com/fr/acquire/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tourvstravel.com/ja/acquire/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/acquire/" />
+  </url>
+  <url>
     <loc>https://tourvstravel.com/fr/compare/</loc>
-    <lastmod>2026-05-09T16:12:12Z</lastmod>
+    <lastmod>2026-06-26T20:17:41Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/compare/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/compare/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/compare/" />
@@ -1216,7 +1458,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/fr/contact/</loc>
-    <lastmod>2026-05-09T16:12:19Z</lastmod>
+    <lastmod>2026-06-26T20:17:48Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/contact/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/contact/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/contact/" />
@@ -1227,7 +1469,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/fr/destinations/</loc>
-    <lastmod>2026-05-09T16:12:15Z</lastmod>
+    <lastmod>2026-06-26T20:17:44Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/destinations/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/destinations/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/destinations/" />
@@ -1238,7 +1480,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/fr/methodology/</loc>
-    <lastmod>2026-05-09T16:12:09Z</lastmod>
+    <lastmod>2026-06-26T20:17:39Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/methodology/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/methodology/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/methodology/" />
@@ -1248,8 +1490,41 @@
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/methodology/" />
   </url>
   <url>
+    <loc>https://tourvstravel.com/fr/methodology/editorial-standards/</loc>
+    <lastmod>2026-06-26T20:17:51Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/methodology/editorial-standards/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/methodology/editorial-standards/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/methodology/editorial-standards/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourvstravel.com/es/methodology/editorial-standards/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourvstravel.com/fr/methodology/editorial-standards/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tourvstravel.com/ja/methodology/editorial-standards/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/methodology/editorial-standards/" />
+  </url>
+  <url>
+    <loc>https://tourvstravel.com/fr/methodology/source-policy/</loc>
+    <lastmod>2026-06-26T20:17:51Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/methodology/source-policy/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/methodology/source-policy/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/methodology/source-policy/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourvstravel.com/es/methodology/source-policy/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourvstravel.com/fr/methodology/source-policy/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tourvstravel.com/ja/methodology/source-policy/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/methodology/source-policy/" />
+  </url>
+  <url>
+    <loc>https://tourvstravel.com/fr/privacy/</loc>
+    <lastmod>2026-06-26T20:17:49Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/privacy/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/privacy/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/privacy/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourvstravel.com/es/privacy/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourvstravel.com/fr/privacy/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tourvstravel.com/ja/privacy/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/privacy/" />
+  </url>
+  <url>
     <loc>https://tourvstravel.com/fr/report/</loc>
-    <lastmod>2026-05-09T16:12:18Z</lastmod>
+    <lastmod>2026-06-26T20:17:47Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/report/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/report/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/report/" />
@@ -1260,7 +1535,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/fr/reports/</loc>
-    <lastmod>2026-05-09T16:12:19Z</lastmod>
+    <lastmod>2026-06-26T20:17:48Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/reports/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/reports/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/reports/" />
@@ -1271,7 +1546,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/fr/styles/</loc>
-    <lastmod>2026-05-09T16:12:10Z</lastmod>
+    <lastmod>2026-06-26T20:17:40Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/" />
@@ -1282,7 +1557,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/fr/styles/adventure-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/adventure-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/adventure-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/adventure-travel/" />
@@ -1293,7 +1568,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/fr/styles/ancestry-legacy-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/ancestry-legacy-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/ancestry-legacy-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/ancestry-legacy-travel/" />
@@ -1304,7 +1579,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/fr/styles/backpacking/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/backpacking/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/backpacking/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/backpacking/" />
@@ -1315,7 +1590,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/fr/styles/cruise-experience/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/cruise-experience/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/cruise-experience/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/cruise-experience/" />
@@ -1326,7 +1601,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/fr/styles/cultural-immersion-homestay/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/cultural-immersion-homestay/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/cultural-immersion-homestay/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/cultural-immersion-homestay/" />
@@ -1337,7 +1612,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/fr/styles/eco-sustainable-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/eco-sustainable-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/eco-sustainable-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/eco-sustainable-travel/" />
@@ -1348,7 +1623,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/fr/styles/family-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/family-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/family-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/family-travel/" />
@@ -1359,7 +1634,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/fr/styles/guided-group-tour/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:45Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/guided-group-tour/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/guided-group-tour/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/guided-group-tour/" />
@@ -1370,7 +1645,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/fr/styles/independent-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:45Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/independent-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/independent-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/independent-travel/" />
@@ -1381,7 +1656,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/fr/styles/luxury-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/luxury-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/luxury-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/luxury-travel/" />
@@ -1392,7 +1667,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/fr/styles/regenerative-community-led/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/regenerative-community-led/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/regenerative-community-led/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/regenerative-community-led/" />
@@ -1403,7 +1678,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/fr/styles/religious-spiritual-pilgrimage/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/religious-spiritual-pilgrimage/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/religious-spiritual-pilgrimage/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/religious-spiritual-pilgrimage/" />
@@ -1414,7 +1689,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/fr/styles/road-trip-self-drive/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/road-trip-self-drive/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/road-trip-self-drive/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/road-trip-self-drive/" />
@@ -1425,7 +1700,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/fr/styles/shrine-saints-tourism/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/shrine-saints-tourism/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/shrine-saints-tourism/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/shrine-saints-tourism/" />
@@ -1436,7 +1711,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/fr/styles/slow-travel-quietcations/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/slow-travel-quietcations/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/slow-travel-quietcations/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/slow-travel-quietcations/" />
@@ -1447,7 +1722,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/fr/styles/solo-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:45Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/solo-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/solo-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/solo-travel/" />
@@ -1458,7 +1733,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/fr/styles/transformational-wellness/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/transformational-wellness/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/transformational-wellness/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/transformational-wellness/" />
@@ -1469,7 +1744,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/fr/tools/</loc>
-    <lastmod>2026-05-09T16:12:13Z</lastmod>
+    <lastmod>2026-06-26T20:17:42Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/tools/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/tools/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/tools/" />
@@ -1480,7 +1755,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/fr/tools/find-your-match/</loc>
-    <lastmod>2026-05-09T16:12:14Z</lastmod>
+    <lastmod>2026-06-26T20:17:43Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/tools/find-your-match/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/tools/find-your-match/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/tools/find-your-match/" />
@@ -1491,7 +1766,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ja/</loc>
-    <lastmod>2026-05-09T16:12:09Z</lastmod>
+    <lastmod>2026-06-26T20:17:38Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/" />
@@ -1501,8 +1776,30 @@
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/" />
   </url>
   <url>
+    <loc>https://tourvstravel.com/ja/about/</loc>
+    <lastmod>2026-06-26T20:17:49Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/about/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/about/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/about/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourvstravel.com/es/about/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourvstravel.com/fr/about/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tourvstravel.com/ja/about/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/about/" />
+  </url>
+  <url>
+    <loc>https://tourvstravel.com/ja/acquire/</loc>
+    <lastmod>2026-06-26T20:17:50Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/acquire/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/acquire/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/acquire/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourvstravel.com/es/acquire/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourvstravel.com/fr/acquire/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tourvstravel.com/ja/acquire/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/acquire/" />
+  </url>
+  <url>
     <loc>https://tourvstravel.com/ja/compare/</loc>
-    <lastmod>2026-05-09T16:12:12Z</lastmod>
+    <lastmod>2026-06-26T20:17:41Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/compare/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/compare/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/compare/" />
@@ -1513,7 +1810,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ja/contact/</loc>
-    <lastmod>2026-05-09T16:12:19Z</lastmod>
+    <lastmod>2026-06-26T20:17:48Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/contact/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/contact/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/contact/" />
@@ -1524,7 +1821,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ja/destinations/</loc>
-    <lastmod>2026-05-09T16:12:15Z</lastmod>
+    <lastmod>2026-06-26T20:17:44Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/destinations/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/destinations/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/destinations/" />
@@ -1535,7 +1832,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ja/methodology/</loc>
-    <lastmod>2026-05-09T16:12:09Z</lastmod>
+    <lastmod>2026-06-26T20:17:39Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/methodology/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/methodology/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/methodology/" />
@@ -1545,8 +1842,41 @@
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/methodology/" />
   </url>
   <url>
+    <loc>https://tourvstravel.com/ja/methodology/editorial-standards/</loc>
+    <lastmod>2026-06-26T20:17:52Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/methodology/editorial-standards/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/methodology/editorial-standards/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/methodology/editorial-standards/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourvstravel.com/es/methodology/editorial-standards/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourvstravel.com/fr/methodology/editorial-standards/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tourvstravel.com/ja/methodology/editorial-standards/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/methodology/editorial-standards/" />
+  </url>
+  <url>
+    <loc>https://tourvstravel.com/ja/methodology/source-policy/</loc>
+    <lastmod>2026-06-26T20:17:51Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/methodology/source-policy/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/methodology/source-policy/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/methodology/source-policy/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourvstravel.com/es/methodology/source-policy/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourvstravel.com/fr/methodology/source-policy/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tourvstravel.com/ja/methodology/source-policy/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/methodology/source-policy/" />
+  </url>
+  <url>
+    <loc>https://tourvstravel.com/ja/privacy/</loc>
+    <lastmod>2026-06-26T20:17:49Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/privacy/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/privacy/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/privacy/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourvstravel.com/es/privacy/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourvstravel.com/fr/privacy/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tourvstravel.com/ja/privacy/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/privacy/" />
+  </url>
+  <url>
     <loc>https://tourvstravel.com/ja/report/</loc>
-    <lastmod>2026-05-09T16:12:18Z</lastmod>
+    <lastmod>2026-06-26T20:17:47Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/report/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/report/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/report/" />
@@ -1557,7 +1887,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ja/reports/</loc>
-    <lastmod>2026-05-09T16:12:19Z</lastmod>
+    <lastmod>2026-06-26T20:17:48Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/reports/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/reports/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/reports/" />
@@ -1568,7 +1898,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ja/styles/</loc>
-    <lastmod>2026-05-09T16:12:10Z</lastmod>
+    <lastmod>2026-06-26T20:17:40Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/" />
@@ -1579,7 +1909,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ja/styles/adventure-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/adventure-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/adventure-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/adventure-travel/" />
@@ -1590,7 +1920,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ja/styles/ancestry-legacy-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/ancestry-legacy-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/ancestry-legacy-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/ancestry-legacy-travel/" />
@@ -1601,7 +1931,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ja/styles/backpacking/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/backpacking/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/backpacking/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/backpacking/" />
@@ -1612,7 +1942,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ja/styles/cruise-experience/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/cruise-experience/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/cruise-experience/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/cruise-experience/" />
@@ -1623,7 +1953,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ja/styles/cultural-immersion-homestay/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/cultural-immersion-homestay/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/cultural-immersion-homestay/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/cultural-immersion-homestay/" />
@@ -1634,7 +1964,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ja/styles/eco-sustainable-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/eco-sustainable-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/eco-sustainable-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/eco-sustainable-travel/" />
@@ -1645,7 +1975,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ja/styles/family-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/family-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/family-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/family-travel/" />
@@ -1656,7 +1986,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ja/styles/guided-group-tour/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:45Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/guided-group-tour/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/guided-group-tour/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/guided-group-tour/" />
@@ -1667,7 +1997,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ja/styles/independent-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:45Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/independent-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/independent-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/independent-travel/" />
@@ -1678,7 +2008,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ja/styles/luxury-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/luxury-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/luxury-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/luxury-travel/" />
@@ -1689,7 +2019,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ja/styles/regenerative-community-led/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/regenerative-community-led/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/regenerative-community-led/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/regenerative-community-led/" />
@@ -1700,7 +2030,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ja/styles/religious-spiritual-pilgrimage/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/religious-spiritual-pilgrimage/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/religious-spiritual-pilgrimage/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/religious-spiritual-pilgrimage/" />
@@ -1711,7 +2041,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ja/styles/road-trip-self-drive/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/road-trip-self-drive/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/road-trip-self-drive/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/road-trip-self-drive/" />
@@ -1722,7 +2052,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ja/styles/shrine-saints-tourism/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/shrine-saints-tourism/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/shrine-saints-tourism/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/shrine-saints-tourism/" />
@@ -1733,7 +2063,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ja/styles/slow-travel-quietcations/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/slow-travel-quietcations/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/slow-travel-quietcations/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/slow-travel-quietcations/" />
@@ -1744,7 +2074,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ja/styles/solo-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/solo-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/solo-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/solo-travel/" />
@@ -1755,7 +2085,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ja/styles/transformational-wellness/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/transformational-wellness/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/transformational-wellness/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/transformational-wellness/" />
@@ -1766,7 +2096,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ja/tools/</loc>
-    <lastmod>2026-05-09T16:12:13Z</lastmod>
+    <lastmod>2026-06-26T20:17:42Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/tools/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/tools/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/tools/" />
@@ -1777,7 +2107,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/ja/tools/find-your-match/</loc>
-    <lastmod>2026-05-09T16:12:14Z</lastmod>
+    <lastmod>2026-06-26T20:17:43Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/tools/find-your-match/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/tools/find-your-match/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/tools/find-your-match/" />
@@ -1788,7 +2118,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/zh/</loc>
-    <lastmod>2026-05-09T16:12:09Z</lastmod>
+    <lastmod>2026-06-26T20:17:38Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/" />
@@ -1798,8 +2128,30 @@
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/" />
   </url>
   <url>
+    <loc>https://tourvstravel.com/zh/about/</loc>
+    <lastmod>2026-06-26T20:17:49Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/about/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/about/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/about/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourvstravel.com/es/about/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourvstravel.com/fr/about/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tourvstravel.com/ja/about/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/about/" />
+  </url>
+  <url>
+    <loc>https://tourvstravel.com/zh/acquire/</loc>
+    <lastmod>2026-06-26T20:17:50Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/acquire/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/acquire/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/acquire/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourvstravel.com/es/acquire/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourvstravel.com/fr/acquire/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tourvstravel.com/ja/acquire/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/acquire/" />
+  </url>
+  <url>
     <loc>https://tourvstravel.com/zh/compare/</loc>
-    <lastmod>2026-05-09T16:12:12Z</lastmod>
+    <lastmod>2026-06-26T20:17:41Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/compare/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/compare/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/compare/" />
@@ -1810,7 +2162,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/zh/contact/</loc>
-    <lastmod>2026-05-09T16:12:19Z</lastmod>
+    <lastmod>2026-06-26T20:17:48Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/contact/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/contact/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/contact/" />
@@ -1821,7 +2173,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/zh/destinations/</loc>
-    <lastmod>2026-05-09T16:12:15Z</lastmod>
+    <lastmod>2026-06-26T20:17:44Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/destinations/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/destinations/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/destinations/" />
@@ -1832,7 +2184,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/zh/methodology/</loc>
-    <lastmod>2026-05-09T16:12:09Z</lastmod>
+    <lastmod>2026-06-26T20:17:39Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/methodology/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/methodology/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/methodology/" />
@@ -1842,8 +2194,41 @@
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/methodology/" />
   </url>
   <url>
+    <loc>https://tourvstravel.com/zh/methodology/editorial-standards/</loc>
+    <lastmod>2026-06-26T20:17:52Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/methodology/editorial-standards/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/methodology/editorial-standards/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/methodology/editorial-standards/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourvstravel.com/es/methodology/editorial-standards/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourvstravel.com/fr/methodology/editorial-standards/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tourvstravel.com/ja/methodology/editorial-standards/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/methodology/editorial-standards/" />
+  </url>
+  <url>
+    <loc>https://tourvstravel.com/zh/methodology/source-policy/</loc>
+    <lastmod>2026-06-26T20:17:51Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/methodology/source-policy/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/methodology/source-policy/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/methodology/source-policy/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourvstravel.com/es/methodology/source-policy/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourvstravel.com/fr/methodology/source-policy/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tourvstravel.com/ja/methodology/source-policy/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/methodology/source-policy/" />
+  </url>
+  <url>
+    <loc>https://tourvstravel.com/zh/privacy/</loc>
+    <lastmod>2026-06-26T20:17:49Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/privacy/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/privacy/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/privacy/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourvstravel.com/es/privacy/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourvstravel.com/fr/privacy/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tourvstravel.com/ja/privacy/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/privacy/" />
+  </url>
+  <url>
     <loc>https://tourvstravel.com/zh/report/</loc>
-    <lastmod>2026-05-09T16:12:18Z</lastmod>
+    <lastmod>2026-06-26T20:17:47Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/report/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/report/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/report/" />
@@ -1854,7 +2239,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/zh/reports/</loc>
-    <lastmod>2026-05-09T16:12:19Z</lastmod>
+    <lastmod>2026-06-26T20:17:48Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/reports/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/reports/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/reports/" />
@@ -1865,7 +2250,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/zh/styles/</loc>
-    <lastmod>2026-05-09T16:12:10Z</lastmod>
+    <lastmod>2026-06-26T20:17:40Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/" />
@@ -1876,7 +2261,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/zh/styles/adventure-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/adventure-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/adventure-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/adventure-travel/" />
@@ -1887,7 +2272,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/zh/styles/ancestry-legacy-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/ancestry-legacy-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/ancestry-legacy-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/ancestry-legacy-travel/" />
@@ -1898,7 +2283,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/zh/styles/backpacking/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/backpacking/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/backpacking/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/backpacking/" />
@@ -1909,7 +2294,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/zh/styles/cruise-experience/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/cruise-experience/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/cruise-experience/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/cruise-experience/" />
@@ -1920,7 +2305,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/zh/styles/cultural-immersion-homestay/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/cultural-immersion-homestay/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/cultural-immersion-homestay/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/cultural-immersion-homestay/" />
@@ -1931,7 +2316,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/zh/styles/eco-sustainable-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/eco-sustainable-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/eco-sustainable-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/eco-sustainable-travel/" />
@@ -1942,7 +2327,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/zh/styles/family-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/family-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/family-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/family-travel/" />
@@ -1953,7 +2338,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/zh/styles/guided-group-tour/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:45Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/guided-group-tour/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/guided-group-tour/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/guided-group-tour/" />
@@ -1964,7 +2349,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/zh/styles/independent-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:45Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/independent-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/independent-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/independent-travel/" />
@@ -1975,7 +2360,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/zh/styles/luxury-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/luxury-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/luxury-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/luxury-travel/" />
@@ -1986,7 +2371,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/zh/styles/regenerative-community-led/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/regenerative-community-led/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/regenerative-community-led/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/regenerative-community-led/" />
@@ -1997,7 +2382,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/zh/styles/religious-spiritual-pilgrimage/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/religious-spiritual-pilgrimage/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/religious-spiritual-pilgrimage/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/religious-spiritual-pilgrimage/" />
@@ -2008,7 +2393,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/zh/styles/road-trip-self-drive/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/road-trip-self-drive/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/road-trip-self-drive/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/road-trip-self-drive/" />
@@ -2019,7 +2404,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/zh/styles/shrine-saints-tourism/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/shrine-saints-tourism/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/shrine-saints-tourism/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/shrine-saints-tourism/" />
@@ -2030,7 +2415,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/zh/styles/slow-travel-quietcations/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/slow-travel-quietcations/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/slow-travel-quietcations/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/slow-travel-quietcations/" />
@@ -2041,7 +2426,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/zh/styles/solo-travel/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:45Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/solo-travel/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/solo-travel/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/solo-travel/" />
@@ -2052,7 +2437,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/zh/styles/transformational-wellness/</loc>
-    <lastmod>2026-05-09T16:12:17Z</lastmod>
+    <lastmod>2026-06-26T20:17:46Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/styles/transformational-wellness/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/styles/transformational-wellness/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/styles/transformational-wellness/" />
@@ -2063,7 +2448,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/zh/tools/</loc>
-    <lastmod>2026-05-09T16:12:13Z</lastmod>
+    <lastmod>2026-06-26T20:17:42Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/tools/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/tools/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/tools/" />
@@ -2074,7 +2459,7 @@
   </url>
   <url>
     <loc>https://tourvstravel.com/zh/tools/find-your-match/</loc>
-    <lastmod>2026-05-09T16:12:14Z</lastmod>
+    <lastmod>2026-06-26T20:17:43Z</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/tools/find-your-match/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/tools/find-your-match/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/tools/find-your-match/" />

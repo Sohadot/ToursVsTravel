@@ -79,6 +79,17 @@ from scripts.generate_destinations import (
 )
 from scripts.generate_report import GenerateReportError, generate_report_pages
 from scripts.generate_contact import GenerateContactError, generate_contact_pages
+from scripts.generate_about import GenerateAboutError, generate_about_pages
+from scripts.generate_privacy import GeneratePrivacyError, generate_privacy_pages
+from scripts.generate_acquire import GenerateAcquireError, generate_acquire_pages
+from scripts.generate_source_policy import (
+    GenerateSourcePolicyError,
+    generate_source_policy_pages,
+)
+from scripts.generate_editorial_standards import (
+    GenerateEditorialStandardsError,
+    generate_editorial_standards_pages,
+)
 from scripts.generate_experience_types import (
     GenerateExperienceTypesError,
     generate_experience_type_pages,
@@ -383,6 +394,56 @@ def _run_contact_generation(*, stage_dir: Path) -> int:
     return count
 
 
+def _run_about_generation(*, stage_dir: Path) -> int:
+    written = generate_about_pages(
+        requested_lang=None,
+        output_dir=stage_dir,
+    )
+    count = len(written)
+    log.info("Generated about pages: %d", count)
+    return count
+
+
+def _run_privacy_generation(*, stage_dir: Path) -> int:
+    written = generate_privacy_pages(
+        requested_lang=None,
+        output_dir=stage_dir,
+    )
+    count = len(written)
+    log.info("Generated privacy pages: %d", count)
+    return count
+
+
+def _run_acquire_generation(*, stage_dir: Path) -> int:
+    written = generate_acquire_pages(
+        requested_lang=None,
+        output_dir=stage_dir,
+    )
+    count = len(written)
+    log.info("Generated acquire pages: %d", count)
+    return count
+
+
+def _run_source_policy_generation(*, stage_dir: Path) -> int:
+    written = generate_source_policy_pages(
+        requested_lang=None,
+        output_dir=stage_dir,
+    )
+    count = len(written)
+    log.info("Generated source policy pages: %d", count)
+    return count
+
+
+def _run_editorial_standards_generation(*, stage_dir: Path) -> int:
+    written = generate_editorial_standards_pages(
+        requested_lang=None,
+        output_dir=stage_dir,
+    )
+    count = len(written)
+    log.info("Generated editorial standards pages: %d", count)
+    return count
+
+
 def _run_robots_generation(*, stage_dir: Path) -> Path:
     written = generate_robots_file(
         output_dir=stage_dir,
@@ -441,6 +502,9 @@ def _scan_html_forbidden_fragments(stage_dir: Path) -> None:
         "src='../static/",
         'href="../static/',
         "href='../static/",
+        '/experience/',
+        'href="/#report"',
+        "href='/#report'",
     ]
 
     for html_file in stage_dir.rglob("*.html"):
@@ -519,6 +583,26 @@ def _verify_experience_type_count(stage_dir: Path) -> None:
         )
 
 
+def _verify_trust_pages_are_indexable(stage_dir: Path) -> None:
+    trust_path_templates = [
+        "{lang}/about/index.html",
+        "{lang}/privacy/index.html",
+        "{lang}/acquire/index.html",
+        "{lang}/methodology/source-policy/index.html",
+        "{lang}/methodology/editorial-standards/index.html",
+    ]
+    for lang in SUPPORTED_LANGUAGES:
+        for path_template in trust_path_templates:
+            html_file = stage_dir / path_template.format(lang=lang)
+            if not html_file.exists():
+                continue
+            text = html_file.read_text(encoding="utf-8")
+            if "noindex" in text:
+                raise BuildStepError(
+                    f"Trust page must not contain noindex: {html_file}"
+                )
+
+
 def _verify_output_contract(stage_dir: Path) -> None:
     log.info("Verifying staged output contract")
 
@@ -544,9 +628,15 @@ def _verify_output_contract(stage_dir: Path) -> None:
         _require_file(stage_dir / lang / "destinations" / "index.html")
         _require_file(stage_dir / lang / "report" / "index.html")
         _require_file(stage_dir / lang / "contact" / "index.html")
+        _require_file(stage_dir / lang / "about" / "index.html")
+        _require_file(stage_dir / lang / "privacy" / "index.html")
+        _require_file(stage_dir / lang / "acquire" / "index.html")
+        _require_file(stage_dir / lang / "methodology" / "source-policy" / "index.html")
+        _require_file(stage_dir / lang / "methodology" / "editorial-standards" / "index.html")
 
     _require_file(stage_dir / "en" / "styles" / "guided-group-tour" / "index.html")
 
+    _verify_trust_pages_are_indexable(stage_dir)
     _verify_experience_type_count(stage_dir)
     _verify_sitemap_contract(stage_dir)
     _scan_html_forbidden_fragments(stage_dir)
@@ -666,19 +756,34 @@ def run_build(
         log.info("Step 12: Generate contact pages and legacy /reports/ redirects")
         _run_contact_generation(stage_dir=stage_dir)
 
-        log.info("Step 13: Generate robots.txt")
+        log.info("Step 13: Generate multilingual about pages")
+        _run_about_generation(stage_dir=stage_dir)
+
+        log.info("Step 14: Generate multilingual privacy pages")
+        _run_privacy_generation(stage_dir=stage_dir)
+
+        log.info("Step 15: Generate multilingual acquire pages")
+        _run_acquire_generation(stage_dir=stage_dir)
+
+        log.info("Step 16: Generate multilingual source policy pages")
+        _run_source_policy_generation(stage_dir=stage_dir)
+
+        log.info("Step 17: Generate multilingual editorial standards pages")
+        _run_editorial_standards_generation(stage_dir=stage_dir)
+
+        log.info("Step 18: Generate robots.txt")
         _run_robots_generation(stage_dir=stage_dir)
 
-        log.info("Step 14: Generate sitemap.xml")
+        log.info("Step 19: Generate sitemap.xml")
         _run_sitemap_generation(stage_dir=stage_dir)
 
-        log.info("Step 15: Create .nojekyll")
+        log.info("Step 20: Create .nojekyll")
         _write_nojekyll(stage_dir)
 
-        log.info("Step 16: Verify staged output")
+        log.info("Step 21: Verify staged output")
         _verify_output_contract(stage_dir)
 
-        log.info("Step 17: Promote staged output")
+        log.info("Step 22: Promote staged output")
         _promote_stage_to_final(stage_dir, final_output_dir)
 
     except Exception:
@@ -739,6 +844,11 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         GenerateDestinationsError,
         GenerateReportError,
         GenerateContactError,
+        GenerateAboutError,
+        GeneratePrivacyError,
+        GenerateAcquireError,
+        GenerateSourcePolicyError,
+        GenerateEditorialStandardsError,
         GenerateExperienceTypesError,
         GenerateRobotsError,
         GenerateSitemapError,

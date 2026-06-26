@@ -1,0 +1,22 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+<div class="page-about-root container" dir="{{ page_dir }}">
+  <header class="page-hero page-hero--compact">
+    <p class="page-hero__eyebrow">{{ site_name }}</p>
+    <h1>{{ copy.title }}</h1>
+    <p class="page-hero__lead">{{ copy.lead }}</p>
+  </header>
+
+  <section class="about-section" aria-labelledby="about-mission-title">
+    <h2 id="about-mission-title">{{ copy.mission_label }}</h2>
+    <p>{{ copy.mission }}</p>
+  </section>
+
+  <section class="about-section" aria-labelledby="about-methodology-title">
+    <h2 id="about-methodology-title">{{ copy.methodology_label }}</h2>
+    <p>{{ copy.methodology_desc }}</p>
+    <p><a href="{{ url_methodology }}">{{ copy.methodology_link }}</a></p>
+  </section>
+</div>
+{% endblock %}

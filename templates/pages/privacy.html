@@ -1,0 +1,26 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+<div class="page-privacy-root container" dir="{{ page_dir }}">
+  <header class="page-hero page-hero--compact">
+    <p class="page-hero__eyebrow">{{ site_name }}</p>
+    <h1>{{ copy.title }}</h1>
+    <p class="page-hero__lead">{{ copy.lead }}</p>
+  </header>
+
+  <section class="privacy-section" aria-labelledby="privacy-data-title">
+    <h2 id="privacy-data-title">{{ copy.data_label }}</h2>
+    <p>{{ copy.data_body }}</p>
+  </section>
+
+  <section class="privacy-section" aria-labelledby="privacy-cookies-title">
+    <h2 id="privacy-cookies-title">{{ copy.cookies_label }}</h2>
+    <p>{{ copy.cookies_body }}</p>
+  </section>
+
+  <section class="privacy-section" aria-labelledby="privacy-contact-title">
+    <h2 id="privacy-contact-title">{{ copy.contact_label }}</h2>
+    <p>{{ copy.contact_body }} <a href="{{ url_contact }}">{{ copy.contact_link }}</a>.</p>
+  </section>
+</div>
+{% endblock %}

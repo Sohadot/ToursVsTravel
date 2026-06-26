@@ -1,0 +1,28 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+<div class="page-editorial-standards-root container" dir="{{ page_dir }}">
+  <header class="page-hero page-hero--compact">
+    <p class="page-hero__eyebrow">{{ site_name }}</p>
+    <h1>{{ copy.title }}</h1>
+    <p class="page-hero__lead">{{ copy.lead }}</p>
+  </header>
+
+  <section class="editorial-standards-section" aria-labelledby="editorial-standards-principles-title">
+    <h2 id="editorial-standards-principles-title">{{ copy.principles_label }}</h2>
+    <p>{{ copy.principles_body }}</p>
+  </section>
+
+  <section class="editorial-standards-section" aria-labelledby="editorial-standards-process-title">
+    <h2 id="editorial-standards-process-title">{{ copy.process_label }}</h2>
+    <p>{{ copy.process_body }}</p>
+  </section>
+
+  <nav class="methodology-nav" aria-label="{{ copy.see_also_label }}">
+    <ul>
+      <li><a href="{{ url_methodology }}">{{ copy.ln_methodology }}</a></li>
+      <li><a href="{{ url_source_policy }}">{{ copy.ln_source_policy }}</a></li>
+    </ul>
+  </nav>
+</div>
+{% endblock %}

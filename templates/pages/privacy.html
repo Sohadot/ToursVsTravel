@@ -8,19 +8,22 @@
     <p class="page-hero__lead">{{ copy.lead }}</p>
   </header>
 
-  <section class="privacy-section" aria-labelledby="privacy-data-title">
-    <h2 id="privacy-data-title">{{ copy.data_label }}</h2>
-    <p>{{ copy.data_body }}</p>
+  {% for section in copy.sections %}
+  <section class="privacy-section trust-section" aria-labelledby="privacy-section-{{ loop.index }}">
+    <h2 id="privacy-section-{{ loop.index }}">{{ section.heading }}</h2>
+    {% for paragraph in section.paragraphs %}
+    <p>{{ paragraph }}</p>
+    {% endfor %}
   </section>
+  {% endfor %}
 
-  <section class="privacy-section" aria-labelledby="privacy-cookies-title">
-    <h2 id="privacy-cookies-title">{{ copy.cookies_label }}</h2>
-    <p>{{ copy.cookies_body }}</p>
-  </section>
-
-  <section class="privacy-section" aria-labelledby="privacy-contact-title">
-    <h2 id="privacy-contact-title">{{ copy.contact_label }}</h2>
-    <p>{{ copy.contact_body }} <a href="{{ url_contact }}">{{ copy.contact_link }}</a>.</p>
-  </section>
+  <nav class="methodology-nav trust-links" aria-label="Related pages">
+    <ul>
+      {% for label, key in copy.related_links %}
+      {% set href = url_map.get(key) %}
+      {% if href %}<li><a href="{{ href }}">{{ label }}</a></li>{% endif %}
+      {% endfor %}
+    </ul>
+  </nav>
 </div>
 {% endblock %}

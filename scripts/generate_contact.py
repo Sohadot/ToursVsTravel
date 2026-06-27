@@ -28,12 +28,17 @@ from scripts.loaders import (
     resolve_nav_report_label,
 )
 from scripts.routes import (
+    build_about_path,
+    build_acquire_path,
     build_compare_index_path,
     build_contact_path,
     build_destinations_index_path,
+    build_editorial_standards_path,
     build_home_path,
     build_methodology_path,
+    build_privacy_path,
     build_reference_report_path,
+    build_source_policy_path,
     build_tools_index_path,
 )
 from scripts.seo import (
@@ -42,6 +47,7 @@ from scripts.seo import (
     build_webpage_jsonld,
     build_website_jsonld,
 )
+from scripts.trust_authority_copy import get_trust_page_copy
 
 log = logging.getLogger("generate_contact")
 
@@ -312,7 +318,7 @@ def _build_context(
     lang: str,
     languages: Sequence[str],
 ) -> Dict[str, Any]:
-    copy = PAGE_COPY.get(lang, PAGE_COPY["en"])
+    copy = get_trust_page_copy("contact", lang)
     base_url = _ensure_string(
         _get_nested(site_config, ("site", "base_url"), "https://tourvstravel.com").strip().rstrip("/"),
         "site.base_url",
@@ -393,6 +399,18 @@ def _build_context(
         "url_compare": build_compare_index_path(site_config, lang, absolute=False),
         "url_tools": build_tools_index_path(site_config, lang, absolute=False),
         "url_destinations": build_destinations_index_path(site_config, lang, absolute=False),
+        "url_about": build_about_path(site_config, lang, absolute=False),
+        "url_privacy": build_privacy_path(site_config, lang, absolute=False),
+        "url_acquire": build_acquire_path(site_config, lang, absolute=False),
+        "url_source_policy": build_source_policy_path(site_config, lang, absolute=False),
+        "url_editorial_standards": build_editorial_standards_path(site_config, lang, absolute=False),
+        "url_map": {
+            "url_source_policy": build_source_policy_path(site_config, lang, absolute=False),
+            "url_editorial_standards": build_editorial_standards_path(site_config, lang, absolute=False),
+            "url_acquire": build_acquire_path(site_config, lang, absolute=False),
+            "url_methodology": build_methodology_path(site_config, lang, absolute=False),
+            "url_report": build_reference_report_path(site_config, lang, absolute=False),
+        },
     }
 
 

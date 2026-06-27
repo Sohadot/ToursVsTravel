@@ -43,6 +43,7 @@ from scripts.seo import (
     build_webpage_jsonld,
     build_website_jsonld,
 )
+from scripts.trust_authority_copy import get_trust_page_copy
 
 log = logging.getLogger("generate_source_policy")
 
@@ -300,7 +301,7 @@ def _build_context(
     lang: str,
     languages: Sequence[str],
 ) -> Dict[str, Any]:
-    copy = PAGE_COPY.get(lang, PAGE_COPY["en"])
+    copy = get_trust_page_copy("source_policy", lang)
     base_url = _ensure_string(
         _get_nested(site_config, ("site", "base_url"), "https://tourvstravel.com").strip().rstrip("/"),
         "site.base_url",
@@ -375,6 +376,12 @@ def _build_context(
         "url_contact": build_contact_path(site_config, lang, absolute=False),
         "url_source_policy": build_source_policy_path(site_config, lang, absolute=False),
         "url_editorial_standards": build_editorial_standards_path(site_config, lang, absolute=False),
+        "url_map": {
+            "url_methodology": build_methodology_path(site_config, lang, absolute=False),
+            "url_editorial_standards": build_editorial_standards_path(site_config, lang, absolute=False),
+            "url_about": build_about_path(site_config, lang, absolute=False),
+            "url_contact": build_contact_path(site_config, lang, absolute=False),
+        },
     }
 
 

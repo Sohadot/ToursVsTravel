@@ -83,6 +83,7 @@ __all__ = [
     "build_privacy_path",
     "build_source_policy_path",
     "build_editorial_standards_path",
+    "build_travel_decision_architecture_path",
     # Generated route builders
     "build_destination_path",
     "build_experience_type_path",
@@ -143,6 +144,7 @@ SYSTEM_ROUTE_TEMPLATES: Dict[str, str] = {
     "privacy": "/{lang}/privacy/",
     "source_policy": "/{lang}/methodology/source-policy/",
     "editorial_standards": "/{lang}/methodology/editorial-standards/",
+    "travel_decision_architecture": "/{lang}/travel-decision-architecture/",
 
     # Generated page families (immutable — cannot be overridden by site_config)
     "destination": "/{lang}/destinations/{destination_id}/",
@@ -165,6 +167,7 @@ STATIC_ROUTE_KEYS: FrozenSet[str] = frozenset({
     "privacy",
     "source_policy",
     "editorial_standards",
+    "travel_decision_architecture",
 })
 
 GENERATED_ROUTE_KEYS: FrozenSet[str] = frozenset({
@@ -700,6 +703,18 @@ def build_editorial_standards_path(
     if absolute:
         return build_absolute_route(site_config, "editorial_standards", lang, registry=registry)
     return build_path_from_template(site_config, "editorial_standards", lang, registry=registry)
+
+
+def build_travel_decision_architecture_path(
+    site_config: Mapping[str, Any],
+    lang: str,
+    *,
+    absolute: bool = False,
+    registry: Optional[Mapping[str, Any]] = None,
+) -> str:
+    if absolute:
+        return build_absolute_route(site_config, "travel_decision_architecture", lang, registry=registry)
+    return build_path_from_template(site_config, "travel_decision_architecture", lang, registry=registry)
 
 
 # ============================================================================

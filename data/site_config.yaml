@@ -110,6 +110,7 @@ routes:
   reports_index: "/{lang}/reports/"
   source_policy: "/{lang}/methodology/source-policy/"
   editorial_standards: "/{lang}/methodology/editorial-standards/"
+  travel_decision_architecture: "/{lang}/travel-decision-architecture/"
   about: "/{lang}/about/"
   privacy: "/{lang}/privacy/"
   contact: "/{lang}/contact/"

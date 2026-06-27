@@ -90,6 +90,10 @@ from scripts.generate_editorial_standards import (
     GenerateEditorialStandardsError,
     generate_editorial_standards_pages,
 )
+from scripts.generate_travel_decision_architecture import (
+    GenerateTravelDecisionArchitectureError,
+    generate_travel_decision_architecture_pages,
+)
 from scripts.generate_experience_types import (
     GenerateExperienceTypesError,
     generate_experience_type_pages,
@@ -444,6 +448,16 @@ def _run_editorial_standards_generation(*, stage_dir: Path) -> int:
     return count
 
 
+def _run_travel_decision_architecture_generation(*, stage_dir: Path) -> int:
+    written = generate_travel_decision_architecture_pages(
+        requested_lang=None,
+        output_dir=stage_dir,
+    )
+    count = len(written)
+    log.info("Generated travel decision architecture pages: %d", count)
+    return count
+
+
 def _run_robots_generation(*, stage_dir: Path) -> Path:
     written = generate_robots_file(
         output_dir=stage_dir,
@@ -633,6 +647,7 @@ def _verify_output_contract(stage_dir: Path) -> None:
         _require_file(stage_dir / lang / "acquire" / "index.html")
         _require_file(stage_dir / lang / "methodology" / "source-policy" / "index.html")
         _require_file(stage_dir / lang / "methodology" / "editorial-standards" / "index.html")
+        _require_file(stage_dir / lang / "travel-decision-architecture" / "index.html")
 
     _require_file(stage_dir / "en" / "styles" / "guided-group-tour" / "index.html")
 
@@ -771,19 +786,22 @@ def run_build(
         log.info("Step 17: Generate multilingual editorial standards pages")
         _run_editorial_standards_generation(stage_dir=stage_dir)
 
-        log.info("Step 18: Generate robots.txt")
+        log.info("Step 18: Generate multilingual Travel Decision Architecture pages")
+        _run_travel_decision_architecture_generation(stage_dir=stage_dir)
+
+        log.info("Step 19: Generate robots.txt")
         _run_robots_generation(stage_dir=stage_dir)
 
-        log.info("Step 19: Generate sitemap.xml")
+        log.info("Step 20: Generate sitemap.xml")
         _run_sitemap_generation(stage_dir=stage_dir)
 
-        log.info("Step 20: Create .nojekyll")
+        log.info("Step 21: Create .nojekyll")
         _write_nojekyll(stage_dir)
 
-        log.info("Step 21: Verify staged output")
+        log.info("Step 22: Verify staged output")
         _verify_output_contract(stage_dir)
 
-        log.info("Step 22: Promote staged output")
+        log.info("Step 23: Promote staged output")
         _promote_stage_to_final(stage_dir, final_output_dir)
 
     except Exception:
@@ -849,6 +867,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         GenerateAcquireError,
         GenerateSourcePolicyError,
         GenerateEditorialStandardsError,
+        GenerateTravelDecisionArchitectureError,
         GenerateExperienceTypesError,
         GenerateRobotsError,
         GenerateSitemapError,

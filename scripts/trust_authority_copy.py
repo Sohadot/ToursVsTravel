@@ -5,6 +5,8 @@ from __future__ import annotations
 from copy import deepcopy
 from typing import Any, Dict
 
+from scripts.reference_i18n import get_localized_trust_page_copy
+
 
 TRUST_PAGE_COPY: Dict[str, Dict[str, Any]] = {
     "about": {
@@ -385,8 +387,8 @@ LOCALIZED_TITLES = {
 
 
 def get_trust_page_copy(page_key: str, lang: str) -> Dict[str, Any]:
-    copy = deepcopy(TRUST_PAGE_COPY[page_key])
+    copy = get_localized_trust_page_copy(page_key, lang, TRUST_PAGE_COPY[page_key])
     localized = LOCALIZED_TITLES.get(lang, {}).get(page_key)
-    if localized:
+    if localized and lang == "en":
         copy["title"] = localized
     return copy

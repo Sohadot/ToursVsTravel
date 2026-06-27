@@ -43,6 +43,7 @@ from scripts.seo import (
     build_webpage_jsonld,
     build_website_jsonld,
 )
+from scripts.reference_i18n import localized_ui_context
 from scripts.trust_authority_copy import get_trust_page_copy
 
 log = logging.getLogger("generate_editorial_standards")
@@ -330,7 +331,7 @@ def _build_context(
     )
     main_css_url = _require_existing_asset("/static/css/main.css", "main_css_url")
     main_js_url = _require_existing_asset("/static/js/main.js", "main_js_url")
-    return {
+    context = {
         "base_url": base_url,
         "lang": lang,
         "page_lang": lang,
@@ -383,6 +384,8 @@ def _build_context(
             "url_contact": build_contact_path(site_config, lang, absolute=False),
         },
     }
+    context.update(localized_ui_context(lang))
+    return context
 
 
 def render_editorial_standards_page(

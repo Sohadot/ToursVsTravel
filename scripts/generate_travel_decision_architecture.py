@@ -23,6 +23,7 @@ from scripts.loaders import (
     resolve_footer_reference_report_label,
     resolve_nav_report_label,
 )
+from scripts.reference_i18n import get_travel_decision_architecture_copy, localized_ui_context
 from scripts.routes import (
     build_about_path,
     build_acquire_path,
@@ -372,9 +373,10 @@ def _build_context(
     lang: str,
     languages: Sequence[str],
 ) -> Dict[str, Any]:
-    copy = dict(LOCALIZED_COPY.get(lang, LOCALIZED_COPY["en"]))
-    copy["sections"] = ENGLISH_SECTIONS
-    copy["implementation_links"] = IMPLEMENTATION_LINKS
+    english_copy = dict(LOCALIZED_COPY["en"])
+    english_copy["sections"] = ENGLISH_SECTIONS
+    english_copy["implementation_links"] = IMPLEMENTATION_LINKS
+    copy = get_travel_decision_architecture_copy(lang, english_copy)
     base_url = _ensure_string(
         _get_nested(site_config, ("site", "base_url"), "https://tourvstravel.com").strip().rstrip("/"),
         "site.base_url",
@@ -414,7 +416,7 @@ def _build_context(
         "url_source_policy": build_source_policy_path(site_config, lang, absolute=False),
         "url_editorial_standards": build_editorial_standards_path(site_config, lang, absolute=False),
     }
-    return {
+    context = {
         "base_url": base_url,
         "lang": lang,
         "page_lang": lang,
@@ -464,6 +466,8 @@ def _build_context(
         "url_travel_decision_architecture": build_travel_decision_architecture_path(site_config, lang, absolute=False),
         "url_map": url_map,
     }
+    context.update(localized_ui_context(lang))
+    return context
 
 
 def render_travel_decision_architecture_page(

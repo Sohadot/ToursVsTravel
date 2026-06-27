@@ -56,8 +56,11 @@ import re
 import shutil
 import tempfile
 import time
+from html import unescape
+from html.parser import HTMLParser
 from pathlib import Path
 from typing import List, Optional, Sequence
+from urllib.parse import urlsplit
 
 
 from scripts.generate_root import GenerateRootError, generate_root_entrypoint
@@ -100,6 +103,8 @@ from scripts.generate_experience_types import (
 )
 from scripts.generate_robots import GenerateRobotsError, generate_robots_file
 from scripts.generate_sitemap import GenerateSitemapError, generate_sitemap_file
+from scripts.generate_travel_decision_architecture import ENGLISH_SECTIONS as TDA_ENGLISH_SECTIONS
+from scripts.trust_authority_copy import TRUST_PAGE_COPY
 
 
 # ============================================================================
@@ -133,6 +138,49 @@ DEFAULT_OUTPUT_DIR = ROOT_DIR / "output"
 SUPPORTED_LANGUAGES = ("en", "ar", "fr", "es", "de", "zh", "ja")
 DEFAULT_ROOT_LANG = "en"
 EXPECTED_EXPERIENCE_TYPE_COUNT = 17
+
+REFERENCE_PAGE_PATHS = {
+    "about": "{lang}/about/index.html",
+    "acquire": "{lang}/acquire/index.html",
+    "travel_decision_architecture": "{lang}/travel-decision-architecture/index.html",
+    "source_policy": "{lang}/methodology/source-policy/index.html",
+    "editorial_standards": "{lang}/methodology/editorial-standards/index.html",
+    "privacy": "{lang}/privacy/index.html",
+    "contact": "{lang}/contact/index.html",
+}
+
+REFERENCE_ROUTE_PATHS = {
+    "about": "/{lang}/about/",
+    "acquire": "/{lang}/acquire/",
+    "travel_decision_architecture": "/{lang}/travel-decision-architecture/",
+    "source_policy": "/{lang}/methodology/source-policy/",
+    "editorial_standards": "/{lang}/methodology/editorial-standards/",
+    "privacy": "/{lang}/privacy/",
+    "contact": "/{lang}/contact/",
+}
+
+COMMON_ENGLISH_REFERENCE_HEADINGS = (
+    "Scope",
+    "What TourVsTravel is",
+    "Why destination-first planning is incomplete",
+    "Why the name matters",
+    "Strategic buyer logic",
+    "What is included conceptually",
+    "Qualified strategic inquiries only",
+    "What this page does not claim",
+    "Source standards",
+    "Editorial standards",
+)
+
+APPROVED_REFERENCE_ENGLISH_TERMS = (
+    "TourVsTravel.com",
+    "TourVsTravel",
+    "Tour Vs Travel .com",
+    "Tour Vs Travel",
+    "Travel Decision Architecture",
+    "agent@sohadot.com",
+    "AI",
+)
 
 SENSITIVE_REPO_PATHS = {
     ROOT_DIR,
@@ -561,6 +609,168 @@ def _verify_static_asset_references(stage_dir: Path) -> None:
                 )
 
 
+class _HtmlIntegrityParser(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.html_lang = ""
+        self.html_dir = ""
+        self.h1_count = 0
+        self.canonical_href = ""
+        self.robots_content = ""
+        self.hrefs: List[str] = []
+        self.text_parts: List[str] = []
+        self._skip_depth = 0
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, Optional[str]]]) -> None:
+        attr_map = {name.lower(): value or "" for name, value in attrs}
+        tag_name = tag.lower()
+        if tag_name in {"script", "style", "noscript"}:
+            self._skip_depth += 1
+            return
+        if tag_name == "html":
+            self.html_lang = attr_map.get("lang", "")
+            self.html_dir = attr_map.get("dir", "")
+        elif tag_name == "h1":
+            self.h1_count += 1
+        elif tag_name == "a" and attr_map.get("href"):
+            self.hrefs.append(attr_map["href"])
+        elif tag_name == "link" and attr_map.get("rel", "").lower() == "canonical":
+            self.canonical_href = attr_map.get("href", "")
+        elif tag_name == "meta" and attr_map.get("name", "").lower() == "robots":
+            self.robots_content = attr_map.get("content", "")
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag.lower() in {"script", "style", "noscript"} and self._skip_depth:
+            self._skip_depth -= 1
+
+    def handle_data(self, data: str) -> None:
+        if self._skip_depth == 0 and data.strip():
+            self.text_parts.append(data)
+
+    @property
+    def visible_text(self) -> str:
+        return re.sub(r"\s+", " ", unescape(" ".join(self.text_parts))).strip()
+
+
+def _parse_generated_html(path: Path) -> _HtmlIntegrityParser:
+    parser = _HtmlIntegrityParser()
+    try:
+        parser.feed(path.read_text(encoding="utf-8"))
+    except UnicodeDecodeError as exc:
+        raise BuildStepError(f"Generated HTML is not valid UTF-8: {path}") from exc
+    return parser
+
+
+def _english_reference_fragments(page_key: str) -> List[str]:
+    fragments: List[str] = []
+    if page_key == "travel_decision_architecture":
+        for section in TDA_ENGLISH_SECTIONS:
+            fragments.extend(section.get("paragraphs", []))
+        return [text for text in fragments if isinstance(text, str) and len(text) >= 80]
+
+    copy = TRUST_PAGE_COPY[page_key]
+    fragments.append(str(copy.get("lead", "")))
+    for section in copy.get("sections", []):
+        if isinstance(section, dict):
+            fragments.extend(section.get("paragraphs", []))
+    return [text for text in fragments if isinstance(text, str) and len(text) >= 80]
+
+
+def _strip_approved_english_terms(text: str) -> str:
+    stripped = text
+    for term in APPROVED_REFERENCE_ENGLISH_TERMS:
+        stripped = stripped.replace(term, " ")
+    return stripped
+
+
+def _verify_no_large_english_blocks(html_file: Path, text: str, lang: str) -> None:
+    if lang not in {"ar", "zh", "ja"}:
+        return
+    stripped = _strip_approved_english_terms(text)
+    if re.search(r"[A-Za-z][A-Za-z0-9 ,.;:'\"!?()/-]{80,}[A-Za-z]", stripped):
+        raise BuildStepError(
+            f"Large English text block found in localized {lang} reference page: {html_file}"
+        )
+
+
+def _verify_reference_page_integrity(stage_dir: Path) -> None:
+    site_base = "https://tourvstravel.com"
+    for lang in SUPPORTED_LANGUAGES:
+        expected_dir = "rtl" if lang == "ar" else "ltr"
+        for page_key, path_template in REFERENCE_PAGE_PATHS.items():
+            html_file = stage_dir / path_template.format(lang=lang)
+            _require_file(html_file)
+            parser = _parse_generated_html(html_file)
+            text = parser.visible_text
+
+            if parser.html_lang != lang:
+                raise BuildStepError(f"Expected html lang={lang!r} in {html_file}, found {parser.html_lang!r}")
+            if parser.html_dir != expected_dir:
+                raise BuildStepError(f"Expected html dir={expected_dir!r} in {html_file}, found {parser.html_dir!r}")
+            if parser.h1_count != 1:
+                raise BuildStepError(f"Expected exactly one H1 in {html_file}, found {parser.h1_count}")
+            if "noindex" in parser.robots_content.lower() or "noindex" in text.lower():
+                raise BuildStepError(f"Reference page must not contain noindex: {html_file}")
+            robots_normalized = parser.robots_content.lower().replace(" ", "")
+            if "index,follow" not in robots_normalized:
+                raise BuildStepError(f"Reference page must declare index, follow robots directive: {html_file}")
+
+            expected_route = REFERENCE_ROUTE_PATHS[page_key].format(lang=lang)
+            expected_canonical = f"{site_base}{expected_route}"
+            if parser.canonical_href != expected_canonical:
+                raise BuildStepError(
+                    f"Unexpected canonical URL in {html_file}: expected {expected_canonical}, found {parser.canonical_href}"
+                )
+
+            if lang == "en":
+                continue
+
+            for heading in COMMON_ENGLISH_REFERENCE_HEADINGS:
+                if heading in text:
+                    raise BuildStepError(
+                        f"English fallback heading {heading!r} found in localized reference page: {html_file}"
+                    )
+
+            for fragment in _english_reference_fragments(page_key):
+                if fragment in text:
+                    raise BuildStepError(
+                        f"English fallback body paragraph found in localized reference page: {html_file}"
+                    )
+
+            _verify_no_large_english_blocks(html_file, text, lang)
+
+
+def _resolve_local_href(stage_dir: Path, href: str) -> Optional[Path]:
+    parsed = urlsplit(href)
+    if parsed.scheme or parsed.netloc or href.startswith(("mailto:", "tel:", "#")):
+        return None
+    path = parsed.path
+    if not path or path.startswith("/static/"):
+        return None
+    if path == "/":
+        return stage_dir / "index.html"
+    if path.endswith("/"):
+        return stage_dir / path.lstrip("/") / "index.html"
+    candidate = stage_dir / path.lstrip("/")
+    if candidate.suffix:
+        return candidate
+    return candidate / "index.html"
+
+
+def _verify_local_links(stage_dir: Path) -> None:
+    for html_file in stage_dir.rglob("*.html"):
+        parser = _parse_generated_html(html_file)
+        for href in parser.hrefs:
+            target = _resolve_local_href(stage_dir, href)
+            if target is None:
+                continue
+            resolved = target.resolve()
+            if not _is_relative_to(resolved, stage_dir.resolve()):
+                raise BuildStepError(f"Generated local link escapes output directory in {html_file}: {href}")
+            if not resolved.is_file():
+                raise BuildStepError(f"Generated local link points to missing page in {html_file}: {href}")
+
+
 def _verify_sitemap_contract(stage_dir: Path) -> None:
     sitemap_path = stage_dir / "sitemap.xml"
     _require_file(sitemap_path)
@@ -582,6 +792,12 @@ def _verify_sitemap_contract(stage_dir: Path) -> None:
     for fragment in required_fragments:
         if fragment not in text:
             raise BuildStepError(f"sitemap.xml is missing required URL fragment: {fragment}")
+
+    for lang in SUPPORTED_LANGUAGES:
+        for route_template in REFERENCE_ROUTE_PATHS.values():
+            fragment = route_template.format(lang=lang)
+            if fragment not in text:
+                raise BuildStepError(f"sitemap.xml is missing reference URL fragment: {fragment}")
 
 
 def _verify_experience_type_count(stage_dir: Path) -> None:
@@ -656,6 +872,8 @@ def _verify_output_contract(stage_dir: Path) -> None:
     _verify_sitemap_contract(stage_dir)
     _scan_html_forbidden_fragments(stage_dir)
     _verify_static_asset_references(stage_dir)
+    _verify_reference_page_integrity(stage_dir)
+    _verify_local_links(stage_dir)
 
     log.info("Staged output contract verified successfully")
 

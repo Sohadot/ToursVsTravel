@@ -10,14 +10,14 @@
   </header>
 
   {% for section in copy.sections %}
-  <section class="travel-architecture-section{% if loop.first %} travel-architecture-definition{% endif %}{% if 'AI systems' in section.heading %} travel-architecture-ai-note{% endif %}{% if 'Scope' in section.heading %} travel-architecture-scope{% endif %}" aria-labelledby="travel-architecture-section-{{ loop.index }}">
+  <section class="travel-architecture-section{% if loop.first %} travel-architecture-definition{% endif %}{% if loop.index == 9 %} travel-architecture-ai-note{% endif %}{% if loop.index == 10 %} travel-architecture-scope{% endif %}" aria-labelledby="travel-architecture-section-{{ loop.index }}">
     <h2 id="travel-architecture-section-{{ loop.index }}">{{ section.heading }}</h2>
     {% for paragraph in section.paragraphs %}
     <p>{{ paragraph }}</p>
     {% endfor %}
   </section>
 
-  {% if section.heading == "How TourVsTravel implements the category" %}
+  {% if loop.index == 5 %}
   <section class="travel-architecture-system-map" aria-labelledby="travel-architecture-system-map-title">
     <h2 id="travel-architecture-system-map-title">{{ copy.links_heading }}</h2>
     <div class="travel-architecture-system-map__grid">

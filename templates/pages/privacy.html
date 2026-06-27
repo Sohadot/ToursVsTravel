@@ -1,5 +1,4 @@
 {% extends "layouts/base.html" %}
-
 {% block content %}
 <div class="page-privacy-root container" dir="{{ page_dir }}">
   <header class="page-hero page-hero--compact">
@@ -7,6 +6,34 @@
     <h1>{{ copy.title }}</h1>
     <p class="page-hero__lead">{{ copy.lead }}</p>
   </header>
+  <section class="privacy-section" aria-labelledby="privacy-static-title">
+    <h2 id="privacy-static-title">{{ copy.static_label }}</h2>
+    <p>{{ copy.static_body }}</p>
+  </section>
+  <section class="privacy-section" aria-labelledby="privacy-no-accounts-title">
+    <h2 id="privacy-no-accounts-title">{{ copy.no_accounts_label }}</h2>
+    <p>{{ copy.no_accounts_body }}</p>
+  </section>
+  <section class="privacy-section" aria-labelledby="privacy-no-payment-title">
+    <h2 id="privacy-no-payment-title">{{ copy.no_payment_label }}</h2>
+    <p>{{ copy.no_payment_body }}</p>
+  </section>
+  <section class="privacy-section" aria-labelledby="privacy-no-tracking-title">
+    <h2 id="privacy-no-tracking-title">{{ copy.no_tracking_label }}</h2>
+    <p>{{ copy.no_tracking_body }}</p>
+  </section>
+  <section class="privacy-section" aria-labelledby="privacy-tools-title">
+    <h2 id="privacy-tools-title">{{ copy.tools_label }}</h2>
+    <p>{{ copy.tools_body }}</p>
+  </section>
+  <section class="privacy-section" aria-labelledby="privacy-future-title">
+    <h2 id="privacy-future-title">{{ copy.future_label }}</h2>
+    <p>{{ copy.future_body }}</p>
+  </section>
+  <section class="privacy-section" aria-labelledby="privacy-contact-title">
+    <h2 id="privacy-contact-title">{{ copy.contact_label }}</h2>
+    <p>{{ copy.contact_body }} <a href="{{ url_contact }}">{{ copy.contact_link }}</a>.</p>
+  </section>
 
   {% for section in copy.sections %}
   <section class="privacy-section trust-section" aria-labelledby="privacy-section-{{ loop.index }}">

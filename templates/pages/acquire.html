@@ -1,5 +1,4 @@
 {% extends "layouts/base.html" %}
-
 {% block content %}
 <div class="page-acquire-root container" dir="{{ page_dir }}">
   <header class="page-hero page-hero--compact">
@@ -7,6 +6,39 @@
     <h1>{{ copy.title }}</h1>
     <p class="page-hero__lead">{{ copy.lead }}</p>
   </header>
+  <section class="acquire-section" aria-labelledby="acquire-asset-title">
+    <h2 id="acquire-asset-title">{{ copy.asset_label }}</h2>
+    <p>{{ copy.asset_body }}</p>
+  </section>
+  <section class="acquire-section" aria-labelledby="acquire-name-title">
+    <h2 id="acquire-name-title">{{ copy.name_label }}</h2>
+    <p>{{ copy.name_body }}</p>
+  </section>
+  <section class="acquire-section" aria-labelledby="acquire-buyers-title">
+    <h2 id="acquire-buyers-title">{{ copy.buyers_label }}</h2>
+    <p>{{ copy.buyers_body }}</p>
+  </section>
+  <section class="acquire-section" aria-labelledby="acquire-use-cases-title">
+    <h2 id="acquire-use-cases-title">{{ copy.use_cases_label }}</h2>
+    <p>{{ copy.use_cases_body }}</p>
+  </section>
+  <section class="acquire-section" aria-labelledby="acquire-included-title">
+    <h2 id="acquire-included-title">{{ copy.included_label }}</h2>
+    <p>{{ copy.included_body }}</p>
+  </section>
+  <section class="acquire-section acquire-section--scope" aria-labelledby="acquire-not-claimed-title">
+    <h2 id="acquire-not-claimed-title">{{ copy.not_claimed_label }}</h2>
+    <p>{{ copy.not_claimed_body }}</p>
+  </section>
+  <section class="acquire-section" aria-labelledby="acquire-inquiry-title">
+    <h2 id="acquire-inquiry-title">{{ copy.inquiry_label }}</h2>
+    <p>{{ copy.inquiry_body }}</p>
+  </section>
+  <nav class="acquire-next" aria-label="{{ copy.next_label }}">
+    <p class="acquire-next__label">{{ copy.next_label }}</p>
+    <ul class="acquire-next__list">
+      <li><a href="{{ url_methodology }}">{{ copy.ln_methodology }}</a></li>
+      <li><a href="{{ url_contact }}">{{ copy.ln_contact }}</a></li>
 
   {% for section in copy.sections %}
   <section class="acquire-section trust-section" aria-labelledby="acquire-section-{{ loop.index }}">

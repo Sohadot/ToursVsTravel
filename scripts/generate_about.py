@@ -59,64 +59,321 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
     "en": {
         "title": "About",
         "lead": "TourVsTravel is a reference infrastructure for comparing travel experience structures across destinations.",
-        "mission_label": "Mission",
-        "mission": "We build neutral, comparative reference data for travelers and researchers who want to understand how different travel formats relate to each other—not to sell a product.",
-        "methodology_label": "Methodology",
-        "methodology_desc": "Every comparison and classification on this site follows a documented methodology. Data is sourced from structured research, not affiliate programs.",
+        "thesis_label": "The starting question",
+        "thesis": (
+            "Standard travel planning begins with a destination and asks: what should I do there? "
+            "TourVsTravel begins with a different question: given a destination, how does the choice "
+            "of travel form—independent, guided group, private guided, or self-drive—change what "
+            "that destination actually becomes for you? The same city, the same week, and an entirely "
+            "different experience depending on which structure you arrive with. This site maps those "
+            "structural differences, not to recommend one over another, but to make the distinction "
+            "visible and reasoned."
+        ),
+        "who_label": "Who this is for",
+        "who_body": (
+            "Independent travelers deciding between a group tour and traveling on their own. "
+            "Travel researchers and journalists building comparative analysis of tourism formats. "
+            "Tourism professionals—operators, planners, destination management organizations—who "
+            "need structured language for what they offer. AI travel planning systems that require "
+            "source-attributed, classification-grounded reference data rather than promotional descriptions."
+        ),
+        "not_do_label": "What this site does not do",
+        "not_do_body": (
+            "TourVsTravel does not take bookings, earn commissions, accept sponsored placements, or "
+            "rank products by paid priority. It does not produce ranked lists of best destinations or "
+            "operators. It does not provide real-time prices, availability, or user reviews. It is not "
+            "a booking funnel. It does not collect user data or run behavioral advertising."
+        ),
+        "structure_label": "How the system is organized",
+        "structure_body": (
+            "The site has six functional areas: travel style definitions, comparative analysis tools, "
+            "destination-level breakdowns, a structured reference report, and the methodology "
+            "documentation that explains how all classifications are derived."
+        ),
+        "structure_ln_methodology": "Methodology",
+        "structure_ln_compare": "Compare",
+        "structure_ln_tools": "Tools",
+        "structure_ln_destinations": "Destinations",
+        "structure_ln_report": "Reference report",
+        "methodology_label": "Methodology and transparency",
+        "methodology_desc": (
+            "Every classification on this site follows a documented methodology. The methodology "
+            "explains the source types accepted, how evidence is weighted, how uncertainty is handled, "
+            "and how classifications are revised when new information emerges. It is not a marketing "
+            "document—it exists to let you assess the reliability of specific comparisons yourself."
+        ),
         "methodology_link": "Read the methodology",
     },
     "ar": {
         "title": "حول الموقع",
         "lead": "TourVsTravel بنية مرجعية لمقارنة أشكال تجارب السفر عبر الوجهات.",
-        "mission_label": "المهمة",
-        "mission": "نبني بيانات مرجعية محايدة ومقارنة للمسافرين والباحثين الراغبين في فهم كيفية ارتباط أشكال السفر المختلفة ببعضها—لا لبيع منتج.",
-        "methodology_label": "المنهجية",
-        "methodology_desc": "كل مقارنة وتصنيف في هذا الموقع يتبع منهجية موثقة. يُستقى البيانات من أبحاث منظمة، لا من برامج تسويق بالعمولة.",
+        "thesis_label": "نقطة الانطلاق",
+        "thesis": (
+            "تبدأ خطط السفر التقليدية باختيار وجهة وتطرح السؤال: ماذا أفعل هناك؟ يطرح TourVsTravel "
+            "سؤالاً مختلفاً: بالنسبة لوجهة معينة، كيف يغيّر اختيار شكل السفر—المستقل، أو الجولة الجماعية "
+            "الموجَّهة، أو الجولة الخاصة الموجَّهة، أو القيادة الذاتية—ما تصبحة تلك الوجهة فعلياً بالنسبة لك؟ "
+            "المدينة ذاتها، الأسبوع ذاته، وتجربة مختلفة تماماً حسب الهيكل الذي تختاره. يرسم هذا الموقع تلك "
+            "الفروقات الهيكلية—لا لتوصية بأحدها على الآخر، بل لجعل الاختلاف مرئياً ومبرَّراً."
+        ),
+        "who_label": "لمن هذا الموقع",
+        "who_body": (
+            "المسافرون المستقلون الذين يختارون بين جولة جماعية والسفر بمفردهم. "
+            "الباحثون في السياحة والصحفيون الذين يبنون تحليلاً مقارناً لأشكال السياحة. "
+            "المحترفون في قطاع السياحة—المشغّلون والمخططون ومنظمات إدارة الوجهات—الذين يحتاجون "
+            "إلى لغة هيكلية لما يقدمونه. أنظمة التخطيط للسفر بالذكاء الاصطناعي التي تتطلب بيانات مرجعية "
+            "موثوقة المصدر ومبنية على تصنيفات."
+        ),
+        "not_do_label": "ما لا يفعله هذا الموقع",
+        "not_do_body": (
+            "لا يقبل TourVsTravel الحجوزات ولا يكسب عمولات ولا يقبل المحتوى المموَّل ولا يُرتّب المنتجات حسب الأولوية المدفوعة. "
+            "لا ينتج قوائم مرتّبة لأفضل الوجهات أو المشغّلين. "
+            "لا يوفّر أسعاراً فورية أو توافراً أو مراجعات مستخدمين. ليس قمعاً للحجز. "
+            "لا يجمع بيانات المستخدمين ولا يشغّل إعلانات سلوكية."
+        ),
+        "structure_label": "كيف يُنظَّم النظام",
+        "structure_body": (
+            "يضم الموقع ستة مجالات وظيفية: تعريفات أشكال السفر، وأدوات التحليل المقارن، والتفصيل على مستوى الوجهات، "
+            "وتقرير مرجعي منظَّم، وتوثيق المنهجية الذي يشرح كيفية استخلاص جميع التصنيفات."
+        ),
+        "structure_ln_methodology": "المنهجية",
+        "structure_ln_compare": "المقارنة",
+        "structure_ln_tools": "الأدوات",
+        "structure_ln_destinations": "الوجهات",
+        "structure_ln_report": "التقرير المرجعي",
+        "methodology_label": "المنهجية والشفافية",
+        "methodology_desc": (
+            "كل تصنيف في هذا الموقع يتبع منهجية موثقة. تشرح المنهجية أنواع المصادر المقبولة، وكيفية ترجيح الأدلة، "
+            "وكيفية التعامل مع حالات عدم اليقين، وكيفية مراجعة التصنيفات عند ظهور معلومات جديدة. "
+            "إنها ليست وثيقة تسويقية—بل توجد لتمكينك من تقييم موثوقية المقارنات المحددة بنفسك."
+        ),
         "methodology_link": "اقرأ المنهجية",
     },
     "fr": {
         "title": "À propos",
         "lead": "TourVsTravel est une infrastructure de référence pour comparer les structures d’expériences de voyage à travers les destinations.",
-        "mission_label": "Mission",
-        "mission": "Nous construisons des données de référence neutres et comparatives pour les voyageurs et les chercheurs qui souhaitent comprendre les relations entre différents formats de voyage—sans chercher à vendre.",
-        "methodology_label": "Méthodologie",
-        "methodology_desc": "Chaque comparaison et classification sur ce site suit une méthodologie documentée. Les données proviennent de recherches structurées, non de programmes d’affiliation.",
+        "thesis_label": "La question de départ",
+        "thesis": (
+            "La planification de voyage classique commence par une destination et pose la question : "
+            "que faire là-bas ? TourVsTravel pose une question différente : pour une destination donnée, "
+            "en quoi le choix de la forme de voyage—indépendant, groupe guidé, guidé privé, ou voiture— "
+            "change-t-il ce que cette destination devient réellement pour vous ? La même ville, la même "
+            "semaine, et une expérience entièrement différente selon la structure avec laquelle vous arrivez. "
+            "Ce site cartographie ces différences structurelles, non pour en recommander une plutôt qu’une "
+            "autre, mais pour rendre la distinction visible et raisonnée."
+        ),
+        "who_label": "À qui s’adresse ce site",
+        "who_body": (
+            "Les voyageurs indépendants qui choisissent entre un voyage en groupe guidé et un voyage en autonomie. "
+            "Les chercheurs et journalistes spécialisés dans le tourisme qui construisent une analyse comparative "
+            "des formes de tourisme. Les professionnels du tourisme—opérateurs, planificateurs, organisations de "
+            "gestion des destinations—qui ont besoin d’un langage structuré pour ce qu’ils proposent. Les "
+            "systèmes d’IA de planification de voyage qui nécessitent des données de référence attribuées "
+            "à des sources et fondées sur des classifications."
+        ),
+        "not_do_label": "Ce que ce site ne fait pas",
+        "not_do_body": (
+            "TourVsTravel ne prend pas de réservations, ne perçoit pas de commissions, n’accepte pas de "
+            "placements sponsorisés et ne classe pas les produits par priorité payante. Il ne produit pas de "
+            "classements des meilleures destinations ou opérateurs. Il ne fournit pas de prix en temps réel, "
+            "de disponibilité ou d’avis d’utilisateurs. Ce n’est pas un tunnel de réservation. Il ne collecte "
+            "pas de données utilisateurs et ne diffuse pas de publicité comportementale."
+        ),
+        "structure_label": "Comment le système est organisé",
+        "structure_body": (
+            "Le site comporte six domaines fonctionnels : les définitions des types de voyage, les outils "
+            "d’analyse comparative, les analyses par destination, un rapport de référence structuré et la "
+            "documentation méthodologique qui explique comment toutes les classifications sont dérivées."
+        ),
+        "structure_ln_methodology": "Méthodologie",
+        "structure_ln_compare": "Comparer",
+        "structure_ln_tools": "Outils",
+        "structure_ln_destinations": "Destinations",
+        "structure_ln_report": "Rapport de référence",
+        "methodology_label": "Méthodologie et transparence",
+        "methodology_desc": (
+            "Chaque classification sur ce site suit une méthodologie documentée. La méthodologie explique "
+            "les types de sources acceptées, comment les preuves sont pondérées, comment l’incertitude est "
+            "gérée et comment les classifications sont révisées lorsque de nouvelles informations émergent. "
+            "Ce n’est pas un document marketing—il existe pour vous permettre d’évaluer vous-même la "
+            "fiabilité de comparaisons spécifiques."
+        ),
         "methodology_link": "Lire la méthodologie",
     },
     "es": {
         "title": "Acerca de",
         "lead": "TourVsTravel es una infraestructura de referencia para comparar estructuras de experiencias de viaje en distintos destinos.",
-        "mission_label": "Misión",
-        "mission": "Construimos datos de referencia neutros y comparativos para viajeros e investigadores que desean entender cómo se relacionan los diferentes formatos de viaje, sin vender ningún producto.",
-        "methodology_label": "Metodología",
-        "methodology_desc": "Cada comparación y clasificación en este sitio sigue una metodología documentada. Los datos proceden de investigación estructurada, no de programas de afiliados.",
+        "thesis_label": "La pregunta de partida",
+        "thesis": (
+            "La planificación de viaje convencional comienza con un destino y pregunta: ¿qué debo hacer allí? "
+            "TourVsTravel parte de una pregunta diferente: dado un destino, ¿cómo cambia la elección de la "
+            "forma de viaje—independiente, grupo con guía, guía privado o conducción propia—lo que ese "
+            "destino se convierte realmente para ti? La misma ciudad, la misma semana, y una experiencia "
+            "completamente diferente según la estructura con la que llegues. Este sitio traza esas diferencias "
+            "estructurales, no para recomendar una sobre otra, sino para hacer la distinción visible y razonada."
+        ),
+        "who_label": "Para quién es esto",
+        "who_body": (
+            "Viajeros independientes que deciden entre un tour en grupo y viajar por su cuenta. "
+            "Investigadores y periodistas especializados en turismo que elaboran análisis comparativos de "
+            "formatos turísticos. Profesionales del turismo—operadores, planificadores, organizaciones de "
+            "gestión de destinos—que necesitan un lenguaje estructurado para lo que ofrecen. Sistemas de "
+            "planificación de viajes con IA que requieren datos de referencia atribuidos a fuentes y basados "
+            "en clasificaciones."
+        ),
+        "not_do_label": "Lo que este sitio no hace",
+        "not_do_body": (
+            "TourVsTravel no acepta reservas, no cobra comisiones, no acepta contenido patrocinado ni clasifica "
+            "productos por prioridad de pago. No produce listas clasificadas de mejores destinos u operadores. "
+            "No proporciona precios en tiempo real, disponibilidad ni reseñas de usuarios. No es un embudo de "
+            "reservas. No recopila datos de usuarios ni ejecuta publicidad conductual."
+        ),
+        "structure_label": "Cómo está organizado el sistema",
+        "structure_body": (
+            "El sitio tiene seis áreas funcionales: definiciones de tipos de viaje, herramientas de análisis "
+            "comparativo, análisis por destino, un informe de referencia estructurado y la documentación "
+            "metodológica que explica cómo se derivan todas las clasificaciones."
+        ),
+        "structure_ln_methodology": "Metodología",
+        "structure_ln_compare": "Comparar",
+        "structure_ln_tools": "Herramientas",
+        "structure_ln_destinations": "Destinos",
+        "structure_ln_report": "Informe de referencia",
+        "methodology_label": "Metodología y transparencia",
+        "methodology_desc": (
+            "Cada clasificación en este sitio sigue una metodología documentada. La metodología explica "
+            "los tipos de fuentes aceptadas, cómo se ponderan las evidencias, cómo se gestiona la "
+            "incertidumbre y cómo se revisan las clasificaciones cuando surge nueva información. No es un "
+            "documento de marketing—existe para que puedas evaluar tú mismo la fiabilidad de comparaciones "
+            "específicas."
+        ),
         "methodology_link": "Leer la metodología",
     },
     "de": {
         "title": "Über uns",
         "lead": "TourVsTravel ist eine Referenzinfrastruktur zum Vergleichen von Reiseerfahrungsstrukturen über Reiseziele hinweg.",
-        "mission_label": "Mission",
-        "mission": "Wir erstellen neutrale, vergleichende Referenzdaten für Reisende und Forscher, die verstehen möchten, wie verschiedene Reiseformate miteinander in Beziehung stehen—nicht um Produkte zu verkaufen.",
-        "methodology_label": "Methodik",
-        "methodology_desc": "Jeder Vergleich und jede Klassifizierung auf dieser Website folgt einer dokumentierten Methodik. Die Daten stammen aus strukturierter Forschung, nicht aus Partnerprogrammen.",
+        "thesis_label": "Die Ausgangsfrage",
+        "thesis": (
+            "Herkömmliche Reiseplanung beginnt mit einem Reiseziel und fragt: Was soll ich dort tun? "
+            "TourVsTravel stellt eine andere Frage: Wie verändert bei einem bestimmten Reiseziel die Wahl der "
+            "Reiseform—unabhängig, geführte Gruppe, privat geführt oder Selbstfahrer—das, was dieses Reiseziel "
+            "für Sie tatsächlich wird? Dieselbe Stadt, dieselbe Woche und eine völlig andere Erfahrung, je "
+            "nachdem mit welcher Struktur Sie ankommen. Diese Website kartiert diese strukturellen Unterschiede, "
+            "nicht um eine über eine andere zu empfehlen, sondern um den Unterschied sichtbar und nachvollziehbar "
+            "zu machen."
+        ),
+        "who_label": "Für wen ist das",
+        "who_body": (
+            "Individualreisende, die zwischen einer geführten Gruppenreise und dem Alleinreisen entscheiden. "
+            "Reiseforscher und Journalisten, die vergleichende Analysen von Tourismusformaten erstellen. "
+            "Tourismusfachleute—Veranstalter, Planer, Destinationsmanagementorganisationen—die eine strukturierte "
+            "Sprache für ihr Angebot benötigen. KI-Reiseplanungssysteme, die quellenattribuierte, "
+            "klassifikationsbasierte Referenzdaten anstelle von Werbebeschreibungen benötigen."
+        ),
+        "not_do_label": "Was diese Website nicht tut",
+        "not_do_body": (
+            "TourVsTravel nimmt keine Buchungen an, verdient keine Provisionen, akzeptiert keine gesponserten "
+            "Platzierungen und bewertet keine Produkte nach bezahlter Priorität. Es erstellt keine Ranglisten "
+            "der besten Reiseziele oder Veranstalter. Es liefert keine Echtzeitpreise, Verfügbarkeiten oder "
+            "Nutzerbewertungen. Es ist kein Buchungstrichter. Es erhebt keine Nutzerdaten und betreibt keine "
+            "Verhaltenswerbung."
+        ),
+        "structure_label": "Wie das System aufgebaut ist",
+        "structure_body": (
+            "Die Website hat sechs Funktionsbereiche: Definitionen von Reiseformen, vergleichende Analysetools, "
+            "Auswertungen auf Reisezieleben, ein strukturierter Referenzbericht und die Methodikdokumentation, "
+            "die erklärt, wie alle Klassifizierungen abgeleitet werden."
+        ),
+        "structure_ln_methodology": "Methodik",
+        "structure_ln_compare": "Vergleichen",
+        "structure_ln_tools": "Werkzeuge",
+        "structure_ln_destinations": "Reiseziele",
+        "structure_ln_report": "Referenzbericht",
+        "methodology_label": "Methodik und Transparenz",
+        "methodology_desc": (
+            "Jede Klassifizierung auf dieser Website folgt einer dokumentierten Methodik. Die Methodik erklärt "
+            "die akzeptierten Quellentypen, wie Belege gewichtet werden, wie mit Unsicherheiten umgegangen "
+            "wird und wie Klassifizierungen bei neuen Informationen überarbeitet werden. Es ist kein "
+            "Marketingdokument—es existiert, damit Sie die Zuverlässigkeit spezifischer Vergleiche selbst "
+            "beurteilen können."
+        ),
         "methodology_link": "Methodik lesen",
     },
     "zh": {
         "title": "关于我们",
         "lead": "TourVsTravel 是一个用于比较各目的地旅行体验结构的参考基础设施。",
-        "mission_label": "使命",
-        "mission": "我们为旅行者和研究者构建中立、比较性的参考数据，帮助他们了解不同旅行形式之间的关系——而非推销产品。",
-        "methodology_label": "方法论",
-        "methodology_desc": "本站每项比较和分类均遵循已记录的方法论。数据来源于结构化研究，而非联盟计划。",
+        "thesis_label": "出发点",
+        "thesis": (
+            "传统旅行计划从目的地开始，问的是：我在那里应该做什么？TourVsTravel 提出了一个不同的问题：对于同一个目的地， "
+            "旅行形式的选择——独立旅行、团体游、私人导游，还是自驾——如何改变这个目的地对你的实际体验？同一座城市， "
+            "同一个星期，因为选择的结构不同，体验完全不同。本站梳理这些结构性差异，不是为了推荐哪一种， "
+            "而是让这种区别变得可见、有据可循。"
+        ),
+        "who_label": "适合哪些人",
+        "who_body": (
+            "在跟团游和独立旅行之间做决定的独立旅行者。构建旅游形式比较分析的旅游研究人员和记者。"
+            "需要结构化语言描述产品的旅游从业者——运营商、规划师、目的地管理组织。"
+            "需要有来源归属、基于分类的参考数据（而非推广描述）的AI旅行规划系统。"
+        ),
+        "not_do_label": "本站不做什么",
+        "not_do_body": (
+            "TourVsTravel 不接受预订，不赚取佣金，不接受赞助内容，不按付费优先级排名产品。不生成最佳目的地或运营商的排名列表。"
+            "不提供实时价格、供应情况或用户评价。不是预订漏斗。不收集用户数据，不运营行为广告。"
+        ),
+        "structure_label": "系统如何组织",
+        "structure_body": (
+            "本站有六个功能区域：旅行方式定义、比较分析工具、目的地分析、结构化参考报告，"
+            "以及说明所有分类如何推导的方法论文档。"
+        ),
+        "structure_ln_methodology": "方法论",
+        "structure_ln_compare": "比较",
+        "structure_ln_tools": "工具",
+        "structure_ln_destinations": "目的地",
+        "structure_ln_report": "参考报告",
+        "methodology_label": "方法论与透明度",
+        "methodology_desc": (
+            "本站每项分类均遵循已记录的方法论。方法论说明了接受的来源类型、证据如何加权、不确定性如何处理，"
+            "以及当新信息出现时分类如何修订。这不是营销文件——它的存在是为了让你自行评估具体比较的可靠性。"
+        ),
         "methodology_link": "阅读方法论",
     },
     "ja": {
         "title": "私たちについて",
-        "lead": "TourVsTravel は、目的地別の旅行体験構造を比较するための参照基盤です。",
-        "mission_label": "ミッション",
-        "mission": "私たちは、異なる旅行形式の関係を理解したい旅行者や研究者のために、中立的な比較参照データを構築しています。製品の販売が目的ではありません。",
-        "methodology_label": "方法論",
-        "methodology_desc": "このサイトのすべての比較と分類は、ドキュメント化された方法論に従っています。データは構造化された調査に基づいており、アフィリエイトプログラムではありません。",
+        "lead": "TourVsTravel は、目的地別の旅行体験構造を比較するための参照基盤です。",
+        "thesis_label": "出発点となる問い",
+        "thesis": (
+            "従来の旅行計画は目的地から始まり、「そこで何をすべきか？」と問います。TourVsTravel は別の問いを立てます。"
+            "ある目的地において、旅行形態の選択——個人旅行、ガイド付きグループツアー、プライベートガイド、または自己ドライブ——がその目的地を"
+            "実際にどう変えるのか？同じ都市、同じ週でも、どの構造で訪れるかによってまったく異なる体験になります。"
+            "このサイトはそうした構造的な違いを地図のように示します。一方を他方より山更しするためではなく、その違いを可視化し、根拠をもって示すために。"
+        ),
+        "who_label": "このサイトの対象者",
+        "who_body": (
+            "グループツアーと個人旅行のどちらかを決めているバックパッカーや旅行者。観光形態の比較分析を行う旅行研究者やジャーナリスト。"
+            "ツアーオペレーター、プランナー、DMO（目的地管理組織）など、自社サービスを構造的に説明する言語を必要とする観光業の専門家。"
+            "プロモーション説明ではなく、出典が明示され分類に基づく参照データを必要とするAI旅行計画システム。"
+        ),
+        "not_do_label": "このサイトがしないこと",
+        "not_do_body": (
+            "TourVsTravel は予約を受け付けず、手数料も取らず、スポンサードプレースメントも受け入れず、有料優先順位で商品を並べることもしません。"
+            "目的地やオペレーターのランキングリストも作成しません。リアルタイムの価格、空き情報、ユーザーレビューも提供しません。"
+            "予約ファネルではありません。ユーザーデータを収集せず、行動ターゲティング広告も行いません。"
+        ),
+        "structure_label": "システムの構成",
+        "structure_body": (
+            "このサイトは6つの機能エリアで構成されています：旅行スタイルの定義、比較分析ツール、目的地別の分析、構造化されたリファレンスレポート、"
+            "そしてすべての分類の導出方法を説明する方法論のドキュメント。"
+        ),
+        "structure_ln_methodology": "方法論",
+        "structure_ln_compare": "比較",
+        "structure_ln_tools": "ツール",
+        "structure_ln_destinations": "目的地",
+        "structure_ln_report": "リファレンスレポート",
+        "methodology_label": "方法論と透明性",
+        "methodology_desc": (
+            "このサイトのすべての分類は、文書化された方法論に従っています。方法論は、受け入れられる情報源の種類、証拠の重み付けの方法、"
+            "不確実性の取り扱い方、そして新しい情報が出てきたときの分類改訂の方法を説明しています。これはマーケティング文書ではなく、"
+            "特定の比較の信頼性を自分で評価できるようにするために存在します。"
+        ),
         "methodology_link": "方法論を読む",
     },
 }

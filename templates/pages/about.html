@@ -1,5 +1,4 @@
 {% extends "layouts/base.html" %}
-
 {% block content %}
 <div class="page-about-root container" dir="{{ page_dir }}">
   <header class="page-hero page-hero--compact">
@@ -7,6 +6,34 @@
     <h1>{{ copy.title }}</h1>
     <p class="page-hero__lead">{{ copy.lead }}</p>
   </header>
+  <section class="about-section" aria-labelledby="about-thesis-title">
+    <h2 id="about-thesis-title">{{ copy.thesis_label }}</h2>
+    <p>{{ copy.thesis }}</p>
+  </section>
+  <section class="about-section" aria-labelledby="about-who-title">
+    <h2 id="about-who-title">{{ copy.who_label }}</h2>
+    <p>{{ copy.who_body }}</p>
+  </section>
+  <section class="about-section about-section--scope" aria-labelledby="about-not-do-title">
+    <h2 id="about-not-do-title">{{ copy.not_do_label }}</h2>
+    <p>{{ copy.not_do_body }}</p>
+  </section>
+  <section class="about-section" aria-labelledby="about-structure-title">
+    <h2 id="about-structure-title">{{ copy.structure_label }}</h2>
+    <p>{{ copy.structure_body }}</p>
+    <ul class="about-nav-list">
+      <li><a href="{{ url_methodology }}">{{ copy.structure_ln_methodology }}</a></li>
+      <li><a href="{{ url_compare }}">{{ copy.structure_ln_compare }}</a></li>
+      <li><a href="{{ url_tools }}">{{ copy.structure_ln_tools }}</a></li>
+      <li><a href="{{ url_destinations }}">{{ copy.structure_ln_destinations }}</a></li>
+      <li><a href="{{ url_report }}">{{ copy.structure_ln_report }}</a></li>
+    </ul>
+  </section>
+  <section class="about-section" aria-labelledby="about-methodology-title">
+    <h2 id="about-methodology-title">{{ copy.methodology_label }}</h2>
+    <p>{{ copy.methodology_desc }}</p>
+    <p><a href="{{ url_methodology }}">{{ copy.methodology_link }}</a></p>
+  </section>
 
   {% for section in copy.sections %}
   <section class="about-section trust-section" aria-labelledby="about-section-{{ loop.index }}">

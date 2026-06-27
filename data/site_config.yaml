@@ -397,13 +397,13 @@ ui:
       ja: "お問い合わせ"
 
     acquire:
-      en: "Acquire Domain"
-      ar: "اقتناء النطاق"
-      fr: "Acquérir le domaine"
-      es: "Adquirir dominio"
-      de: "Domain erwerben"
-      zh: "购买域名"
-      ja: "ドメイン取得"
+      en: "Strategic Acquisition"
+      ar: "استحواذ استراتيجي"
+      fr: "Acquisition stratégique"
+      es: "Adquisición estratégica"
+      de: "Strategische Akquisition"
+      zh: "战略收购"
+      ja: "戦略的取得"
 
     legal_suffix:
       en: "All rights reserved."

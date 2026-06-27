@@ -36,6 +36,7 @@ from scripts.routes import (
     build_reference_report_path,
     build_source_policy_path,
     build_tools_index_path,
+    build_travel_decision_architecture_path,
 )
 from scripts.seo import (
     build_organization_jsonld,
@@ -367,6 +368,7 @@ def _build_context(
             "url_about": build_about_path(site_config, lang, absolute=False),
             "url_methodology": build_methodology_path(site_config, lang, absolute=False),
             "url_editorial_standards": build_editorial_standards_path(site_config, lang, absolute=False),
+            "url_travel_decision_architecture": build_travel_decision_architecture_path(site_config, lang, absolute=False),
         },
     }
 

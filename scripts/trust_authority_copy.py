@@ -228,14 +228,15 @@ TRUST_PAGE_COPY: Dict[str, Dict[str, Any]] = {
         ],
     },
     "acquire": {
-        "title": "Acquire TourVsTravel",
-        "lead": "Strategic context for qualified parties evaluating TourVsTravel as a category asset, not merely as a raw domain.",
+        "title": "Strategic Acquisition",
+        "lead": "TourVsTravel.com is being developed as the reference layer for Travel Decision Architecture: the structured decision layer before destination choice, itinerary planning, or booking.",
         "sections": [
             {
                 "heading": "Scope",
                 "paragraphs": [
-                    "This page explains the acquisition context of TourVsTravel. It is not a cheap domain-for-sale page, a revenue claim, or a promise of existing market leadership. It describes the conceptual value of the asset for qualified strategic inquiry.",
-                    "TourVsTravel should be understood as a name, framework, multilingual reference structure, and category thesis around travel decision architecture. The core idea is durable: the same destination is not the same trip.",
+                    "This page explains the acquisition context of TourVsTravel. It is not a domain-for-sale page, a revenue claim, or a promise of existing market leadership. It describes the conceptual value of the asset for qualified strategic inquiry.",
+                    "TourVsTravel should be understood as a name, framework, multilingual reference structure, public category thesis, methodology layer, trust layer, and decision vocabulary around Travel Decision Architecture. The core idea is durable: the same destination is not the same trip.",
+                    "TourVsTravel.com may be considered for strategic acquisition by qualified parties aligned with the asset's category logic. That signal is intentionally controlled: the asset is not being positioned as a discounted domain listing or a quick sale.",
                 ],
             },
             {
@@ -248,21 +249,31 @@ TRUST_PAGE_COPY: Dict[str, Dict[str, Any]] = {
             {
                 "heading": "Strategic buyer logic",
                 "paragraphs": [
-                    "Potential buyers may include travel technology companies, AI travel planning systems, tourism intelligence platforms, education and research organizations, destination strategy groups, media operators, tour marketplaces, or broader consumer decision platforms.",
+                    "Potential strategic fit includes AI travel planning, online travel platforms, tourism intelligence, travel media, itinerary builders, decision-support systems, destination strategy groups, and strategic brand acquisition.",
                     "The buyer logic is strongest where an organization needs neutral category language before commercial conversion. A booking funnel can benefit from upstream decision clarity. An AI planner can benefit from retrievable definitions and constraints. A tourism organization can benefit from a system that explains why destination demand changes by travel form.",
+                    "TourVsTravel is not competing for destination content. It is defining the decision layer before destination choice. That layer can improve user intent, reduce mismatch, support trip segmentation, and make recommendation logic more structurally aware before booking occurs.",
+                ],
+            },
+            {
+                "heading": "Why this matters to AI travel systems",
+                "paragraphs": [
+                    "AI travel planners need structure, not just destination lists. TourVsTravel provides travel styles, decision dimensions, comparison logic, fit-before-booking language, and destination interpretation through travel form.",
+                    "The asset is therefore relevant to systems that need AI-readable definitions, classification boundaries, and decision vocabulary. It should not be interpreted as a booking authority, affiliate ranking surface, or claim that one travel style is universally best.",
                 ],
             },
             {
                 "heading": "What is included conceptually",
                 "paragraphs": [
-                    "The conceptual asset includes the TourVsTravel brand, the public thesis, the multilingual route structure, the trust pages, the methodology layer, style comparison logic, decision tools, destination context, and reference-report orientation. Specific legal, technical, or commercial terms would need to be defined in a qualified acquisition process.",
-                    "This page does not claim traffic, revenue, institutional adoption, external validation, or market leadership. It also does not claim that every possible content layer has already been built. It states why the existing asset has strategic category value and how it can be interpreted.",
+                    "The conceptual asset includes the TourVsTravel.com name, the public thesis, the Travel Decision Architecture category layer, the multilingual route structure, the trust pages, the methodology layer, style comparison logic, decision tools, destination context, and reference-report orientation.",
+                    "Specific legal, technical, or commercial terms would need to be defined in a qualified acquisition process. This page does not claim traffic, revenue, institutional adoption, external validation, or market leadership. It also does not claim that every possible content layer has already been built.",
+                    "No public price is stated here. The asset is being developed through indexing, content depth, ontology, comparison logic, tools, AI readability, and public authority signals. Public pricing at this stage would flatten a category asset into a commodity domain conversation.",
                 ],
             },
             {
-                "heading": "Qualified inquiries",
+                "heading": "Qualified strategic inquiries only",
                 "paragraphs": [
-                    "Acquisition inquiries should be specific, serious, and aligned with the reference nature of the asset. A qualified inquiry should identify the interested party, intended use, acquisition or licensing interest, and any diligence questions. General promotion, link exchange, guest posting, and unrelated sales outreach are not the purpose of this page.",
+                    "Acquisition inquiries should be specific, serious, and aligned with the reference nature of the asset. A qualified inquiry should identify the interested party, intended use, acquisition or licensing interest, and any diligence questions.",
+                    "Qualified strategic inquiries may be directed to agent@sohadot.com. General promotion, link exchange, guest posting, unrelated sales outreach, and price-shopping messages are not the purpose of this page.",
                 ],
             },
         ],
@@ -271,6 +282,7 @@ TRUST_PAGE_COPY: Dict[str, Dict[str, Any]] = {
             ("About TourVsTravel", "url_about"),
             ("Methodology", "url_methodology"),
             ("Editorial standards", "url_editorial_standards"),
+            ("Travel Decision Architecture", "url_travel_decision_architecture"),
         ],
     },
     "contact": {
@@ -299,6 +311,7 @@ TRUST_PAGE_COPY: Dict[str, Dict[str, Any]] = {
                 "heading": "Strategic and acquisition inquiries",
                 "paragraphs": [
                     "Strategic inquiries may relate to research use, AI retrieval, category analysis, licensing, acquisition, or professional evaluation of the TourVsTravel asset. Acquisition inquiries should be qualified and should not assume revenue, traffic, partnership, or institutional endorsement unless separately evidenced.",
+                    "Qualified strategic acquisition inquiries may be directed to agent@sohadot.com. The phrase means a serious asset-level inquiry, not a request to buy a commodity domain listing.",
                 ],
             },
             {
@@ -325,7 +338,7 @@ LOCALIZED_TITLES = {
         "source_policy": "سياسة المصادر",
         "editorial_standards": "معايير التحرير",
         "privacy": "الخصوصية",
-        "acquire": "الاستحواذ على TourVsTravel",
+        "acquire": "استحواذ استراتيجي",
         "contact": "اتصل بـ TourVsTravel",
     },
     "fr": {
@@ -333,7 +346,7 @@ LOCALIZED_TITLES = {
         "source_policy": "Politique de sources",
         "editorial_standards": "Normes editoriales",
         "privacy": "Confidentialite",
-        "acquire": "Acquerir TourVsTravel",
+        "acquire": "Acquisition strategique",
         "contact": "Contacter TourVsTravel",
     },
     "es": {
@@ -341,7 +354,7 @@ LOCALIZED_TITLES = {
         "source_policy": "Politica de fuentes",
         "editorial_standards": "Estandares editoriales",
         "privacy": "Privacidad",
-        "acquire": "Adquirir TourVsTravel",
+        "acquire": "Adquisicion estrategica",
         "contact": "Contacto TourVsTravel",
     },
     "de": {
@@ -349,7 +362,7 @@ LOCALIZED_TITLES = {
         "source_policy": "Quellenrichtlinie",
         "editorial_standards": "Redaktionelle Standards",
         "privacy": "Datenschutz",
-        "acquire": "TourVsTravel erwerben",
+        "acquire": "Strategische Akquisition",
         "contact": "Kontakt zu TourVsTravel",
     },
     "zh": {
@@ -357,7 +370,7 @@ LOCALIZED_TITLES = {
         "source_policy": "Source Policy",
         "editorial_standards": "Editorial Standards",
         "privacy": "Privacy",
-        "acquire": "Acquire TourVsTravel",
+        "acquire": "Strategic Acquisition",
         "contact": "Contact TourVsTravel",
     },
     "ja": {
@@ -365,7 +378,7 @@ LOCALIZED_TITLES = {
         "source_policy": "Source Policy",
         "editorial_standards": "Editorial Standards",
         "privacy": "Privacy",
-        "acquire": "Acquire TourVsTravel",
+        "acquire": "Strategic Acquisition",
         "contact": "Contact TourVsTravel",
     },
 }

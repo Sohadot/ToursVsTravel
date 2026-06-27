@@ -1,5 +1,4 @@
 {% extends "layouts/base.html" %}
-
 {% block content %}
 <div class="page-editorial-standards-root container" dir="{{ page_dir }}">
   <header class="page-hero page-hero--compact">
@@ -7,17 +6,38 @@
     <h1>{{ copy.title }}</h1>
     <p class="page-hero__lead">{{ copy.lead }}</p>
   </header>
-
-  <section class="editorial-standards-section" aria-labelledby="editorial-standards-principles-title">
-    <h2 id="editorial-standards-principles-title">{{ copy.principles_label }}</h2>
-    <p>{{ copy.principles_body }}</p>
+  <section class="editorial-standards-section" aria-labelledby="es-neutrality-title">
+    <h2 id="es-neutrality-title">{{ copy.neutrality_label }}</h2>
+    <p>{{ copy.neutrality_body }}</p>
   </section>
-
-  <section class="editorial-standards-section" aria-labelledby="editorial-standards-process-title">
-    <h2 id="editorial-standards-process-title">{{ copy.process_label }}</h2>
-    <p>{{ copy.process_body }}</p>
+  <section class="editorial-standards-section" aria-labelledby="es-comparison-title">
+    <h2 id="es-comparison-title">{{ copy.comparison_label }}</h2>
+    <p>{{ copy.comparison_body }}</p>
   </section>
-
+  <section class="editorial-standards-section" aria-labelledby="es-constraint-title">
+    <h2 id="es-constraint-title">{{ copy.constraint_label }}</h2>
+    <p>{{ copy.constraint_body }}</p>
+  </section>
+  <section class="editorial-standards-section" aria-labelledby="es-no-best-title">
+    <h2 id="es-no-best-title">{{ copy.no_best_label }}</h2>
+    <p>{{ copy.no_best_body }}</p>
+  </section>
+  <section class="editorial-standards-section" aria-labelledby="es-tradeoffs-title">
+    <h2 id="es-tradeoffs-title">{{ copy.tradeoffs_label }}</h2>
+    <p>{{ copy.tradeoffs_body }}</p>
+  </section>
+  <section class="editorial-standards-section" aria-labelledby="es-limits-title">
+    <h2 id="es-limits-title">{{ copy.limits_label }}</h2>
+    <p>{{ copy.limits_body }}</p>
+  </section>
+  <section class="editorial-standards-section" aria-labelledby="es-ai-title">
+    <h2 id="es-ai-title">{{ copy.ai_label }}</h2>
+    <p>{{ copy.ai_body }}</p>
+  </section>
+  <section class="editorial-standards-section" aria-labelledby="es-multilingual-title">
+    <h2 id="es-multilingual-title">{{ copy.multilingual_label }}</h2>
+    <p>{{ copy.multilingual_body }}</p>
+  </section>
   <nav class="methodology-nav" aria-label="{{ copy.see_also_label }}">
     <ul>
       <li><a href="{{ url_methodology }}">{{ copy.ln_methodology }}</a></li>

@@ -43,6 +43,8 @@ from scripts.seo import (
     build_webpage_jsonld,
     build_website_jsonld,
 )
+from scripts.reference_i18n import localized_ui_context
+from scripts.trust_authority_copy import get_trust_page_copy
 
 log = logging.getLogger("generate_source_policy")
 
@@ -384,7 +386,7 @@ def _build_context(
     lang: str,
     languages: Sequence[str],
 ) -> Dict[str, Any]:
-    copy = PAGE_COPY.get(lang, PAGE_COPY["en"])
+    copy = get_trust_page_copy("source_policy", lang)
     base_url = _ensure_string(
         _get_nested(site_config, ("site", "base_url"), "https://tourvstravel.com").strip().rstrip("/"),
         "site.base_url",
@@ -413,7 +415,7 @@ def _build_context(
     )
     main_css_url = _require_existing_asset("/static/css/main.css", "main_css_url")
     main_js_url = _require_existing_asset("/static/js/main.js", "main_js_url")
-    return {
+    context = {
         "base_url": base_url,
         "lang": lang,
         "page_lang": lang,
@@ -459,7 +461,15 @@ def _build_context(
         "url_contact": build_contact_path(site_config, lang, absolute=False),
         "url_source_policy": build_source_policy_path(site_config, lang, absolute=False),
         "url_editorial_standards": build_editorial_standards_path(site_config, lang, absolute=False),
+        "url_map": {
+            "url_methodology": build_methodology_path(site_config, lang, absolute=False),
+            "url_editorial_standards": build_editorial_standards_path(site_config, lang, absolute=False),
+            "url_about": build_about_path(site_config, lang, absolute=False),
+            "url_contact": build_contact_path(site_config, lang, absolute=False),
+        },
     }
+    context.update(localized_ui_context(lang))
+    return context
 
 
 def render_source_policy_page(

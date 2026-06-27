@@ -34,5 +34,23 @@
     <p>{{ copy.methodology_desc }}</p>
     <p><a href="{{ url_methodology }}">{{ copy.methodology_link }}</a></p>
   </section>
+
+  {% for section in copy.sections %}
+  <section class="about-section trust-section" aria-labelledby="about-section-{{ loop.index }}">
+    <h2 id="about-section-{{ loop.index }}">{{ section.heading }}</h2>
+    {% for paragraph in section.paragraphs %}
+    <p>{{ paragraph }}</p>
+    {% endfor %}
+  </section>
+  {% endfor %}
+
+  <nav class="methodology-nav trust-links" aria-label="Related pages">
+    <ul>
+      {% for label, key in copy.related_links %}
+      {% set href = url_map.get(key) %}
+      {% if href %}<li><a href="{{ href }}">{{ label }}</a></li>{% endif %}
+      {% endfor %}
+    </ul>
+  </nav>
 </div>
 {% endblock %}

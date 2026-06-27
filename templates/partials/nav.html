@@ -16,18 +16,18 @@
       </span>
     </a>
 
-    <nav class="site-nav" aria-label="Primary navigation">
-      <a href="/{{ page_lang }}/" class="site-nav__link">Home</a>
-      <a href="/{{ page_lang }}/styles/" class="site-nav__link">Styles</a>
-      <a href="/{{ page_lang }}/compare/" class="site-nav__link">Compare</a>
-      <a href="/{{ page_lang }}/methodology/" class="site-nav__link">Methodology</a>
-      <a href="/{{ page_lang }}/destinations/" class="site-nav__link">Destinations</a>
-      <a href="/{{ page_lang }}/tools/" class="site-nav__link">Tools</a>
+    <nav class="site-nav" aria-label="{{ primary_nav_label|default('Primary navigation') }}">
+      <a href="/{{ page_lang }}/" class="site-nav__link">{{ nav_home|default('Home') }}</a>
+      <a href="/{{ page_lang }}/styles/" class="site-nav__link">{{ nav_styles|default('Styles') }}</a>
+      <a href="/{{ page_lang }}/compare/" class="site-nav__link">{{ nav_compare|default('Compare') }}</a>
+      <a href="/{{ page_lang }}/methodology/" class="site-nav__link">{{ nav_methodology|default('Methodology') }}</a>
+      <a href="/{{ page_lang }}/destinations/" class="site-nav__link">{{ nav_destinations|default('Destinations') }}</a>
+      <a href="/{{ page_lang }}/tools/" class="site-nav__link">{{ nav_tools|default('Tools') }}</a>
       <a href="/{{ page_lang }}/report/" class="site-nav__link">{{ nav_report_label|default('Report') }}</a>
     </nav>
 
     <div class="site-header__right">
-      <nav class="language-switcher" aria-label="Language selection">
+      <nav class="language-switcher" aria-label="{{ language_switcher_label|default('Language selection') }}">
         <a class="language-switcher__item{% if page_lang == 'en' %} is-active{% endif %}" href="/en/">EN</a>
         <a class="language-switcher__item{% if page_lang == 'ar' %} is-active{% endif %}" href="/ar/">AR</a>
         <a class="language-switcher__item{% if page_lang == 'fr' %} is-active{% endif %}" href="/fr/">FR</a>
@@ -38,25 +38,25 @@
       </nav>
 
       <a class="site-header__cta" href="/{{ page_lang }}/#comparison-entry">
-        Find Your Match
+        {{ primary_cta_label|default('Find Your Match') }}
       </a>
 
       <details class="mobile-menu">
-        <summary class="mobile-menu__button" aria-label="Open navigation menu">
-          Menu
+        <summary class="mobile-menu__button" aria-label="{{ menu_open_label|default('Open navigation menu') }}">
+          {{ menu_label|default('Menu') }}
         </summary>
 
         <div class="mobile-menu__panel">
-          <a href="/{{ page_lang }}/">Home</a>
-          <a href="/{{ page_lang }}/styles/">Styles</a>
-          <a href="/{{ page_lang }}/compare/">Compare</a>
-          <a href="/{{ page_lang }}/methodology/">Methodology</a>
-          <a href="/{{ page_lang }}/destinations/">Destinations</a>
-          <a href="/{{ page_lang }}/tools/">Tools</a>
+          <a href="/{{ page_lang }}/">{{ nav_home|default('Home') }}</a>
+          <a href="/{{ page_lang }}/styles/">{{ nav_styles|default('Styles') }}</a>
+          <a href="/{{ page_lang }}/compare/">{{ nav_compare|default('Compare') }}</a>
+          <a href="/{{ page_lang }}/methodology/">{{ nav_methodology|default('Methodology') }}</a>
+          <a href="/{{ page_lang }}/destinations/">{{ nav_destinations|default('Destinations') }}</a>
+          <a href="/{{ page_lang }}/tools/">{{ nav_tools|default('Tools') }}</a>
           <a href="/{{ page_lang }}/report/">{{ nav_report_label|default('Report') }}</a>
-          <a class="mobile-menu__cta" href="/{{ page_lang }}/#comparison-entry">Find Your Match</a>
+          <a class="mobile-menu__cta" href="/{{ page_lang }}/#comparison-entry">{{ primary_cta_label|default('Find Your Match') }}</a>
 
-          <div class="mobile-menu__langs" aria-label="Language selection">
+          <div class="mobile-menu__langs" aria-label="{{ language_switcher_label|default('Language selection') }}">
             <a href="/en/">EN</a>
             <a href="/ar/">AR</a>
             <a href="/fr/">FR</a>

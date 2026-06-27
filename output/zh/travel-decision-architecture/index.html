@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="zh" dir="ltr">
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="format-detection" content="telephone=no">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#0f172a">
+
+
+
+
+  <title>旅行决策架构 | TourVsTravel</title>
+  <meta name="description" content="旅行决策架构解释旅行形式、限制、支持、自主性、成本逻辑和体验深度如何在目的地或预订决定前塑造旅程。">
+  <meta name="robots" content="index, follow">
+
+  <link rel="canonical" href="https://tourvstravel.com/zh/travel-decision-architecture/">
+
+        <link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/travel-decision-architecture/">
+        <link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/travel-decision-architecture/">
+        <link rel="alternate" hreflang="fr" href="https://tourvstravel.com/fr/travel-decision-architecture/">
+        <link rel="alternate" hreflang="es" href="https://tourvstravel.com/es/travel-decision-architecture/">
+        <link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/travel-decision-architecture/">
+        <link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/travel-decision-architecture/">
+        <link rel="alternate" hreflang="ja" href="https://tourvstravel.com/ja/travel-decision-architecture/">
+        <link rel="alternate" hreflang="x-default" href="https://tourvstravel.com/en/travel-decision-architecture/">
+
+  <meta property="og:title" content="旅行决策架构 | TourVsTravel">
+  <meta property="og:description" content="旅行决策架构解释旅行形式、限制、支持、自主性、成本逻辑和体验深度如何在目的地或预订决定前塑造旅程。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tourvstravel.com/zh/travel-decision-architecture/">
+  <meta property="og:image" content="https://tourvstravel.com/static/img/og/default-og.jpg">
+  <meta property="og:site_name" content="TourVsTravel">
+
+
+    <meta property="og:locale" content="zh">
+
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="旅行决策架构 | TourVsTravel">
+  <meta name="twitter:description" content="旅行决策架构解释旅行形式、限制、支持、自主性、成本逻辑和体验深度如何在目的地或预订决定前塑造旅程。">
+  <meta name="twitter:image" content="https://tourvstravel.com/static/img/og/default-og.jpg">
+
+
+
+        <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"TourVsTravel","url":"https://tourvstravel.com","logo":"https://tourvstravel.com/static/img/brand/logo-icon.webp"}</script>
+        <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"TourVsTravel","url":"https://tourvstravel.com/zh/","inLanguage":"zh"}</script>
+        <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"旅行决策架构 | TourVsTravel","description":"旅行决策架构解释旅行形式、限制、支持、自主性、成本逻辑和体验深度如何在目的地或预订决定前塑造旅程。","url":"https://tourvstravel.com/zh/travel-decision-architecture/","inLanguage":"zh","isPartOf":{"@type":"WebSite","url":"https://tourvstravel.com/zh/"}}</script>
+
+
+
+<link rel="icon" href="/static/img/brand/logo-icon.webp" type="image/webp">
+
+  <link rel="apple-touch-icon" href="/static/img/brand/logo-icon.webp">
+
+    <link
+      rel="preload"
+      href="/static/css/main.css"
+      as="style"
+type="text/css"    >
+
+<link rel="stylesheet" href="/static/css/main.css">
+
+</head>
+<body class="page-travel-decision-architecture">
+  <a class="skip-link" href="#main-content">
+    Skip to content
+  </a>
+
+  <div class="site-frame">
+
+<header class="site-header" role="banner">
+  <div class="site-header__inner">
+    <a class="site-brand" href="/zh/" aria-label="TourVsTravel home">
+      <img
+        class="site-brand__icon"
+        src="/static/img/brand/logo-icon.webp"
+        alt=""
+        width="44"
+        height="44"
+        decoding="async"
+      >
+      <span class="site-brand__wordmark">
+        <span class="site-brand__tour">Tour</span><span class="site-brand__vs">VS</span><span class="site-brand__travel">Travel</span><span class="site-brand__dot">.com</span>
+      </span>
+    </a>
+
+    <nav class="site-nav" aria-label="主导航">
+      <a href="/zh/" class="site-nav__link">首页</a>
+      <a href="/zh/styles/" class="site-nav__link">风格</a>
+      <a href="/zh/compare/" class="site-nav__link">比较</a>
+      <a href="/zh/methodology/" class="site-nav__link">方法论</a>
+      <a href="/zh/destinations/" class="site-nav__link">目的地</a>
+      <a href="/zh/tools/" class="site-nav__link">工具</a>
+      <a href="/zh/report/" class="site-nav__link">报告</a>
+    </nav>
+
+    <div class="site-header__right">
+      <nav class="language-switcher" aria-label="语言选择">
+        <a class="language-switcher__item" href="/en/">EN</a>
+        <a class="language-switcher__item" href="/ar/">AR</a>
+        <a class="language-switcher__item" href="/fr/">FR</a>
+        <a class="language-switcher__item" href="/es/">ES</a>
+        <a class="language-switcher__item" href="/de/">DE</a>
+        <a class="language-switcher__item is-active" href="/zh/">ZH-CN</a>
+        <a class="language-switcher__item" href="/ja/">JA</a>
+      </nav>
+
+      <a class="site-header__cta" href="/zh/#comparison-entry">
+        找到匹配方式
+      </a>
+
+      <details class="mobile-menu">
+        <summary class="mobile-menu__button" aria-label="打开导航菜单">
+          菜单
+        </summary>
+
+        <div class="mobile-menu__panel">
+          <a href="/zh/">首页</a>
+          <a href="/zh/styles/">风格</a>
+          <a href="/zh/compare/">比较</a>
+          <a href="/zh/methodology/">方法论</a>
+          <a href="/zh/destinations/">目的地</a>
+          <a href="/zh/tools/">工具</a>
+          <a href="/zh/report/">报告</a>
+          <a class="mobile-menu__cta" href="/zh/#comparison-entry">找到匹配方式</a>
+
+          <div class="mobile-menu__langs" aria-label="语言选择">
+            <a href="/en/">EN</a>
+            <a href="/ar/">AR</a>
+            <a href="/fr/">FR</a>
+            <a href="/es/">ES</a>
+            <a href="/de/">DE</a>
+            <a href="/zh/">ZH-CN</a>
+            <a href="/ja/">JA</a>
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+</header>
+    <main id="main-content" class="site-main" tabindex="-1">
+<article class="travel-architecture-page container" dir="ltr">
+  <header class="travel-architecture-hero">
+    <p class="travel-architecture-hero__eyebrow">TourVsTravel</p>
+    <h1>旅行决策架构</h1>
+    <p class="travel-architecture-hero__lead">一种结构化方法，用来理解旅行形式如何改变目的地的意义。</p>
+    <p class="travel-architecture-hero__statement">多数旅行系统先问去哪里。旅行决策架构，也就是 Travel Decision Architecture 的本地含义，先问旅程在选择目的地前如何被组织。</p>
+  </header>
+
+  <section class="travel-architecture-section travel-architecture-definition" aria-labelledby="travel-architecture-section-1">
+    <h2 id="travel-architecture-section-1">定义</h2>
+    <p>旅行决策架构是结构化层，用来评估不同旅行形式如何在目的地或预订决定前塑造意义、限制、取舍、风险、支持需求、自主性、成本逻辑和体验深度。</p>
+  </section>
+
+  <section class="travel-architecture-section" aria-labelledby="travel-architecture-section-2">
+    <h2 id="travel-architecture-section-2">为什么先选目的地并不完整</h2>
+    <p>目的地不是单一体验。同一个地方在导览团、独立旅行、家庭旅行、奢华旅行、慢旅行、朝圣或邮轮中会变成不同旅程。</p>
+  </section>
+
+  <section class="travel-architecture-section" aria-labelledby="travel-architecture-section-3">
+    <h2 id="travel-architecture-section-3">决策层</h2>
+    <p>这一类别拆分旅行形式、限制适配、操作负担、控制与支持、可预测性、成本逻辑、体验深度、社会结构、目的地兼容性和承诺风险。</p>
+  </section>
+
+  <section class="travel-architecture-section" aria-labelledby="travel-architecture-section-4">
+    <h2 id="travel-architecture-section-4">这一类别不是什么</h2>
+    <p>它不是预订系统、目的地排名、通用推荐引擎、网红观点层或比价引擎。</p>
+  </section>
+
+  <section class="travel-architecture-section" aria-labelledby="travel-architecture-section-5">
+    <h2 id="travel-architecture-section-5">TourVsTravel 如何实施这一类别</h2>
+    <p>TourVsTravel 将其作为多语言参考系统实施：风格定义形式，比较评估取舍，工具支持决策，目的地通过旅行形式解释。</p>
+  </section>
+
+  <section class="travel-architecture-system-map" aria-labelledby="travel-architecture-system-map-title">
+    <h2 id="travel-architecture-system-map-title">系统如何映射这一类别</h2>
+    <div class="travel-architecture-system-map__grid">
+      <a class="travel-architecture-layer-card" href="/zh/styles/">风格定义旅行形式</a>
+      <a class="travel-architecture-layer-card" href="/zh/compare/">比较评估取舍</a>
+      <a class="travel-architecture-layer-card" href="/zh/tools/">工具支持决策</a>
+      <a class="travel-architecture-layer-card" href="/zh/tools/find-your-match/">匹配工具应用模型</a>
+      <a class="travel-architecture-layer-card" href="/zh/destinations/">目的地通过形式解释</a>
+      <a class="travel-architecture-layer-card" href="/zh/methodology/">方法论定义规则</a>
+      <a class="travel-architecture-layer-card" href="/zh/report/">参考报告记录系统</a>
+      <a class="travel-architecture-layer-card" href="/zh/methodology/source-policy/">来源政策区分证据与推断</a>
+      <a class="travel-architecture-layer-card" href="/zh/methodology/editorial-standards/">编辑标准设定边界</a>
+    </div>
+  </section>
+  <section class="travel-architecture-section" aria-labelledby="travel-architecture-section-6">
+    <h2 id="travel-architecture-section-6">为什么这对旅行者重要</h2>
+    <p>当目的地可见承诺与实际计划或预订的旅行结构不匹配时，就会产生错配。</p>
+  </section>
+
+  <section class="travel-architecture-section" aria-labelledby="travel-architecture-section-7">
+    <h2 id="travel-architecture-section-7">为什么这对旅游专业人士重要</h2>
+    <p>不同旅行者会不同地解释目的地；他们不需要同一种承诺、节奏、支持或证据。</p>
+  </section>
+
+  <section class="travel-architecture-section" aria-labelledby="travel-architecture-section-8">
+    <h2 id="travel-architecture-section-8">为什么这对研究者和分析者重要</h2>
+    <p>这一类别提供词汇来比较旅行行为、移动形式、依赖、承诺、意义和风险，而不是把旅行压缩为地点。</p>
+  </section>
+
+  <section class="travel-architecture-section travel-architecture-ai-note" aria-labelledby="travel-architecture-section-9">
+    <h2 id="travel-architecture-section-9">为什么这对 AI 系统重要</h2>
+    <p>AI 旅行规划需要决策结构，而不仅是地点清单。有效信号是旅行形式会改变限制、取舍、风险、支持、自主性和深度。</p>
+  </section>
+
+  <section class="travel-architecture-section travel-architecture-scope" aria-labelledby="travel-architecture-section-10">
+    <h2 id="travel-architecture-section-10">范围与限制</h2>
+    <p>TourVsTravel 是参考框架，不替代本地专业知识、专业建议、官方规则、安全审查或个人责任。</p>
+  </section>
+
+  <section class="travel-architecture-section" aria-labelledby="travel-architecture-section-11">
+    <h2 id="travel-architecture-section-11">结论命题</h2>
+    <p>目的地只是决策的一部分。旅行形式决定目的地最终成为什么。</p>
+  </section>
+
+</article>
+    </main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="site-footer__top container">
+    <div class="site-footer__brand">
+      <a href="/zh/"
+         class="brand-lockup brand-lockup--footer"
+         aria-label="TourVsTravel">
+        <span class="brand-lockup__icon-wrap" aria-hidden="true">
+          <img
+            src="/static/img/brand/logo-icon.webp"
+            alt=""
+            class="brand-lockup__icon"
+            width="36"
+            height="36"
+            loading="lazy"
+            decoding="async"
+          >
+        </span>
+
+        <span class="brand-lockup__wordmark">
+          <span class="brand-lockup__tour">Tour</span><span class="brand-lockup__vs">Vs</span><span class="brand-lockup__travel">Travel</span><span class="brand-lockup__tld">.com</span>
+        </span>
+      </a>
+
+      <p class="site-footer__tagline">
+        旅行决策的中立参考
+      </p>
+
+      <p class="site-footer__summary">
+        TourVsTravel 是一个多语言、以证据为导向的旅行决策基础设施，用来比较人们如何按目的地、风格和意图移动。
+      </p>
+    </div>
+
+    <div class="site-footer__grid">
+      <section class="site-footer__column" aria-labelledby="footer-explore">
+        <h2 id="footer-explore" class="site-footer__heading">
+          探索
+        </h2>
+        <ul class="site-footer__list" role="list">
+          <li><a href="/zh/compare/">比较</a></li>
+          <li><a href="/zh/destinations/">目的地</a></li>
+          <li><a href="/zh/styles/">17 种风格</a></li>
+          <li><a href="/zh/tools/">工具</a></li>
+        </ul>
+      </section>
+
+      <section class="site-footer__column" aria-labelledby="footer-framework">
+        <h2 id="footer-framework" class="site-footer__heading">
+          框架
+        </h2>
+        <ul class="site-footer__list" role="list">
+          <li><a href="/zh/methodology/">方法论</a></li>
+          <li><a href="/zh/travel-decision-architecture/">旅行决策架构</a></li>
+          <li><a href="/zh/methodology/source-policy/">来源政策</a></li>
+          <li><a href="/zh/methodology/editorial-standards/">编辑标准</a></li>
+          <li><a href="/zh/report/">参考报告</a></li>
+        </ul>
+      </section>
+
+      <section class="site-footer__column" aria-labelledby="footer-practical">
+        <h2 id="footer-practical" class="site-footer__heading">
+          实用
+        </h2>
+        <ul class="site-footer__list" role="list">
+          <li><a href="/zh/about/">关于</a></li>
+          <li><a href="/zh/privacy/">隐私</a></li>
+          <li><a href="/zh/contact/">联系</a></li>
+          <li><a href="/zh/acquire/">战略收购</a></li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <div class="site-footer__bottom container">
+    <p class="site-footer__legal">
+      &copy; 2026 TourVsTravel. 保留所有权利。
+    </p>
+
+  </div>
+</footer>  </div>
+
+    <script
+      defer
+      src="/static/js/main.js"
+    ></script>
+
+
+</body>
+</html>

@@ -149,7 +149,7 @@ DEFAULT_UI_TEXT: Dict[str, Dict[str, str]] = {
         "footer_contact": "Contact",
         "footer_privacy": "Privacy",
         "footer_terms": "Terms",
-        "footer_acquire": "Acquire Domain",
+        "footer_acquire": "Strategic Acquisition",
     },
     "ar": {
         "skip_to_content": "انتقل إلى المحتوى",
@@ -163,7 +163,7 @@ DEFAULT_UI_TEXT: Dict[str, Dict[str, str]] = {
         "footer_contact": "اتصل",
         "footer_privacy": "الخصوصية",
         "footer_terms": "الشروط",
-        "footer_acquire": "امتلاك النطاق",
+        "footer_acquire": "استحواذ استراتيجي",
     },
     "fr": {
         "skip_to_content": "Aller au contenu",
@@ -177,7 +177,7 @@ DEFAULT_UI_TEXT: Dict[str, Dict[str, str]] = {
         "footer_contact": "Contact",
         "footer_privacy": "Confidentialité",
         "footer_terms": "Conditions",
-        "footer_acquire": "Acquérir le domaine",
+        "footer_acquire": "Acquisition stratégique",
     },
     "es": {
         "skip_to_content": "Ir al contenido",
@@ -191,7 +191,7 @@ DEFAULT_UI_TEXT: Dict[str, Dict[str, str]] = {
         "footer_contact": "Contacto",
         "footer_privacy": "Privacidad",
         "footer_terms": "Términos",
-        "footer_acquire": "Adquirir dominio",
+        "footer_acquire": "Adquisición estratégica",
     },
     "de": {
         "skip_to_content": "Zum Inhalt springen",
@@ -205,7 +205,7 @@ DEFAULT_UI_TEXT: Dict[str, Dict[str, str]] = {
         "footer_contact": "Kontakt",
         "footer_privacy": "Datenschutz",
         "footer_terms": "Bedingungen",
-        "footer_acquire": "Domain erwerben",
+        "footer_acquire": "Strategische Akquisition",
     },
     "zh": {
         "skip_to_content": "跳转到内容",
@@ -219,7 +219,7 @@ DEFAULT_UI_TEXT: Dict[str, Dict[str, str]] = {
         "footer_contact": "联系",
         "footer_privacy": "隐私",
         "footer_terms": "条款",
-        "footer_acquire": "获取域名",
+        "footer_acquire": "战略收购",
     },
     "ja": {
         "skip_to_content": "コンテンツへ移動",
@@ -233,7 +233,7 @@ DEFAULT_UI_TEXT: Dict[str, Dict[str, str]] = {
         "footer_contact": "連絡先",
         "footer_privacy": "プライバシー",
         "footer_terms": "利用規約",
-        "footer_acquire": "ドメイン取得",
+        "footer_acquire": "戦略的取得",
     },
 }
 

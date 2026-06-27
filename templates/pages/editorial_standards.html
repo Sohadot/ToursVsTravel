@@ -39,9 +39,22 @@
     <p>{{ copy.multilingual_body }}</p>
   </section>
   <nav class="methodology-nav" aria-label="{{ copy.see_also_label }}">
+
+  {% for section in copy.sections %}
+  <section class="editorial-standards-section trust-section" aria-labelledby="editorial-standards-section-{{ loop.index }}">
+    <h2 id="editorial-standards-section-{{ loop.index }}">{{ section.heading }}</h2>
+    {% for paragraph in section.paragraphs %}
+    <p>{{ paragraph }}</p>
+    {% endfor %}
+  </section>
+  {% endfor %}
+
+  <nav class="methodology-nav trust-links" aria-label="Related pages">
     <ul>
-      <li><a href="{{ url_methodology }}">{{ copy.ln_methodology }}</a></li>
-      <li><a href="{{ url_source_policy }}">{{ copy.ln_source_policy }}</a></li>
+      {% for label, key in copy.related_links %}
+      {% set href = url_map.get(key) %}
+      {% if href %}<li><a href="{{ href }}">{{ label }}</a></li>{% endif %}
+      {% endfor %}
     </ul>
   </nav>
 </div>

@@ -180,6 +180,16 @@ main {
   flex-direction: column;
 }
 
+.site-brand,
+.site-brand__name,
+.site-brand__wordmark,
+.site-footer__brand,
+.brand-wordmark,
+.logo-lockup {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
 /* Editorial “authority” pages: dark theme lives on the inner .*-page.page-* shell only.
    body.page-* remains the global cream layer from base `body` (avoids header/chrome drift). */
 body.page-report .site-main,
@@ -257,6 +267,137 @@ body.page-compare .compare-page.page-compare {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+}
+
+/* ==========================================================================
+   Travel Decision Architecture
+   ========================================================================== */
+
+.page-travel-decision-architecture .site-main {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.62), rgba(248, 247, 243, 0.94)),
+    var(--bg-page);
+}
+
+.travel-architecture-page {
+  padding-block: clamp(2.5rem, 6vw, 5.5rem);
+}
+
+.travel-architecture-hero {
+  max-width: 58rem;
+  padding-block-end: clamp(2rem, 5vw, 4rem);
+}
+
+.travel-architecture-hero__eyebrow {
+  margin: 0 0 0.75rem;
+  color: var(--accent-gold);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.travel-architecture-hero h1 {
+  margin: 0;
+  color: var(--text-strong);
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 4.9rem);
+  line-height: 0.98;
+  letter-spacing: 0;
+}
+
+.travel-architecture-hero__lead {
+  max-width: 46rem;
+  margin: 1.25rem 0 0;
+  color: var(--text-main);
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  line-height: 1.5;
+}
+
+.travel-architecture-hero__statement {
+  max-width: 52rem;
+  margin: 1.5rem 0 0;
+  padding: 1.2rem 1.35rem;
+  color: var(--text-strong);
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid var(--border-gold-soft);
+  border-inline-start: 4px solid var(--accent-gold);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-soft);
+}
+
+.travel-architecture-section,
+.travel-architecture-system-map {
+  max-width: 58rem;
+  margin-block: 1rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(0, 43, 73, 0.10);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-soft);
+}
+
+.travel-architecture-section h2,
+.travel-architecture-system-map h2 {
+  margin: 0 0 0.9rem;
+  color: var(--text-strong);
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2vw, 1.8rem);
+  line-height: 1.18;
+  letter-spacing: 0;
+}
+
+.travel-architecture-section p {
+  margin: 0;
+  color: var(--text-main);
+}
+
+.travel-architecture-section p + p {
+  margin-block-start: 0.85rem;
+}
+
+.travel-architecture-definition,
+.travel-architecture-ai-note,
+.travel-architecture-scope {
+  border-color: var(--border-gold-soft);
+}
+
+.travel-architecture-system-map__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  gap: 0.75rem;
+}
+
+.travel-architecture-layer-card {
+  min-height: 5rem;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  color: var(--text-strong);
+  background: var(--bg-surface-soft);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-xs);
+  font-weight: 800;
+  line-height: 1.28;
+  transition: border-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.travel-architecture-layer-card:hover {
+  border-color: var(--accent-gold);
+  box-shadow: var(--shadow-soft);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 700px) {
+  .travel-architecture-page {
+    width: min(100% - 1.25rem, var(--container-width));
+  }
+
+  .travel-architecture-hero__statement,
+  .travel-architecture-section,
+  .travel-architecture-system-map {
+    padding: 1rem;
+  }
 }
 
 .brand-lockup__icon {

@@ -28,12 +28,17 @@ from scripts.loaders import (
     resolve_nav_report_label,
 )
 from scripts.routes import (
+    build_about_path,
+    build_acquire_path,
     build_compare_index_path,
     build_contact_path,
     build_destinations_index_path,
+    build_editorial_standards_path,
     build_home_path,
     build_methodology_path,
+    build_privacy_path,
     build_reference_report_path,
+    build_source_policy_path,
     build_tools_index_path,
 )
 from scripts.seo import (
@@ -57,7 +62,36 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "title": "Contact",
         "lead": (
             "TourVsTravel is a reference infrastructure for comparing travel structures. "
-            "For general questions, start with the methodology and reference report."
+            "Most questions are answered by the methodology and reference report. "
+            "For corrections, source questions, or professional inquiries, use the paths below."
+        ),
+        "corrections_label": "Editorial corrections",
+        "corrections_body": (
+            "If you find a factual error in a comparison, classification, or methodology section, "
+            "describe the specific claim, the page where it appears, and what you believe the accurate "
+            "information to be. Include a primary source if available. Corrections with source support "
+            "are reviewed and addressed."
+        ),
+        "source_label": "Source questions",
+        "source_body": (
+            "If you have questions about which sources underlie a specific comparison, or want to flag "
+            "a source type that is absent from the source policy, use the contact path below with the "
+            "page URL and a description of the concern."
+        ),
+        "strategic_label": "Research and professional inquiries",
+        "strategic_body": (
+            "Tourism researchers, journalists, and destination management organizations building "
+            "comparative analysis of travel formats are welcome to reach out. Describe the project "
+            "and what you are trying to establish. There is no guarantee of a response to every "
+            "inquiry, but substantive questions about methodology and classification are prioritized."
+        ),
+        "acquire_label": "Acquisition inquiries",
+        "acquire_body": "For organizations interested in licensing or acquiring this reference infrastructure, see the",
+        "ln_acquire": "Acquire page",
+        "path_label": "How to contact",
+        "path_body": (
+            "Open an issue or start a discussion in the GitHub repository associated with this site. "
+            "This is the primary contact path for all inquiries. There is no dedicated support email."
         ),
         "note_label": "Where to go next",
         "ln_methodology": "Methodology",
@@ -69,7 +103,33 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
     "ar": {
         "title": "اتصل بنا",
         "lead": (
-            "TourVsTravel بنية مرجعية لمقارنة أشكال السفر. للأسئلة العامة، ابدأ بالمنهجية والتقرير المرجعي."
+            "TourVsTravel بنية مرجعية لمقارنة أشكال السفر. "
+            "تجد إجابة معظم الأسئلة في المنهجية والتقرير المرجعي. "
+            "للتصحيحات أو أسئلة المصادر أو الاستفسارات المهنية، استخدم المسارات أدناه."
+        ),
+        "corrections_label": "تصحيحات تحريرية",
+        "corrections_body": (
+            "إذا وجدت خطأً فعلياً في مقارنة أو تصنيف أو قسم منهجية، صف الادعاء المحدد، "
+            "والصفحة التي يظهر فيها، وما تعتقده هو المعلومات الصحيحة. "
+            "أدرج مصدراً أولياً إن أمكن. تُراجَع التصحيحات ذات دعم المصادر وتُعالَج."
+        ),
+        "source_label": "أسئلة حول المصادر",
+        "source_body": (
+            "إذا كان لديك أسئلة حول المصادر المستخدمة في مقارنة معينة، أو أردت الإشارة إلى نوع مصدر غائب من سياسة المصادر، "
+            "استخدم مسار التواصل أدناه مع رابط الصفحة ووصف المشكلة."
+        ),
+        "strategic_label": "استفسارات بحثية ومهنية",
+        "strategic_body": (
+            "يُرحَّب بباحثي السياحة والصحفيين ومنظمات إدارة الوجهات الذين يبنون تحليلاً مقارناً لأشكال السفر بالتواصل. "
+            "صف المشروع وما تحاول إثباته. لا يوجد ضمان بالرد على كل استفسار، لكن الأسئلة الجوهرية حول المنهجية والتصنيف تحظى بالأولوية."
+        ),
+        "acquire_label": "استفسارات الاستحواذ",
+        "acquire_body": "للمؤسسات المهتمة بترخيص هذه البنية المرجعية أو اقتنائها، انظر",
+        "ln_acquire": "صفحة الاستحواذ",
+        "path_label": "كيفية التواصل",
+        "path_body": (
+            "افتح تذكرة أو ابدأ نقاشاً في مستودع GitHub المرتبط بهذا الموقع. "
+            "هذا هو مسار التواصل الرئيسي لجميع الاستفسارات. لا يوجد بريد إلكتروني مخصص للدعم."
         ),
         "note_label": "الخطوات التالية",
         "ln_methodology": "المنهجية",
@@ -81,8 +141,39 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
     "fr": {
         "title": "Contact",
         "lead": (
-            "TourVsTravel est une infrastructure de référence pour comparer des formes de voyage. "
-            "Pour toute question générale, commencez par la méthodologie et le rapport de référence."
+            "TourVsTravel est une infrastructure de référence pour comparer les formes de voyage. "
+            "La plupart des questions trouvent une réponse dans la méthodologie et le rapport de référence. "
+            "Pour les corrections, questions sur les sources ou demandes professionnelles, utilisez les voies ci-dessous."
+        ),
+        "corrections_label": "Corrections éditoriales",
+        "corrections_body": (
+            "Si vous trouvez une erreur factuelle dans une comparaison, une classification ou une section "
+            "méthodologique, décrivez l’affirmation spécifique, la page où elle apparaît et ce que vous "
+            "estimez être la bonne information. Joignez une source primaire si disponible. Les corrections "
+            "avec support de source sont examinées et traitées."
+        ),
+        "source_label": "Questions sur les sources",
+        "source_body": (
+            "Si vous avez des questions sur les sources utilisées pour une comparaison spécifique, ou "
+            "souhaitez signaler un type de source absent de la politique des sources, utilisez la voie de "
+            "contact ci-dessous avec l’URL de la page et une description de la préoccupation."
+        ),
+        "strategic_label": "Demandes de recherche et professionnelles",
+        "strategic_body": (
+            "Les chercheurs en tourisme, les journalistes et les organisations de gestion des destinations "
+            "qui construisent une analyse comparative des formats de voyage sont les bienvenus. Décrivez "
+            "le projet et ce que vous cherchez à établir. Il n’y a pas de garantie de réponse à chaque "
+            "demande, mais les questions substantielles sur la méthodologie et la classification sont "
+            "prioritaires."
+        ),
+        "acquire_label": "Demandes d’acquisition",
+        "acquire_body": "Pour les organisations souhaitant licencier ou acquérir cette infrastructure de référence, voir la",
+        "ln_acquire": "page Acquisition",
+        "path_label": "Comment contacter",
+        "path_body": (
+            "Ouvrez un ticket ou démarrez une discussion dans le dépôt GitHub associé à ce site. "
+            "C’est la voie de contact principale pour toutes les demandes. Il n’y a pas d’adresse e-mail "
+            "dédiée au support."
         ),
         "note_label": "Pour aller plus loin",
         "ln_methodology": "Méthodologie",
@@ -95,7 +186,37 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "title": "Contacto",
         "lead": (
             "TourVsTravel es una infraestructura de referencia para comparar formas de viaje. "
-            "Para consultas generales, comience por la metodología y el informe de referencia."
+            "La mayoría de las preguntas tienen respuesta en la metodología y el informe de referencia. "
+            "Para correcciones, preguntas sobre fuentes o consultas profesionales, utilice las vías indicadas a continuación."
+        ),
+        "corrections_label": "Correcciones editoriales",
+        "corrections_body": (
+            "Si encuentra un error factual en una comparación, clasificación o sección metodológica, "
+            "describa la afirmación específica, la página donde aparece y lo que cree que es la "
+            "información correcta. Incluya una fuente primaria si está disponible. Las correcciones con "
+            "respaldo de fuente son revisadas y atendidas."
+        ),
+        "source_label": "Preguntas sobre fuentes",
+        "source_body": (
+            "Si tiene preguntas sobre las fuentes utilizadas en una comparación específica, o desea "
+            "señalar un tipo de fuente ausente de la política de fuentes, use la vía de contacto "
+            "a continuación con la URL de la página y una descripción del problema."
+        ),
+        "strategic_label": "Consultas de investigación y profesionales",
+        "strategic_body": (
+            "Investigadores de turismo, periodistas y organizaciones de gestión de destinos que elaboran "
+            "análisis comparativos de formatos de viaje son bienvenidos a comunicarse. Describa el proyecto "
+            "y lo que intenta establecer. No hay garantía de respuesta a cada consulta, pero las preguntas "
+            "sustanciales sobre metodología y clasificación tienen prioridad."
+        ),
+        "acquire_label": "Consultas de adquisición",
+        "acquire_body": "Para organizaciones interesadas en licenciar o adquirir esta infraestructura de referencia, consulte la",
+        "ln_acquire": "página de Adquisición",
+        "path_label": "Cómo contactar",
+        "path_body": (
+            "Abra un issue o inicie una discusión en el repositorio de GitHub asociado a este sitio. "
+            "Esta es la vía de contacto principal para todas las consultas. No hay una dirección de "
+            "correo electrónico de soporte dedicada."
         ),
         "note_label": "Próximos pasos",
         "ln_methodology": "Metodología",
@@ -108,7 +229,37 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "title": "Kontakt",
         "lead": (
             "TourVsTravel ist eine Referenzinfrastruktur zum Vergleichen von Reiseformen. "
-            "Für allgemeine Fragen beginnen Sie mit Methodik und Referenzbericht."
+            "Die meisten Fragen werden durch Methodik und Referenzbericht beantwortet. "
+            "Für Korrekturen, Quellenfragen oder fachliche Anfragen nutzen Sie bitte die folgenden Wege."
+        ),
+        "corrections_label": "Redaktionelle Korrekturen",
+        "corrections_body": (
+            "Wenn Sie einen sachlichen Fehler in einem Vergleich, einer Klassifizierung oder einem "
+            "Methodik-Abschnitt finden, beschreiben Sie die spezifische Aussage, die Seite, auf der "
+            "sie erscheint, und was Sie für die korrekte Information halten. Fügen Sie nach Möglichkeit "
+            "eine Primärquelle bei. Korrekturen mit Quellennachweis werden geprüft und bearbeitet."
+        ),
+        "source_label": "Quellenfragen",
+        "source_body": (
+            "Bei Fragen zu den Quellen, die einem bestimmten Vergleich zugrunde liegen, oder wenn Sie "
+            "einen fehlenden Quellentyp in der Quellenrichtlinie melden möchten, nutzen Sie den "
+            "Kontaktweg unten mit der Seiten-URL und einer Beschreibung des Anliegens."
+        ),
+        "strategic_label": "Forschungs- und Fachfragen",
+        "strategic_body": (
+            "Reiseforscher, Journalisten und Destinationsmanagementorganisationen, die vergleichende "
+            "Analysen von Reiseformaten erstellen, sind herzlich willkommen. Beschreiben Sie das Projekt "
+            "und was Sie zu belegen versuchen. Eine Antwort auf jede Anfrage ist nicht garantiert, aber "
+            "substanzielle Fragen zur Methodik und Klassifizierung werden priorisiert."
+        ),
+        "acquire_label": "Erwerbs-Anfragen",
+        "acquire_body": "Für Organisationen, die diese Referenzinfrastruktur lizenzieren oder erwerben möchten, siehe die",
+        "ln_acquire": "Erwerbs-Seite",
+        "path_label": "So nehmen Sie Kontakt auf",
+        "path_body": (
+            "Eröffnen Sie ein Issue oder starten Sie eine Diskussion im GitHub-Repository, das mit "
+            "dieser Website verbunden ist. Dies ist der Haupt-Kontaktweg für alle Anfragen. Es gibt "
+            "keine dedizierte Support-E-Mail-Adresse."
         ),
         "note_label": "Weiter",
         "ln_methodology": "Methodik",
@@ -120,19 +271,66 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
     "zh": {
         "title": "联系",
         "lead": (
-            "TourVsTravel 用于比较旅行方式的参考体系。一般问题请先阅读方法论与参考报告。"
+            "TourVsTravel 用于比較旅行方式的参考体系。大多数问题可在方法论和参考报告中找到答案。"
+            "如需纠错、来源问题或专业咨询，请使用以下途径。"
+        ),
+        "corrections_label": "编辑纠错",
+        "corrections_body": (
+            "如果您在比較、分类或方法论部分发现了事实性错误，请描述具体的说法、出现错误的页面，"
+            "以及您认为正确的信息。如有主要来源，请一并提供。有来源支持的纠错将接受审阅和处理。"
+        ),
+        "source_label": "来源问题",
+        "source_body": (
+            "如果您对某个具体比較所使用的来源有疑问，或想指出来源政策中缺少的来源类型，请以页面 URL 和问题描述使用下方的联系途径。"
+        ),
+        "strategic_label": "研究和专业咨询",
+        "strategic_body": (
+            "旅游研究人员、记者和目的地管理组织欢迎联系。请描述项目内容和您希望证明的结论。不保证回度每封咨询，但有关方法论和分类的实质性问题优先处理。"
+        ),
+        "acquire_label": "收购咨询",
+        "acquire_body": "如果您的机构有意授权或收购此参考基础设施，请查看",
+        "ln_acquire": "收购页面",
+        "path_label": "如何联系",
+        "path_body": (
+            "请在与本站关联的 GitHub 仓库中提交 issue 或开设讨论。这是所有咨询的主要联系途径。没有专用支持邮筱。"
         ),
         "note_label": "推荐阅读",
         "ln_methodology": "方法论",
         "ln_report": "参考报告",
-        "ln_compare": "比较",
+        "ln_compare": "比較",
         "ln_tools": "工具",
         "ln_destinations": "目的地",
     },
     "ja": {
         "title": "お問い合わせ",
         "lead": (
-            "TourVsTravel は旅行の構造を比較するための参照基盤です。一般的な質問は方法論とリファレンスレポートからどうぞ。"
+            "TourVsTravel は旅行の構造を比較するための参照基盤です。ほとんどの質問は方法論とリファレンスレポートで回答されます。"
+            "修正、情報源に関する質問、または専門的なお問い合わせは、以下の方法をご利用ください。"
+        ),
+        "corrections_label": "編集上の修正",
+        "corrections_body": (
+            "比較、分類、または方法論のセクションに事实の誤りを見つけた場合は、その具体的な主張、記載されているページ、"
+            "および正しいと思われる情報を記載してください。可能であれば一次情報源も添付してください。"
+            "情報源の裏付けのある修正は審査され対応されます。"
+        ),
+        "source_label": "情報源に関する質問",
+        "source_body": (
+            "特定の比較に使用されている情報源について質問がある場合、または情報源ポリシーにない情具源種を指摘したい場合は、"
+            "ページ URL と問題の説明を添えて以下の連絡方法をご利用ください。"
+        ),
+        "strategic_label": "研究・専門家からの問い合わせ",
+        "strategic_body": (
+            "旅行形態の比較分析を行う観光研究者、ジャーナリスト、およびDMO（目的地管理組織）の方々のご連絡を歓迎します。"
+            "プロジェクトと証明したいことを記載してください。すべてのお問い合わせへの返信を保証するものではありませんが、"
+            "方法論や分類に関する実質的な質問は優先されます。"
+        ),
+        "acquire_label": "取得に関するお問い合わせ",
+        "acquire_body": "この参照基盤のライセンスや取得に関心のある組織は、こちらをご覧ください：",
+        "ln_acquire": "取得ページ",
+        "path_label": "お問い合わせの方法",
+        "path_body": (
+            "このサイトに関連する GitHub リポジトリで Issue を開設するか、ディスカッションを開始してください。"
+            "これがすべてのお問い合わせの主要な連絡手段です。専用のサポートメールアドレスはございません。"
         ),
         "note_label": "次のステップ",
         "ln_methodology": "方法論",
@@ -393,6 +591,12 @@ def _build_context(
         "url_compare": build_compare_index_path(site_config, lang, absolute=False),
         "url_tools": build_tools_index_path(site_config, lang, absolute=False),
         "url_destinations": build_destinations_index_path(site_config, lang, absolute=False),
+        "url_about": build_about_path(site_config, lang, absolute=False),
+        "url_privacy": build_privacy_path(site_config, lang, absolute=False),
+        "url_acquire": build_acquire_path(site_config, lang, absolute=False),
+        "url_contact": build_contact_path(site_config, lang, absolute=False),
+        "url_source_policy": build_source_policy_path(site_config, lang, absolute=False),
+        "url_editorial_standards": build_editorial_standards_path(site_config, lang, absolute=False),
     }
 
 

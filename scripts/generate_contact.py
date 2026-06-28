@@ -58,7 +58,11 @@ DEFAULT_OUTPUT_DIR = ROOT_DIR / "output"
 TEMPLATE_NAME = "pages/contact.html"
 SUPPORTED_LANGUAGES = ("en", "ar", "fr", "es", "de", "zh", "ja")
 
-PAGE_COPY: Dict[str, Dict[str, str]] = {
+# Each language entry must include:
+#   flat keys   : title, lead, *_label, *_body, ln_* (consumed directly by the template)
+#   sections    : list of {heading: str, paragraphs: [str]} (iterated with copy.sections)
+#   related_links: list of (label, url_map_key) tuples  (iterated with copy.related_links)
+PAGE_COPY: Dict[str, Dict[str, Any]] = {
     "en": {
         "title": "Contact",
         "lead": (
@@ -92,7 +96,8 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "path_label": "How to contact",
         "path_body": (
             "Open an issue or start a discussion in the GitHub repository associated with this site. "
-            "This is the primary contact path for all inquiries. There is no dedicated support email."
+            "This is the primary contact path for all inquiries. "
+            "For direct written correspondence you may also reach agent@sohadot.com."
         ),
         "note_label": "Where to go next",
         "ln_methodology": "Methodology",
@@ -100,6 +105,31 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "ln_compare": "Compare",
         "ln_tools": "Tools",
         "ln_destinations": "Destinations",
+        "sections": [
+            {
+                "heading": "Not a booking or travel agency",
+                "paragraphs": [
+                    "TourVsTravel does not sell tours, flights, accommodation, or any travel product. "
+                    "It is a reference infrastructure for comparing travel structures. "
+                    "Booking inquiries, tour requests, and travel planning questions are outside the "
+                    "scope of this site and will not receive a response.",
+                ],
+            },
+            {
+                "heading": "Direct email",
+                "paragraphs": [
+                    "For direct written correspondence, you may write to agent@sohadot.com. "
+                    "The GitHub repository remains the preferred path for public questions and corrections.",
+                ],
+            },
+        ],
+        "related_links": [
+            ("Source Policy", "url_source_policy"),
+            ("Editorial Standards", "url_editorial_standards"),
+            ("Methodology", "url_methodology"),
+            ("Reference Report", "url_report"),
+            ("Acquire", "url_acquire"),
+        ],
     },
     "ar": {
         "title": "اتصل بنا",
@@ -130,7 +160,8 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "path_label": "كيفية التواصل",
         "path_body": (
             "افتح تذكرة أو ابدأ نقاشًا في مستودع GitHub المرتبط بهذا الموقع. "
-            "هذا هو مسار التواصل الرئيسي لجميع الاستفسارات. لا يوجد بريد إلكتروني مخصص للدعم."
+            "هذا هو مسار التواصل الرئيسي لجميع الاستفسارات. "
+            "للمراسلة المكتوبة المباشرة يمكنك أيضًا التواصل عبر agent@sohadot.com."
         ),
         "note_label": "الخطوات التالية",
         "ln_methodology": "المنهجية",
@@ -138,6 +169,30 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "ln_compare": "المقارنة",
         "ln_tools": "الأدوات",
         "ln_destinations": "الوجهات",
+        "sections": [
+            {
+                "heading": "ليس وكالة سفر أو حجز",
+                "paragraphs": [
+                    "TourVsTravel لا تبيع جولات سياحية أو رحلات جوية أو إقامة أو أي منتج سياحي. "
+                    "إنها بنية مرجعية لمقارنة أشكال السفر. "
+                    "استفسارات الحجز وطلبات الجولات وأسئلة تخطيط السفر خارج نطاق هذا الموقع.",
+                ],
+            },
+            {
+                "heading": "البريد الإلكتروني المباشر",
+                "paragraphs": [
+                    "للمراسلة المباشرة، يمكنك الكتابة إلى agent@sohadot.com. "
+                    "يبقى مستودع GitHub المسار المفضل للأسئلة العامة والتصحيحات.",
+                ],
+            },
+        ],
+        "related_links": [
+            ("سياسة المصادر", "url_source_policy"),
+            ("معايير التحرير", "url_editorial_standards"),
+            ("المنهجية", "url_methodology"),
+            ("التقرير المرجعي", "url_report"),
+            ("الاستحواذ", "url_acquire"),
+        ],
     },
     "fr": {
         "title": "Contact",
@@ -173,8 +228,8 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "path_label": "Comment contacter",
         "path_body": (
             "Ouvrez un ticket ou démarrez une discussion dans le dépôt GitHub associé à ce site. "
-            "C'est la voie de contact principale pour toutes les demandes. Il n'y a pas d'adresse e-mail "
-            "dédiée au support."
+            "C'est la voie de contact principale pour toutes les demandes. "
+            "Pour une correspondance écrite directe, vous pouvez également écrire à agent@sohadot.com."
         ),
         "note_label": "Pour aller plus loin",
         "ln_methodology": "Méthodologie",
@@ -182,6 +237,30 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "ln_compare": "Comparer",
         "ln_tools": "Outils",
         "ln_destinations": "Destinations",
+        "sections": [
+            {
+                "heading": "Pas une agence de voyage ou de réservation",
+                "paragraphs": [
+                    "TourVsTravel ne vend pas de circuits, de vols, d’hébergement ou de produit touristique. "
+                    "C’est une infrastructure de référence pour comparer les formes de voyage. "
+                    "Les demandes de réservation, de circuits et de planification de voyage sont hors du périmètre de ce site.",
+                ],
+            },
+            {
+                "heading": "Email direct",
+                "paragraphs": [
+                    "Pour une correspondance écrite directe, vous pouvez écrire à agent@sohadot.com. "
+                    "Le dépôt GitHub reste la voie privilégiée pour les questions publiques et les corrections.",
+                ],
+            },
+        ],
+        "related_links": [
+            ("Politique des sources", "url_source_policy"),
+            ("Standards éditoriaux", "url_editorial_standards"),
+            ("Méthodologie", "url_methodology"),
+            ("Rapport de référence", "url_report"),
+            ("Acquisition", "url_acquire"),
+        ],
     },
     "es": {
         "title": "Contacto",
@@ -216,8 +295,8 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "path_label": "Cómo contactar",
         "path_body": (
             "Abra un issue o inicie una discusión en el repositorio de GitHub asociado a este sitio. "
-            "Esta es la vía de contacto principal para todas las consultas. No hay una dirección de "
-            "correo electrónico de soporte dedicada."
+            "Esta es la vía de contacto principal para todas las consultas. "
+            "Para correspondencia escrita directa, también puede escribir a agent@sohadot.com."
         ),
         "note_label": "Próximos pasos",
         "ln_methodology": "Metodología",
@@ -225,6 +304,30 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "ln_compare": "Comparar",
         "ln_tools": "Herramientas",
         "ln_destinations": "Destinos",
+        "sections": [
+            {
+                "heading": "No es una agencia de viajes ni de reservas",
+                "paragraphs": [
+                    "TourVsTravel no vende circuitos, vuelos, alojamiento ni ningún producto turístico. "
+                    "Es una infraestructura de referencia para comparar formas de viaje. "
+                    "Las consultas de reserva, solicitudes de circuitos y preguntas de planificación de viajes quedan fuera del alcance de este sitio.",
+                ],
+            },
+            {
+                "heading": "Correo electrónico directo",
+                "paragraphs": [
+                    "Para correspondencia escrita directa, puede escribir a agent@sohadot.com. "
+                    "El repositorio de GitHub sigue siendo la vía preferida para preguntas públicas y correcciones.",
+                ],
+            },
+        ],
+        "related_links": [
+            ("Política de fuentes", "url_source_policy"),
+            ("Estándares editoriales", "url_editorial_standards"),
+            ("Metodología", "url_methodology"),
+            ("Informe de referencia", "url_report"),
+            ("Adquisición", "url_acquire"),
+        ],
     },
     "de": {
         "title": "Kontakt",
@@ -259,8 +362,8 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "path_label": "So nehmen Sie Kontakt auf",
         "path_body": (
             "Eröffnen Sie ein Issue oder starten Sie eine Diskussion im GitHub-Repository, das mit "
-            "dieser Website verbunden ist. Dies ist der Haupt-Kontaktweg für alle Anfragen. Es gibt "
-            "keine dedizierte Support-E-Mail-Adresse."
+            "dieser Website verbunden ist. Dies ist der Haupt-Kontaktweg für alle Anfragen. "
+            "Für direkte schriftliche Korrespondenz können Sie auch an agent@sohadot.com schreiben."
         ),
         "note_label": "Weiter",
         "ln_methodology": "Methodik",
@@ -268,6 +371,30 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "ln_compare": "Vergleichen",
         "ln_tools": "Werkzeuge",
         "ln_destinations": "Reiseziele",
+        "sections": [
+            {
+                "heading": "Kein Reisebüro oder Buchungsservice",
+                "paragraphs": [
+                    "TourVsTravel verkauft keine Touren, Flüge, Unterkunft oder andere Reiseprodukte. "
+                    "Es ist eine Referenzinfrastruktur zum Vergleichen von Reiseformen. "
+                    "Buchungsanfragen, Tour-Anfragen und Reiseplanungsfragen liegen außerhalb des Umfangs dieser Website.",
+                ],
+            },
+            {
+                "heading": "Direkte E-Mail",
+                "paragraphs": [
+                    "Für direkte schriftliche Korrespondenz können Sie an agent@sohadot.com schreiben. "
+                    "Das GitHub-Repository bleibt der bevorzugte Weg für öffentliche Fragen und Korrekturen.",
+                ],
+            },
+        ],
+        "related_links": [
+            ("Quellenrichtlinie", "url_source_policy"),
+            ("Redaktionelle Standards", "url_editorial_standards"),
+            ("Methodik", "url_methodology"),
+            ("Referenzbericht", "url_report"),
+            ("Erwerb", "url_acquire"),
+        ],
     },
     "zh": {
         "title": "联系",
@@ -277,12 +404,12 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         ),
         "corrections_label": "编辑纠错",
         "corrections_body": (
-            "如果您在比较、分类或方法论部分发现了事实性错误，请描述具体的说法、出现错误的页面，"
+            "如果您在比較、分类或方法论部分发现了事实性错误，请描述具体的说法、出现错误的页面，"
             "以及您认为正确的信息。如有主要来源，请一并提供。有来源支持的纠错将接受审阅和处理。"
         ),
         "source_label": "来源问题",
         "source_body": (
-            "如果您对某个具体比较所使用的来源有疑问，或想指出来源政策中缺少的来源类型，请以页面 URL 和问题描述使用下方的联系途径。"
+            "如果您对某个具体比較所使用的来源有疑问，或想指出来源政策中缺少的来源类型，请以页面 URL 和问题描述使用下方的联系途径。"
         ),
         "strategic_label": "研究和专业咋询",
         "strategic_body": (
@@ -293,14 +420,39 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "ln_acquire": "收购页面",
         "path_label": "如何联系",
         "path_body": (
-            "请在与本站关联的 GitHub 仓库中提交 issue 或开设讨论。这是所有咋询的主要联系途径。没有专用支持邮笱。"
+            "请在与本站关联的 GitHub 仓库中提交 issue 或开设讨论。这是所有咋询的主要联系途径。"
+            "如需直接书面联系，也可发送邮件至 agent@sohadot.com。"
         ),
         "note_label": "推荐阅读",
         "ln_methodology": "方法论",
         "ln_report": "参考报告",
-        "ln_compare": "比较",
+        "ln_compare": "比較",
         "ln_tools": "工具",
         "ln_destinations": "目的地",
+        "sections": [
+            {
+                "heading": "非旅行社或预订服务",
+                "paragraphs": [
+                    "TourVsTravel 不出售旅游产品、机票、住宿或任何旅行产品。"
+                    "它是一个用于比較旅行方式的参考体系。"
+                    "预订咋询、旅游请求和旅行规划问题超出本站范围。",
+                ],
+            },
+            {
+                "heading": "直接联系邮筱",
+                "paragraphs": [
+                    "如需直接书面联系，可发送邮件至 agent@sohadot.com。"
+                    "GitHub 仓库仍然是公开提问和纠错的首选途径。",
+                ],
+            },
+        ],
+        "related_links": [
+            ("来源政策", "url_source_policy"),
+            ("编辑标准", "url_editorial_standards"),
+            ("方法论", "url_methodology"),
+            ("参考报告", "url_report"),
+            ("收购", "url_acquire"),
+        ],
     },
     "ja": {
         "title": "お問い合わせ",
@@ -323,7 +475,7 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "strategic_label": "研究・専門家からの問い合わせ",
         "strategic_body": (
             "旅行形態の比較分析を行う観光研究者、ジャーナリスト、およびDMO（目的地管理組織）の方々のご連絡を歓迎します。"
-            "プロジェクトと証明したいことを記載してください。すべてのお問い合わせへの还信を保証するものではありませんが、"
+            "プロジェクトと証明したいことを記載してください。すべてのお問い合わせへの返信を保証するものではありませんが、"
             "方法論や分類に関する実質的な質問は優先されます。"
         ),
         "acquire_label": "取得に関するお問い合わせ",
@@ -332,7 +484,8 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "path_label": "お問い合わせの方法",
         "path_body": (
             "このサイトに関連する GitHub リポジトリで Issue を開設するか、ディスカッションを開始してください。"
-            "これがすべてのお問い合わせの主要な連絡手段です。専用のサポートメールアドレスはございません。"
+            "これがすべてのお問い合わせの主要な連絡手段です。"
+            "直接の書面による連絡は agent@sohadot.com までお送りください。"
         ),
         "note_label": "次のステップ",
         "ln_methodology": "方法論",
@@ -340,6 +493,30 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "ln_compare": "比較",
         "ln_tools": "ツール",
         "ln_destinations": "目的地",
+        "sections": [
+            {
+                "heading": "旅行代理店や予約サービスではありません",
+                "paragraphs": [
+                    "TourVsTravel はツアー、フライト、宿泊、その他の旅行商品を販売していません。"
+                    "旅行形態を比較するための参照基盤です。"
+                    "予約のお問い合わせ、ツアーのリクエスト、旅行計画に関する質問はこのサイトの範囲外です。",
+                ],
+            },
+            {
+                "heading": "ダイレクトメール",
+                "paragraphs": [
+                    "直接の書面による連絡は agent@sohadot.com までお送りください。"
+                    "GitHub リポジトリは、公開の質問や修正における引き続き推奨の連絡先です。",
+                ],
+            },
+        ],
+        "related_links": [
+            ("情報源ポリシー", "url_source_policy"),
+            ("編集基準", "url_editorial_standards"),
+            ("方法論", "url_methodology"),
+            ("リファレンスレポート", "url_report"),
+            ("取得", "url_acquire"),
+        ],
     },
 }
 
@@ -506,6 +683,13 @@ def _build_urls_by_lang(site_config: Mapping[str, Any], languages: Sequence[str]
     return urls
 
 
+def _validate_copy(copy: Dict[str, Any], lang: str) -> None:
+    if "sections" not in copy:
+        raise GenerateContactError(f"contact page content missing sections for {lang}")
+    if "related_links" not in copy:
+        raise GenerateContactError(f"contact page content missing related_links for {lang}")
+
+
 def _build_context(
     *,
     site_config: Mapping[str, Any],
@@ -513,6 +697,7 @@ def _build_context(
     languages: Sequence[str],
 ) -> Dict[str, Any]:
     copy = PAGE_COPY.get(lang, PAGE_COPY["en"])
+    _validate_copy(copy, lang)
     base_url = _ensure_string(
         _get_nested(site_config, ("site", "base_url"), "https://tourvstravel.com").strip().rstrip("/"),
         "site.base_url",

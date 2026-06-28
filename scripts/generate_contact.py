@@ -111,9 +111,6 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         ),
         "corrections_label": "تصحيحات تحريرية",
         "corrections_body": (
-            "إذا وجدت خطأً فعلياً في مقارنة أو تصنيف أو قسم منهجية، صف الادعاء المحدد، "
-            "والصفحة التي يظهر فيها، وما تعتقده هو المعلومات الصحيحة. "
-            "أدرج مصدراً أولياً إن أمكن. تُراجَع التصحيحات ذات دعم المصادر وتُعالَج."
             "إذا وجدت خطأً فعليًا في مقارنة أو تصنيف أو قسم منهجية، صف الادعاء المحدد، "
             "والصفحة التي يظهر فيها، وما تعتقده هو المعلومات الصحيحة. "
             "أدرج مصدرًا أوليًا إن أمكن. تُراجَع التصحيحات ذات دعم المصادر وتُعالَج."
@@ -126,7 +123,6 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "strategic_label": "استفسارات بحثية ومهنية",
         "strategic_body": (
             "يُرحَّب بباحثي السياحة والصحفيين ومنظمات إدارة الوجهات الذين يبنون تحليلاً مقارناً لأشكال السفر بالتواصل. "
-            "يُرحَّب بباحثي السياحة والصحفيين ومنظمات إدارة الوجهات الذين يبنون تحليلًا مقارنًا لأشكال السفر بالتواصل. "
             "صف المشروع وما تحاول إثباته. لا يوجد ضمان بالرد على كل استفسار، لكن الأسئلة الجوهرية حول المنهجية والتصنيف تحظى بالأولوية."
         ),
         "acquire_label": "استفسارات الاستحواذ",
@@ -135,7 +131,6 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "path_label": "كيفية التواصل",
         "path_body": (
             "افتح تذكرة أو ابدأ نقاشاً في مستودع GitHub المرتبط بهذا الموقع. "
-            "افتح تذكرة أو ابدأ نقاشًا في مستودع GitHub المرتبط بهذا الموقع. "
             "هذا هو مسار التواصل الرئيسي لجميع الاستفسارات. لا يوجد بريد إلكتروني مخصص للدعم."
         ),
         "note_label": "الخطوات التالية",
@@ -155,7 +150,6 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "corrections_label": "Corrections éditoriales",
         "corrections_body": (
             "Si vous trouvez une erreur factuelle dans une comparaison, une classification ou une section "
-            "méthodologique, décrivez l’affirmation spécifique, la page où elle apparaît et ce que vous "
             "méthodologique, décrivez l'affirmation spécifique, la page où elle apparaît et ce que vous "
             "estimez être la bonne information. Joignez une source primaire si disponible. Les corrections "
             "avec support de source sont examinées et traitées."
@@ -164,18 +158,12 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "source_body": (
             "Si vous avez des questions sur les sources utilisées pour une comparaison spécifique, ou "
             "souhaitez signaler un type de source absent de la politique des sources, utilisez la voie de "
-            "contact ci-dessous avec l’URL de la page et une description de la préoccupation."
             "contact ci-dessous avec l'URL de la page et une description de la préoccupation."
         ),
         "strategic_label": "Demandes de recherche et professionnelles",
         "strategic_body": (
             "Les chercheurs en tourisme, les journalistes et les organisations de gestion des destinations "
             "qui construisent une analyse comparative des formats de voyage sont les bienvenus. Décrivez "
-            "le projet et ce que vous cherchez à établir. Il n’y a pas de garantie de réponse à chaque "
-            "demande, mais les questions substantielles sur la méthodologie et la classification sont "
-            "prioritaires."
-        ),
-        "acquire_label": "Demandes d’acquisition",
             "le projet et ce que vous cherchez à établir. Il n'y a pas de garantie de réponse à chaque "
             "demande, mais les questions substantielles sur la méthodologie et la classification sont "
             "prioritaires."
@@ -186,7 +174,6 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "path_label": "Comment contacter",
         "path_body": (
             "Ouvrez un ticket ou démarrez une discussion dans le dépôt GitHub associé à ce site. "
-            "C’est la voie de contact principale pour toutes les demandes. Il n’y a pas d’adresse e-mail "
             "C'est la voie de contact principale pour toutes les demandes. Il n'y a pas d'adresse e-mail "
             "dédiée au support."
         ),
@@ -286,12 +273,6 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
     "zh": {
         "title": "联系",
         "lead": (
-            "TourVsTravel 用于比較旅行方式的参考体系。大多数问题可在方法论和参考报告中找到答案。"
-            "如需纠错、来源问题或专业咨询，请使用以下途径。"
-        ),
-        "corrections_label": "编辑纠错",
-        "corrections_body": (
-            "如果您在比較、分类或方法论部分发现了事实性错误，请描述具体的说法、出现错误的页面，"
             "TourVsTravel 用于比较旅行方式的参考体系。大多数问题可在方法论和参考报告中找到答案。"
             "如需纠错、来源问题或专业咋询，请使用以下途径。"
         ),
@@ -302,31 +283,23 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         ),
         "source_label": "来源问题",
         "source_body": (
-            "如果您对某个具体比較所使用的来源有疑问，或想指出来源政策中缺少的来源类型，请以页面 URL 和问题描述使用下方的联系途径。"
-        ),
-        "strategic_label": "研究和专业咨询",
-        "strategic_body": (
-            "旅游研究人员、记者和目的地管理组织欢迎联系。请描述项目内容和您希望证明的结论。不保证回度每封咨询，但有关方法论和分类的实质性问题优先处理。"
-        ),
-        "acquire_label": "收购咨询",
             "如果您对某个具体比较所使用的来源有疑问，或想指出来源政策中缺少的来源类型，请以页面 URL 和问题描述使用下方的联系途径。"
         ),
         "strategic_label": "研究和专业咋询",
         "strategic_body": (
-            "旅游研究人员、记者和目的地管理组织欢迎联系。请描述项目内容和您希望证明的结论。不保证回度每封咋询，但有关方法论和分类的实质性问题优先处理。"
+            "旅游研究人员、记者和目的地管理组织欢迎联系。请描述项目内容和您希望证明的结论。不保证回复每封咋询，但有关方法论和分类的实质性问题优先处理。"
         ),
         "acquire_label": "收购咋询",
         "acquire_body": "如果您的机构有意授权或收购此参考基础设施，请查看",
         "ln_acquire": "收购页面",
         "path_label": "如何联系",
         "path_body": (
-            "请在与本站关联的 GitHub 仓库中提交 issue 或开设讨论。这是所有咨询的主要联系途径。没有专用支持邮筱。"
-            "请在与本站关联的 GitHub 仓库中提交 issue 或开设讨论。这是所有咋询的主要联系途径。没有专用支持邮筒。"
+            "请在与本站关联的 GitHub 仓库中提交 issue 或开设讨论。这是所有咋询的主要联系途径。没有专用支持邮筱。"
         ),
         "note_label": "推荐阅读",
         "ln_methodology": "方法论",
         "ln_report": "参考报告",
-        "ln_compare": "比較",
+        "ln_compare": "比较",
         "ln_tools": "工具",
         "ln_destinations": "目的地",
     },
@@ -338,14 +311,13 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         ),
         "corrections_label": "編集上の修正",
         "corrections_body": (
-            "比較、分類、または方法論のセクションに事实の誤りを見つけた場合は、その具体的な主張、記載されているページ、"
-            "比較、分類、または方法論のセクションに事実の誤りを見つけた場合は、その具体的な主張、記載されているページ、
+            "比較、分類、または方法論のセクションに事実の誤りを見つけた場合は、その具体的な主張、記載されているページ、"
             "および正しいと思われる情報を記載してください。可能であれば一次情報源も添付してください。"
             "情報源の裏付けのある修正は審査され対応されます。"
         ),
         "source_label": "情報源に関する質問",
         "source_body": (
-            "特定の比較に使用されている情報源について質問がある場合、または情報源ポリシーにない情具源種を指摘したい場合は、"
+            "特定の比較に使用されている情報源について質問がある場合、または情報源ポリシーにない情報源種を指摘したい場合は、"
             "ページ URL と問題の説明を添えて以下の連絡方法をご利用ください。"
         ),
         "strategic_label": "研究・専門家からの問い合わせ",
@@ -625,8 +597,6 @@ def _build_context(
         "url_privacy": build_privacy_path(site_config, lang, absolute=False),
         "url_acquire": build_acquire_path(site_config, lang, absolute=False),
         "url_contact": build_contact_path(site_config, lang, absolute=False),
-        "url_source_policy": build_source_policy_path(site_config, lang, absolute=False),
-        "url_editorial_standards": build_editorial_standards_path(site_config, lang, absolute=False)
         "url_source_policy": build_source_policy_path(site_config, lang, absolute=False),
         "url_editorial_standards": build_editorial_standards_path(site_config, lang, absolute=False),
         "url_map": {

@@ -48,7 +48,6 @@ from scripts.seo import (
     build_website_jsonld,
 )
 from scripts.reference_i18n import localized_ui_context
-from scripts.trust_authority_copy import get_trust_page_copy
 
 log = logging.getLogger("generate_contact")
 
@@ -122,7 +121,7 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         ),
         "strategic_label": "استفسارات بحثية ومهنية",
         "strategic_body": (
-            "يُرحَّب بباحثي السياحة والصحفيين ومنظمات إدارة الوجهات الذين يبنون تحليلاً مقارناً لأشكال السفر بالتواصل. "
+            "يُرحَّب بباحثي السياحة والصحفيين ومنظمات إدارة الوجهات الذين يبنون تحليلاً مقارنًا لأشكال السفر بالتواصل. "
             "صف المشروع وما تحاول إثباته. لا يوجد ضمان بالرد على كل استفسار، لكن الأسئلة الجوهرية حول المنهجية والتصنيف تحظى بالأولوية."
         ),
         "acquire_label": "استفسارات الاستحواذ",
@@ -130,7 +129,7 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "ln_acquire": "صفحة الاستحواذ",
         "path_label": "كيفية التواصل",
         "path_body": (
-            "افتح تذكرة أو ابدأ نقاشاً في مستودع GitHub المرتبط بهذا الموقع. "
+            "افتح تذكرة أو ابدأ نقاشًا في مستودع GitHub المرتبط بهذا الموقع. "
             "هذا هو مسار التواصل الرئيسي لجميع الاستفسارات. لا يوجد بريد إلكتروني مخصص للدعم."
         ),
         "note_label": "الخطوات التالية",
@@ -294,7 +293,7 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "ln_acquire": "收购页面",
         "path_label": "如何联系",
         "path_body": (
-            "请在与本站关联的 GitHub 仓库中提交 issue 或开设讨论。这是所有咋询的主要联系途径。没有专用支持邮筱。"
+            "请在与本站关联的 GitHub 仓库中提交 issue 或开设讨论。这是所有咋询的主要联系途径。没有专用支持邮笱。"
         ),
         "note_label": "推荐阅读",
         "ln_methodology": "方法论",
@@ -312,7 +311,8 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "corrections_label": "編集上の修正",
         "corrections_body": (
             "比較、分類、または方法論のセクションに事実の誤りを見つけた場合は、その具体的な主張、記載されているページ、"
-            "および正しいと思われる情報を記載してください。可能であれば一次情報源も添付してください。"
+            "および正しいと思われる情報を記載してください。"
+            "可能であれば一次情報源も添付してください。"
             "情報源の裏付けのある修正は審査され対応されます。"
         ),
         "source_label": "情報源に関する質問",
@@ -323,7 +323,7 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "strategic_label": "研究・専門家からの問い合わせ",
         "strategic_body": (
             "旅行形態の比較分析を行う観光研究者、ジャーナリスト、およびDMO（目的地管理組織）の方々のご連絡を歓迎します。"
-            "プロジェクトと証明したいことを記載してください。すべてのお問い合わせへの返信を保証するものではありませんが、"
+            "プロジェクトと証明したいことを記載してください。すべてのお問い合わせへの还信を保証するものではありませんが、"
             "方法論や分類に関する実質的な質問は優先されます。"
         ),
         "acquire_label": "取得に関するお問い合わせ",
@@ -512,7 +512,7 @@ def _build_context(
     lang: str,
     languages: Sequence[str],
 ) -> Dict[str, Any]:
-    copy = get_trust_page_copy("contact", lang)
+    copy = PAGE_COPY.get(lang, PAGE_COPY["en"])
     base_url = _ensure_string(
         _get_nested(site_config, ("site", "base_url"), "https://tourvstravel.com").strip().rstrip("/"),
         "site.base_url",

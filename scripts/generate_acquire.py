@@ -45,7 +45,6 @@ from scripts.seo import (
     build_website_jsonld,
 )
 from scripts.reference_i18n import localized_ui_context
-from scripts.trust_authority_copy import get_trust_page_copy
 
 log = logging.getLogger("generate_acquire")
 
@@ -56,7 +55,7 @@ DEFAULT_OUTPUT_DIR = ROOT_DIR / "output"
 TEMPLATE_NAME = "pages/acquire.html"
 SUPPORTED_LANGUAGES = ("en", "ar", "fr", "es", "de", "zh", "ja")
 
-PAGE_COPY: Dict[str, Dict[str, str]] = {
+PAGE_COPY: Dict[str, Dict[str, Any]] = {
     "en": {
         "title": "Acquire TourVsTravel",
         "lead": "TourVsTravel.com is a structured reference system built around the distinction between touring and traveling as different trip architectures. This page describes the asset for organizations evaluating acquisition.",
@@ -77,6 +76,13 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "next_label": "Before You Reach Out",
         "ln_methodology": "Methodology",
         "ln_contact": "Contact",
+        "sections": [],
+        "related_links": [
+            ("Contact", "url_contact"),
+            ("About", "url_about"),
+            ("Methodology", "url_methodology"),
+            ("Editorial standards", "url_editorial_standards"),
+        ],
     },
     "ar": {
         "title": "استحواذ TourVsTravel",
@@ -98,6 +104,13 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "next_label": "قبل التواصل",
         "ln_methodology": "المنهجية",
         "ln_contact": "اتصل بنا",
+        "sections": [],
+        "related_links": [
+            ("اتصل بنا", "url_contact"),
+            ("حول الموقع", "url_about"),
+            ("المنهجية", "url_methodology"),
+            ("معايير التحرير", "url_editorial_standards"),
+        ],
     },
     "fr": {
         "title": "Acquérir TourVsTravel",
@@ -119,6 +132,13 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "next_label": "Avant de nous contacter",
         "ln_methodology": "Méthodologie",
         "ln_contact": "Contact",
+        "sections": [],
+        "related_links": [
+            ("Contact", "url_contact"),
+            ("À propos", "url_about"),
+            ("Méthodologie", "url_methodology"),
+            ("Normes éditoriales", "url_editorial_standards"),
+        ],
     },
     "es": {
         "title": "Adquirir TourVsTravel",
@@ -140,6 +160,13 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "next_label": "Antes de contactarnos",
         "ln_methodology": "Metodología",
         "ln_contact": "Contacto",
+        "sections": [],
+        "related_links": [
+            ("Contacto", "url_contact"),
+            ("Acerca de", "url_about"),
+            ("Metodología", "url_methodology"),
+            ("Estándares editoriales", "url_editorial_standards"),
+        ],
     },
     "de": {
         "title": "TourVsTravel erwerben",
@@ -161,6 +188,13 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "next_label": "Bevor Sie sich melden",
         "ln_methodology": "Methodik",
         "ln_contact": "Kontakt",
+        "sections": [],
+        "related_links": [
+            ("Kontakt", "url_contact"),
+            ("Über uns", "url_about"),
+            ("Methodik", "url_methodology"),
+            ("Redaktionelle Standards", "url_editorial_standards"),
+        ],
     },
     "zh": {
         "title": "获取 TourVsTravel",
@@ -182,6 +216,13 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "next_label": "联系我们之前",
         "ln_methodology": "方法论",
         "ln_contact": "联系我们",
+        "sections": [],
+        "related_links": [
+            ("联系我们", "url_contact"),
+            ("关于我们", "url_about"),
+            ("方法论", "url_methodology"),
+            ("编辑标准", "url_editorial_standards"),
+        ],
     },
     "ja": {
         "title": "TourVsTravel の取得",
@@ -203,8 +244,25 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "next_label": "ご連絡の前に",
         "ln_methodology": "方法論",
         "ln_contact": "お問い合わせ",
+        "sections": [],
+        "related_links": [
+            ("お問い合わせ", "url_contact"),
+            ("私たちについて", "url_about"),
+            ("方法論", "url_methodology"),
+            ("編集基準", "url_editorial_standards"),
+        ],
     },
 }
+
+
+_REQUIRED_COPY_KEYS = (
+    "title", "lead", "asset_label", "asset_body",
+    "name_label", "name_body", "buyers_label", "buyers_body",
+    "use_cases_label", "use_cases_body", "included_label", "included_body",
+    "not_claimed_label", "not_claimed_body", "inquiry_label", "inquiry_body",
+    "next_label", "ln_methodology", "ln_contact",
+    "sections", "related_links",
+)
 
 
 class GenerateAcquireError(Exception):
@@ -356,6 +414,12 @@ def _ensure_safe_output_dir(output_dir: Path) -> Path:
     return resolved
 
 
+def _validate_copy(copy: Dict[str, Any], lang: str) -> None:
+    for key in _REQUIRED_COPY_KEYS:
+        if key not in copy:
+            raise GenerateAcquireError(f"acquire page content missing {key!r} for {lang!r}")
+
+
 def _build_urls_by_lang(site_config: Mapping[str, Any], languages: Sequence[str]) -> Dict[str, str]:
     urls: Dict[str, str] = {}
     site = _ensure_mapping(site_config.get("site"), "site_config.site")
@@ -373,7 +437,8 @@ def _build_context(
     lang: str,
     languages: Sequence[str],
 ) -> Dict[str, Any]:
-    copy = get_trust_page_copy("acquire", lang)
+    copy = PAGE_COPY.get(lang, PAGE_COPY["en"])
+    _validate_copy(copy, lang)
     base_url = _ensure_string(
         _get_nested(site_config, ("site", "base_url"), "https://tourvstravel.com").strip().rstrip("/"),
         "site.base_url",

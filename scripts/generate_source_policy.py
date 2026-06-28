@@ -44,7 +44,6 @@ from scripts.seo import (
     build_website_jsonld,
 )
 from scripts.reference_i18n import localized_ui_context
-from scripts.trust_authority_copy import get_trust_page_copy
 
 log = logging.getLogger("generate_source_policy")
 
@@ -55,7 +54,7 @@ DEFAULT_OUTPUT_DIR = ROOT_DIR / "output"
 TEMPLATE_NAME = "pages/source_policy.html"
 SUPPORTED_LANGUAGES = ("en", "ar", "fr", "es", "de", "zh", "ja")
 
-PAGE_COPY: Dict[str, Dict[str, str]] = {
+PAGE_COPY: Dict[str, Dict[str, Any]] = {
     "en": {
         "title": "Source Policy",
         "lead": "How TourVsTravel selects, evaluates, and cites information used in travel experience comparisons. This page distinguishes between factual sources, editorial classification, and interpretive judgment.",
@@ -78,6 +77,13 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "see_also_label": "See also",
         "ln_methodology": "Methodology",
         "ln_editorial_standards": "Editorial Standards",
+        "sections": [],
+        "related_links": [
+            ("Methodology", "url_methodology"),
+            ("Editorial standards", "url_editorial_standards"),
+            ("About", "url_about"),
+            ("Contact", "url_contact"),
+        ],
     },
     "ar": {
         "title": "سياسة المصادر",
@@ -101,6 +107,13 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "see_also_label": "انظر أيضًا",
         "ln_methodology": "المنهجية",
         "ln_editorial_standards": "معايير التحرير",
+        "sections": [],
+        "related_links": [
+            ("المنهجية", "url_methodology"),
+            ("معايير التحرير", "url_editorial_standards"),
+            ("حول الموقع", "url_about"),
+            ("اتصل بنا", "url_contact"),
+        ],
     },
     "fr": {
         "title": "Politique de sources",
@@ -124,6 +137,13 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "see_also_label": "Voir aussi",
         "ln_methodology": "Méthodologie",
         "ln_editorial_standards": "Normes éditoriales",
+        "sections": [],
+        "related_links": [
+            ("Méthodologie", "url_methodology"),
+            ("Normes éditoriales", "url_editorial_standards"),
+            ("À propos", "url_about"),
+            ("Contact", "url_contact"),
+        ],
     },
     "es": {
         "title": "Política de fuentes",
@@ -147,6 +167,13 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "see_also_label": "Véase también",
         "ln_methodology": "Metodología",
         "ln_editorial_standards": "Estándares editoriales",
+        "sections": [],
+        "related_links": [
+            ("Metodología", "url_methodology"),
+            ("Estándares editoriales", "url_editorial_standards"),
+            ("Acerca de", "url_about"),
+            ("Contacto", "url_contact"),
+        ],
     },
     "de": {
         "title": "Quellenrichtlinie",
@@ -170,6 +197,13 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "see_also_label": "Siehe auch",
         "ln_methodology": "Methodik",
         "ln_editorial_standards": "Redaktionelle Standards",
+        "sections": [],
+        "related_links": [
+            ("Methodik", "url_methodology"),
+            ("Redaktionelle Standards", "url_editorial_standards"),
+            ("Über uns", "url_about"),
+            ("Kontakt", "url_contact"),
+        ],
     },
     "zh": {
         "title": "信息来源政策",
@@ -193,6 +227,13 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "see_also_label": "另见",
         "ln_methodology": "方法论",
         "ln_editorial_standards": "编辑标准",
+        "sections": [],
+        "related_links": [
+            ("方法论", "url_methodology"),
+            ("编辑标准", "url_editorial_standards"),
+            ("关于我们", "url_about"),
+            ("联系我们", "url_contact"),
+        ],
     },
     "ja": {
         "title": "情報源ポリシー",
@@ -216,8 +257,25 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "see_also_label": "関連情報",
         "ln_methodology": "方法論",
         "ln_editorial_standards": "編集基準",
+        "sections": [],
+        "related_links": [
+            ("方法論", "url_methodology"),
+            ("編集基準", "url_editorial_standards"),
+            ("私たちについて", "url_about"),
+            ("お問い合わせ", "url_contact"),
+        ],
     },
 }
+
+
+_REQUIRED_COPY_KEYS = (
+    "title", "lead", "accepted_label", "accepted_body",
+    "rejected_label", "rejected_body", "claim_types_label", "claim_types_body",
+    "destination_label", "destination_body", "classification_label", "classification_body",
+    "uncertainty_label", "uncertainty_body", "update_label", "update_body",
+    "no_affiliate_label", "no_affiliate_body", "see_also_label",
+    "sections", "related_links",
+)
 
 
 class GenerateSourcePolicyError(Exception):
@@ -369,6 +427,12 @@ def _ensure_safe_output_dir(output_dir: Path) -> Path:
     return resolved
 
 
+def _validate_copy(copy: Dict[str, Any], lang: str) -> None:
+    for key in _REQUIRED_COPY_KEYS:
+        if key not in copy:
+            raise GenerateSourcePolicyError(f"source policy page content missing {key!r} for {lang!r}")
+
+
 def _build_urls_by_lang(site_config: Mapping[str, Any], languages: Sequence[str]) -> Dict[str, str]:
     urls: Dict[str, str] = {}
     site = _ensure_mapping(site_config.get("site"), "site_config.site")
@@ -386,7 +450,8 @@ def _build_context(
     lang: str,
     languages: Sequence[str],
 ) -> Dict[str, Any]:
-    copy = get_trust_page_copy("source_policy", lang)
+    copy = PAGE_COPY.get(lang, PAGE_COPY["en"])
+    _validate_copy(copy, lang)
     base_url = _ensure_string(
         _get_nested(site_config, ("site", "base_url"), "https://tourvstravel.com").strip().rstrip("/"),
         "site.base_url",

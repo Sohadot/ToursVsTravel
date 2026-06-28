@@ -44,7 +44,6 @@ from scripts.seo import (
     build_website_jsonld,
 )
 from scripts.reference_i18n import localized_ui_context
-from scripts.trust_authority_copy import get_trust_page_copy
 
 log = logging.getLogger("generate_about")
 
@@ -55,7 +54,7 @@ DEFAULT_OUTPUT_DIR = ROOT_DIR / "output"
 TEMPLATE_NAME = "pages/about.html"
 SUPPORTED_LANGUAGES = ("en", "ar", "fr", "es", "de", "zh", "ja")
 
-PAGE_COPY: Dict[str, Dict[str, str]] = {
+PAGE_COPY: Dict[str, Dict[str, Any]] = {
     "en": {
         "title": "About",
         "lead": "TourVsTravel is a reference infrastructure for comparing travel experience structures across destinations.",
@@ -103,6 +102,13 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
             "document—it exists to let you assess the reliability of specific comparisons yourself."
         ),
         "methodology_link": "Read the methodology",
+        "sections": [],
+        "related_links": [
+            ("Methodology", "url_methodology"),
+            ("Reference report", "url_report"),
+            ("Source policy", "url_source_policy"),
+            ("Editorial standards", "url_editorial_standards"),
+        ],
     },
     "ar": {
         "title": "حول الموقع",
@@ -147,6 +153,13 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
             "إنها ليست وثيقة تسويقية—بل توجد لتمكينك من تقييم موثوقية المقارنات المحددة بنفسك."
         ),
         "methodology_link": "اقرأ المنهجية",
+        "sections": [],
+        "related_links": [
+            ("المنهجية", "url_methodology"),
+            ("التقرير المرجعي", "url_report"),
+            ("سياسة المصادر", "url_source_policy"),
+            ("معايير التحرير", "url_editorial_standards"),
+        ],
     },
     "fr": {
         "title": "À propos",
@@ -198,6 +211,13 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
             "fiabilité de comparaisons spécifiques."
         ),
         "methodology_link": "Lire la méthodologie",
+        "sections": [],
+        "related_links": [
+            ("Méthodologie", "url_methodology"),
+            ("Rapport de référence", "url_report"),
+            ("Politique de sources", "url_source_policy"),
+            ("Normes éditoriales", "url_editorial_standards"),
+        ],
     },
     "es": {
         "title": "Acerca de",
@@ -247,6 +267,13 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
             "específicas."
         ),
         "methodology_link": "Leer la metodología",
+        "sections": [],
+        "related_links": [
+            ("Metodología", "url_methodology"),
+            ("Informe de referencia", "url_report"),
+            ("Política de fuentes", "url_source_policy"),
+            ("Estándares editoriales", "url_editorial_standards"),
+        ],
     },
     "de": {
         "title": "Über uns",
@@ -297,6 +324,13 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
             "beurteilen können."
         ),
         "methodology_link": "Methodik lesen",
+        "sections": [],
+        "related_links": [
+            ("Methodik", "url_methodology"),
+            ("Referenzbericht", "url_report"),
+            ("Quellenrichtlinie", "url_source_policy"),
+            ("Redaktionelle Standards", "url_editorial_standards"),
+        ],
     },
     "zh": {
         "title": "关于我们",
@@ -335,6 +369,13 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
             "以及当新信息出现时分类如何修订。这不是营销文件——它的存在是为了让你自行评估具体比较的可靠性。"
         ),
         "methodology_link": "阅读方法论",
+        "sections": [],
+        "related_links": [
+            ("方法论", "url_methodology"),
+            ("参考报告", "url_report"),
+            ("信息来源政策", "url_source_policy"),
+            ("编辑标准", "url_editorial_standards"),
+        ],
     },
     "ja": {
         "title": "私たちについて",
@@ -375,8 +416,25 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
             "特定の比較の信頼性を自分で評価できるようにするために存在します。"
         ),
         "methodology_link": "方法論を読む",
+        "sections": [],
+        "related_links": [
+            ("方法論", "url_methodology"),
+            ("リファレンスレポート", "url_report"),
+            ("情報源ポリシー", "url_source_policy"),
+            ("編集基準", "url_editorial_standards"),
+        ],
     },
 }
+
+
+_REQUIRED_COPY_KEYS = (
+    "title", "lead", "thesis_label", "thesis", "who_label", "who_body",
+    "not_do_label", "not_do_body", "structure_label", "structure_body",
+    "structure_ln_methodology", "structure_ln_compare", "structure_ln_tools",
+    "structure_ln_destinations", "structure_ln_report",
+    "methodology_label", "methodology_desc", "methodology_link",
+    "sections", "related_links",
+)
 
 
 class GenerateAboutError(Exception):
@@ -528,6 +586,12 @@ def _ensure_safe_output_dir(output_dir: Path) -> Path:
     return resolved
 
 
+def _validate_copy(copy: Dict[str, Any], lang: str) -> None:
+    for key in _REQUIRED_COPY_KEYS:
+        if key not in copy:
+            raise GenerateAboutError(f"about page content missing {key!r} for {lang!r}")
+
+
 def _build_urls_by_lang(site_config: Mapping[str, Any], languages: Sequence[str]) -> Dict[str, str]:
     urls: Dict[str, str] = {}
     site = _ensure_mapping(site_config.get("site"), "site_config.site")
@@ -545,7 +609,8 @@ def _build_context(
     lang: str,
     languages: Sequence[str],
 ) -> Dict[str, Any]:
-    copy = get_trust_page_copy("about", lang)
+    copy = PAGE_COPY.get(lang, PAGE_COPY["en"])
+    _validate_copy(copy, lang)
     base_url = _ensure_string(
         _get_nested(site_config, ("site", "base_url"), "https://tourvstravel.com").strip().rstrip("/"),
         "site.base_url",

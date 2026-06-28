@@ -44,7 +44,6 @@ from scripts.seo import (
     build_website_jsonld,
 )
 from scripts.reference_i18n import localized_ui_context
-from scripts.trust_authority_copy import get_trust_page_copy
 
 log = logging.getLogger("generate_privacy")
 
@@ -55,7 +54,7 @@ DEFAULT_OUTPUT_DIR = ROOT_DIR / "output"
 TEMPLATE_NAME = "pages/privacy.html"
 SUPPORTED_LANGUAGES = ("en", "ar", "fr", "es", "de", "zh", "ja")
 
-PAGE_COPY: Dict[str, Dict[str, str]] = {
+PAGE_COPY: Dict[str, Dict[str, Any]] = {
     "en": {
         "title": "Privacy",
         "lead": "TourVsTravel is a static reference site. We do not collect personal data, run user accounts, process payments, or operate advertising networks.",
@@ -96,6 +95,12 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "contact_label": "Questions",
         "contact_body": "For privacy-related questions, use the",
         "contact_link": "contact page",
+        "sections": [],
+        "related_links": [
+            ("Contact", "url_contact"),
+            ("About", "url_about"),
+            ("Source policy", "url_source_policy"),
+        ],
     },
     "ar": {
         "title": "الخصوصية",
@@ -136,6 +141,12 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "contact_label": "الاستفسارات",
         "contact_body": "للأسئلة المتعلقة بالخصوصية، استخدم",
         "contact_link": "صفحة الاتصال",
+        "sections": [],
+        "related_links": [
+            ("اتصل بنا", "url_contact"),
+            ("حول الموقع", "url_about"),
+            ("سياسة المصادر", "url_source_policy"),
+        ],
     },
     "fr": {
         "title": "Confidentialité",
@@ -182,6 +193,12 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "contact_label": "Questions",
         "contact_body": "Pour les questions relatives à la confidentialité, utilisez la",
         "contact_link": "page de contact",
+        "sections": [],
+        "related_links": [
+            ("Contact", "url_contact"),
+            ("À propos", "url_about"),
+            ("Politique de sources", "url_source_policy"),
+        ],
     },
     "es": {
         "title": "Privacidad",
@@ -226,6 +243,12 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "contact_label": "Preguntas",
         "contact_body": "Para preguntas relacionadas con la privacidad, utilice la",
         "contact_link": "página de contacto",
+        "sections": [],
+        "related_links": [
+            ("Contacto", "url_contact"),
+            ("Acerca de", "url_about"),
+            ("Política de fuentes", "url_source_policy"),
+        ],
     },
     "de": {
         "title": "Datenschutz",
@@ -273,6 +296,12 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "contact_label": "Fragen",
         "contact_body": "Für datenschutzbezogene Fragen nutzen Sie bitte die",
         "contact_link": "Kontaktseite",
+        "sections": [],
+        "related_links": [
+            ("Kontakt", "url_contact"),
+            ("Über uns", "url_about"),
+            ("Quellenrichtlinie", "url_source_policy"),
+        ],
     },
     "zh": {
         "title": "隐私政策",
@@ -307,6 +336,12 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "contact_label": "问题",
         "contact_body": "如有隐私相关问题，请使用",
         "contact_link": "联系页面",
+        "sections": [],
+        "related_links": [
+            ("联系我们", "url_contact"),
+            ("关于我们", "url_about"),
+            ("信息来源政策", "url_source_policy"),
+        ],
     },
     "ja": {
         "title": "プライバシー",
@@ -344,8 +379,25 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "contact_label": "お問い合わせ",
         "contact_body": "プライバシーに関するご質問は",
         "contact_link": "お問い合わせページ",
+        "sections": [],
+        "related_links": [
+            ("お問い合わせ", "url_contact"),
+            ("私たちについて", "url_about"),
+            ("情報源ポリシー", "url_source_policy"),
+        ],
     },
 }
+
+
+_REQUIRED_COPY_KEYS = (
+    "title", "lead", "static_label", "static_body",
+    "no_accounts_label", "no_accounts_body",
+    "no_payment_label", "no_payment_body",
+    "no_tracking_label", "no_tracking_body",
+    "tools_label", "tools_body", "future_label", "future_body",
+    "contact_label", "contact_body", "contact_link",
+    "sections", "related_links",
+)
 
 
 class GeneratePrivacyError(Exception):
@@ -497,6 +549,12 @@ def _ensure_safe_output_dir(output_dir: Path) -> Path:
     return resolved
 
 
+def _validate_copy(copy: Dict[str, Any], lang: str) -> None:
+    for key in _REQUIRED_COPY_KEYS:
+        if key not in copy:
+            raise GeneratePrivacyError(f"privacy page content missing {key!r} for {lang!r}")
+
+
 def _build_urls_by_lang(site_config: Mapping[str, Any], languages: Sequence[str]) -> Dict[str, str]:
     urls: Dict[str, str] = {}
     site = _ensure_mapping(site_config.get("site"), "site_config.site")
@@ -514,7 +572,8 @@ def _build_context(
     lang: str,
     languages: Sequence[str],
 ) -> Dict[str, Any]:
-    copy = get_trust_page_copy("privacy", lang)
+    copy = PAGE_COPY.get(lang, PAGE_COPY["en"])
+    _validate_copy(copy, lang)
     base_url = _ensure_string(
         _get_nested(site_config, ("site", "base_url"), "https://tourvstravel.com").strip().rstrip("/"),
         "site.base_url",

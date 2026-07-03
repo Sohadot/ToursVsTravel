@@ -7,6 +7,10 @@
 (DECISIONS.md D-002), `GOVERNANCE.md`/`DECISIONS.md` added (D-003), claims-restraint
 build gate added. Corrected audit: link integrity was already a build gate
 (`_verify_local_links` fails the build on broken internal links), not merely a scan.
+**Revision note (1.0.2):** P1 executed same day (D-004) — TSO v1, TDIS v1 (with the
+Structure Fit Protocol as its operational section), public changelog, and machine
+layer v1 published in seven languages; build contract extended to cover the new
+page families and JSON artifacts. Site now 253 pages, 0 broken internal links.
 **Methodology:** Sovereign Asset System — Category Intelligence Factory model
 **Status:** Governing document. Changes to this plan are append/version only.
 
@@ -370,12 +374,12 @@ vocabulary is owned by someone else.
 - [x] Add `GOVERNANCE.md` + `DECISIONS.md`; adopt append-only rules (D-003).
 - [x] Link-integrity build gate — found to already exist (`_verify_local_links`); claims-restraint gate added alongside it.
 
-**P1 — Name the infrastructure (weeks):**
-- [ ] Public TSO v1 page + per-structure citation lines.
-- [ ] Public TDIS v1 page + conformance checklist.
-- [ ] Structure Fit Protocol page.
-- [ ] Machine layer v1: `tso-v1.json`, `tdis-v1.json`, per-structure JSON.
-- [ ] Public changelog page.
+**P1 — Name the infrastructure (weeks):** ✅ completed 2026-07-03 (D-004)
+- [x] Public TSO v1 page + per-structure citation lines (`/{lang}/ontology/`, 7 languages, rendered from the canonical dataset).
+- [x] Public TDIS v1 page + conformance guidance (`/{lang}/standard/`, weighted criteria rendered from data).
+- [x] Structure Fit Protocol — published as the operational section of the TDIS page (D-004); dedicated page deferred until the Compass ships as its implementation.
+- [x] Machine layer v1: `tso-v1.json`, `tdis-v1.json`, `criteria-v1.json`, 17 per-structure JSON artifacts, `about.json` — all build-gated (parse, version envelope, class count).
+- [x] Public changelog page (`/{lang}/changelog/`, rendered from append-only `data/changelog.yaml`).
 
 **P2 — Operate the engine (1–2 months):**
 - [ ] Ship Travel Decision Compass (client-side, SFP-conformant, outputs linked to class pages).

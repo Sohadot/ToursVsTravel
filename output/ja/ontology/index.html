@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="ja" dir="ltr">
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="format-detection" content="telephone=no">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#0f172a">
+
+
+
+
+  <title>旅行構造オントロジー（TSO）v1 | TourVsTravel</title>
+  <meta name="description" content="旅行構造オントロジー（TSO）v1 は、TourVsTravel が使用する17の旅行構造の正規かつバージョン管理された分類であり、6つの宣言された構造軸と機械可読アクセスを備える。">
+  <meta name="robots" content="index, follow">
+
+  <link rel="canonical" href="https://tourvstravel.com/ja/ontology/">
+
+        <link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/ontology/">
+        <link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/ontology/">
+        <link rel="alternate" hreflang="fr" href="https://tourvstravel.com/fr/ontology/">
+        <link rel="alternate" hreflang="es" href="https://tourvstravel.com/es/ontology/">
+        <link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/ontology/">
+        <link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/ontology/">
+        <link rel="alternate" hreflang="ja" href="https://tourvstravel.com/ja/ontology/">
+        <link rel="alternate" hreflang="x-default" href="https://tourvstravel.com/en/ontology/">
+
+  <meta property="og:title" content="旅行構造オントロジー（TSO）v1 | TourVsTravel">
+  <meta property="og:description" content="旅行構造オントロジー（TSO）v1 は、TourVsTravel が使用する17の旅行構造の正規かつバージョン管理された分類であり、6つの宣言された構造軸と機械可読アクセスを備える。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tourvstravel.com/ja/ontology/">
+  <meta property="og:image" content="https://tourvstravel.com/static/img/og/default-og.jpg">
+  <meta property="og:site_name" content="TourVsTravel">
+
+
+    <meta property="og:locale" content="ja">
+
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="旅行構造オントロジー（TSO）v1 | TourVsTravel">
+  <meta name="twitter:description" content="旅行構造オントロジー（TSO）v1 は、TourVsTravel が使用する17の旅行構造の正規かつバージョン管理された分類であり、6つの宣言された構造軸と機械可読アクセスを備える。">
+  <meta name="twitter:image" content="https://tourvstravel.com/static/img/og/default-og.jpg">
+
+
+
+        <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"TourVsTravel","url":"https://tourvstravel.com","logo":"https://tourvstravel.com/static/img/brand/logo-icon.webp"}</script>
+        <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"TourVsTravel","url":"https://tourvstravel.com/ja/","inLanguage":"ja"}</script>
+        <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"旅行構造オントロジー（TSO）v1 | TourVsTravel","description":"旅行構造オントロジー（TSO）v1 は、TourVsTravel が使用する17の旅行構造の正規かつバージョン管理された分類であり、6つの宣言された構造軸と機械可読アクセスを備える。","url":"https://tourvstravel.com/ja/ontology/","inLanguage":"ja","isPartOf":{"@type":"WebSite","url":"https://tourvstravel.com/ja/"}}</script>
+
+
+
+<link rel="icon" href="/static/img/brand/logo-icon.webp" type="image/webp">
+
+  <link rel="apple-touch-icon" href="/static/img/brand/logo-icon.webp">
+
+    <link
+      rel="preload"
+      href="/static/css/main.css"
+      as="style"
+type="text/css"    >
+
+<link rel="stylesheet" href="/static/css/main.css">
+
+</head>
+<body class="page-ontology">
+  <a class="skip-link" href="#main-content">
+    Skip to content
+  </a>
+
+  <div class="site-frame">
+
+<header class="site-header" role="banner">
+  <div class="site-header__inner">
+    <a class="site-brand" href="/ja/" aria-label="TourVsTravel home">
+      <img
+        class="site-brand__icon"
+        src="/static/img/brand/logo-icon.webp"
+        alt=""
+        width="44"
+        height="44"
+        decoding="async"
+      >
+      <span class="site-brand__wordmark">
+        <span class="site-brand__tour">Tour</span><span class="site-brand__vs">VS</span><span class="site-brand__travel">Travel</span><span class="site-brand__dot">.com</span>
+      </span>
+    </a>
+
+    <nav class="site-nav" aria-label="メインナビゲーション">
+      <a href="/ja/" class="site-nav__link">ホーム</a>
+      <a href="/ja/styles/" class="site-nav__link">スタイル</a>
+      <a href="/ja/compare/" class="site-nav__link">比較</a>
+      <a href="/ja/methodology/" class="site-nav__link">方法論</a>
+      <a href="/ja/destinations/" class="site-nav__link">目的地</a>
+      <a href="/ja/tools/" class="site-nav__link">ツール</a>
+      <a href="/ja/report/" class="site-nav__link">レポート</a>
+    </nav>
+
+    <div class="site-header__right">
+      <nav class="language-switcher" aria-label="言語選択">
+        <a class="language-switcher__item" href="/en/">EN</a>
+        <a class="language-switcher__item" href="/ar/">AR</a>
+        <a class="language-switcher__item" href="/fr/">FR</a>
+        <a class="language-switcher__item" href="/es/">ES</a>
+        <a class="language-switcher__item" href="/de/">DE</a>
+        <a class="language-switcher__item" href="/zh/">ZH-CN</a>
+        <a class="language-switcher__item is-active" href="/ja/">JA</a>
+      </nav>
+
+      <a class="site-header__cta" href="/ja/#comparison-entry">
+        合う旅を見つける
+      </a>
+
+      <details class="mobile-menu">
+        <summary class="mobile-menu__button" aria-label="ナビゲーションを開く">
+          メニュー
+        </summary>
+
+        <div class="mobile-menu__panel">
+          <a href="/ja/">ホーム</a>
+          <a href="/ja/styles/">スタイル</a>
+          <a href="/ja/compare/">比較</a>
+          <a href="/ja/methodology/">方法論</a>
+          <a href="/ja/destinations/">目的地</a>
+          <a href="/ja/tools/">ツール</a>
+          <a href="/ja/report/">レポート</a>
+          <a class="mobile-menu__cta" href="/ja/#comparison-entry">合う旅を見つける</a>
+
+          <div class="mobile-menu__langs" aria-label="言語選択">
+            <a href="/en/">EN</a>
+            <a href="/ar/">AR</a>
+            <a href="/fr/">FR</a>
+            <a href="/es/">ES</a>
+            <a href="/de/">DE</a>
+            <a href="/zh/">ZH-CN</a>
+            <a href="/ja/">JA</a>
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+</header>
+    <main id="main-content" class="site-main" tabindex="-1">
+<article class="travel-architecture-page container" dir="ltr">
+  <header class="travel-architecture-hero">
+    <p class="travel-architecture-hero__eyebrow">TourVsTravel</p>
+    <h1>旅行構造オントロジー（TSO）v1</h1>
+    <p class="travel-architecture-hero__lead">TourVsTravel リファレンスシステム全体で使用される17の旅行構造の正規分類。</p>
+    <p class="travel-architecture-hero__statement">旅行構造とは、安定した運用上の意味を持つ意思決定構造であり、マーケティングのラベルではない。このオントロジーは、クラス、それらを測定する軸、そして両者を安定に保つ規則を定義する。</p>
+  </header>
+
+  <section class="travel-architecture-section travel-architecture-definition" aria-labelledby="ontology-section-1">
+    <h2 id="ontology-section-1">このオントロジーとは</h2>
+    <p>旅行構造オントロジーは、旅がどのように構築されるかを分類するために TourVsTravel が使用する17の構造を定義する。システム内のすべての比較ページ、意思決定ツール、参照文書はこれらのクラスに帰着する。オントロジーはシステムの真実の源であり、ページはそれを実装するのであって、再解釈するのではない。</p>
+    <p>各クラスは、それが何であるか、何でないか、そしてシステムの比較基準の下でどのように振る舞うかによって定義される。クラスは意味が決して変わらない安定した識別子を持つ。</p>
+  </section>
+
+  <section class="travel-architecture-section" aria-labelledby="ontology-axes-title">
+    <h2 id="ontology-axes-title">6つの構造軸</h2>
+    <p>すべての構造は、宣言された尺度を持つ6つの軸でプロファイルされる。軸はこのカテゴリーの座標系であり、2つの旅行形式を好みに還元することなく比較可能にする。</p>
+    <ul>
+      <li><strong>構造強度</strong> — 旅程のどれだけが事前に固定されているか。 <code>structure_intensity</code></li>
+      <li><strong>自律性レベル</strong> — 旅行者が道中の意思決定にどれだけの裁量を保つか。 <code>autonomy_level</code></li>
+      <li><strong>サポートレベル</strong> — その形式にどれだけの運用サポートが組み込まれているか。 <code>support_level</code></li>
+      <li><strong>ペースプロファイル</strong> — 旅の時間が固定的か、均衡的か、柔軟か。 <code>pace_profile</code></li>
+      <li><strong>没入プロファイル</strong> — 場所との接触が表層的か、均衡的か、深いか。 <code>immersion_profile</code></li>
+      <li><strong>予測可能性プロファイル</strong> — 不確実性が旅行者に届く前に、その形式がどれだけ吸収するか。 <code>predictability_profile</code></li>
+    </ul>
+  </section>
+  <section class="travel-architecture-section" aria-labelledby="ontology-section-2">
+    <h2 id="ontology-section-2">ベースラインスコアの読み方</h2>
+    <p>ベースラインスコアは構造的な事前値であり、評決ではない。目的地と旅行者の文脈が適用される前に、構造がどのように振る舞う傾向があるかを記述する。公開されるすべての比較はそれを文脈化しなければならず、オントロジーは事前値を普遍的な答えとして扱うことを禁じる。</p>
+  </section>
+
+  <section class="travel-architecture-section" aria-labelledby="ontology-section-3">
+    <h2 id="ontology-section-3">バージョン管理と引用</h2>
+    <p>このオントロジーは追記専用である。クラスと軸が黙って改名・削除されることはなく、実質的な変更はすべてバージョン管理され、公開変更履歴に記録される。クラスの引用形式：TSO v1 / guided-group-tour。</p>
+  </section>
+
+  <section class="travel-architecture-section" aria-labelledby="ontology-section-4">
+    <h2 id="ontology-section-4">機械可読アクセス</h2>
+    <p>完全なオントロジーはバージョン管理された JSON アーティファクトとして /ontology/tso-v1.json で公開され、各クラスは /api/structures/{slug}.json で公開される。マシンレイヤーはこれらのページと一対一で対応し、エージェントも人間も同じ真実を読む。</p>
+  </section>
+
+
+  <section class="travel-architecture-section" aria-labelledby="ontology-structures-title">
+    <h2 id="ontology-structures-title">17の構造</h2>
+    <p>各クラスは完全なリファレンスページにリンクする。以下のラベルと定義はオントロジーのデータセットから直接描画されている。このページは真実の源をそのまま表示するのであり、言い換えるのではない。</p>
+    <div class="travel-architecture-system-map__grid">
+      <a class="travel-architecture-layer-card" href="/ja/styles/guided-group-tour/">
+        <strong>ガイド付き団体旅行</strong>
+        <span>行程、調整、主要な手配をオペレーターまたはガイド付きプログラムが担う、あらかじめ構造化された旅行形式。</span>
+        <code>引用形式: TSO v1 / guided-group-tour</code>
+      </a>
+      <a class="travel-architecture-layer-card" href="/ja/styles/independent-travel/">
+        <strong>独立旅行</strong>
+        <span>旅行者自身が計画、予約、順序、日々の判断を管理し、ツアー枠組みに支配されない自己主導型の旅行構造。</span>
+        <code>引用形式: TSO v1 / independent-travel</code>
+      </a>
+      <a class="travel-architecture-layer-card" href="/ja/styles/solo-travel/">
+        <strong>一人旅</strong>
+        <span>主に一人で行う旅行形式で、旅行者が自律性と意思決定負荷の両方をグループ支援なしで担う。</span>
+        <code>引用形式: TSO v1 / solo-travel</code>
+      </a>
+      <a class="travel-architecture-layer-card" href="/ja/styles/backpacking/">
+        <strong>バックパッキング</strong>
+        <span>軽装・予算重視・高自律の旅行形式で、快適性や支援よりも柔軟性、ルート適応、価値密度を優先する。</span>
+        <code>引用形式: TSO v1 / backpacking</code>
+      </a>
+      <a class="travel-architecture-layer-card" href="/ja/styles/luxury-travel/">
+        <strong>ラグジュアリー旅行</strong>
+        <span>快適性、サービス品質、摩擦の低減、高水準のキュレーションされた提供を重視するプレミアム旅行形式。</span>
+        <code>引用形式: TSO v1 / luxury-travel</code>
+      </a>
+      <a class="travel-architecture-layer-card" href="/ja/styles/family-travel/">
+        <strong>家族旅行</strong>
+        <span>複数人の調整、年齢構成の多様性、実務的な利便性、摩擦低減の必要性によって形づくられる旅行構造。</span>
+        <code>引用形式: TSO v1 / family-travel</code>
+      </a>
+      <a class="travel-architecture-layer-card" href="/ja/styles/adventure-travel/">
+        <strong>アドベンチャー旅行</strong>
+        <span>挑戦、身体的関与、新規性、地形への接触、限界条件を、容易さや日常的快適性より優先する目的主導型の旅行形式。</span>
+        <code>引用形式: TSO v1 / adventure-travel</code>
+      </a>
+      <a class="travel-architecture-layer-card" href="/ja/styles/regenerative-community-led/">
+        <strong>再生型・コミュニティ主導の旅行</strong>
+        <span>相互的な地域利益、低い収奪性、コミュニティの主体性と場所の保全との整合を重視する価値主導型の旅行形式。</span>
+        <code>引用形式: TSO v1 / regenerative-community-led</code>
+      </a>
+      <a class="travel-architecture-layer-card" href="/ja/styles/slow-travel-quietcations/">
+        <strong>スロートラベルと静かな滞在</strong>
+        <span>急がず、収奪性も低い旅行形式で、移動回数の少なさ、回復的なリズム、場所との持続的な接触を重視する。</span>
+        <code>引用形式: TSO v1 / slow-travel-quietcations</code>
+      </a>
+      <a class="travel-architecture-layer-card" href="/ja/styles/cultural-immersion-homestay/">
+        <strong>文化没入とホームステイ</strong>
+        <span>文化的な質感、生活された地域文脈、標準的な宿泊観光より密接なホストとゲストの関係を求める深接触型の旅行形式。</span>
+        <code>引用形式: TSO v1 / cultural-immersion-homestay</code>
+      </a>
+      <a class="travel-architecture-layer-card" href="/ja/styles/ancestry-legacy-travel/">
+        <strong>祖先・レガシー旅行</strong>
+        <span>血統、アイデンティティ、家族の記憶、受け継がれた場所とのつながり、世代間の意味を中心とする目的主導型旅行形式。</span>
+        <code>引用形式: TSO v1 / ancestry-legacy-travel</code>
+      </a>
+      <a class="travel-architecture-layer-card" href="/ja/styles/transformational-wellness/">
+        <strong>変容・ウェルネス旅行</strong>
+        <span>回復、個人のリセット、内面的な取り組み、癒やしの習慣、構造化されたウェルビーイング成果を重視する目的主導型の形式。</span>
+        <code>引用形式: TSO v1 / transformational-wellness</code>
+      </a>
+      <a class="travel-architecture-layer-card" href="/ja/styles/road-trip-self-drive/">
+        <strong>ロードトリップと自動運転旅行</strong>
+        <span>ルートの制御、立ち寄り順、時間的柔軟性を、自ら運転・移動する地上交通に基づいて構成する移動主導型の旅行構造。</span>
+        <code>引用形式: TSO v1 / road-trip-self-drive</code>
+      </a>
+      <a class="travel-architecture-layer-card" href="/ja/styles/cruise-experience/">
+        <strong>クルーズ体験</strong>
+        <span>輸送、宿泊、管理された旅程リズムを船という中心構造に統合した、高度に一体化された支援重視の旅行形式。</span>
+        <code>引用形式: TSO v1 / cruise-experience</code>
+      </a>
+      <a class="travel-architecture-layer-card" href="/ja/styles/eco-sustainable-travel/">
+        <strong>エコ・サステナブル旅行</strong>
+        <span>環境への害を減らし、収奪的な行動を抑え、旅行の選択を持続可能性の原則に整合させることを目指す価値主導型の旅行形式。</span>
+        <code>引用形式: TSO v1 / eco-sustainable-travel</code>
+      </a>
+      <a class="travel-architecture-layer-card" href="/ja/styles/religious-spiritual-pilgrimage/">
+        <strong>宗教・精神的巡礼</strong>
+        <span>一般的な余暇最適化ではなく、信仰、儀礼、聖なる義務、精神的鍛錬、超越的意味を中心に組織される目的主導型の旅行形式。</span>
+        <code>引用形式: TSO v1 / religious-spiritual-pilgrimage</code>
+      </a>
+      <a class="travel-architecture-layer-card" href="/ja/styles/shrine-saints-tourism/">
+        <strong>聖地・聖人観光</strong>
+        <span>聖地、聖人、聖遺物、聖墓、あるいは信仰・記憶・遺産が交差する局所的な崇敬地理を中心とする聖域志向の旅行形式。</span>
+        <code>引用形式: TSO v1 / shrine-saints-tourism</code>
+      </a>
+    </div>
+  </section>
+</article>
+    </main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="site-footer__top container">
+    <div class="site-footer__brand">
+      <a href="/ja/"
+         class="brand-lockup brand-lockup--footer"
+         aria-label="TourVsTravel">
+        <span class="brand-lockup__icon-wrap" aria-hidden="true">
+          <img
+            src="/static/img/brand/logo-icon.webp"
+            alt=""
+            class="brand-lockup__icon"
+            width="36"
+            height="36"
+            loading="lazy"
+            decoding="async"
+          >
+        </span>
+
+        <span class="brand-lockup__wordmark">
+          <span class="brand-lockup__tour">Tour</span><span class="brand-lockup__vs">Vs</span><span class="brand-lockup__travel">Travel</span><span class="brand-lockup__tld">.com</span>
+        </span>
+      </a>
+
+      <p class="site-footer__tagline">
+        旅行意思決定の中立的リファレンス
+      </p>
+
+      <p class="site-footer__summary">
+        TourVsTravel は、多言語で証拠に基づく旅行意思決定インフラとして、目的地、スタイル、意図に応じた移動の違いを比較します。
+      </p>
+    </div>
+
+    <div class="site-footer__grid">
+      <section class="site-footer__column" aria-labelledby="footer-explore">
+        <h2 id="footer-explore" class="site-footer__heading">
+          探す
+        </h2>
+        <ul class="site-footer__list" role="list">
+          <li><a href="/ja/compare/">比較</a></li>
+          <li><a href="/ja/destinations/">目的地</a></li>
+          <li><a href="/ja/styles/">17 スタイル</a></li>
+          <li><a href="/ja/tools/">ツール</a></li>
+        </ul>
+      </section>
+
+      <section class="site-footer__column" aria-labelledby="footer-framework">
+        <h2 id="footer-framework" class="site-footer__heading">
+          枠組み
+        </h2>
+        <ul class="site-footer__list" role="list">
+          <li><a href="/ja/methodology/">方法論</a></li>
+          <li><a href="/ja/travel-decision-architecture/">旅行意思決定アーキテクチャ</a></li>
+          <li><a href="/ja/ontology/">旅行構造オントロジー</a></li>
+          <li><a href="/ja/standard/">インテグリティ基準（TDIS）</a></li>
+          <li><a href="/ja/methodology/source-policy/">情報源ポリシー</a></li>
+          <li><a href="/ja/methodology/editorial-standards/">編集基準</a></li>
+          <li><a href="/ja/report/">リファレンスレポート</a></li>
+          <li><a href="/ja/changelog/">変更履歴</a></li>
+        </ul>
+      </section>
+
+      <section class="site-footer__column" aria-labelledby="footer-practical">
+        <h2 id="footer-practical" class="site-footer__heading">
+          実用
+        </h2>
+        <ul class="site-footer__list" role="list">
+          <li><a href="/ja/about/">概要</a></li>
+          <li><a href="/ja/privacy/">プライバシー</a></li>
+          <li><a href="/ja/contact/">お問い合わせ</a></li>
+          <li><a href="/ja/acquire/">戦略的取得</a></li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <div class="site-footer__bottom container">
+    <p class="site-footer__legal">
+      &copy; 2026 TourVsTravel. All rights reserved.
+    </p>
+
+  </div>
+</footer>  </div>
+
+    <script
+      defer
+      src="/static/js/main.js"
+    ></script>
+
+
+</body>
+</html>

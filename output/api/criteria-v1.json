@@ -1,0 +1,170 @@
+{
+  "artifact": "TDIS Comparison Criteria",
+  "artifact_id": "tdis-criteria",
+  "version": "1.0.0",
+  "issued_by": "TourVsTravel.com",
+  "languages": [
+    "en",
+    "ar",
+    "fr",
+    "es",
+    "de",
+    "zh",
+    "ja"
+  ],
+  "canonical_pages": {
+    "en": "https://tourvstravel.com/en/standard/",
+    "ar": "https://tourvstravel.com/ar/standard/",
+    "fr": "https://tourvstravel.com/fr/standard/",
+    "es": "https://tourvstravel.com/es/standard/",
+    "de": "https://tourvstravel.com/de/standard/",
+    "zh": "https://tourvstravel.com/zh/standard/",
+    "ja": "https://tourvstravel.com/ja/standard/"
+  },
+  "generated_from": [
+    "data/comparison_criteria.yaml"
+  ],
+  "stability": "append-only; published versions never change meaning",
+  "usage": "Free to cite with attribution to TourVsTravel.com. These artifacts are reference definitions, not booking or pricing data. Structural baseline scores are priors, not verdicts, and must be contextualized before recommendation (TDIS rule priors-context).",
+  "criteria": [
+    {
+      "id": "constraint_fit",
+      "order": 1,
+      "weight": 24,
+      "family": "core",
+      "ranking_direction": "higher_is_better",
+      "score_semantics": {
+        "1": "poor_fit",
+        "2": "weak_fit",
+        "3": "mixed_fit",
+        "4": "strong_fit",
+        "5": "excellent_fit"
+      },
+      "name": {
+        "en": "Constraint Fit",
+        "ar": "ملاءمة القيود",
+        "fr": "Adéquation aux contraintes",
+        "es": "Ajuste a restricciones",
+        "de": "Passung zu Beschränkungen",
+        "zh": "约束适配度",
+        "ja": "制約適合性"
+      }
+    },
+    {
+      "id": "operational_complexity",
+      "order": 2,
+      "weight": 16,
+      "family": "core",
+      "ranking_direction": "lower_is_better",
+      "score_semantics": {
+        "1": "very_complex",
+        "2": "complex",
+        "3": "moderate",
+        "4": "simple",
+        "5": "very_simple"
+      },
+      "name": {
+        "en": "Operational Complexity",
+        "ar": "التعقيد التشغيلي",
+        "fr": "Complexité opérationnelle",
+        "es": "Complejidad operativa",
+        "de": "Operative Komplexität",
+        "zh": "操作复杂度",
+        "ja": "運用上の複雑性"
+      }
+    },
+    {
+      "id": "control_vs_support",
+      "order": 3,
+      "weight": 14,
+      "family": "core",
+      "ranking_direction": "higher_is_better",
+      "score_semantics": {
+        "1": "poor_balance",
+        "2": "weak_balance",
+        "3": "mixed_balance",
+        "4": "strong_balance",
+        "5": "excellent_balance"
+      },
+      "name": {
+        "en": "Control vs Support",
+        "ar": "التحكم مقابل الدعم",
+        "fr": "Contrôle vs accompagnement",
+        "es": "Control vs apoyo",
+        "de": "Kontrolle vs Unterstützung",
+        "zh": "控制与支持",
+        "ja": "コントロールと支援"
+      }
+    },
+    {
+      "id": "depth_of_experience",
+      "order": 4,
+      "weight": 14,
+      "family": "core",
+      "ranking_direction": "higher_is_better",
+      "score_semantics": {
+        "1": "surface_level",
+        "2": "limited_depth",
+        "3": "mixed_depth",
+        "4": "strong_depth",
+        "5": "high_immersion"
+      },
+      "name": {
+        "en": "Depth of Experience",
+        "ar": "عمق التجربة",
+        "fr": "Profondeur d'expérience",
+        "es": "Profundidad de experiencia",
+        "de": "Erlebnistiefe",
+        "zh": "体验深度",
+        "ja": "体験の深さ"
+      }
+    },
+    {
+      "id": "predictability",
+      "order": 5,
+      "weight": 16,
+      "family": "core",
+      "ranking_direction": "higher_is_better",
+      "score_semantics": {
+        "1": "high_variance",
+        "2": "unstable",
+        "3": "mixed_stability",
+        "4": "stable",
+        "5": "highly_predictable"
+      },
+      "name": {
+        "en": "Predictability",
+        "ar": "قابلية التنبؤ",
+        "fr": "Prévisibilité",
+        "es": "Previsibilidad",
+        "de": "Vorhersehbarkeit",
+        "zh": "可预测性",
+        "ja": "予測可能性"
+      }
+    },
+    {
+      "id": "traveler_type_fit",
+      "order": 6,
+      "weight": 16,
+      "family": "core",
+      "ranking_direction": "higher_is_better",
+      "score_semantics": {
+        "1": "poor_profile_fit",
+        "2": "weak_profile_fit",
+        "3": "mixed_profile_fit",
+        "4": "strong_profile_fit",
+        "5": "excellent_profile_fit"
+      },
+      "name": {
+        "en": "Traveler Type Fit",
+        "ar": "الملاءمة حسب نوع المسافر",
+        "fr": "Adéquation par profil de voyageur",
+        "es": "Adecuación por tipo de viajero",
+        "de": "Eignung nach Reisetyp",
+        "zh": "按旅行者类型的适配度",
+        "ja": "旅行者タイプ別適合性"
+      }
+    }
+  ],
+  "total_weight": 100
+}

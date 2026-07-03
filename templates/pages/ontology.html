@@ -1,0 +1,47 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+<article class="travel-architecture-page container" dir="{{ page_dir }}">
+  <header class="travel-architecture-hero">
+    <p class="travel-architecture-hero__eyebrow">{{ site_name }}</p>
+    <h1>{{ copy.title }}</h1>
+    <p class="travel-architecture-hero__lead">{{ copy.lead }}</p>
+    <p class="travel-architecture-hero__statement">{{ copy.core_statement }}</p>
+  </header>
+
+  {% for section in copy.sections %}
+  <section class="travel-architecture-section{% if loop.first %} travel-architecture-definition{% endif %}" aria-labelledby="ontology-section-{{ loop.index }}">
+    <h2 id="ontology-section-{{ loop.index }}">{{ section.heading }}</h2>
+    {% for paragraph in section.paragraphs %}
+    <p>{{ paragraph }}</p>
+    {% endfor %}
+  </section>
+
+  {% if loop.first %}
+  <section class="travel-architecture-section" aria-labelledby="ontology-axes-title">
+    <h2 id="ontology-axes-title">{{ copy.axes_heading }}</h2>
+    <p>{{ copy.axes_intro }}</p>
+    <ul>
+      {% for axis in copy.axes %}
+      <li><strong>{{ axis.name }}</strong> — {{ axis.definition }} <code>{{ axis.id }}</code></li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+  {% endfor %}
+
+  <section class="travel-architecture-section" aria-labelledby="ontology-structures-title">
+    <h2 id="ontology-structures-title">{{ copy.structures_heading }}</h2>
+    <p>{{ copy.structures_intro }}</p>
+    <div class="travel-architecture-system-map__grid">
+      {% for structure in structures %}
+      <a class="travel-architecture-layer-card" href="{{ structure.url }}">
+        <strong>{{ structure.label }}</strong>
+        <span>{{ structure.summary }}</span>
+        <code>{{ copy.citation_label }}: {{ structure.citation }}</code>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+</article>
+{% endblock %}

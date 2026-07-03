@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="es" dir="ltr">
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="format-detection" content="telephone=no">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#0f172a">
+
+
+
+
+  <title>Ontología de estructuras de viaje (TSO) v1 | TourVsTravel</title>
+  <meta name="description" content="La ontología de estructuras de viaje (TSO) v1 es la clasificación canónica y versionada de las diecisiete estructuras de viaje utilizadas por TourVsTravel, con seis ejes estructurales declarados y acceso legible por máquina.">
+  <meta name="robots" content="index, follow">
+
+  <link rel="canonical" href="https://tourvstravel.com/es/ontology/">
+
+        <link rel="alternate" hreflang="en" href="https://tourvstravel.com/en/ontology/">
+        <link rel="alternate" hreflang="ar" href="https://tourvstravel.com/ar/ontology/">
+        <link rel="alternate" hreflang="fr" href="https://tourvstravel.com/fr/ontology/">
+        <link rel="alternate" hreflang="es" href="https://tourvstravel.com/es/ontology/">
+        <link rel="alternate" hreflang="de" href="https://tourvstravel.com/de/ontology/">
+        <link rel="alternate" hreflang="zh-CN" href="https://tourvstravel.com/zh/ontology/">
+        <link rel="alternate" hreflang="ja" href="https://tourvstravel.com/ja/ontology/">
+        <link rel="alternate" hreflang="x-default" href="https://tourvstravel.com/en/ontology/">
+
+  <meta property="og:title" content="Ontología de estructuras de viaje (TSO) v1 | TourVsTravel">
+  <meta property="og:description" content="La ontología de estructuras de viaje (TSO) v1 es la clasificación canónica y versionada de las diecisiete estructuras de viaje utilizadas por TourVsTravel, con seis ejes estructurales declarados y acceso legible por máquina.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tourvstravel.com/es/ontology/">
+  <meta property="og:image" content="https://tourvstravel.com/static/img/og/default-og.jpg">
+  <meta property="og:site_name" content="TourVsTravel">
+
+
+    <meta property="og:locale" content="es">
+
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ontología de estructuras de viaje (TSO) v1 | TourVsTravel">
+  <meta name="twitter:description" content="La ontología de estructuras de viaje (TSO) v1 es la clasificación canónica y versionada de las diecisiete estructuras de viaje utilizadas por TourVsTravel, con seis ejes estructurales declarados y acceso legible por máquina.">
+  <meta name="twitter:image" content="https://tourvstravel.com/static/img/og/default-og.jpg">
+
+
+
+        <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"TourVsTravel","url":"https://tourvstravel.com","logo":"https://tourvstravel.com/static/img/brand/logo-icon.webp"}</script>
+        <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"TourVsTravel","url":"https://tourvstravel.com/es/","inLanguage":"es"}</script>
+        <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Ontología de estructuras de viaje (TSO) v1 | TourVsTravel","description":"La ontología de estructuras de viaje (TSO) v1 es la clasificación canónica y versionada de las diecisiete estructuras de viaje utilizadas por TourVsTravel, con seis ejes estructurales declarados y acceso legible por máquina.","url":"https://tourvstravel.com/es/ontology/","inLanguage":"es","isPartOf":{"@type":"WebSite","url":"https://tourvstravel.com/es/"}}</script>
+
+
+
+<link rel="icon" href="/static/img/brand/logo-icon.webp" type="image/webp">
+
+  <link rel="apple-touch-icon" href="/static/img/brand/logo-icon.webp">
+
+    <link
+      rel="preload"
+      href="/static/css/main.css"
+      as="style"
+type="text/css"    >
+
+<link rel="stylesheet" href="/static/css/main.css">
+
+</head>
+<body class="page-ontology">
+  <a class="skip-link" href="#main-content">
+    Skip to content
+  </a>
+
+  <div class="site-frame">
+
+<header class="site-header" role="banner">
+  <div class="site-header__inner">
+    <a class="site-brand" href="/es/" aria-label="TourVsTravel home">
+      <img
+        class="site-brand__icon"
+        src="/static/img/brand/logo-icon.webp"
+        alt=""
+        width="44"
+        height="44"
+        decoding="async"
+      >
+      <span class="site-brand__wordmark">
+        <span class="site-brand__tour">Tour</span><span class="site-brand__vs">VS</span><span class="site-brand__travel">Travel</span><span class="site-brand__dot">.com</span>
+      </span>
+    </a>
+
+    <nav class="site-nav" aria-label="Navegación principal">
+      <a href="/es/" class="site-nav__link">Inicio</a>
+      <a href="/es/styles/" class="site-nav__link">Estilos</a>
+      <a href="/es/compare/" class="site-nav__link">Comparar</a>
+      <a href="/es/methodology/" class="site-nav__link">Metodología</a>
+      <a href="/es/destinations/" class="site-nav__link">Destinos</a>
+      <a href="/es/tools/" class="site-nav__link">Herramientas</a>
+      <a href="/es/report/" class="site-nav__link">Informe</a>
+    </nav>
+
+    <div class="site-header__right">
+      <nav class="language-switcher" aria-label="Selección de idioma">
+        <a class="language-switcher__item" href="/en/">EN</a>
+        <a class="language-switcher__item" href="/ar/">AR</a>
+        <a class="language-switcher__item" href="/fr/">FR</a>
+        <a class="language-switcher__item is-active" href="/es/">ES</a>
+        <a class="language-switcher__item" href="/de/">DE</a>
+        <a class="language-switcher__item" href="/zh/">ZH-CN</a>
+        <a class="language-switcher__item" href="/ja/">JA</a>
+      </nav>
+
+      <a class="site-header__cta" href="/es/#comparison-entry">
+        Encuentra tu ajuste
+      </a>
+
+      <details class="mobile-menu">
+        <summary class="mobile-menu__button" aria-label="Abrir navegación">
+          Menú
+        </summary>
+
+        <div class="mobile-menu__panel">
+          <a href="/es/">Inicio</a>
+          <a href="/es/styles/">Estilos</a>
+          <a href="/es/compare/">Comparar</a>
+          <a href="/es/methodology/">Metodología</a>
+          <a href="/es/destinations/">Destinos</a>
+          <a href="/es/tools/">Herramientas</a>
+          <a href="/es/report/">Informe</a>
+          <a class="mobile-menu__cta" href="/es/#comparison-entry">Encuentra tu ajuste</a>
+
+          <div class="mobile-menu__langs" aria-label="Selección de idioma">
+            <a href="/en/">EN</a>
+            <a href="/ar/">AR</a>
+            <a href="/fr/">FR</a>
+            <a href="/es/">ES</a>
+            <a href="/de/">DE</a>
+            <a href="/zh/">ZH-CN</a>
+            <a href="/ja/">JA</a>
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+</header>
+    <main id="main-content" class="site-main" tabindex="-1">
+<article class="travel-architecture-page container" dir="ltr">
+  <header class="travel-architecture-hero">
+    <p class="travel-architecture-hero__eyebrow">TourVsTravel</p>
+    <h1>Ontología de estructuras de viaje (TSO) v1</h1>
+    <p class="travel-architecture-hero__lead">La clasificación canónica de las diecisiete estructuras de viaje utilizadas en todo el sistema de referencia TourVsTravel.</p>
+    <p class="travel-architecture-hero__statement">Una estructura de viaje es una estructura de decisión con significado operativo estable, no una etiqueta de marketing. Esta ontología define las clases, los ejes sobre los que se miden y las reglas que mantienen estables ambas cosas.</p>
+  </header>
+
+  <section class="travel-architecture-section travel-architecture-definition" aria-labelledby="ontology-section-1">
+    <h2 id="ontology-section-1">Qué es esta ontología</h2>
+    <p>La ontología de estructuras de viaje define las diecisiete estructuras que TourVsTravel usa para clasificar cómo se construye un viaje. Cada página de comparación, herramienta de decisión y documento de referencia del sistema se resuelve en estas clases. La ontología es la fuente de verdad del sistema: las páginas la aplican, no la reinterpretan.</p>
+    <p>Cada clase se define por lo que es, lo que no es y cómo se comporta bajo los criterios de comparación del sistema. Las clases llevan identificadores estables cuyo significado nunca cambia.</p>
+  </section>
+
+  <section class="travel-architecture-section" aria-labelledby="ontology-axes-title">
+    <h2 id="ontology-axes-title">Los seis ejes estructurales</h2>
+    <p>Cada estructura se perfila en seis ejes con escalas declaradas. Los ejes son el sistema de coordenadas de la categoría: hacen comparables dos formas de viajar sin reducirlas a preferencia.</p>
+    <ul>
+      <li><strong>Intensidad de estructura</strong> — Qué parte del viaje queda fijada de antemano. <code>structure_intensity</code></li>
+      <li><strong>Nivel de autonomía</strong> — Cuánto control conserva el viajero sobre las decisiones durante el trayecto. <code>autonomy_level</code></li>
+      <li><strong>Nivel de apoyo</strong> — Cuánta ayuda operativa incorpora el formato. <code>support_level</code></li>
+      <li><strong>Perfil de ritmo</strong> — Si el tiempo del viaje es fijo, equilibrado o flexible. <code>pace_profile</code></li>
+      <li><strong>Perfil de inmersión</strong> — Si el contacto con el lugar tiende a ser superficial, equilibrado o profundo. <code>immersion_profile</code></li>
+      <li><strong>Perfil de previsibilidad</strong> — Cuánta incertidumbre absorbe el formato antes de que llegue al viajero. <code>predictability_profile</code></li>
+    </ul>
+  </section>
+  <section class="travel-architecture-section" aria-labelledby="ontology-section-2">
+    <h2 id="ontology-section-2">Cómo leer las puntuaciones de base</h2>
+    <p>Las puntuaciones de base son priores estructurales, no veredictos. Describen cómo tiende a comportarse una estructura antes de aplicar el contexto de destino y de viajero. Toda comparación publicada debe contextualizarlas; la ontología prohíbe tratar un prior como respuesta universal.</p>
+  </section>
+
+  <section class="travel-architecture-section" aria-labelledby="ontology-section-3">
+    <h2 id="ontology-section-3">Versionado y cita</h2>
+    <p>La ontología es de solo adición. Las clases y los ejes nunca se renombran ni se eliminan en silencio; todo cambio sustancial se versiona y se registra en el registro de cambios público. Cite una clase así: TSO v1 / guided-group-tour.</p>
+  </section>
+
+  <section class="travel-architecture-section" aria-labelledby="ontology-section-4">
+    <h2 id="ontology-section-4">Acceso legible por máquina</h2>
+    <p>La ontología completa se publica como artefacto JSON versionado en /ontology/tso-v1.json, y cada clase en /api/structures/{slug}.json. La capa máquina refleja estas páginas una a una: agentes y humanos leen la misma verdad.</p>
+  </section>
+
+
+  <section class="travel-architecture-section" aria-labelledby="ontology-structures-title">
+    <h2 id="ontology-structures-title">Las diecisiete estructuras</h2>
+    <p>Cada clase enlaza a su página de referencia completa. Las etiquetas y definiciones siguientes se toman directamente del conjunto de datos de la ontología: esta página presenta la fuente de verdad, no la parafrasea.</p>
+    <div class="travel-architecture-system-map__grid">
+      <a class="travel-architecture-layer-card" href="/es/styles/guided-group-tour/">
+        <strong>Tour guiado en grupo</strong>
+        <span>Formato de viaje preestructurado en el que el itinerario, la coordinación y la logística principal son gestionados por un operador o un programa con guía.</span>
+        <code>Citar como: TSO v1 / guided-group-tour</code>
+      </a>
+      <a class="travel-architecture-layer-card" href="/es/styles/independent-travel/">
+        <strong>Viaje independiente</strong>
+        <span>Estructura de viaje autodirigida en la que el viajero controla planificación, reservas, secuencia y decisiones diarias sin un marco de tour dominante.</span>
+        <code>Citar como: TSO v1 / independent-travel</code>
+      </a>
+      <a class="travel-architecture-layer-card" href="/es/styles/solo-travel/">
+        <strong>Viaje en solitario</strong>
+        <span>Viaje realizado principalmente en solitario, donde el viajero asume tanto la autonomía como la carga de decisión sin apoyo coordinativo de grupo.</span>
+        <code>Citar como: TSO v1 / solo-travel</code>
+      </a>
+      <a class="travel-architecture-layer-card" href="/es/styles/backpacking/">
+        <strong>Backpacking</strong>
+        <span>Formato de viaje ligero, sensible al presupuesto y con alta autonomía, que prioriza flexibilidad, adaptabilidad de ruta y densidad de valor sobre confort y apoyo.</span>
+        <code>Citar como: TSO v1 / backpacking</code>
+      </a>
+      <a class="travel-architecture-layer-card" href="/es/styles/luxury-travel/">
+        <strong>Viaje de lujo</strong>
+        <span>Formato de viaje premium optimizado en torno al confort, la calidad del servicio, la reducción de fricción y una ejecución curada de alto nivel.</span>
+        <code>Citar como: TSO v1 / luxury-travel</code>
+      </a>
+      <a class="travel-architecture-layer-card" href="/es/styles/family-travel/">
+        <strong>Viaje familiar</strong>
+        <span>Estructura de viaje determinada por la coordinación de grupo compartido, la diversidad de edades, la conveniencia práctica y la necesidad de reducir fricción para varios viajeros.</span>
+        <code>Citar como: TSO v1 / family-travel</code>
+      </a>
+      <a class="travel-architecture-layer-card" href="/es/styles/adventure-travel/">
+        <strong>Viaje de aventura</strong>
+        <span>Forma de viaje impulsada por un propósito que prioriza desafío, compromiso físico, novedad, exposición al terreno o condiciones límite sobre facilidad y confort rutinario.</span>
+        <code>Citar como: TSO v1 / adventure-travel</code>
+      </a>
+      <a class="travel-architecture-layer-card" href="/es/styles/regenerative-community-led/">
+        <strong>Regenerativo y liderado por la comunidad</strong>
+        <span>Forma de viaje guiada por valores que busca beneficio local recíproco, una lógica menos extractiva y una mayor alineación con la agencia comunitaria y el cuidado del lugar.</span>
+        <code>Citar como: TSO v1 / regenerative-community-led</code>
+      </a>
+      <a class="travel-architecture-layer-card" href="/es/styles/slow-travel-quietcations/">
+        <strong>Viaje lento y quietcations</strong>
+        <span>Forma de viaje de bajo apuro y baja extracción que prioriza reducir el ritmo, menos transiciones, un ritmo reparador y un contacto más duradero con el lugar.</span>
+        <code>Citar como: TSO v1 / slow-travel-quietcations</code>
+      </a>
+      <a class="travel-architecture-layer-card" href="/es/styles/cultural-immersion-homestay/">
+        <strong>Inmersión cultural y alojamiento en familia</strong>
+        <span>Forma de viaje de contacto profundo que busca textura cultural, contexto local vivido y una interacción anfitrión-huésped más cercana que el turismo estándar basado en alojamiento.</span>
+        <code>Citar como: TSO v1 / cultural-immersion-homestay</code>
+      </a>
+      <a class="travel-architecture-layer-card" href="/es/styles/ancestry-legacy-travel/">
+        <strong>Viaje de ascendencia y legado</strong>
+        <span>Forma de viaje orientada por propósito en torno al linaje, la identidad, la memoria familiar, la conexión heredada con un lugar o el significado intergeneracional.</span>
+        <code>Citar como: TSO v1 / ancestry-legacy-travel</code>
+      </a>
+      <a class="travel-architecture-layer-card" href="/es/styles/transformational-wellness/">
+        <strong>Transformación y bienestar</strong>
+        <span>Formato orientado por propósito centrado en restauración, reinicio personal, trabajo interior, rutinas de sanación o resultados estructurados de bienestar.</span>
+        <code>Citar como: TSO v1 / transformational-wellness</code>
+      </a>
+      <a class="travel-architecture-layer-card" href="/es/styles/road-trip-self-drive/">
+        <strong>Road trip y conducción propia</strong>
+        <span>Estructura de viaje orientada por la movilidad en la que el control de ruta, la secuencia de paradas y la flexibilidad temporal se organizan alrededor del movimiento terrestre autodirigido.</span>
+        <code>Citar como: TSO v1 / road-trip-self-drive</code>
+      </a>
+      <a class="travel-architecture-layer-card" href="/es/styles/cruise-experience/">
+        <strong>Experiencia de crucero</strong>
+        <span>Estructura de viaje centrada en la embarcación que combina transporte, alojamiento y ritmo de itinerario gestionado en un formato altamente integrado y muy asistido.</span>
+        <code>Citar como: TSO v1 / cruise-experience</code>
+      </a>
+      <a class="travel-architecture-layer-card" href="/es/styles/eco-sustainable-travel/">
+        <strong>Viaje ecológico y sostenible</strong>
+        <span>Forma de viaje guiada por valores que busca reducir el daño ambiental, moderar el comportamiento extractivo y alinear las decisiones con principios de sostenibilidad.</span>
+        <code>Citar como: TSO v1 / eco-sustainable-travel</code>
+      </a>
+      <a class="travel-architecture-layer-card" href="/es/styles/religious-spiritual-pilgrimage/">
+        <strong>Peregrinación religiosa y espiritual</strong>
+        <span>Forma de viaje orientada por propósito organizada en torno a devoción, ritual, obligación sagrada, disciplina espiritual o significado trascendente, más que al ocio genérico.</span>
+        <code>Citar como: TSO v1 / religious-spiritual-pilgrimage</code>
+      </a>
+      <a class="travel-architecture-layer-card" href="/es/styles/shrine-saints-tourism/">
+        <strong>Turismo de santuarios y santos</strong>
+        <span>Forma de viaje orientada a sitios sagrados centrada en santuarios, santos, reliquias, tumbas sagradas o geografías devocionales localizadas que pueden mezclar fe, memoria y patrimonio.</span>
+        <code>Citar como: TSO v1 / shrine-saints-tourism</code>
+      </a>
+    </div>
+  </section>
+</article>
+    </main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="site-footer__top container">
+    <div class="site-footer__brand">
+      <a href="/es/"
+         class="brand-lockup brand-lockup--footer"
+         aria-label="TourVsTravel">
+        <span class="brand-lockup__icon-wrap" aria-hidden="true">
+          <img
+            src="/static/img/brand/logo-icon.webp"
+            alt=""
+            class="brand-lockup__icon"
+            width="36"
+            height="36"
+            loading="lazy"
+            decoding="async"
+          >
+        </span>
+
+        <span class="brand-lockup__wordmark">
+          <span class="brand-lockup__tour">Tour</span><span class="brand-lockup__vs">Vs</span><span class="brand-lockup__travel">Travel</span><span class="brand-lockup__tld">.com</span>
+        </span>
+      </a>
+
+      <p class="site-footer__tagline">
+        La referencia neutral para decisiones de viaje
+      </p>
+
+      <p class="site-footer__summary">
+        TourVsTravel es una infraestructura multilingüe de decisión de viaje basada en evidencia, creada para comparar cómo se mueve la gente por destinos, estilos e intenciones.
+      </p>
+    </div>
+
+    <div class="site-footer__grid">
+      <section class="site-footer__column" aria-labelledby="footer-explore">
+        <h2 id="footer-explore" class="site-footer__heading">
+          Explorar
+        </h2>
+        <ul class="site-footer__list" role="list">
+          <li><a href="/es/compare/">Comparar</a></li>
+          <li><a href="/es/destinations/">Destinos</a></li>
+          <li><a href="/es/styles/">17 estilos</a></li>
+          <li><a href="/es/tools/">Herramientas</a></li>
+        </ul>
+      </section>
+
+      <section class="site-footer__column" aria-labelledby="footer-framework">
+        <h2 id="footer-framework" class="site-footer__heading">
+          Marco
+        </h2>
+        <ul class="site-footer__list" role="list">
+          <li><a href="/es/methodology/">Metodología</a></li>
+          <li><a href="/es/travel-decision-architecture/">Arquitectura de decisión de viaje</a></li>
+          <li><a href="/es/ontology/">Ontología de estructuras</a></li>
+          <li><a href="/es/standard/">Estándar de integridad (TDIS)</a></li>
+          <li><a href="/es/methodology/source-policy/">Política de fuentes</a></li>
+          <li><a href="/es/methodology/editorial-standards/">Estándares editoriales</a></li>
+          <li><a href="/es/report/">Informe de referencia</a></li>
+          <li><a href="/es/changelog/">Registro de cambios</a></li>
+        </ul>
+      </section>
+
+      <section class="site-footer__column" aria-labelledby="footer-practical">
+        <h2 id="footer-practical" class="site-footer__heading">
+          Práctico
+        </h2>
+        <ul class="site-footer__list" role="list">
+          <li><a href="/es/about/">Acerca de</a></li>
+          <li><a href="/es/privacy/">Privacidad</a></li>
+          <li><a href="/es/contact/">Contacto</a></li>
+          <li><a href="/es/acquire/">Adquisición estratégica</a></li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <div class="site-footer__bottom container">
+    <p class="site-footer__legal">
+      &copy; 2026 TourVsTravel. Todos los derechos reservados.
+    </p>
+
+  </div>
+</footer>  </div>
+
+    <script
+      defer
+      src="/static/js/main.js"
+    ></script>
+
+
+</body>
+</html>

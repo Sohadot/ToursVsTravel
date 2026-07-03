@@ -1,0 +1,80 @@
+{
+  "artifact": "Travel Structure Ontology Class",
+  "artifact_id": "tso-class-regenerative_community_led",
+  "version": "1.0.0",
+  "issued_by": "TourVsTravel.com",
+  "languages": [
+    "en",
+    "ar",
+    "fr",
+    "es",
+    "de",
+    "zh",
+    "ja"
+  ],
+  "canonical_pages": {
+    "en": "https://tourvstravel.com/en/styles/regenerative-community-led/",
+    "ar": "https://tourvstravel.com/ar/styles/regenerative-community-led/",
+    "fr": "https://tourvstravel.com/fr/styles/regenerative-community-led/",
+    "es": "https://tourvstravel.com/es/styles/regenerative-community-led/",
+    "de": "https://tourvstravel.com/de/styles/regenerative-community-led/",
+    "zh": "https://tourvstravel.com/zh/styles/regenerative-community-led/",
+    "ja": "https://tourvstravel.com/ja/styles/regenerative-community-led/"
+  },
+  "generated_from": [
+    "data/experience_types.yaml"
+  ],
+  "stability": "append-only; published versions never change meaning",
+  "usage": "Free to cite with attribution to TourVsTravel.com. These artifacts are reference definitions, not booking or pricing data. Structural baseline scores are priors, not verdicts, and must be contextualized before recommendation (TDIS rule priors-context).",
+  "structure": {
+    "id": "regenerative_community_led",
+    "slug": "regenerative-community-led",
+    "order": 8,
+    "family": "values_led",
+    "citation": "TSO v1 / regenerative-community-led",
+    "label": {
+      "en": "Regenerative & Community-Led",
+      "ar": "سفر تجديدي ومقاده المجتمع",
+      "fr": "Régénératif et porté par la communauté",
+      "es": "Regenerativo y liderado por la comunidad",
+      "de": "Regenerativ und gemeinschaftsgeführt",
+      "zh": "再生型与社区主导旅行",
+      "ja": "再生型・コミュニティ主導の旅行"
+    },
+    "summary": {
+      "en": "A values-led travel form that seeks reciprocal local benefit, slower extraction logic, and stronger alignment with community agency and place stewardship.",
+      "ar": "صيغة سفر مدفوعة بالقيم تسعى إلى منفعة محلية متبادلة ومنطق أقل استخلاصًا ومواءمة أقوى مع فاعلية المجتمع ورعاية المكان.",
+      "fr": "Forme de voyage guidée par les valeurs qui recherche un bénéfice local réciproque, une logique moins extractive et un meilleur alignement avec l'autonomie communautaire et l'intendance du lieu.",
+      "es": "Forma de viaje guiada por valores que busca beneficio local recíproco, una lógica menos extractiva y una mayor alineación con la agencia comunitaria y el cuidado del lugar.",
+      "de": "Wertegeleitete Reiseform, die auf gegenseitigen lokalen Nutzen, geringere Extraktionslogik und stärkere Ausrichtung auf Gemeinschaftsautonomie und Ortsverantwortung zielt.",
+      "zh": "一种价值导向的旅行形式，追求地方互惠、降低提取式逻辑，并更强地对齐社区主体性与场所守护。",
+      "ja": "相互的な地域利益、低い収奪性、コミュニティの主体性と場所の保全との整合を重視する価値主導型の旅行形式。"
+    },
+    "structural_axes": {
+      "structure_intensity": "medium",
+      "autonomy_level": "medium",
+      "support_level": "medium",
+      "pace_profile": "balanced",
+      "immersion_profile": "deep",
+      "predictability_profile": "medium"
+    },
+    "baseline_scores": {
+      "constraint_fit": 3,
+      "control_vs_support": 4,
+      "depth_of_experience": 5,
+      "operational_complexity": 3,
+      "predictability": 3,
+      "traveler_type_fit": 3
+    },
+    "baseline_scores_note": "Structural priors, not verdicts (TDIS rule priors-context).",
+    "reference_pages": {
+      "en": "https://tourvstravel.com/en/styles/regenerative-community-led/",
+      "ar": "https://tourvstravel.com/ar/styles/regenerative-community-led/",
+      "fr": "https://tourvstravel.com/fr/styles/regenerative-community-led/",
+      "es": "https://tourvstravel.com/es/styles/regenerative-community-led/",
+      "de": "https://tourvstravel.com/de/styles/regenerative-community-led/",
+      "zh": "https://tourvstravel.com/zh/styles/regenerative-community-led/",
+      "ja": "https://tourvstravel.com/ja/styles/regenerative-community-led/"
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "artifact": "Travel Structure Ontology Class",
+  "artifact_id": "tso-class-road_trip_self_drive",
+  "version": "1.0.0",
+  "issued_by": "TourVsTravel.com",
+  "languages": [
+    "en",
+    "ar",
+    "fr",
+    "es",
+    "de",
+    "zh",
+    "ja"
+  ],
+  "canonical_pages": {
+    "en": "https://tourvstravel.com/en/styles/road-trip-self-drive/",
+    "ar": "https://tourvstravel.com/ar/styles/road-trip-self-drive/",
+    "fr": "https://tourvstravel.com/fr/styles/road-trip-self-drive/",
+    "es": "https://tourvstravel.com/es/styles/road-trip-self-drive/",
+    "de": "https://tourvstravel.com/de/styles/road-trip-self-drive/",
+    "zh": "https://tourvstravel.com/zh/styles/road-trip-self-drive/",
+    "ja": "https://tourvstravel.com/ja/styles/road-trip-self-drive/"
+  },
+  "generated_from": [
+    "data/experience_types.yaml"
+  ],
+  "stability": "append-only; published versions never change meaning",
+  "usage": "Free to cite with attribution to TourVsTravel.com. These artifacts are reference definitions, not booking or pricing data. Structural baseline scores are priors, not verdicts, and must be contextualized before recommendation (TDIS rule priors-context).",
+  "structure": {
+    "id": "road_trip_self_drive",
+    "slug": "road-trip-self-drive",
+    "order": 13,
+    "family": "mobility_led",
+    "citation": "TSO v1 / road-trip-self-drive",
+    "label": {
+      "en": "Road Trip & Self-Drive",
+      "ar": "الرحلات البرية والقيادة الذاتية",
+      "fr": "Road trip et conduite autonome",
+      "es": "Road trip y conducción propia",
+      "de": "Roadtrip und Selbstfahrerreise",
+      "zh": "公路旅行与自驾",
+      "ja": "ロードトリップと自動運転旅行"
+    },
+    "summary": {
+      "en": "A mobility-led travel structure in which route control, stop sequencing, and temporal flexibility are organized around self-directed surface movement.",
+      "ar": "صيغة سفر مدفوعة بالتنقل تُنظم فيها السيطرة على المسار وتسلسل التوقفات والمرونة الزمنية حول الحركة البرية الذاتية.",
+      "fr": "Structure de voyage orientée par la mobilité dans laquelle le contrôle de l'itinéraire, le séquençage des arrêts et la flexibilité temporelle s'organisent autour du déplacement terrestre auto-dirigé.",
+      "es": "Estructura de viaje orientada por la movilidad en la que el control de ruta, la secuencia de paradas y la flexibilidad temporal se organizan alrededor del movimiento terrestre autodirigido.",
+      "de": "Mobilitätsorientierte Reiseform, bei der Routensteuerung, Stoppreihenfolge und zeitliche Flexibilität um selbstgesteuerte Fortbewegung auf dem Landweg organisiert sind.",
+      "zh": "一种以移动方式为核心的旅行结构，路线控制、停靠顺序与时间弹性围绕自我主导的地面移动展开。",
+      "ja": "ルートの制御、立ち寄り順、時間的柔軟性を、自ら運転・移動する地上交通に基づいて構成する移動主導型の旅行構造。"
+    },
+    "structural_axes": {
+      "structure_intensity": "low",
+      "autonomy_level": "high",
+      "support_level": "low",
+      "pace_profile": "flexible",
+      "immersion_profile": "balanced",
+      "predictability_profile": "medium"
+    },
+    "baseline_scores": {
+      "constraint_fit": 3,
+      "control_vs_support": 5,
+      "depth_of_experience": 4,
+      "operational_complexity": 3,
+      "predictability": 3,
+      "traveler_type_fit": 4
+    },
+    "baseline_scores_note": "Structural priors, not verdicts (TDIS rule priors-context).",
+    "reference_pages": {
+      "en": "https://tourvstravel.com/en/styles/road-trip-self-drive/",
+      "ar": "https://tourvstravel.com/ar/styles/road-trip-self-drive/",
+      "fr": "https://tourvstravel.com/fr/styles/road-trip-self-drive/",
+      "es": "https://tourvstravel.com/es/styles/road-trip-self-drive/",
+      "de": "https://tourvstravel.com/de/styles/road-trip-self-drive/",
+      "zh": "https://tourvstravel.com/zh/styles/road-trip-self-drive/",
+      "ja": "https://tourvstravel.com/ja/styles/road-trip-self-drive/"
+    }
+  }
+}

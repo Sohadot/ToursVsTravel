@@ -101,6 +101,15 @@ from scripts.generate_experience_types import (
     GenerateExperienceTypesError,
     generate_experience_type_pages,
 )
+from scripts.generate_category_infrastructure import (
+    CATEGORY_INFRASTRUCTURE_ENGLISH_FRAGMENTS,
+    GenerateCategoryInfrastructureError,
+    generate_category_infrastructure_pages,
+)
+from scripts.generate_machine_layer import (
+    GenerateMachineLayerError,
+    generate_machine_layer,
+)
 from scripts.generate_robots import GenerateRobotsError, generate_robots_file
 from scripts.generate_sitemap import GenerateSitemapError, generate_sitemap_file
 from scripts.generate_travel_decision_architecture import ENGLISH_SECTIONS as TDA_ENGLISH_SECTIONS
@@ -147,6 +156,9 @@ REFERENCE_PAGE_PATHS = {
     "editorial_standards": "{lang}/methodology/editorial-standards/index.html",
     "privacy": "{lang}/privacy/index.html",
     "contact": "{lang}/contact/index.html",
+    "ontology": "{lang}/ontology/index.html",
+    "standard": "{lang}/standard/index.html",
+    "changelog": "{lang}/changelog/index.html",
 }
 
 REFERENCE_ROUTE_PATHS = {
@@ -157,6 +169,9 @@ REFERENCE_ROUTE_PATHS = {
     "editorial_standards": "/{lang}/methodology/editorial-standards/",
     "privacy": "/{lang}/privacy/",
     "contact": "/{lang}/contact/",
+    "ontology": "/{lang}/ontology/",
+    "standard": "/{lang}/standard/",
+    "changelog": "/{lang}/changelog/",
 }
 
 COMMON_ENGLISH_REFERENCE_HEADINGS = (
@@ -178,7 +193,13 @@ APPROVED_REFERENCE_ENGLISH_TERMS = (
     "Tour Vs Travel .com",
     "Tour Vs Travel",
     "Travel Decision Architecture",
+    "Travel Structure Ontology",
+    "Travel Decision Integrity Standard",
+    "Structure Fit Protocol",
     "agent@sohadot.com",
+    "TSO",
+    "TDIS",
+    "SFP",
     "AI",
 )
 
@@ -506,6 +527,25 @@ def _run_travel_decision_architecture_generation(*, stage_dir: Path) -> int:
     return count
 
 
+def _run_category_infrastructure_generation(*, stage_dir: Path) -> int:
+    written = generate_category_infrastructure_pages(
+        requested_lang=None,
+        output_dir=stage_dir,
+    )
+    count = len(written)
+    log.info("Generated category infrastructure pages: %d", count)
+    return count
+
+
+def _run_machine_layer_generation(*, stage_dir: Path) -> int:
+    written = generate_machine_layer(
+        output_dir=stage_dir,
+    )
+    count = len(written)
+    log.info("Generated machine layer artifacts: %d", count)
+    return count
+
+
 def _run_robots_generation(*, stage_dir: Path) -> Path:
     written = generate_robots_file(
         output_dir=stage_dir,
@@ -705,6 +745,9 @@ def _english_reference_fragments(page_key: str) -> List[str]:
             fragments.extend(section.get("paragraphs", []))
         return [text for text in fragments if isinstance(text, str) and len(text) >= 80]
 
+    if page_key in CATEGORY_INFRASTRUCTURE_ENGLISH_FRAGMENTS:
+        return list(CATEGORY_INFRASTRUCTURE_ENGLISH_FRAGMENTS[page_key])
+
     copy = TRUST_PAGE_COPY[page_key]
     fragments.append(str(copy.get("lead", "")))
     for section in copy.get("sections", []):
@@ -850,6 +893,55 @@ def _verify_experience_type_count(stage_dir: Path) -> None:
         )
 
 
+def _verify_machine_layer_contract(stage_dir: Path) -> None:
+    """
+    The machine layer must ship complete or not at all: the versioned
+    ontology and standard artifacts, exactly one JSON artifact per
+    ontology class, the criteria dataset, and the asset identity file.
+    Every artifact must parse as JSON and carry its artifact envelope.
+    """
+    import json as _json
+
+    required_files = [
+        stage_dir / "ontology" / "tso-v1.json",
+        stage_dir / "standard" / "tdis-v1.json",
+        stage_dir / "api" / "criteria-v1.json",
+        stage_dir / "about.json",
+    ]
+    for path in required_files:
+        _require_file(path)
+
+    structures_dir = stage_dir / "api" / "structures"
+    _require_dir(structures_dir)
+    structure_files = sorted(structures_dir.glob("*.json"))
+    if len(structure_files) != EXPECTED_EXPERIENCE_TYPE_COUNT:
+        raise BuildStepError(
+            f"Expected {EXPECTED_EXPERIENCE_TYPE_COUNT} machine-layer structure artifacts, "
+            f"found {len(structure_files)} in {structures_dir}"
+        )
+
+    for path in required_files + structure_files:
+        try:
+            payload = _json.loads(path.read_text(encoding="utf-8"))
+        except (UnicodeDecodeError, ValueError) as exc:
+            raise BuildStepError(f"Machine-layer artifact is not valid JSON: {path}: {exc}") from exc
+        if not isinstance(payload, dict) or not payload:
+            raise BuildStepError(f"Machine-layer artifact must be a non-empty JSON object: {path}")
+        if path.name != "about.json":
+            for envelope_key in ("artifact", "version", "issued_by"):
+                if envelope_key not in payload:
+                    raise BuildStepError(
+                        f"Machine-layer artifact {path} is missing envelope key {envelope_key!r}"
+                    )
+
+    tso_payload = _json.loads((stage_dir / "ontology" / "tso-v1.json").read_text(encoding="utf-8"))
+    if tso_payload.get("structure_count") != EXPECTED_EXPERIENCE_TYPE_COUNT:
+        raise BuildStepError(
+            "tso-v1.json structure_count does not match the ontology contract "
+            f"({tso_payload.get('structure_count')!r} != {EXPECTED_EXPERIENCE_TYPE_COUNT})"
+        )
+
+
 def _verify_trust_pages_are_indexable(stage_dir: Path) -> None:
     trust_path_templates = [
         "{lang}/about/index.html",
@@ -904,6 +996,7 @@ def _verify_output_contract(stage_dir: Path) -> None:
 
     _require_file(stage_dir / "en" / "styles" / "guided-group-tour" / "index.html")
 
+    _verify_machine_layer_contract(stage_dir)
     _verify_trust_pages_are_indexable(stage_dir)
     _verify_experience_type_count(stage_dir)
     _verify_sitemap_contract(stage_dir)
@@ -1045,19 +1138,25 @@ def run_build(
         log.info("Step 18: Generate multilingual Travel Decision Architecture pages")
         _run_travel_decision_architecture_generation(stage_dir=stage_dir)
 
-        log.info("Step 19: Generate robots.txt")
+        log.info("Step 19: Generate category infrastructure pages (ontology, standard, changelog)")
+        _run_category_infrastructure_generation(stage_dir=stage_dir)
+
+        log.info("Step 20: Generate machine layer artifacts (agent-readable JSON)")
+        _run_machine_layer_generation(stage_dir=stage_dir)
+
+        log.info("Step 21: Generate robots.txt")
         _run_robots_generation(stage_dir=stage_dir)
 
-        log.info("Step 20: Generate sitemap.xml")
+        log.info("Step 22: Generate sitemap.xml")
         _run_sitemap_generation(stage_dir=stage_dir)
 
-        log.info("Step 21: Create .nojekyll")
+        log.info("Step 23: Create .nojekyll")
         _write_nojekyll(stage_dir)
 
-        log.info("Step 22: Verify staged output")
+        log.info("Step 24: Verify staged output")
         _verify_output_contract(stage_dir)
 
-        log.info("Step 23: Promote staged output")
+        log.info("Step 25: Promote staged output")
         _promote_stage_to_final(stage_dir, final_output_dir)
 
     except Exception:

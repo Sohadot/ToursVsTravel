@@ -84,6 +84,9 @@ __all__ = [
     "build_source_policy_path",
     "build_editorial_standards_path",
     "build_travel_decision_architecture_path",
+    "build_ontology_path",
+    "build_standard_path",
+    "build_changelog_path",
     # Generated route builders
     "build_destination_path",
     "build_experience_type_path",
@@ -145,6 +148,9 @@ SYSTEM_ROUTE_TEMPLATES: Dict[str, str] = {
     "source_policy": "/{lang}/methodology/source-policy/",
     "editorial_standards": "/{lang}/methodology/editorial-standards/",
     "travel_decision_architecture": "/{lang}/travel-decision-architecture/",
+    "ontology": "/{lang}/ontology/",
+    "standard": "/{lang}/standard/",
+    "changelog": "/{lang}/changelog/",
 
     # Generated page families (immutable — cannot be overridden by site_config)
     "destination": "/{lang}/destinations/{destination_id}/",
@@ -168,6 +174,9 @@ STATIC_ROUTE_KEYS: FrozenSet[str] = frozenset({
     "source_policy",
     "editorial_standards",
     "travel_decision_architecture",
+    "ontology",
+    "standard",
+    "changelog",
 })
 
 GENERATED_ROUTE_KEYS: FrozenSet[str] = frozenset({
@@ -715,6 +724,42 @@ def build_travel_decision_architecture_path(
     if absolute:
         return build_absolute_route(site_config, "travel_decision_architecture", lang, registry=registry)
     return build_path_from_template(site_config, "travel_decision_architecture", lang, registry=registry)
+
+
+def build_ontology_path(
+    site_config: Mapping[str, Any],
+    lang: str,
+    *,
+    absolute: bool = False,
+    registry: Optional[Mapping[str, Any]] = None,
+) -> str:
+    if absolute:
+        return build_absolute_route(site_config, "ontology", lang, registry=registry)
+    return build_path_from_template(site_config, "ontology", lang, registry=registry)
+
+
+def build_standard_path(
+    site_config: Mapping[str, Any],
+    lang: str,
+    *,
+    absolute: bool = False,
+    registry: Optional[Mapping[str, Any]] = None,
+) -> str:
+    if absolute:
+        return build_absolute_route(site_config, "standard", lang, registry=registry)
+    return build_path_from_template(site_config, "standard", lang, registry=registry)
+
+
+def build_changelog_path(
+    site_config: Mapping[str, Any],
+    lang: str,
+    *,
+    absolute: bool = False,
+    registry: Optional[Mapping[str, Any]] = None,
+) -> str:
+    if absolute:
+        return build_absolute_route(site_config, "changelog", lang, registry=registry)
+    return build_path_from_template(site_config, "changelog", lang, registry=registry)
 
 
 # ============================================================================

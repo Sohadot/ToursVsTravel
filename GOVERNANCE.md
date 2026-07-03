@@ -50,6 +50,11 @@ structural changes that the build pipeline has over output.
    hand-built page.
 4. Generated route families are immutable at the routing layer
    (`scripts/routes.py`); no generator handcrafts public URLs.
+5. Build artifacts are never version-controlled. `output/` is derived, not
+   source: the deploy pipeline rebuilds it from governed inputs on every
+   publish and is its sole producer (D-005). Local builds exist for
+   verification only. Hand-editing or committing generated output is a
+   governance violation.
 
 ## 4. Content and localization
 

@@ -11,6 +11,10 @@ build gate added. Corrected audit: link integrity was already a build gate
 Structure Fit Protocol as its operational section), public changelog, and machine
 layer v1 published in seven languages; build contract extended to cover the new
 page families and JSON artifacts. Site now 253 pages, 0 broken internal links.
+**Revision note (1.0.3):** Artifact discipline (D-005) — `output/` removed from
+version control; the deploy pipeline is the sole producer of build artifacts.
+Page counts in this plan describe verified build output, reproducible with
+`python -m scripts.build`.
 **Methodology:** Sovereign Asset System — Category Intelligence Factory model
 **Status:** Governing document. Changes to this plan are append/version only.
 

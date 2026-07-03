@@ -1,2 +1,6 @@
 __pycache__/
 *.pyc
+
+# Build artifacts are derived, never tracked (GOVERNANCE.md §3, DECISIONS.md D-005).
+# The deploy pipeline is the sole producer of output/.
+output/

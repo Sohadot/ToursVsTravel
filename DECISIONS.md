@@ -38,6 +38,38 @@ Procedure: see `GOVERNANCE.md` §6.
   return to public copy only when a governed destinations dataset ships and a
   build gate derives the number from it.
 
+## D-004 — Category infrastructure named and published (P1)
+
+- **Date:** 2026-07-03
+- **Decision:** The category infrastructure is promoted from internal data to
+  named public artifacts, per plan §§4–8:
+  - **Travel Structure Ontology (TSO) v1** — canonical page at
+    `/{lang}/ontology/` in seven languages, rendering the 17 structures and
+    six axes directly from `data/experience_types.yaml`, with per-class
+    citation lines (`TSO v1 / {slug}`).
+  - **Travel Decision Integrity Standard (TDIS) v1** — canonical page at
+    `/{lang}/standard/` with the seven rules, the weighted criteria rendered
+    from `data/comparison_criteria.yaml`, and conformance guidance. The
+    **Structure Fit Protocol** is published as a section of the standard
+    rather than a separate page: the protocol is the operational half of the
+    standard, and a dedicated page is deferred until the Compass engine ships
+    as its implementation.
+  - **Public changelog** — `/{lang}/changelog/` rendered from the new
+    append-only `data/changelog.yaml`, mirroring this decision log.
+  - **Machine layer v1** — `/ontology/tso-v1.json`, `/standard/tdis-v1.json`,
+    `/api/criteria-v1.json`, `/api/structures/{slug}.json` (17), and
+    `/about.json`. Rules and protocol are defined once in code and consumed
+    by both HTML and JSON, so human pages and machine endpoints cannot drift.
+  - **Build contract extended** — reference-page integrity checks (canonical,
+    single H1, indexability, no English fallback in ar/zh/ja) now cover the
+    three new page families; a machine-layer contract verifies all JSON
+    artifacts parse, carry their version envelope, and match the 17-class
+    ontology count.
+- **Rationale:** Plan §§4–8: the ontology substance existed but was internal;
+  naming it, giving it stable citable URLs, and mirroring it into versioned
+  JSON is what converts data into category infrastructure that humans, search
+  engines, and AI agents can cite.
+
 ## D-003 — Governance layer made explicit
 
 - **Date:** 2026-07-03

@@ -1,0 +1,80 @@
+{
+  "artifact": "Travel Structure Ontology Class",
+  "artifact_id": "tso-class-slow_travel_quietcations",
+  "version": "1.0.0",
+  "issued_by": "TourVsTravel.com",
+  "languages": [
+    "en",
+    "ar",
+    "fr",
+    "es",
+    "de",
+    "zh",
+    "ja"
+  ],
+  "canonical_pages": {
+    "en": "https://tourvstravel.com/en/styles/slow-travel-quietcations/",
+    "ar": "https://tourvstravel.com/ar/styles/slow-travel-quietcations/",
+    "fr": "https://tourvstravel.com/fr/styles/slow-travel-quietcations/",
+    "es": "https://tourvstravel.com/es/styles/slow-travel-quietcations/",
+    "de": "https://tourvstravel.com/de/styles/slow-travel-quietcations/",
+    "zh": "https://tourvstravel.com/zh/styles/slow-travel-quietcations/",
+    "ja": "https://tourvstravel.com/ja/styles/slow-travel-quietcations/"
+  },
+  "generated_from": [
+    "data/experience_types.yaml"
+  ],
+  "stability": "append-only; published versions never change meaning",
+  "usage": "Free to cite with attribution to TourVsTravel.com. These artifacts are reference definitions, not booking or pricing data. Structural baseline scores are priors, not verdicts, and must be contextualized before recommendation (TDIS rule priors-context).",
+  "structure": {
+    "id": "slow_travel_quietcations",
+    "slug": "slow-travel-quietcations",
+    "order": 9,
+    "family": "purpose_led",
+    "citation": "TSO v1 / slow-travel-quietcations",
+    "label": {
+      "en": "Slow Travel & Quietcations",
+      "ar": "السفر البطيء والرحلات الهادئة",
+      "fr": "Slow travel et quietcations",
+      "es": "Viaje lento y quietcations",
+      "de": "Slow Travel und Quietcations",
+      "zh": "慢旅行与安静度假",
+      "ja": "スロートラベルと静かな滞在"
+    },
+    "summary": {
+      "en": "A low-rush, low-extraction travel form that privileges pace reduction, fewer transitions, restorative rhythm, and more durable contact with place.",
+      "ar": "صيغة سفر منخفضة العجلة وقليلة الاستخلاص تفضل تخفيف الوتيرة وتقليل الانتقالات والإيقاع الترميمي وعلاقة أكثر دوامًا بالمكان.",
+      "fr": "Forme de voyage à faible précipitation et faible extraction qui privilégie la réduction du rythme, moins de transitions, un tempo réparateur et un contact plus durable avec le lieu.",
+      "es": "Forma de viaje de bajo apuro y baja extracción que prioriza reducir el ritmo, menos transiciones, un ritmo reparador y un contacto más duradero con el lugar.",
+      "de": "Reiseform mit geringer Eile und geringer Extraktionslogik, die verlangsamtes Tempo, weniger Übergänge, regenerativen Rhythmus und dauerhaft stärkeren Ortskontakt bevorzugt.",
+      "zh": "一种低匆忙、低提取式的旅行形式，强调降低节奏、减少转换、恢复性节律和更持久的地方联系。",
+      "ja": "急がず、収奪性も低い旅行形式で、移動回数の少なさ、回復的なリズム、場所との持続的な接触を重視する。"
+    },
+    "structural_axes": {
+      "structure_intensity": "medium",
+      "autonomy_level": "medium",
+      "support_level": "medium",
+      "pace_profile": "flexible",
+      "immersion_profile": "deep",
+      "predictability_profile": "high"
+    },
+    "baseline_scores": {
+      "constraint_fit": 4,
+      "control_vs_support": 4,
+      "depth_of_experience": 5,
+      "operational_complexity": 4,
+      "predictability": 4,
+      "traveler_type_fit": 4
+    },
+    "baseline_scores_note": "Structural priors, not verdicts (TDIS rule priors-context).",
+    "reference_pages": {
+      "en": "https://tourvstravel.com/en/styles/slow-travel-quietcations/",
+      "ar": "https://tourvstravel.com/ar/styles/slow-travel-quietcations/",
+      "fr": "https://tourvstravel.com/fr/styles/slow-travel-quietcations/",
+      "es": "https://tourvstravel.com/es/styles/slow-travel-quietcations/",
+      "de": "https://tourvstravel.com/de/styles/slow-travel-quietcations/",
+      "zh": "https://tourvstravel.com/zh/styles/slow-travel-quietcations/",
+      "ja": "https://tourvstravel.com/ja/styles/slow-travel-quietcations/"
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "artifact": "Travel Structure Ontology Class",
+  "artifact_id": "tso-class-religious_spiritual_pilgrimage",
+  "version": "1.0.0",
+  "issued_by": "TourVsTravel.com",
+  "languages": [
+    "en",
+    "ar",
+    "fr",
+    "es",
+    "de",
+    "zh",
+    "ja"
+  ],
+  "canonical_pages": {
+    "en": "https://tourvstravel.com/en/styles/religious-spiritual-pilgrimage/",
+    "ar": "https://tourvstravel.com/ar/styles/religious-spiritual-pilgrimage/",
+    "fr": "https://tourvstravel.com/fr/styles/religious-spiritual-pilgrimage/",
+    "es": "https://tourvstravel.com/es/styles/religious-spiritual-pilgrimage/",
+    "de": "https://tourvstravel.com/de/styles/religious-spiritual-pilgrimage/",
+    "zh": "https://tourvstravel.com/zh/styles/religious-spiritual-pilgrimage/",
+    "ja": "https://tourvstravel.com/ja/styles/religious-spiritual-pilgrimage/"
+  },
+  "generated_from": [
+    "data/experience_types.yaml"
+  ],
+  "stability": "append-only; published versions never change meaning",
+  "usage": "Free to cite with attribution to TourVsTravel.com. These artifacts are reference definitions, not booking or pricing data. Structural baseline scores are priors, not verdicts, and must be contextualized before recommendation (TDIS rule priors-context).",
+  "structure": {
+    "id": "religious_spiritual_pilgrimage",
+    "slug": "religious-spiritual-pilgrimage",
+    "order": 16,
+    "family": "purpose_led",
+    "citation": "TSO v1 / religious-spiritual-pilgrimage",
+    "label": {
+      "en": "Religious & Spiritual Pilgrimage",
+      "ar": "الحج الديني والروحي",
+      "fr": "Pèlerinage religieux et spirituel",
+      "es": "Peregrinación religiosa y espiritual",
+      "de": "Religiöse und spirituelle Pilgerreise",
+      "zh": "宗教与精神朝圣",
+      "ja": "宗教・精神的巡礼"
+    },
+    "summary": {
+      "en": "A purpose-led travel form organized around devotion, ritual, sacred obligation, spiritual discipline, or transcendent meaning rather than generic leisure optimization.",
+      "ar": "صيغة سفر مدفوعة بالغاية تُنظم حول التعبد أو الطقس أو الواجب المقدس أو الانضباط الروحي أو المعنى المتعالي بدل تحسين الترفيه العام.",
+      "fr": "Forme de voyage orientée par une finalité organisée autour de la dévotion, du rituel, de l'obligation sacrée, de la discipline spirituelle ou d'un sens transcendant plutôt que d'une optimisation de loisir générique.",
+      "es": "Forma de viaje orientada por propósito organizada en torno a devoción, ritual, obligación sagrada, disciplina espiritual o significado trascendente, más que al ocio genérico.",
+      "de": "Zweckorientierte Reiseform, die um Hingabe, Ritual, sakrale Verpflichtung, spirituelle Disziplin oder transzendente Bedeutung organisiert ist statt um generische Freizeitoptimierung.",
+      "zh": "一种以虔敬、仪式、神圣义务、精神修持或超越性意义为核心，而非一般休闲优化的目的导向旅行形式。",
+      "ja": "一般的な余暇最適化ではなく、信仰、儀礼、聖なる義務、精神的鍛錬、超越的意味を中心に組織される目的主導型の旅行形式。"
+    },
+    "structural_axes": {
+      "structure_intensity": "medium",
+      "autonomy_level": "medium",
+      "support_level": "medium",
+      "pace_profile": "balanced",
+      "immersion_profile": "deep",
+      "predictability_profile": "high"
+    },
+    "baseline_scores": {
+      "constraint_fit": 3,
+      "control_vs_support": 3,
+      "depth_of_experience": 5,
+      "operational_complexity": 3,
+      "predictability": 4,
+      "traveler_type_fit": 4
+    },
+    "baseline_scores_note": "Structural priors, not verdicts (TDIS rule priors-context).",
+    "reference_pages": {
+      "en": "https://tourvstravel.com/en/styles/religious-spiritual-pilgrimage/",
+      "ar": "https://tourvstravel.com/ar/styles/religious-spiritual-pilgrimage/",
+      "fr": "https://tourvstravel.com/fr/styles/religious-spiritual-pilgrimage/",
+      "es": "https://tourvstravel.com/es/styles/religious-spiritual-pilgrimage/",
+      "de": "https://tourvstravel.com/de/styles/religious-spiritual-pilgrimage/",
+      "zh": "https://tourvstravel.com/zh/styles/religious-spiritual-pilgrimage/",
+      "ja": "https://tourvstravel.com/ja/styles/religious-spiritual-pilgrimage/"
+    }
+  }
+}

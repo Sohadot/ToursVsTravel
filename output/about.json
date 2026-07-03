@@ -1,0 +1,106 @@
+{
+  "asset": "TourVsTravel.com",
+  "base_url": "https://tourvstravel.com",
+  "category": "Travel Decision Architecture",
+  "thesis": "The same destination is not the same trip.",
+  "tagline": {
+    "en": "The Unbiased Reference for Travel Decisions",
+    "ar": "المرجع المحايد لقرارات السفر",
+    "fr": "La référence impartiale pour les décisions de voyage",
+    "es": "La referencia imparcial para las decisiones de viaje",
+    "de": "Die unparteiische Referenz für Reiseentscheidungen",
+    "zh": "旅行决策的客观参考",
+    "ja": "旅行判断のための中立的リファレンス"
+  },
+  "summary": {
+    "en": "A multilingual, evidence-led travel decision infrastructure built to compare how people move through the world across destinations, styles, and intentions.",
+    "ar": "بنية مرجعية متعددة اللغات قائمة على الأدلة، صُممت لمقارنة كيف يتحرك الناس عبر العالم بين الوجهات وأنماط السفر والنوايا المختلفة.",
+    "fr": "Une infrastructure multilingue et fondée sur les preuves, conçue pour comparer la manière dont les personnes traversent le monde selon les destinations, les styles et les intentions.",
+    "es": "Una infraestructura multilingüe y basada en evidencia, diseñada para comparar cómo las personas se mueven por el mundo entre destinos, estilos e intenciones.",
+    "de": "Eine mehrsprachige, evidenzgeleitete Infrastruktur, die vergleicht, wie Menschen sich durch die Welt bewegen – über Reiseziele, Stile und Absichten hinweg.",
+    "zh": "一个多语言、基于证据的旅行决策基础设施，用于比较人们如何以不同目的、风格和目的地穿行世界。",
+    "ja": "目的地、スタイル、意図を横断して、人がどのように世界を旅するかを比較するために設計された、多言語・エビデンス主導の旅行判断インフラです。"
+  },
+  "languages": [
+    "en",
+    "ar",
+    "fr",
+    "es",
+    "de",
+    "zh",
+    "ja"
+  ],
+  "artifacts": {
+    "ontology": {
+      "name": "Travel Structure Ontology (TSO)",
+      "version": "1.0.0",
+      "structure_count": 17,
+      "endpoint": "/ontology/tso-v1.json",
+      "pages": {
+        "en": "https://tourvstravel.com/en/ontology/",
+        "ar": "https://tourvstravel.com/ar/ontology/",
+        "fr": "https://tourvstravel.com/fr/ontology/",
+        "es": "https://tourvstravel.com/es/ontology/",
+        "de": "https://tourvstravel.com/de/ontology/",
+        "zh": "https://tourvstravel.com/zh/ontology/",
+        "ja": "https://tourvstravel.com/ja/ontology/"
+      }
+    },
+    "standard": {
+      "name": "Travel Decision Integrity Standard (TDIS)",
+      "version": "1.0.0",
+      "endpoint": "/standard/tdis-v1.json",
+      "pages": {
+        "en": "https://tourvstravel.com/en/standard/",
+        "ar": "https://tourvstravel.com/ar/standard/",
+        "fr": "https://tourvstravel.com/fr/standard/",
+        "es": "https://tourvstravel.com/es/standard/",
+        "de": "https://tourvstravel.com/de/standard/",
+        "zh": "https://tourvstravel.com/zh/standard/",
+        "ja": "https://tourvstravel.com/ja/standard/"
+      }
+    },
+    "criteria": {
+      "name": "TDIS Comparison Criteria",
+      "version": "1.0.0",
+      "endpoint": "/api/criteria-v1.json"
+    },
+    "structures": {
+      "name": "Per-class ontology artifacts",
+      "endpoint_template": "/api/structures/{slug}.json",
+      "slugs": [
+        "guided-group-tour",
+        "independent-travel",
+        "solo-travel",
+        "backpacking",
+        "luxury-travel",
+        "family-travel",
+        "adventure-travel",
+        "regenerative-community-led",
+        "slow-travel-quietcations",
+        "cultural-immersion-homestay",
+        "ancestry-legacy-travel",
+        "transformational-wellness",
+        "road-trip-self-drive",
+        "cruise-experience",
+        "eco-sustainable-travel",
+        "religious-spiritual-pilgrimage",
+        "shrine-saints-tourism"
+      ]
+    }
+  },
+  "governance": {
+    "changelog_pages": {
+      "en": "https://tourvstravel.com/en/changelog/",
+      "ar": "https://tourvstravel.com/ar/changelog/",
+      "fr": "https://tourvstravel.com/fr/changelog/",
+      "es": "https://tourvstravel.com/es/changelog/",
+      "de": "https://tourvstravel.com/de/changelog/",
+      "zh": "https://tourvstravel.com/zh/changelog/",
+      "ja": "https://tourvstravel.com/ja/changelog/"
+    },
+    "latest_change": "2026-07-03-category-infrastructure",
+    "policy": "Append-only concepts; claims restraint; no phantom pages; human pages and machine endpoints tell the same truth."
+  },
+  "usage": "Free to cite with attribution to TourVsTravel.com. These artifacts are reference definitions, not booking or pricing data. Structural baseline scores are priors, not verdicts, and must be contextualized before recommendation (TDIS rule priors-context)."
+}

@@ -50,9 +50,12 @@
         <ul class="site-footer__list" role="list">
           <li><a href="{{ url_methodology|default(base_url ~ '/' ~ lang ~ '/methodology/') }}">{{ nav_methodology|default('Methodology') }}</a></li>
           <li><a href="{{ url_travel_decision_architecture|default(base_url ~ '/' ~ lang ~ '/travel-decision-architecture/') }}">{{ footer_travel_decision_architecture_label|default('Travel Decision Architecture') }}</a></li>
+          <li><a href="/{{ lang|default('en') }}/ontology/">{{ footer_ontology_label|default('Travel Structure Ontology') }}</a></li>
+          <li><a href="/{{ lang|default('en') }}/standard/">{{ footer_standard_label|default('Integrity Standard (TDIS)') }}</a></li>
           <li><a href="{{ url_source_policy|default(base_url ~ '/' ~ lang ~ '/methodology/source-policy/') }}">{{ footer_source_policy_label|default('Source Policy') }}</a></li>
           <li><a href="{{ url_editorial_standards|default(base_url ~ '/' ~ lang ~ '/methodology/editorial-standards/') }}">{{ footer_editorial_label|default('Editorial Standards') }}</a></li>
           <li><a href="/{{ lang|default('en') }}/report/">{{ footer_reference_report_label|default('Reference Report') }}</a></li>
+          <li><a href="/{{ lang|default('en') }}/changelog/">{{ footer_changelog_label|default('Changelog') }}</a></li>
         </ul>
       </section>
 

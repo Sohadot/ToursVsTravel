@@ -1,0 +1,201 @@
+{
+  "artifact": "Travel Decision Integrity Standard",
+  "artifact_id": "tdis",
+  "version": "1.0.0",
+  "issued_by": "TourVsTravel.com",
+  "languages": [
+    "en",
+    "ar",
+    "fr",
+    "es",
+    "de",
+    "zh",
+    "ja"
+  ],
+  "canonical_pages": {
+    "en": "https://tourvstravel.com/en/standard/",
+    "ar": "https://tourvstravel.com/ar/standard/",
+    "fr": "https://tourvstravel.com/fr/standard/",
+    "es": "https://tourvstravel.com/es/standard/",
+    "de": "https://tourvstravel.com/de/standard/",
+    "zh": "https://tourvstravel.com/zh/standard/",
+    "ja": "https://tourvstravel.com/ja/standard/"
+  },
+  "generated_from": [
+    "scripts/generate_category_infrastructure.py",
+    "data/comparison_criteria.yaml"
+  ],
+  "stability": "append-only; published versions never change meaning",
+  "usage": "Free to cite with attribution to TourVsTravel.com. These artifacts are reference definitions, not booking or pricing data. Structural baseline scores are priors, not verdicts, and must be contextualized before recommendation (TDIS rule priors-context).",
+  "rules": [
+    {
+      "id": "classify-first",
+      "text": {
+        "en": "Both options are identified as travel structures from the ontology, not moods or marketing labels.",
+        "ar": "يُحدَّد كلا الخيارين كبنيتي سفر من الأنطولوجيا، لا كمزاج أو تسميات تسويقية.",
+        "fr": "Les deux options sont identifiées comme des structures de voyage issues de l'ontologie, non comme des humeurs ou des étiquettes marketing.",
+        "es": "Ambas opciones se identifican como estructuras de viaje de la ontología, no como estados de ánimo ni etiquetas de marketing.",
+        "de": "Beide Optionen werden als Reisestrukturen aus der Ontologie identifiziert, nicht als Stimmungen oder Marketing-Etiketten.",
+        "zh": "两个选项都必须被识别为本体中的旅行结构，而不是情绪或营销标签。",
+        "ja": "両方の選択肢は、気分やマーケティング上のラベルではなく、オントロジーの旅行構造として識別される。"
+      }
+    },
+    {
+      "id": "explicit-criteria",
+      "text": {
+        "en": "Comparison runs over explicit criteria with declared scales, never vague editorial preference.",
+        "ar": "تجري المقارنة عبر معايير صريحة بمقاييس معلنة، لا عبر تفضيل تحريري غامض أبدًا.",
+        "fr": "La comparaison s'appuie sur des critères explicites aux échelles déclarées, jamais sur une préférence éditoriale vague.",
+        "es": "La comparación se realiza sobre criterios explícitos con escalas declaradas, nunca sobre una preferencia editorial vaga.",
+        "de": "Der Vergleich läuft über explizite Kriterien mit deklarierten Skalen, niemals über vage redaktionelle Vorlieben.",
+        "zh": "比较必须基于具有明确刻度的显式标准，绝不依赖模糊的编辑偏好。",
+        "ja": "比較は宣言された尺度を持つ明示的な基準で行い、曖昧な編集的好みには決して依拠しない。"
+      }
+    },
+    {
+      "id": "priors-context",
+      "text": {
+        "en": "Baseline scores are treated as structural priors and are contextualized before any recommendation.",
+        "ar": "تُعامل الدرجات الأساسية كافتراضات بنيوية مسبقة، وتوضع في سياقها قبل أي توصية.",
+        "fr": "Les scores de référence sont traités comme des a priori structurels et sont contextualisés avant toute recommandation.",
+        "es": "Las puntuaciones de base se tratan como priores estructurales y se contextualizan antes de cualquier recomendación.",
+        "de": "Basiswerte werden als strukturelle Prioren behandelt und vor jeder Empfehlung kontextualisiert.",
+        "zh": "基线分数被视为结构性先验，在给出任何建议之前必须结合具体情境。",
+        "ja": "ベースラインスコアは構造的な事前値として扱い、いかなる推奨の前にも文脈化する。"
+      }
+    },
+    {
+      "id": "cost-bands",
+      "text": {
+        "en": "Cost statements are bands and structures; live prices are never fabricated.",
+        "ar": "بيانات التكلفة نطاقات وبنى؛ ولا تُختلق أسعار حية أبدًا.",
+        "fr": "Les indications de coût sont des fourchettes et des structures ; aucun prix en direct n'est jamais fabriqué.",
+        "es": "Las indicaciones de coste son rangos y estructuras; nunca se fabrican precios en vivo.",
+        "de": "Kostenangaben sind Bänder und Strukturen; Live-Preise werden niemals erfunden.",
+        "zh": "成本表述使用区间和结构；绝不编造实时价格。",
+        "ja": "費用の記述は帯域と構造で示し、ライブ価格を決して捏造しない。"
+      }
+    },
+    {
+      "id": "evidence-declared",
+      "text": {
+        "en": "Sources are identifiable, and missing evidence is declared rather than hidden.",
+        "ar": "المصادر قابلة للتحديد، وغياب الدليل يُعلَن ولا يُخفى.",
+        "fr": "Les sources sont identifiables, et l'absence de preuve est déclarée plutôt que dissimulée.",
+        "es": "Las fuentes son identificables, y la falta de evidencia se declara en lugar de ocultarse.",
+        "de": "Quellen sind identifizierbar, und fehlende Belege werden erklärt statt verborgen.",
+        "zh": "来源必须可识别，缺少证据时应当声明而非隐藏。",
+        "ja": "情報源は識別可能であり、証拠の欠如は隠さずに明示する。"
+      }
+    },
+    {
+      "id": "fit-first",
+      "text": {
+        "en": "Fit precedes preference; tradeoffs are stated before aspirations.",
+        "ar": "الملاءمة تسبق التفضيل؛ وتُذكر المفاضلات قبل الطموحات.",
+        "fr": "L'adéquation précède la préférence ; les compromis sont énoncés avant les aspirations.",
+        "es": "El ajuste precede a la preferencia; las contrapartidas se enuncian antes que las aspiraciones.",
+        "de": "Passung geht vor Vorliebe; Zielkonflikte werden vor Wünschen benannt.",
+        "zh": "适配先于偏好；先说明取舍，再谈愿景。",
+        "ja": "適合が好みに先立つ。願望より先にトレードオフを明示する。"
+      }
+    },
+    {
+      "id": "no-universal-winner",
+      "text": {
+        "en": "No universal winner is declared between structures.",
+        "ar": "لا يُعلَن فائز مطلق بين البنى.",
+        "fr": "Aucun vainqueur universel n'est déclaré entre les structures.",
+        "es": "No se declara un ganador universal entre estructuras.",
+        "de": "Zwischen Strukturen wird kein universeller Gewinner erklärt.",
+        "zh": "不在结构之间宣布普适的赢家。",
+        "ja": "構造間で普遍的な勝者を宣言しない。"
+      }
+    }
+  ],
+  "protocol": {
+    "name": "Structure Fit Protocol",
+    "steps": [
+      {
+        "id": "classify",
+        "order": 1,
+        "text": {
+          "en": "Classify the candidate options into ontology structures.",
+          "ar": "صنّف الخيارات المرشحة إلى بنى من الأنطولوجيا.",
+          "fr": "Classer les options candidates dans les structures de l'ontologie.",
+          "es": "Clasificar las opciones candidatas en estructuras de la ontología.",
+          "de": "Die Kandidatenoptionen in Ontologie-Strukturen einordnen.",
+          "zh": "将候选选项归类到本体结构中。",
+          "ja": "候補となる選択肢をオントロジーの構造に分類する。"
+        }
+      },
+      {
+        "id": "score-fit",
+        "order": 2,
+        "text": {
+          "en": "Score fit across the six structural axes for the declared traveler constraints.",
+          "ar": "قيّم الملاءمة عبر المحاور البنيوية الستة وفق قيود المسافر المعلنة.",
+          "fr": "Évaluer l'adéquation sur les six axes structurels selon les contraintes déclarées du voyageur.",
+          "es": "Puntuar el ajuste en los seis ejes estructurales según las restricciones declaradas del viajero.",
+          "de": "Die Passung entlang der sechs Strukturachsen für die erklärten Reisebeschränkungen bewerten.",
+          "zh": "根据旅行者声明的约束条件，在六个结构轴上评估适配度。",
+          "ja": "宣言された旅行者の制約に対し、6つの構造軸で適合度を採点する。"
+        }
+      },
+      {
+        "id": "apply-standard",
+        "order": 3,
+        "text": {
+          "en": "Apply the standard: contextualize priors, keep costs in bands, declare uncertainty.",
+          "ar": "طبّق المعيار: ضع الافتراضات المسبقة في سياقها، وأبقِ التكاليف في نطاقات، وأعلن عدم اليقين.",
+          "fr": "Appliquer le standard : contextualiser les a priori, garder les coûts en fourchettes, déclarer l'incertitude.",
+          "es": "Aplicar el estándar: contextualizar los priores, mantener los costes en rangos, declarar la incertidumbre.",
+          "de": "Den Standard anwenden: Prioren kontextualisieren, Kosten in Bändern halten, Unsicherheit erklären.",
+          "zh": "应用标准：将先验置于情境中，成本保持区间表述，声明不确定性。",
+          "ja": "基準を適用する：事前値を文脈化し、費用は帯域で示し、不確実性を明示する。"
+        }
+      },
+      {
+        "id": "emit-diagnosis",
+        "order": 4,
+        "text": {
+          "en": "Emit a diagnosis: ranked fit, explicit tradeoffs, and what each choice costs the traveler, linked back to the class pages used.",
+          "ar": "أصدر تشخيصًا: ترتيب الملاءمة، والمفاضلات الصريحة، وما يكلفه كل خيار للمسافر، مع روابط إلى صفحات البنى المستخدمة.",
+          "fr": "Émettre un diagnostic : adéquation classée, compromis explicites et coût de chaque choix pour le voyageur, avec liens vers les pages de classes utilisées.",
+          "es": "Emitir un diagnóstico: ajuste ordenado, contrapartidas explícitas y lo que cada elección cuesta al viajero, con enlaces a las páginas de clase utilizadas.",
+          "de": "Eine Diagnose ausgeben: geordnete Passung, explizite Zielkonflikte und was jede Wahl den Reisenden kostet, verlinkt auf die verwendeten Klassenseiten.",
+          "zh": "输出诊断：适配度排序、明确的取舍，以及每个选择让旅行者付出的代价，并链接回所使用的结构页面。",
+          "ja": "診断を出力する：適合度の順位、明示的なトレードオフ、各選択が旅行者に何を犠牲にさせるかを、使用した構造ページへのリンクとともに示す。"
+        }
+      }
+    ]
+  },
+  "criteria_endpoint": "/api/criteria-v1.json",
+  "criteria_summary": [
+    {
+      "id": "constraint_fit",
+      "weight": 24
+    },
+    {
+      "id": "operational_complexity",
+      "weight": 16
+    },
+    {
+      "id": "control_vs_support",
+      "weight": 14
+    },
+    {
+      "id": "depth_of_experience",
+      "weight": 14
+    },
+    {
+      "id": "predictability",
+      "weight": 16
+    },
+    {
+      "id": "traveler_type_fit",
+      "weight": 16
+    }
+  ],
+  "conformance": "A comparison conforms to TDIS v1 when all rules hold. Systems citing these definitions should state the version checked against."
+}

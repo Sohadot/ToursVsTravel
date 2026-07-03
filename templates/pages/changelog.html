@@ -1,0 +1,28 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+<article class="travel-architecture-page container" dir="{{ page_dir }}">
+  <header class="travel-architecture-hero">
+    <p class="travel-architecture-hero__eyebrow">{{ site_name }}</p>
+    <h1>{{ copy.title }}</h1>
+    <p class="travel-architecture-hero__lead">{{ copy.lead }}</p>
+  </header>
+
+  <section class="travel-architecture-section travel-architecture-definition" aria-labelledby="changelog-policy-title">
+    <h2 id="changelog-policy-title">{{ copy.policy_heading }}</h2>
+    {% for paragraph in copy.intro_paragraphs %}
+    <p>{{ paragraph }}</p>
+    {% endfor %}
+  </section>
+
+  {% for entry in entries %}
+  <section class="travel-architecture-section" aria-labelledby="changelog-entry-{{ loop.index }}">
+    <h2 id="changelog-entry-{{ loop.index }}">
+      <time datetime="{{ entry.date }}">{{ entry.date }}</time> — {{ entry.title }}
+    </h2>
+    <p>{{ entry.summary }}</p>
+    <p><code>{{ copy.decision_label }}: {{ entry.decision_ref }}</code></p>
+  </section>
+  {% endfor %}
+</article>
+{% endblock %}

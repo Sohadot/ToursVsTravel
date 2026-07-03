@@ -1,0 +1,62 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+<article class="travel-architecture-page container" dir="{{ page_dir }}">
+  <header class="travel-architecture-hero">
+    <p class="travel-architecture-hero__eyebrow">{{ site_name }}</p>
+    <h1>{{ copy.title }}</h1>
+    <p class="travel-architecture-hero__lead">{{ copy.lead }}</p>
+    <p class="travel-architecture-hero__statement">{{ copy.core_statement }}</p>
+  </header>
+
+  <section class="travel-architecture-section travel-architecture-definition" aria-labelledby="standard-purpose-title">
+    <h2 id="standard-purpose-title">{{ copy.purpose_heading }}</h2>
+    {% for paragraph in copy.purpose_paragraphs %}
+    <p>{{ paragraph }}</p>
+    {% endfor %}
+  </section>
+
+  <section class="travel-architecture-section" aria-labelledby="standard-rules-title">
+    <h2 id="standard-rules-title">{{ copy.rules_heading }}</h2>
+    <ol>
+      {% for rule in copy.rules %}
+      <li>{{ rule.text }} <code>{{ rule.id }}</code></li>
+      {% endfor %}
+    </ol>
+  </section>
+
+  <section class="travel-architecture-section" aria-labelledby="standard-protocol-title">
+    <h2 id="standard-protocol-title">{{ copy.protocol_heading }}</h2>
+    <p>{{ copy.protocol_intro }}</p>
+    <ol>
+      {% for step in copy.protocol_steps %}
+      <li>{{ step.text }}</li>
+      {% endfor %}
+    </ol>
+  </section>
+
+  <section class="travel-architecture-section" aria-labelledby="standard-criteria-title">
+    <h2 id="standard-criteria-title">{{ copy.criteria_heading }}</h2>
+    <p>{{ copy.criteria_intro }}</p>
+    <ul>
+      {% for criterion in criteria %}
+      <li><strong>{{ criterion.name }}</strong> — {{ copy.weight_label }}: {{ criterion.weight }} <code>{{ criterion.id }}</code></li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="travel-architecture-section" aria-labelledby="standard-conformance-title">
+    <h2 id="standard-conformance-title">{{ copy.conformance_heading }}</h2>
+    {% for paragraph in copy.conformance_paragraphs %}
+    <p>{{ paragraph }}</p>
+    {% endfor %}
+  </section>
+
+  <section class="travel-architecture-section travel-architecture-scope" aria-labelledby="standard-versioning-title">
+    <h2 id="standard-versioning-title">{{ copy.versioning_heading }}</h2>
+    {% for paragraph in copy.versioning_paragraphs %}
+    <p>{{ paragraph }}</p>
+    {% endfor %}
+  </section>
+</article>
+{% endblock %}

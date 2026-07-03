@@ -81,3 +81,21 @@ Procedure: see `GOVERNANCE.md` §6.
   contracts, immutable routes) was already strong but implicit on the
   editorial side. Making the rules and the change history public and auditable
   is itself part of the asset's value thesis: trust as architecture.
+
+## D-005 — Build artifacts removed from version control
+
+- **Date:** 2026-07-03
+- **Decision:** The generated `output/` directory is removed from version
+  control and added to `.gitignore`. The GitHub Actions deploy pipeline —
+  which has always rebuilt the site from source (`python -m scripts.build`)
+  and never published the committed copy — is now the sole producer of build
+  artifacts. Local builds remain the verification instrument; their output is
+  untracked. `GOVERNANCE.md` §3 is amended with the standing rule.
+- **Rationale:** Input/output discipline. The repository's governed inputs are
+  source, data, and templates; `output/` is a derived artifact. Tracking it
+  produced no deployment value (CI never used it) while creating real
+  governance costs: PR #17 carried 231 phantom merge conflicts consisting
+  entirely of `lastmod` build timestamps, inviting exactly the kind of manual
+  artifact editing that GOVERNANCE.md forbids. Removing the artifact from
+  tracking eliminates the conflict class at the root and makes the repository
+  state equal to the governed inputs, nothing else.

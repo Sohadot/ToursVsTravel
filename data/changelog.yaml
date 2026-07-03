@@ -88,3 +88,23 @@ entries:
       de: "Die Travel Structure Ontology (TSO) v1 und der Travel Decision Integrity Standard (TDIS) v1, einschließlich des Structure Fit Protocol, erhielten kanonische öffentliche Seiten in sieben Sprachen. Versionierte maschinenlesbare Endpunkte wurden veröffentlicht, damit KI-Agenten dieselben Definitionen lesen wie Menschen."
       zh: "旅行结构本体（TSO）v1 与旅行决策完整性标准（TDIS）v1（含结构适配协议）以七种语言获得了规范的公开页面。同时发布了带版本的机器可读端点，使 AI 代理能够读取与人类相同的定义。"
       ja: "旅行構造オントロジー（TSO）v1 と旅行意思決定インテグリティ基準（TDIS）v1（構造適合プロトコルを含む）が、7言語の正規公開ページを得た。AIエージェントが人間と同じ定義を読めるよう、バージョン管理された機械可読エンドポイントも公開された。"
+
+  - id: "2026-07-03-artifact-discipline"
+    date: "2026-07-03"
+    decision_ref: "D-005"
+    title:
+      en: "Build artifacts removed from version control"
+      ar: "إخراج نواتج البناء من تتبع الإصدارات"
+      fr: "Artefacts de build retirés du contrôle de version"
+      es: "Artefactos de build retirados del control de versiones"
+      de: "Build-Artefakte aus der Versionskontrolle entfernt"
+      zh: "构建产物移出版本控制"
+      ja: "ビルド成果物をバージョン管理から除外"
+    summary:
+      en: "The generated output directory is no longer tracked in the repository. The deploy pipeline has always rebuilt the site from source and is now the sole producer of build artifacts. This enforces input/output discipline: governed sources in, derived artifacts out, and no phantom merge conflicts between build timestamps."
+      ar: "لم يعد مجلد الإخراج المولَّد مُتتبَّعًا في المستودع. خط النشر كان يعيد بناء الموقع من المصدر دائمًا، وهو الآن المنتج الوحيد لنواتج البناء. هذا يفرض انضباط الإدخال والإخراج: مصادر محكومة تدخل، ونواتج مشتقة تخرج، وبلا تعارضات دمج وهمية بين طوابع البناء."
+      fr: "Le répertoire de sortie généré n'est plus suivi dans le dépôt. Le pipeline de déploiement a toujours reconstruit le site depuis la source et il est désormais l'unique producteur des artefacts de build. Cela impose la discipline entrée/sortie : des sources gouvernées en entrée, des artefacts dérivés en sortie, et aucun conflit de fusion fantôme entre horodatages de build."
+      es: "El directorio de salida generado ya no se rastrea en el repositorio. El pipeline de despliegue siempre ha reconstruido el sitio desde la fuente y ahora es el único productor de artefactos de build. Esto impone la disciplina de entrada/salida: fuentes gobernadas entran, artefactos derivados salen, y sin conflictos de fusión fantasma entre marcas de tiempo de build."
+      de: "Das generierte Ausgabeverzeichnis wird nicht mehr im Repository verfolgt. Die Deploy-Pipeline hat die Website schon immer aus den Quellen neu gebaut und ist nun der einzige Produzent der Build-Artefakte. Das erzwingt Eingabe-/Ausgabe-Disziplin: regelgeleitete Quellen hinein, abgeleitete Artefakte hinaus, und keine Phantom-Merge-Konflikte zwischen Build-Zeitstempeln mehr."
+      zh: "生成的输出目录不再纳入仓库跟踪。部署流水线一直都是从源码重建站点，现在它是构建产物的唯一生产者。这强化了输入/输出纪律：受治理的源进入，派生的产物输出，构建时间戳之间不再出现幻影合并冲突。"
+      ja: "生成された出力ディレクトリはリポジトリで追跡されなくなった。デプロイパイプラインは常にソースからサイトを再構築しており、今後はビルド成果物の唯一の生成者となる。これにより入出力の規律が強制される：統治されたソースが入り、派生成果物が出る。ビルドタイムスタンプ間の幻のマージ競合はもう発生しない。"

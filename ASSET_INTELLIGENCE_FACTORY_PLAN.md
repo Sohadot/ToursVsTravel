@@ -1,8 +1,12 @@
 # ASSET_INTELLIGENCE_FACTORY_PLAN.md
 
 **Asset:** `tourvstravel.com` (TourVsTravel)
-**Plan version:** 1.0.0
+**Plan version:** 1.0.1
 **Plan date:** 2026-07-03
+**Revision note (1.0.1):** P0 executed same day — "200 destinations" claim retired
+(DECISIONS.md D-002), `GOVERNANCE.md`/`DECISIONS.md` added (D-003), claims-restraint
+build gate added. Corrected audit: link integrity was already a build gate
+(`_verify_local_links` fails the build on broken internal links), not merely a scan.
 **Methodology:** Sovereign Asset System — Category Intelligence Factory model
 **Status:** Governing document. Changes to this plan are append/version only.
 
@@ -35,7 +39,7 @@ What the asset already is — verified, not aspirational:
 | Reference layer | **Exists** | methodology, source policy, editorial standards, travel decision architecture, reference report |
 | Governance (build) | **Strong** | staged 23-step build with output-contract verification; immutable generated route keys; validated sitemap; fail-closed loaders |
 | i18n | **Strong** | 7 languages (en, ar, fr, es, de, zh, ja), full hreflang + x-default, RTL support |
-| Link integrity | **Verified** | 232 generated pages, 226 unique internal hrefs, **0 broken internal links** (scan on plan date) |
+| Link integrity | **Verified + gated** | 232 generated pages, 226 unique internal hrefs, **0 broken internal links** (scan on plan date); build already fails on broken links via `_verify_local_links` |
 | Buyer logic | **Exists** | `/acquire/` page with explicit non-claims section |
 | Destinations | **Not published** | no `data/destinations.yaml`; destinations index exists but zero destination pages |
 | Comparison pages | **Not published** | route family exists (`/{lang}/{destination}/{a}--vs--{b}/`), no pages generated |
@@ -361,10 +365,10 @@ vocabulary is owned by someone else.
 
 ## 14. Execution roadmap
 
-**P0 — Integrity (immediately, before growth):**
-- [ ] Fix the "200 destinations" claim (reduce claim or publish data — claim must match reality on the day it ships).
-- [ ] Add `GOVERNANCE.md` + `DECISIONS.md`; adopt append-only rules.
-- [ ] Turn the link-integrity scan into a build gate.
+**P0 — Integrity (immediately, before growth):** ✅ completed 2026-07-03
+- [x] Fix the "200 destinations" claim → replaced with build-gated numbers ("17 travel styles • 7 languages"); retired wording blocked by a new claims-restraint build gate (D-002).
+- [x] Add `GOVERNANCE.md` + `DECISIONS.md`; adopt append-only rules (D-003).
+- [x] Link-integrity build gate — found to already exist (`_verify_local_links`); claims-restraint gate added alongside it.
 
 **P1 — Name the infrastructure (weeks):**
 - [ ] Public TSO v1 page + per-structure citation lines.

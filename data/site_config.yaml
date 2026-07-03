@@ -416,13 +416,13 @@ ui:
 
   home:
     eyebrow:
-      en: "17 travel styles • 200 destinations • evidence-led comparison"
-      ar: "17 نمط سفر • 200 وجهة • مقارنة قائمة على الأدلة"
-      fr: "17 styles de voyage • 200 destinations • comparaison fondée sur des critères explicites"
-      es: "17 estilos de viaje • 200 destinos • comparación basada en evidencia"
-      de: "17 Reisestile • 200 Ziele • evidenzgeleiteter Vergleich"
-      zh: "17种旅行风格 • 200个目的地 • 基于证据的比较"
-      ja: "17の旅行スタイル • 200の目的地 • エビデンス主導の比較"
+      en: "17 travel styles • 7 languages • evidence-led comparison"
+      ar: "17 نمط سفر • 7 لغات • مقارنة قائمة على الأدلة"
+      fr: "17 styles de voyage • 7 langues • comparaison fondée sur des critères explicites"
+      es: "17 estilos de viaje • 7 idiomas • comparación basada en evidencia"
+      de: "17 Reisestile • 7 Sprachen • evidenzgeleiteter Vergleich"
+      zh: "17种旅行风格 • 7种语言 • 基于证据的比较"
+      ja: "17の旅行スタイル • 7言語 • エビデンス主導の比較"
 
     heading:
       en: "Same Destination. Different Stories."

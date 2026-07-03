@@ -582,6 +582,43 @@ def _scan_html_forbidden_fragments(stage_dir: Path) -> None:
                 )
 
 
+def _verify_claims_restraint(stage_dir: Path) -> None:
+    """
+    Claims-restraint gate (see GOVERNANCE.md).
+
+    No retired or unverifiable quantitative claim may reappear in any generated
+    page. Fragments listed here were removed from public copy because no
+    published data backed them; their reappearance is a build defect, not a
+    copy issue.
+    """
+    retired_claim_fragments = [
+        # "200 destinations" retired 2026-07-03 (DECISIONS.md D-002):
+        # zero destination pages were published when the claim shipped.
+        # Matching is case-insensitive (covers "200 Destinations" etc.).
+        "200 destinations",
+        "200 وجهة",
+        "200 destinos",
+        "200 ziele",
+        "200 reiseziele",
+        "200个目的地",
+        "200の目的地",
+    ]
+
+    for html_file in stage_dir.rglob("*.html"):
+        try:
+            text = html_file.read_text(encoding="utf-8").lower()
+        except UnicodeDecodeError as exc:
+            raise BuildStepError(f"Generated HTML is not valid UTF-8: {html_file}") from exc
+
+        for fragment in retired_claim_fragments:
+            if fragment in text:
+                raise BuildStepError(
+                    f"Retired unverifiable claim {fragment!r} found in {html_file}. "
+                    "Claims restraint: public numbers must be backed by published data "
+                    "(see GOVERNANCE.md)."
+                )
+
+
 def _verify_static_asset_references(stage_dir: Path) -> None:
     static_ref_pattern = re.compile(
         r"""(?:src|href)=["'](?:https://tourvstravel\.com)?(/static/[^"'\?#]+)""",
@@ -871,6 +908,7 @@ def _verify_output_contract(stage_dir: Path) -> None:
     _verify_experience_type_count(stage_dir)
     _verify_sitemap_contract(stage_dir)
     _scan_html_forbidden_fragments(stage_dir)
+    _verify_claims_restraint(stage_dir)
     _verify_static_asset_references(stage_dir)
     _verify_reference_page_integrity(stage_dir)
     _verify_local_links(stage_dir)

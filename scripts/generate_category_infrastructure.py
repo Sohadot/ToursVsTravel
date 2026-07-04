@@ -888,6 +888,8 @@ def load_ontology_structures() -> List[Dict[str, Any]]:
                 item.get("structural_axes"), f"experience_types[{idx}].structural_axes")),
             "baseline_scores": dict(_ensure_mapping(
                 item.get("baseline_scores"), f"experience_types[{idx}].baseline_scores")),
+            "profile_affinity": dict(_ensure_mapping(
+                item.get("profile_affinity"), f"experience_types[{idx}].profile_affinity")),
             "citation": f"TSO v1 / {slug}",
         })
 

@@ -108,3 +108,23 @@ entries:
       de: "Das generierte Ausgabeverzeichnis wird nicht mehr im Repository verfolgt. Die Deploy-Pipeline hat die Website schon immer aus den Quellen neu gebaut und ist nun der einzige Produzent der Build-Artefakte. Das erzwingt Eingabe-/Ausgabe-Disziplin: regelgeleitete Quellen hinein, abgeleitete Artefakte hinaus, und keine Phantom-Merge-Konflikte zwischen Build-Zeitstempeln mehr."
       zh: "生成的输出目录不再纳入仓库跟踪。部署流水线一直都是从源码重建站点，现在它是构建产物的唯一生产者。这强化了输入/输出纪律：受治理的源进入，派生的产物输出，构建时间戳之间不再出现幻影合并冲突。"
       ja: "生成された出力ディレクトリはリポジトリで追跡されなくなった。デプロイパイプラインは常にソースからサイトを再構築しており、今後はビルド成果物の唯一の生成者となる。これにより入出力の規律が強制される：統治されたソースが入り、派生成果物が出る。ビルドタイムスタンプ間の幻のマージ競合はもう発生しない。"
+
+  - id: "2026-07-04-compass-v1"
+    date: "2026-07-04"
+    decision_ref: "D-006"
+    title:
+      en: "Travel Decision Compass v1 launched"
+      ar: "إطلاق بوصلة قرار السفر — الإصدار الأول"
+      fr: "Lancement de la Boussole de Décision de Voyage v1"
+      es: "Lanzamiento de la Brújula de Decisión de Viaje v1"
+      de: "Reise-Entscheidungskompass v1 gestartet"
+      zh: "旅行决策指南针 v1 上线"
+      ja: "トラベル・ディシジョン・コンパス v1 を公開"
+    summary:
+      en: "The first operating implementation of the Structure Fit Protocol went live in seven languages. Seven questions produce a ranked structure-fit diagnosis across all seventeen ontology structures, with fit bands, explicit tradeoffs, and citations — fully in the browser, with no tracking. Destination context is the v2 contract and activates when the governed destinations dataset ships."
+      ar: "أُطلق أول تنفيذ تشغيلي لبروتوكول ملاءمة البنية بسبع لغات. سبعة أسئلة تنتج تشخيص ملاءمة مرتبًا عبر بنى الأنطولوجيا السبع عشرة كلها، مع نطاقات ملاءمة ومفاضلات صريحة واستشهادات — بالكامل في المتصفح وبلا تتبع. سياق الوجهة هو عقد الإصدار الثاني ويُفعَّل عند نشر مجموعة بيانات الوجهات المحكومة."
+      fr: "La première implémentation opérationnelle du Structure Fit Protocol est en ligne en sept langues. Sept questions produisent un diagnostic d'adéquation classé sur les dix-sept structures de l'ontologie, avec bandes d'adéquation, compromis explicites et citations — entièrement dans le navigateur, sans traçage. Le contexte de destination est le contrat v2 et s'activera à la publication du jeu de données de destinations gouverné."
+      es: "La primera implementación operativa del Structure Fit Protocol entró en funcionamiento en siete idiomas. Siete preguntas producen un diagnóstico de ajuste ordenado sobre las diecisiete estructuras de la ontología, con bandas de ajuste, contrapartidas explícitas y citas: todo en el navegador y sin rastreo. El contexto de destino es el contrato v2 y se activará cuando se publique el conjunto de datos de destinos gobernado."
+      de: "Die erste operative Implementierung des Structure Fit Protocol ging in sieben Sprachen live. Sieben Fragen erzeugen eine geordnete Passungsdiagnose über alle siebzehn Ontologie-Strukturen, mit Passungsbändern, expliziten Zielkonflikten und Zitationen — vollständig im Browser, ohne Tracking. Der Zielkontext ist der v2-Vertrag und wird mit dem regelgeleiteten Reiseziel-Datensatz aktiviert."
+      zh: "结构适配协议的首个运行实现已以七种语言上线。七个问题即可在全部十七种本体结构上生成排序的适配诊断，包含适配区间、明确取舍与引用——完全在浏览器中运行，无任何跟踪。目的地情境是 v2 契约，将在受治理的目的地数据集发布后启用。"
+      ja: "構造適合プロトコルの最初の運用実装が7言語で公開された。7つの質問から、17のオントロジー構造すべてにわたる順位付き適合診断が生成される。適合バンド、明示的なトレードオフ、引用付きで、すべてブラウザ内で動作し、トラッキングは一切ない。目的地の文脈は v2 契約であり、統治された目的地データセットの公開時に有効化される。"

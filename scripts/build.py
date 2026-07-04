@@ -101,6 +101,10 @@ from scripts.generate_experience_types import (
     GenerateExperienceTypesError,
     generate_experience_type_pages,
 )
+from scripts.generate_compass import (
+    GenerateCompassError,
+    generate_compass_pages,
+)
 from scripts.generate_category_infrastructure import (
     CATEGORY_INFRASTRUCTURE_ENGLISH_FRAGMENTS,
     GenerateCategoryInfrastructureError,
@@ -546,6 +550,16 @@ def _run_machine_layer_generation(*, stage_dir: Path) -> int:
     return count
 
 
+def _run_compass_generation(*, stage_dir: Path) -> int:
+    written = generate_compass_pages(
+        requested_lang=None,
+        output_dir=stage_dir,
+    )
+    count = len(written)
+    log.info("Generated Travel Decision Compass pages: %d", count)
+    return count
+
+
 def _run_robots_generation(*, stage_dir: Path) -> Path:
     written = generate_robots_file(
         output_dir=stage_dir,
@@ -984,6 +998,7 @@ def _verify_output_contract(stage_dir: Path) -> None:
         _require_file(stage_dir / lang / "compare" / "index.html")
         _require_file(stage_dir / lang / "tools" / "index.html")
         _require_file(stage_dir / lang / "tools" / "find-your-match" / "index.html")
+        _require_file(stage_dir / lang / "tools" / "travel-decision-compass" / "index.html")
         _require_file(stage_dir / lang / "destinations" / "index.html")
         _require_file(stage_dir / lang / "report" / "index.html")
         _require_file(stage_dir / lang / "contact" / "index.html")
@@ -1144,19 +1159,22 @@ def run_build(
         log.info("Step 20: Generate machine layer artifacts (agent-readable JSON)")
         _run_machine_layer_generation(stage_dir=stage_dir)
 
-        log.info("Step 21: Generate robots.txt")
+        log.info("Step 21: Generate Travel Decision Compass pages")
+        _run_compass_generation(stage_dir=stage_dir)
+
+        log.info("Step 22: Generate robots.txt")
         _run_robots_generation(stage_dir=stage_dir)
 
-        log.info("Step 22: Generate sitemap.xml")
+        log.info("Step 23: Generate sitemap.xml")
         _run_sitemap_generation(stage_dir=stage_dir)
 
-        log.info("Step 23: Create .nojekyll")
+        log.info("Step 24: Create .nojekyll")
         _write_nojekyll(stage_dir)
 
-        log.info("Step 24: Verify staged output")
+        log.info("Step 25: Verify staged output")
         _verify_output_contract(stage_dir)
 
-        log.info("Step 25: Promote staged output")
+        log.info("Step 26: Promote staged output")
         _promote_stage_to_final(stage_dir, final_output_dir)
 
     except Exception:

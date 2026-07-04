@@ -260,6 +260,16 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
 TOOL_COPY: Dict[str, List[Dict[str, Any]]] = {
     "en": [
         {
+            "title": "Travel Decision Compass",
+            "type": "Live diagnostic tool",
+            "status": "Available",
+            "status_key": "available",
+            "description": "A structure-fit diagnosis across all seventeen travel structures — seven questions, ranked fit, tradeoffs stated.",
+            "signals": ["Implements the Structure Fit Protocol", "Runs fully in the browser", "Linked to the ontology"],
+            "route": "compass",
+            "action": "Run the diagnosis",
+        },
+        {
             "title": "Travel Style Comparator",
             "type": "Live reference tool",
             "status": "Available",
@@ -301,6 +311,16 @@ TOOL_COPY: Dict[str, List[Dict[str, Any]]] = {
         },
     ],
     "ar": [
+        {
+            "title": "بوصلة قرار السفر",
+            "type": "أداة تشخيص حية",
+            "status": "متاح",
+            "status_key": "available",
+            "description": "تشخيص ملاءمة بنيوي عبر بنى السفر السبع عشرة كلها — سبعة أسئلة وترتيب ملاءمة ومفاضلات معلنة.",
+            "signals": ["تنفذ بروتوكول ملاءمة البنية", "تعمل بالكامل في المتصفح", "مرتبطة بالأنطولوجيا"],
+            "route": "compass",
+            "action": "شغّل التشخيص",
+        },
         {
             "title": "مقارن أنماط السفر",
             "type": "أداة مرجعية مباشرة",
@@ -367,6 +387,7 @@ ROUTES = {
     "styles": "styles",
     "methodology": "methodology",
     "find_your_match": "tools/find-your-match",
+    "compass": "tools/travel-decision-compass",
 }
 
 

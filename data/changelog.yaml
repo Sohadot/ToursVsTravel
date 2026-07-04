@@ -128,3 +128,23 @@ entries:
       de: "Die erste operative Implementierung des Structure Fit Protocol ging in sieben Sprachen live. Sieben Fragen erzeugen eine geordnete Passungsdiagnose über alle siebzehn Ontologie-Strukturen, mit Passungsbändern, expliziten Zielkonflikten und Zitationen — vollständig im Browser, ohne Tracking. Der Zielkontext ist der v2-Vertrag und wird mit dem regelgeleiteten Reiseziel-Datensatz aktiviert."
       zh: "结构适配协议的首个运行实现已以七种语言上线。七个问题即可在全部十七种本体结构上生成排序的适配诊断，包含适配区间、明确取舍与引用——完全在浏览器中运行，无任何跟踪。目的地情境是 v2 契约，将在受治理的目的地数据集发布后启用。"
       ja: "構造適合プロトコルの最初の運用実装が7言語で公開された。7つの質問から、17のオントロジー構造すべてにわたる順位付き適合診断が生成される。適合バンド、明示的なトレードオフ、引用付きで、すべてブラウザ内で動作し、トラッキングは一切ない。目的地の文脈は v2 契約であり、統治された目的地データセットの公開時に有効化される。"
+
+  - id: "2026-07-04-buyer-truth-localization"
+    date: "2026-07-04"
+    decision_ref: "D-007"
+    title:
+      en: "Acquisition page updated to current infrastructure; tools index fully localized"
+      ar: "تحديث صفحة الاستحواذ إلى البنية الحالية؛ وتعريب فهرس الأدوات بالكامل"
+      fr: "Page d'acquisition mise à jour vers l'infrastructure actuelle ; index des outils entièrement localisé"
+      es: "Página de adquisición actualizada a la infraestructura actual; índice de herramientas totalmente localizado"
+      de: "Akquisitionsseite auf die aktuelle Infrastruktur aktualisiert; Werkzeug-Index vollständig lokalisiert"
+      zh: "收购页面更新为当前基础设施；工具索引完成全面本地化"
+      ja: "取得ページを現行インフラに更新、ツール索引を完全ローカライズ"
+    summary:
+      en: "The acquisition page now describes the asset as it verifiably is — TSO v1, TDIS v1 with the Structure Fit Protocol, the Compass engine, the machine layer, and the public governance record — in all seven languages. The tools index dropped its English fallback: cards and system steps are now localized in every language."
+      ar: "تصف صفحة الاستحواذ الآن الأصل كما هو مثبت فعلًا — TSO v1 وTDIS v1 مع بروتوكول ملاءمة البنية ومحرك البوصلة وطبقة الآلة وسجل الحوكمة العلني — باللغات السبع كلها. وتخلص فهرس الأدوات من سقوطه إلى الإنجليزية: البطاقات وخطوات النظام مترجمة الآن في كل لغة."
+      fr: "La page d'acquisition décrit désormais l'actif tel qu'il est vérifiable — TSO v1, TDIS v1 avec le Structure Fit Protocol, le moteur Boussole, la couche machine et le registre de gouvernance public — dans les sept langues. L'index des outils a abandonné son repli vers l'anglais : cartes et étapes système sont désormais localisées dans chaque langue."
+      es: "La página de adquisición describe ahora el activo tal como es verificable — TSO v1, TDIS v1 con el Structure Fit Protocol, el motor Brújula, la capa máquina y el registro público de gobernanza — en los siete idiomas. El índice de herramientas abandonó su respaldo en inglés: las tarjetas y los pasos del sistema están ahora localizados en cada idioma."
+      de: "Die Akquisitionsseite beschreibt das Asset nun so, wie es nachprüfbar ist — TSO v1, TDIS v1 mit dem Structure Fit Protocol, die Kompass-Engine, die Maschinenebene und das öffentliche Governance-Register — in allen sieben Sprachen. Der Werkzeug-Index hat seinen englischen Fallback aufgegeben: Karten und Systemschritte sind jetzt in jeder Sprache lokalisiert."
+      zh: "收购页面现在以七种语言如实描述该资产的可验证现状——TSO v1、含结构适配协议的 TDIS v1、指南针引擎、机器层与公开治理记录。工具索引不再回退到英文：卡片与系统步骤现已在每种语言中本地化。"
+      ja: "取得ページは、TSO v1、構造適合プロトコルを含む TDIS v1、コンパスエンジン、マシンレイヤー、公開ガバナンス記録という検証可能な現状を、7言語すべてで記述するようになった。ツール索引は英語フォールバックを廃止し、カードとシステムステップは全言語でローカライズされた。"

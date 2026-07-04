@@ -1,7 +1,7 @@
 # ASSET_INTELLIGENCE_FACTORY_PLAN.md
 
 **Asset:** `tourvstravel.com` (TourVsTravel)
-**Plan version:** 1.0.4
+**Plan version:** 1.0.5
 **Plan date:** 2026-07-03
 **Revision note (1.0.1):** P0 executed same day — "200 destinations" claim retired
 (DECISIONS.md D-002), `GOVERNANCE.md`/`DECISIONS.md` added (D-003), claims-restraint
@@ -17,6 +17,9 @@ Page counts in this plan describe verified build output, reproducible with
 `python -m scripts.build`.
 **Revision note (1.0.4):** Compass v1 shipped (D-006) — first operating SFP
 implementation, seven languages, client-side, engine settings from tools_config.
+**Revision note (1.0.5):** Buyer-facing coherence (D-007) — acquire page updated to
+describe the published infrastructure in all seven languages; tools index card and
+system-step localization completed for fr/es/de/zh/ja.
 **Methodology:** Sovereign Asset System — Category Intelligence Factory model
 **Status:** Governing document. Changes to this plan are append/version only.
 

@@ -123,3 +123,23 @@ Procedure: see `GOVERNANCE.md` §6.
   output." The Compass converts the ontology and the standard from reference
   documents into an operating diagnostic experience, closing the loop
   engine → class pages → ontology → standard.
+
+## D-007 — Buyer-facing truth updated; tools index fully localized
+
+- **Date:** 2026-07-04
+- **Decision:** Two value-coherence fixes:
+  1. The `/acquire/` page's asset description and inclusion list are updated
+     in all seven languages to describe the asset as it now verifiably is:
+     TSO v1, TDIS v1 with the Structure Fit Protocol, the Compass engine,
+     the machine layer, and the public governance record — replacing copy
+     that predated the category infrastructure and loosely implied
+     destination comparisons and guides that are not yet published.
+  2. The tools index gains full card and system-step localization for
+     fr/es/de/zh/ja (previously falling back to English), with the Compass
+     card first in all seven languages.
+- **Rationale:** GOVERNANCE.md §1.5 makes `/acquire/` the reference example
+  of claims posture: it must neither overclaim nor underclaim. After D-004
+  and D-006 it underclaimed — the buyer-facing page described a poorer asset
+  than the audited one, which is the inverse of value maximization. The
+  localization completion serves §4.1: reference surfaces ship in all seven
+  languages, not five-sevenths in fallback English.

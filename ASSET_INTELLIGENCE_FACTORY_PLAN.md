@@ -1,7 +1,7 @@
 # ASSET_INTELLIGENCE_FACTORY_PLAN.md
 
 **Asset:** `tourvstravel.com` (TourVsTravel)
-**Plan version:** 1.0.6
+**Plan version:** 1.0.7
 **Plan date:** 2026-07-03
 **Revision note (1.0.1):** P0 executed same day — "200 destinations" claim retired
 (DECISIONS.md D-002), `GOVERNANCE.md`/`DECISIONS.md` added (D-003), claims-restraint
@@ -24,6 +24,10 @@ system-step localization completed for fr/es/de/zh/ja.
 ×7 languages with family-fit priors, official sources, and a missing/phantom-page
 build gate. Site now 330 pages, 0 broken internal links. Comparison pages and the
 Compass destination input are the next tranche.
+**Revision note (1.0.7):** Pre-P3 closures (D-009) — machine layer unified under
+`/api/index.json` with a bidirectional shipped-vs-listed gate, Compass engine spec
+and destinations batch added to the machine mirror, sitemap x-default aligned with
+the site-wide hreflang policy and gated against drift.
 **Methodology:** Sovereign Asset System — Category Intelligence Factory model
 **Status:** Governing document. Changes to this plan are append/version only.
 

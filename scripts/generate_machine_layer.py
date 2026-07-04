@@ -43,9 +43,21 @@ from scripts.generate_category_infrastructure import (
     load_ontology_structures,
     load_standard_criteria,
 )
+from scripts.generate_compass import (
+    AXIS_QUESTION_ORDER,
+    BAND_LABELS,
+    PROFILE_OPTION_TEXT,
+    PROFILE_ORDER,
+    TOOL_SLUG as COMPASS_SLUG,
+    VALUE_LABELS,
+    _load_engine_settings,
+)
+from scripts.generate_destination_pages import load_governed_destinations
 from scripts.loaders import load_site_config
 from scripts.routes import (
     build_changelog_path,
+    build_destination_path,
+    build_destinations_index_path,
     build_experience_type_path,
     build_ontology_path,
     build_standard_path,
@@ -123,6 +135,7 @@ def _artifact_header(
         "canonical_pages": dict(canonical_pages),
         "generated_from": list(generated_from),
         "stability": "append-only; published versions never change meaning",
+        "machine_index": "/api/index.json",
         "usage": USAGE_NOTE,
     }
 
@@ -239,6 +252,127 @@ def build_criteria_payload(
     return payload
 
 
+def build_compass_payload(site_config: Mapping[str, Any]) -> Dict[str, Any]:
+    """Machine mirror of the shipped Compass engine: same bands, axes,
+    profiles, and labels the client-side implementation uses."""
+    base = _base_url(site_config)
+    engine = _load_engine_settings()
+    payload = _artifact_header(
+        artifact="Travel Decision Compass Engine Specification",
+        artifact_id="compass",
+        version="1.0.0",
+        canonical_pages={
+            lang: f"{base}/{lang}/tools/{COMPASS_SLUG}/" for lang in SUPPORTED_LANGUAGES
+        },
+        generated_from=[
+            "data/tools_config.yaml",
+            "data/experience_types.yaml",
+            "scripts/generate_compass.py",
+        ],
+    )
+    payload["implements"] = "Structure Fit Protocol (TDIS v1)"
+    payload["execution"] = (
+        "Client-side only: the engine runs in the visitor's browser with no "
+        "network calls, storage, or tracking. This artifact documents the "
+        "engine; it is not a hosted scoring API."
+    )
+    payload["scoring"] = {
+        "method": "axis-proximity plus traveler-profile affinity over all 17 TSO structures",
+        "axes": list(AXIS_QUESTION_ORDER),
+        "traveler_profiles": [
+            {"id": key, "label": dict(PROFILE_OPTION_TEXT[key])} for key in PROFILE_ORDER
+        ],
+        "value_labels": {value: dict(labels) for value, labels in VALUE_LABELS.items()},
+        "score_range": {"min": 0, "max": 100},
+        "score_bands": [
+            {**band, "label": dict(BAND_LABELS[band["key"]])} for band in engine["bands"]
+        ],
+        "max_results": engine["max_results"],
+        "priors_note": "Outputs are structural priors under TDIS rule priors-context; no universal winner is declared.",
+    }
+    payload["structures_endpoint_template"] = "/api/structures/{slug}.json"
+    payload["v2_contract"] = (
+        "Destination input (destination_select in tools_config) activates "
+        "against the governed destinations dataset (DECISIONS.md D-006, D-008)."
+    )
+    return payload
+
+
+def build_destinations_payload(site_config: Mapping[str, Any]) -> Dict[str, Any]:
+    """Machine mirror of the governed destinations batch."""
+    destinations = load_governed_destinations()
+    payload = _artifact_header(
+        artifact="Governed Destinations Batch",
+        artifact_id="destinations",
+        version="1.0.0",
+        canonical_pages=_lang_page_map(site_config, build_destinations_index_path),
+        generated_from=["data/destinations.yaml"],
+    )
+    payload["batch"] = 1
+    payload["destination_count"] = len(destinations)
+    payload["family_fit_note"] = (
+        "family_fit values are structural priors per TSO family "
+        "(TDIS rule priors-context), not verdicts or rankings."
+    )
+    payload["destinations"] = [
+        {
+            "id": dest["id"],
+            "order": dest["order"],
+            "name": dict(dest["name"]),
+            "region": dict(dest["region"]),
+            "summary": dict(dest["summary"]),
+            "family_fit": dict(dest["family_fit"]),
+            "best_seasons": dict(dest["best_seasons"]),
+            "typical_duration": dict(dest["typical_duration"]),
+            "sources": [dict(source) for source in dest["sources"]],
+            "reference_pages": {
+                lang: build_destination_path(site_config, lang, dest["id"], absolute=True)
+                for lang in SUPPORTED_LANGUAGES
+            },
+        }
+        for dest in destinations
+    ]
+    return payload
+
+
+def build_index_payload(
+    structures: Sequence[Mapping[str, Any]],
+) -> Dict[str, Any]:
+    """The unified machine directory: one endpoint that lists every machine
+    artifact the asset publishes. The build contract enforces that this list
+    and the shipped files match exactly, in both directions."""
+    structure_endpoints = [
+        f"/api/structures/{structure['slug']}.json" for structure in structures
+    ]
+    return {
+        "artifact": "Machine Layer Index",
+        "artifact_id": "machine-index",
+        "version": "1.0.0",
+        "issued_by": "TourVsTravel.com",
+        "stability": "append-only; published versions never change meaning",
+        "machine_index": "/api/index.json",
+        "usage": USAGE_NOTE,
+        "artifacts": [
+            {"id": "machine-index", "artifact": "Machine Layer Index", "endpoint": "/api/index.json"},
+            {"id": "about", "artifact": "Asset identity", "endpoint": "/about.json"},
+            {"id": "tso", "artifact": "Travel Structure Ontology", "version": TSO_VERSION,
+             "endpoint": "/ontology/tso-v1.json"},
+            {"id": "tdis", "artifact": "Travel Decision Integrity Standard", "version": TDIS_VERSION,
+             "endpoint": "/standard/tdis-v1.json"},
+            {"id": "tdis-criteria", "artifact": "TDIS Comparison Criteria", "version": TDIS_VERSION,
+             "endpoint": "/api/criteria-v1.json"},
+            {"id": "compass", "artifact": "Travel Decision Compass Engine Specification",
+             "version": "1.0.0", "endpoint": "/api/compass-v1.json"},
+            {"id": "destinations", "artifact": "Governed Destinations Batch", "version": "1.0.0",
+             "endpoint": "/api/destinations-v1.json"},
+            {"id": "tso-classes", "artifact": "Per-class ontology artifacts",
+             "version": TSO_VERSION,
+             "endpoint_template": "/api/structures/{slug}.json",
+             "endpoints": structure_endpoints},
+        ],
+    }
+
+
 def build_about_payload(
     site_config: Mapping[str, Any],
     structures: Sequence[Mapping[str, Any]],
@@ -279,6 +413,21 @@ def build_about_payload(
                 "name": "Per-class ontology artifacts",
                 "endpoint_template": "/api/structures/{slug}.json",
                 "slugs": [structure["slug"] for structure in structures],
+            },
+            "compass": {
+                "name": "Travel Decision Compass Engine Specification",
+                "version": "1.0.0",
+                "endpoint": "/api/compass-v1.json",
+            },
+            "destinations": {
+                "name": "Governed Destinations Batch",
+                "version": "1.0.0",
+                "endpoint": "/api/destinations-v1.json",
+            },
+            "machine_index": {
+                "name": "Machine Layer Index",
+                "version": "1.0.0",
+                "endpoint": "/api/index.json",
             },
         },
         "governance": {
@@ -331,6 +480,18 @@ def generate_machine_layer(*, output_dir: Path = DEFAULT_OUTPUT_DIR) -> List[Pat
         structure_path = safe_output_dir / "api" / "structures" / f"{structure['slug']}.json"
         _atomic_write_json(structure_path, structure_payload)
         written.append(structure_path)
+
+    compass_path = safe_output_dir / "api" / "compass-v1.json"
+    _atomic_write_json(compass_path, build_compass_payload(site_config))
+    written.append(compass_path)
+
+    destinations_path = safe_output_dir / "api" / "destinations-v1.json"
+    _atomic_write_json(destinations_path, build_destinations_payload(site_config))
+    written.append(destinations_path)
+
+    index_path = safe_output_dir / "api" / "index.json"
+    _atomic_write_json(index_path, build_index_payload(structures))
+    written.append(index_path)
 
     about_path = safe_output_dir / "about.json"
     _atomic_write_json(about_path, build_about_payload(site_config, structures, changelog_entries))

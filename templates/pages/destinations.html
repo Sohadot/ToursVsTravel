@@ -130,7 +130,21 @@
     </div>
   </section>
 
-  <section class="destinations-final" aria-labelledby="destinations-final-title">
+    <section class="travel-architecture-section" aria-labelledby="destinations-batch-title">
+    <h2 id="destinations-batch-title">{{ copy.batch_title }} ({{ destination_cards | length }})</h2>
+    <p>{{ copy.batch_lead }}</p>
+    <div class="travel-architecture-system-map__grid">
+      {% for card in destination_cards %}
+      <a class="travel-architecture-layer-card" href="{{ card.url }}">
+        <strong>{{ card.name }}</strong>
+        <span>{{ card.region }}</span>
+        <span>{{ copy.open_label }}</span>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+
+<section class="destinations-final" aria-labelledby="destinations-final-title">
     <div class="destinations-final__inner">
       <p class="destinations-section__kicker">{{ copy.final_kicker }}</p>
       <h2 id="destinations-final-title">{{ copy.final_title }}</h2>

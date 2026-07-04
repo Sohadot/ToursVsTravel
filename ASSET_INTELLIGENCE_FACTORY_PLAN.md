@@ -1,7 +1,7 @@
 # ASSET_INTELLIGENCE_FACTORY_PLAN.md
 
 **Asset:** `tourvstravel.com` (TourVsTravel)
-**Plan version:** 1.0.5
+**Plan version:** 1.0.6
 **Plan date:** 2026-07-03
 **Revision note (1.0.1):** P0 executed same day — "200 destinations" claim retired
 (DECISIONS.md D-002), `GOVERNANCE.md`/`DECISIONS.md` added (D-003), claims-restraint
@@ -20,6 +20,10 @@ implementation, seven languages, client-side, engine settings from tools_config.
 **Revision note (1.0.5):** Buyer-facing coherence (D-007) — acquire page updated to
 describe the published infrastructure in all seven languages; tools index card and
 system-step localization completed for fr/es/de/zh/ja.
+**Revision note (1.0.6):** Destinations governed batch 1 (D-008) — 10 destinations
+×7 languages with family-fit priors, official sources, and a missing/phantom-page
+build gate. Site now 330 pages, 0 broken internal links. Comparison pages and the
+Compass destination input are the next tranche.
 **Methodology:** Sovereign Asset System — Category Intelligence Factory model
 **Status:** Governing document. Changes to this plan are append/version only.
 
@@ -54,7 +58,7 @@ What the asset already is — verified, not aspirational:
 | i18n | **Strong** | 7 languages (en, ar, fr, es, de, zh, ja), full hreflang + x-default, RTL support |
 | Link integrity | **Verified + gated** | 232 generated pages, 226 unique internal hrefs, **0 broken internal links** (scan on plan date); build already fails on broken links via `_verify_local_links` |
 | Buyer logic | **Exists** | `/acquire/` page with explicit non-claims section |
-| Destinations | **Not published** | no `data/destinations.yaml`; destinations index exists but zero destination pages |
+| Destinations | **Published (batch 1)** | `data/destinations.yaml` v1: 10 destinations ×7 languages, family-fit priors, official sources; contract-gated pages (D-008) |
 | Comparison pages | **Not published** | route family exists (`/{lang}/{destination}/{a}--vs--{b}/`), no pages generated |
 | Machine layer | **Absent** | no JSON endpoints, no agent-readable exports |
 | Versioning artifacts | **Absent** | no public changelog, no decision log |
@@ -393,7 +397,8 @@ vocabulary is owned by someone else.
 **P2 — Operate the engine (1–2 months):**
 - [x] Ship Travel Decision Compass (client-side, SFP-conformant, outputs linked to class pages) — shipped 2026-07-04 (D-006), 7 languages, engine settings read from tools_config.
 - [ ] Ship Cost Comparator (bands only).
-- [ ] Destinations dataset v1 (governed size — e.g., 20 destinations done to standard beats 200 stubs) + first governed batch of comparison pages.
+- [x] Destinations dataset v1 — batch 1 shipped 2026-07-04 (D-008): 10 destinations to standard.
+- [ ] First governed batch of comparison pages (builds on the destinations dataset).
 
 **P3 — Monetize + measure (2–4 months):**
 - [ ] Structure Fit Report (paid) + disclosed affiliate resolution layer.

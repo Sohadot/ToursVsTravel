@@ -1,0 +1,57 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+<article class="travel-architecture-page container" dir="{{ page_dir }}">
+  <header class="travel-architecture-hero">
+    <p class="travel-architecture-hero__eyebrow">{{ copy.region_label }}: {{ destination.region }}</p>
+    <h1>{{ destination.name }}</h1>
+    <p class="travel-architecture-hero__lead">{{ copy.lead_suffix }}</p>
+    <p class="travel-architecture-hero__statement">{{ destination.summary }}</p>
+  </header>
+
+  <section class="travel-architecture-section travel-architecture-definition" aria-labelledby="destination-fit-title">
+    <h2 id="destination-fit-title">{{ copy.fit_heading }}</h2>
+    <p>{{ copy.fit_intro }}</p>
+    <ul>
+      {% for family in family_fit %}
+      <li>
+        <strong>{{ family.label }}</strong> — {{ family.fit_label }} <code>{{ family.fit_value }}</code>
+        <br>{{ copy.structures_in_family_label }}:
+        {% for member in family.members %}
+        <a href="{{ member.url }}">{{ member.label }}</a>{% if not loop.last %} · {% endif %}
+        {% endfor %}
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="travel-architecture-section" aria-labelledby="destination-facts-title">
+    <h2 id="destination-facts-title">{{ copy.facts_heading }}</h2>
+    <ul>
+      <li><strong>{{ copy.seasons_label }}</strong> — {{ destination.best_seasons }}</li>
+      <li><strong>{{ copy.duration_label }}</strong> — {{ destination.typical_duration }}</li>
+      <li><strong>{{ copy.region_label }}</strong> — {{ destination.region }}</li>
+    </ul>
+  </section>
+
+  <section class="travel-architecture-section" aria-labelledby="destination-sources-title">
+    <h2 id="destination-sources-title">{{ copy.sources_heading }}</h2>
+    <p>{{ copy.sources_intro }}</p>
+    <ul>
+      {% for source in destination.sources %}
+      <li><a href="{{ source.url }}" rel="noopener external" target="_blank">{{ source.label }}</a></li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="travel-architecture-section travel-architecture-scope" aria-labelledby="destination-next-title">
+    <h2 id="destination-next-title">{{ copy.next_heading }}</h2>
+    <p>{{ copy.next_intro }}</p>
+    <div class="travel-architecture-system-map__grid">
+      <a class="travel-architecture-layer-card" href="/{{ lang }}/tools/travel-decision-compass/">{{ copy.link_compass }}</a>
+      <a class="travel-architecture-layer-card" href="{{ url_ontology }}">{{ copy.link_ontology }}</a>
+      <a class="travel-architecture-layer-card" href="{{ url_destinations_index }}">{{ copy.link_destinations }}</a>
+    </div>
+  </section>
+</article>
+{% endblock %}

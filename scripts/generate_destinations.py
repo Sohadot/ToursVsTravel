@@ -25,6 +25,9 @@ from urllib.parse import urlparse
 
 from jinja2 import Environment, FileSystemLoader, StrictUndefined, TemplateError, select_autoescape
 
+from scripts.generate_destination_pages import load_governed_destinations
+from scripts.routes import build_destination_path
+
 from scripts.loaders import (
     load_experience_types,
     load_site_config,
@@ -67,6 +70,9 @@ class DestinationsWriteError(GenerateDestinationsError):
 
 PAGE_COPY: Dict[str, Dict[str, str]] = {
     "en": {
+        "batch_title": "Destinations in the reference system",
+        "batch_lead": "Each destination ships interpreted through travel structures, with all seven languages, structural priors, and official sources. Batches grow under governance — never as thin-page floods.",
+        "open_label": "Open destination",
         "eyebrow": "Destination Interpretation · Travel Style Context · Decision Layer",
         "title": "The Same Place Is Not the Same Trip",
         "lead": "TourVsTravel treats destinations as interpreted environments, not static points on a map. The same city, coast, region, or route changes depending on whether it is entered through a guided tour, independent travel, family travel, luxury travel, slow travel, or backpacking.",
@@ -99,6 +105,9 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "final_lead": "A destination only becomes meaningful when it is interpreted through constraints, autonomy, support, burden, depth, and predictability.",
     },
     "ar": {
+        "batch_title": "الوجهات في النظام المرجعي",
+        "batch_lead": "كل وجهة تُنشر مقروءة عبر بنى السفر، بسبع لغات كاملة وافتراضات بنيوية ومصادر رسمية. تنمو الدفعات تحت الحوكمة — لا كطوفان صفحات هشة أبدًا.",
+        "open_label": "افتح الوجهة",
         "eyebrow": "تفسير الوجهات · سياق نمط السفر · طبقة قرار",
         "title": "نفس المكان ليس نفس الرحلة",
         "lead": "يتعامل TourVsTravel مع الوجهات كبيئات تُفسَّر حسب نمط السفر، لا كنقاط ثابتة على الخريطة. فالمدينة أو الساحل أو المنطقة نفسها تتغير عندما تُعاش عبر جولة منظمة أو سفر مستقل أو سفر عائلي أو سفر فاخر أو سفر بطيء أو backpacking.",
@@ -131,6 +140,9 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "final_lead": "تصبح الوجهة ذات معنى عندما تُفهم عبر القيود، الاستقلالية، الدعم، العبء، العمق، وقابلية التوقع.",
     },
     "fr": {
+        "batch_title": "Destinations du système de référence",
+        "batch_lead": "Chaque destination est publiée interprétée à travers les structures de voyage, avec les sept langues, des a priori structurels et des sources officielles. Les lots croissent sous gouvernance — jamais en flots de pages creuses.",
+        "open_label": "Ouvrir la destination",
         "eyebrow": "Interprétation des destinations · contexte de style · couche de décision",
         "title": "Le même lieu n’est pas le même voyage",
         "lead": "TourVsTravel traite les destinations comme des environnements interprétés par le style de voyage, pas comme de simples points sur une carte.",
@@ -163,6 +175,9 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "final_lead": "Une destination devient intelligible par les contraintes, l’autonomie, le soutien, la charge, la profondeur et la prévisibilité.",
     },
     "es": {
+        "batch_title": "Destinos en el sistema de referencia",
+        "batch_lead": "Cada destino se publica interpretado a través de estructuras de viaje, con los siete idiomas, priores estructurales y fuentes oficiales. Los lotes crecen bajo gobernanza, nunca como aluviones de páginas vacías.",
+        "open_label": "Abrir destino",
         "eyebrow": "Interpretación de destinos · contexto de estilo · capa de decisión",
         "title": "El mismo lugar no es el mismo viaje",
         "lead": "TourVsTravel trata los destinos como entornos interpretados por el estilo de viaje, no como puntos estáticos.",
@@ -195,6 +210,9 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "final_lead": "Un destino se vuelve significativo mediante restricciones, autonomía, apoyo, carga, profundidad y previsibilidad.",
     },
     "de": {
+        "batch_title": "Reiseziele im Referenzsystem",
+        "batch_lead": "Jedes Ziel erscheint durch Reisestrukturen interpretiert, mit allen sieben Sprachen, strukturellen Prioren und offiziellen Quellen. Chargen wachsen unter Governance — nie als Flut dünner Seiten.",
+        "open_label": "Ziel öffnen",
         "eyebrow": "Destinationsdeutung · Reisestil-Kontext · Entscheidungsebene",
         "title": "Derselbe Ort ist nicht dieselbe Reise",
         "lead": "TourVsTravel behandelt Destinationen als durch Reisestile interpretierte Umgebungen, nicht als statische Kartenpunkte.",
@@ -227,6 +245,9 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "final_lead": "Eine Destination wird durch Einschränkungen, Autonomie, Unterstützung, Last, Tiefe und Vorhersehbarkeit verständlich.",
     },
     "zh": {
+        "batch_title": "参考系统中的目的地",
+        "batch_lead": "每个目的地都通过旅行结构进行解读后发布，配有全部七种语言、结构性先验与官方来源。批次在治理下增长——绝不以贫瘠页面泛滥。",
+        "open_label": "打开目的地",
         "eyebrow": "目的地解释 · 旅行方式语境 · 决策层",
         "title": "同一个地方，不是同一次旅行",
         "lead": "TourVsTravel 将目的地视为由旅行方式解释的环境，而不是地图上的静态点。",
@@ -259,6 +280,9 @@ PAGE_COPY: Dict[str, Dict[str, str]] = {
         "final_lead": "目的地通过限制、自主、支持、负担、深度和可预测性变得有意义。",
     },
     "ja": {
+        "batch_title": "リファレンスシステム内の目的地",
+        "batch_lead": "各目的地は旅行構造で解読され、7言語すべて、構造的事前値、公式ソースとともに公開される。バッチはガバナンスの下で成長し、薄いページの氾濫には決してならない。",
+        "open_label": "目的地を開く",
         "eyebrow": "目的地解釈 · 旅行スタイル文脈 · 意思決定レイヤー",
         "title": "同じ場所は、同じ旅ではない",
         "lead": "TourVsTravel は、目的地を地図上の静的な点ではなく、旅行スタイルによって解釈される環境として扱います。",
@@ -679,6 +703,14 @@ def _build_context(site_config: Mapping[str, Any], styles_payload: Mapping[str, 
         "copy": copy,
         "style_count": len(_style_items(styles_payload)) or 17,
         "destination_lenses": _destination_lenses(lang),
+        "destination_cards": [
+            {
+                "name": dest["name"][lang],
+                "region": dest["region"][lang],
+                "url": build_destination_path(site_config, lang, dest["id"], absolute=False),
+            }
+            for dest in load_governed_destinations()
+        ],
         "style_lenses": _style_lenses(styles_payload, lang),
         "method_cards": _method_cards(lang),
         "interpretation_steps": _interpretation_steps(lang),

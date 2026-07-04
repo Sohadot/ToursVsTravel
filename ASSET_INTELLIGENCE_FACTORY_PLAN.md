@@ -1,7 +1,7 @@
 # ASSET_INTELLIGENCE_FACTORY_PLAN.md
 
 **Asset:** `tourvstravel.com` (TourVsTravel)
-**Plan version:** 1.0.1
+**Plan version:** 1.0.4
 **Plan date:** 2026-07-03
 **Revision note (1.0.1):** P0 executed same day — "200 destinations" claim retired
 (DECISIONS.md D-002), `GOVERNANCE.md`/`DECISIONS.md` added (D-003), claims-restraint
@@ -15,6 +15,8 @@ page families and JSON artifacts. Site now 253 pages, 0 broken internal links.
 version control; the deploy pipeline is the sole producer of build artifacts.
 Page counts in this plan describe verified build output, reproducible with
 `python -m scripts.build`.
+**Revision note (1.0.4):** Compass v1 shipped (D-006) — first operating SFP
+implementation, seven languages, client-side, engine settings from tools_config.
 **Methodology:** Sovereign Asset System — Category Intelligence Factory model
 **Status:** Governing document. Changes to this plan are append/version only.
 
@@ -386,7 +388,7 @@ vocabulary is owned by someone else.
 - [x] Public changelog page (`/{lang}/changelog/`, rendered from append-only `data/changelog.yaml`).
 
 **P2 — Operate the engine (1–2 months):**
-- [ ] Ship Travel Decision Compass (client-side, SFP-conformant, outputs linked to class pages).
+- [x] Ship Travel Decision Compass (client-side, SFP-conformant, outputs linked to class pages) — shipped 2026-07-04 (D-006), 7 languages, engine settings read from tools_config.
 - [ ] Ship Cost Comparator (bands only).
 - [ ] Destinations dataset v1 (governed size — e.g., 20 destinations done to standard beats 200 stubs) + first governed batch of comparison pages.
 

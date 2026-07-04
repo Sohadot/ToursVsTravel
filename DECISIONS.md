@@ -99,3 +99,27 @@ Procedure: see `GOVERNANCE.md` §6.
   artifact editing that GOVERNANCE.md forbids. Removing the artifact from
   tracking eliminates the conflict class at the root and makes the repository
   state equal to the governed inputs, nothing else.
+
+## D-006 — Travel Decision Compass v1 shipped (P2, engine layer)
+
+- **Date:** 2026-07-04
+- **Decision:** The Travel Decision Compass ships at
+  `/{lang}/tools/travel-decision-compass/` in seven languages as the first
+  operating implementation of the Structure Fit Protocol. Seven questions map
+  the traveler onto the six structural axes plus one of the six ontology
+  traveler profiles; all seventeen TSO structures are scored by axis
+  proximity and profile affinity; the top results return with fit bands,
+  aligned axes, explicit tradeoffs, TSO citations, and links to the class
+  pages used. Score bands and result count are read from
+  `data/tools_config.yaml` (evaluation_model), structures from the canonical
+  ontology dataset. The engine is fully client-side: no network calls, no
+  storage, no tracking.
+- **Scope note:** v1 diagnoses traveler-constraint fit only. The
+  `destination_select` input configured for this tool in tools_config is the
+  v2 contract; it activates when the governed destinations dataset ships
+  (plan P2). Every diagnosis is labeled a structural prior under TDIS rule
+  priors-context, and no universal winner is ever declared.
+- **Rationale:** Plan §7: "the visitor does not only read; they get an
+  output." The Compass converts the ontology and the standard from reference
+  documents into an operating diagnostic experience, closing the loop
+  engine → class pages → ontology → standard.

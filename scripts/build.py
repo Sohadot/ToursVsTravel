@@ -101,6 +101,11 @@ from scripts.generate_experience_types import (
     GenerateExperienceTypesError,
     generate_experience_type_pages,
 )
+from scripts.generate_destination_pages import (
+    GenerateDestinationPagesError,
+    generate_destination_detail_pages,
+    load_governed_destinations,
+)
 from scripts.generate_compass import (
     GenerateCompassError,
     generate_compass_pages,
@@ -550,6 +555,16 @@ def _run_machine_layer_generation(*, stage_dir: Path) -> int:
     return count
 
 
+def _run_destination_detail_generation(*, stage_dir: Path) -> int:
+    written = generate_destination_detail_pages(
+        requested_lang=None,
+        output_dir=stage_dir,
+    )
+    count = len(written)
+    log.info("Generated destination detail pages: %d", count)
+    return count
+
+
 def _run_compass_generation(*, stage_dir: Path) -> int:
     written = generate_compass_pages(
         requested_lang=None,
@@ -907,6 +922,32 @@ def _verify_experience_type_count(stage_dir: Path) -> None:
         )
 
 
+def _verify_destination_pages_contract(stage_dir: Path) -> None:
+    """
+    Every enabled destination in the governed dataset must have a page in
+    every supported language — and no phantom destination pages may exist
+    beyond the dataset.
+    """
+    expected_ids = {dest["id"] for dest in load_governed_destinations()}
+    if not expected_ids:
+        raise BuildStepError("Governed destinations dataset is empty.")
+
+    for lang in SUPPORTED_LANGUAGES:
+        dest_dir = stage_dir / lang / "destinations"
+        _require_dir(dest_dir)
+        found_ids = {p.parent.name for p in dest_dir.glob("*/index.html")}
+        missing = expected_ids - found_ids
+        if missing:
+            raise BuildStepError(
+                f"Missing destination pages for {lang}: {sorted(missing)}"
+            )
+        phantom = found_ids - expected_ids
+        if phantom:
+            raise BuildStepError(
+                f"Phantom destination pages for {lang} not backed by the dataset: {sorted(phantom)}"
+            )
+
+
 def _verify_machine_layer_contract(stage_dir: Path) -> None:
     """
     The machine layer must ship complete or not at all: the versioned
@@ -1011,6 +1052,7 @@ def _verify_output_contract(stage_dir: Path) -> None:
 
     _require_file(stage_dir / "en" / "styles" / "guided-group-tour" / "index.html")
 
+    _verify_destination_pages_contract(stage_dir)
     _verify_machine_layer_contract(stage_dir)
     _verify_trust_pages_are_indexable(stage_dir)
     _verify_experience_type_count(stage_dir)
@@ -1126,55 +1168,58 @@ def run_build(
         log.info("Step 9: Generate multilingual destinations pages")
         _run_destinations_generation(stage_dir=stage_dir)
 
-        log.info("Step 10: Generate multilingual experience type pages")
+        log.info("Step 10: Generate destination detail pages (governed batch)")
+        _run_destination_detail_generation(stage_dir=stage_dir)
+
+        log.info("Step 11: Generate multilingual experience type pages")
         _run_experience_type_generation(stage_dir=stage_dir)
 
-        log.info("Step 11: Generate multilingual reference report pages")
+        log.info("Step 12: Generate multilingual reference report pages")
         _run_report_generation(stage_dir=stage_dir)
 
-        log.info("Step 12: Generate contact pages and legacy /reports/ redirects")
+        log.info("Step 13: Generate contact pages and legacy /reports/ redirects")
         _run_contact_generation(stage_dir=stage_dir)
 
-        log.info("Step 13: Generate multilingual about pages")
+        log.info("Step 14: Generate multilingual about pages")
         _run_about_generation(stage_dir=stage_dir)
 
-        log.info("Step 14: Generate multilingual privacy pages")
+        log.info("Step 15: Generate multilingual privacy pages")
         _run_privacy_generation(stage_dir=stage_dir)
 
-        log.info("Step 15: Generate multilingual acquire pages")
+        log.info("Step 16: Generate multilingual acquire pages")
         _run_acquire_generation(stage_dir=stage_dir)
 
-        log.info("Step 16: Generate multilingual source policy pages")
+        log.info("Step 17: Generate multilingual source policy pages")
         _run_source_policy_generation(stage_dir=stage_dir)
 
-        log.info("Step 17: Generate multilingual editorial standards pages")
+        log.info("Step 18: Generate multilingual editorial standards pages")
         _run_editorial_standards_generation(stage_dir=stage_dir)
 
-        log.info("Step 18: Generate multilingual Travel Decision Architecture pages")
+        log.info("Step 19: Generate multilingual Travel Decision Architecture pages")
         _run_travel_decision_architecture_generation(stage_dir=stage_dir)
 
-        log.info("Step 19: Generate category infrastructure pages (ontology, standard, changelog)")
+        log.info("Step 20: Generate category infrastructure pages (ontology, standard, changelog)")
         _run_category_infrastructure_generation(stage_dir=stage_dir)
 
-        log.info("Step 20: Generate machine layer artifacts (agent-readable JSON)")
+        log.info("Step 21: Generate machine layer artifacts (agent-readable JSON)")
         _run_machine_layer_generation(stage_dir=stage_dir)
 
-        log.info("Step 21: Generate Travel Decision Compass pages")
+        log.info("Step 22: Generate Travel Decision Compass pages")
         _run_compass_generation(stage_dir=stage_dir)
 
-        log.info("Step 22: Generate robots.txt")
+        log.info("Step 23: Generate robots.txt")
         _run_robots_generation(stage_dir=stage_dir)
 
-        log.info("Step 23: Generate sitemap.xml")
+        log.info("Step 24: Generate sitemap.xml")
         _run_sitemap_generation(stage_dir=stage_dir)
 
-        log.info("Step 24: Create .nojekyll")
+        log.info("Step 25: Create .nojekyll")
         _write_nojekyll(stage_dir)
 
-        log.info("Step 25: Verify staged output")
+        log.info("Step 26: Verify staged output")
         _verify_output_contract(stage_dir)
 
-        log.info("Step 26: Promote staged output")
+        log.info("Step 27: Promote staged output")
         _promote_stage_to_final(stage_dir, final_output_dir)
 
     except Exception:

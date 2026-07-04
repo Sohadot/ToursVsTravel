@@ -148,3 +148,23 @@ entries:
       de: "Die Akquisitionsseite beschreibt das Asset nun so, wie es nachprüfbar ist — TSO v1, TDIS v1 mit dem Structure Fit Protocol, die Kompass-Engine, die Maschinenebene und das öffentliche Governance-Register — in allen sieben Sprachen. Der Werkzeug-Index hat seinen englischen Fallback aufgegeben: Karten und Systemschritte sind jetzt in jeder Sprache lokalisiert."
       zh: "收购页面现在以七种语言如实描述该资产的可验证现状——TSO v1、含结构适配协议的 TDIS v1、指南针引擎、机器层与公开治理记录。工具索引不再回退到英文：卡片与系统步骤现已在每种语言中本地化。"
       ja: "取得ページは、TSO v1、構造適合プロトコルを含む TDIS v1、コンパスエンジン、マシンレイヤー、公開ガバナンス記録という検証可能な現状を、7言語すべてで記述するようになった。ツール索引は英語フォールバックを廃止し、カードとシステムステップは全言語でローカライズされた。"
+
+  - id: "2026-07-04-destinations-batch-1"
+    date: "2026-07-04"
+    decision_ref: "D-008"
+    title:
+      en: "Destinations governed batch 1 published"
+      ar: "نشر الدفعة المحكومة الأولى من الوجهات"
+      fr: "Publication du premier lot gouverné de destinations"
+      es: "Publicación del primer lote gobernado de destinos"
+      de: "Erste regelgeleitete Reiseziel-Charge veröffentlicht"
+      zh: "发布第一批受治理目的地"
+      ja: "統治された目的地バッチ1を公開"
+    summary:
+      en: "Ten destinations joined the reference system, each interpreted through travel structures rather than attractions: seven-language coverage, family-fit structural priors mapped to the ontology, official tourism-body sources, and a build gate that forbids missing or phantom destination pages."
+      ar: "انضمت عشر وجهات إلى النظام المرجعي، كل منها مقروءة عبر بنى السفر لا عبر المعالم: تغطية بسبع لغات، وافتراضات بنيوية لملاءمة العائلات مربوطة بالأنطولوجيا، ومصادر هيئات سياحة رسمية، وبوابة بناء تمنع الصفحات الناقصة أو الوهمية."
+      fr: "Dix destinations ont rejoint le système de référence, chacune interprétée à travers les structures de voyage plutôt que les attractions : couverture en sept langues, a priori structurels d'adéquation par famille reliés à l'ontologie, sources officielles des organismes de tourisme, et une barrière de build interdisant les pages manquantes ou fantômes."
+      es: "Diez destinos se incorporaron al sistema de referencia, cada uno interpretado a través de estructuras de viaje y no de atracciones: cobertura en siete idiomas, priores estructurales de ajuste por familia vinculados a la ontología, fuentes oficiales de organismos de turismo y una barrera de build que prohíbe páginas faltantes o fantasma."
+      de: "Zehn Reiseziele traten dem Referenzsystem bei, jedes durch Reisestrukturen statt Attraktionen interpretiert: Abdeckung in sieben Sprachen, strukturelle Familien-Passungsprioren mit Ontologie-Anbindung, offizielle Tourismus-Quellen und ein Build-Gate, das fehlende oder Phantom-Seiten verbietet."
+      zh: "十个目的地加入参考系统，每个都通过旅行结构而非景点来解读：七种语言覆盖、与本体关联的家族适配结构性先验、官方旅游机构来源，以及禁止缺失或幻影页面的构建关卡。"
+      ja: "10の目的地がリファレンスシステムに加わった。それぞれ観光名所ではなく旅行構造で解読されている。7言語のカバレッジ、オントロジーに紐づくファミリー適合の構造的事前値、公式観光機関のソース、そして欠落ページや幻のページを禁じるビルドゲートを備える。"

@@ -143,3 +143,27 @@ Procedure: see `GOVERNANCE.md` §6.
   than the audited one, which is the inverse of value maximization. The
   localization completion serves §4.1: reference surfaces ship in all seven
   languages, not five-sevenths in fallback English.
+
+## D-008 — Destinations governed batch 1 published (P2)
+
+- **Date:** 2026-07-04
+- **Decision:** `data/destinations.yaml` v1 ships with ten destinations
+  (Japan, Spain, Italy, France, Greece, Türkiye, Morocco, Thailand, Egypt,
+  Portugal), each carrying: name/region/summary/seasons/duration in all
+  seven languages, six family-fit structural priors mapped to the TSO
+  families, and an official tourism-body source. Detail pages render at
+  `/{lang}/destinations/{id}/` through the travel-structure lens — the
+  destination is interpreted, not described as attractions — with a link
+  spine into the ontology class pages and the Compass. The destinations
+  index lists the batch with a count derived from the dataset at build
+  time. A new output-contract gate fails the build if any enabled
+  destination lacks a page in any language, or if any phantom destination
+  page exists beyond the dataset.
+- **Scope note:** Comparison pages ("X vs Y in Z") and the Compass
+  destination input remain the next tranche of this battle; they build on
+  this dataset and ship as their own governed batch.
+- **Rationale:** Plan P2 and GOVERNANCE §3.3: batches at the quality bar,
+  never floods. Ten destinations done to standard — every claim in them
+  sourced or labeled a prior — retire the audit table's largest "not
+  published" row while honoring D-002's promise that destination counts
+  only return to public copy derived from shipped data.

@@ -1,0 +1,303 @@
+schema_version: "1.0.0"
+dataset: "destinations"
+status: "active"
+owner: "TourVsTravel"
+last_reviewed: "2026-07-04"
+
+meta:
+  purpose: "Governed destination dataset v1: destinations interpreted through travel structures, not described as attractions."
+  operating_principle: "A destination entry states how the place behaves under different trip architectures. Family-fit levels are structural priors, not verdicts. Batch releases only; every entry ships with all seven languages and an identifiable official source."
+  source_of_truth: true
+  batch: 1
+  notes:
+    - "family_fit values are coarse structural priors (high/medium/low) per TSO family; they must be contextualized per traveler before recommendation (TDIS rule priors-context)."
+    - "No live prices, no rankings between destinations, no universal winners."
+
+defaults:
+  enabled: true
+  route_family: "destination"
+  supported_languages: ["en", "ar", "fr", "es", "de", "zh", "ja"]
+  family_fit_scale: ["high", "medium", "low"]
+  required_fields:
+    - "id"
+    - "order"
+    - "enabled"
+    - "name"
+    - "region"
+    - "country_code"
+    - "summary"
+    - "family_fit"
+    - "best_seasons"
+    - "typical_duration"
+    - "sources"
+
+destinations:
+  - id: "japan"
+    order: 1
+    enabled: true
+    country_code: "JP"
+    name: {en: "Japan", ar: "اليابان", fr: "Japon", es: "Japón", de: "Japan", zh: "日本", ja: "日本"}
+    region: {en: "East Asia", ar: "شرق آسيا", fr: "Asie de l'Est", es: "Asia Oriental", de: "Ostasien", zh: "东亚", ja: "東アジア"}
+    summary:
+      en: "Japan supports opposite trip architectures with equal strength: dense guided-tour infrastructure and one of the world's most reliable independent-travel systems. Rail coverage, safety, and predictability lower the cost of autonomy, while language distance keeps guided formats attractive for first-time structures."
+      ar: "تدعم اليابان بنى رحلات متضادة بالقوة نفسها: بنية جولات موجهة كثيفة وأحد أكثر أنظمة السفر المستقل موثوقية في العالم. تغطية القطارات والأمان والقابلية للتنبؤ تخفض كلفة الاستقلالية، بينما تبقي المسافة اللغوية الصيغ الموجهة جذابة للبنى التي تُجرَّب لأول مرة."
+      fr: "Le Japon soutient des architectures de voyage opposées avec une force égale : une infrastructure dense de circuits guidés et l'un des systèmes de voyage indépendant les plus fiables au monde. La couverture ferroviaire, la sécurité et la prévisibilité abaissent le coût de l'autonomie, tandis que la distance linguistique maintient l'attrait des formats guidés pour les premières expériences."
+      es: "Japón sostiene arquitecturas de viaje opuestas con la misma fuerza: una densa infraestructura de circuitos guiados y uno de los sistemas de viaje independiente más fiables del mundo. La cobertura ferroviaria, la seguridad y la previsibilidad reducen el coste de la autonomía, mientras la distancia lingüística mantiene atractivos los formatos guiados para primeras experiencias."
+      de: "Japan trägt gegensätzliche Reisearchitekturen mit gleicher Stärke: dichte Infrastruktur für geführte Touren und eines der zuverlässigsten Systeme für unabhängiges Reisen weltweit. Bahnabdeckung, Sicherheit und Vorhersagbarkeit senken die Kosten der Autonomie, während die sprachliche Distanz geführte Formate für Erststrukturen attraktiv hält."
+      zh: "日本以同等的强度支撑两种相反的旅行架构：密集的跟团游基础设施，以及世界上最可靠的自主旅行系统之一。铁路覆盖、安全与可预测性降低了自主的成本，而语言距离让向导型形式对初次尝试的结构保持吸引力。"
+      ja: "日本は相反する旅行アーキテクチャを同等の強さで支える。密度の高いガイドツアーのインフラと、世界で最も信頼性の高い個人旅行システムの一つである。鉄道網、安全性、予測可能性が自律のコストを下げる一方、言語的距離は初めての構造にとってガイド形式の魅力を保つ。"
+    family_fit:
+      structured_supported: "high"
+      independent_autonomous: "high"
+      comfort_premium: "high"
+      purpose_led: "medium"
+      mobility_led: "medium"
+      values_led: "medium"
+    best_seasons: {en: "March–May and October–November", ar: "مارس–مايو وأكتوبر–نوفمبر", fr: "mars–mai et octobre–novembre", es: "marzo–mayo y octubre–noviembre", de: "März–Mai und Oktober–November", zh: "3–5月与10–11月", ja: "3〜5月と10〜11月"}
+    typical_duration: {en: "10–14 days", ar: "10–14 يومًا", fr: "10–14 jours", es: "10–14 días", de: "10–14 Tage", zh: "10–14天", ja: "10〜14日"}
+    sources:
+      - label: "Japan National Tourism Organization"
+        url: "https://www.japan.travel/"
+
+  - id: "spain"
+    order: 2
+    enabled: true
+    country_code: "ES"
+    name: {en: "Spain", ar: "إسبانيا", fr: "Espagne", es: "España", de: "Spanien", zh: "西班牙", ja: "スペイン"}
+    region: {en: "Southern Europe", ar: "جنوب أوروبا", fr: "Europe du Sud", es: "Europa del Sur", de: "Südeuropa", zh: "南欧", ja: "南ヨーロッパ"}
+    summary:
+      en: "Spain carries almost every travel structure well: mature tour circuits, easy independent logistics, premium coastal comfort, and Europe's most developed pilgrimage axis in the Camino de Santiago. Regional diversity means the chosen structure, more than the region, sets the character of the trip."
+      ar: "تحمل إسبانيا كل بنى السفر تقريبًا بجدارة: مسارات جولات ناضجة، ولوجستيات مستقلة سهلة، ورفاهية ساحلية راقية، وأكثر محاور الحج تطورًا في أوروبا عبر طريق سانتياغو. التنوع الإقليمي يعني أن البنية المختارة، أكثر من المنطقة، هي التي تحدد طابع الرحلة."
+      fr: "L'Espagne porte bien presque toutes les structures de voyage : circuits organisés matures, logistique indépendante facile, confort côtier haut de gamme et l'axe de pèlerinage le plus développé d'Europe avec le Camino de Santiago. La diversité régionale signifie que la structure choisie, plus que la région, définit le caractère du voyage."
+      es: "España sostiene bien casi todas las estructuras de viaje: circuitos organizados maduros, logística independiente sencilla, confort costero premium y el eje de peregrinación más desarrollado de Europa en el Camino de Santiago. La diversidad regional hace que la estructura elegida, más que la región, defina el carácter del viaje."
+      de: "Spanien trägt fast jede Reisestruktur gut: ausgereifte Tour-Kreisläufe, einfache unabhängige Logistik, gehobener Küstenkomfort und mit dem Jakobsweg die am weitesten entwickelte Pilgerachse Europas. Die regionale Vielfalt bedeutet: Die gewählte Struktur prägt den Charakter der Reise stärker als die Region."
+      zh: "西班牙几乎能很好地承载所有旅行结构：成熟的跟团线路、轻松的自主后勤、高端的海岸舒适度，以及欧洲最发达的朝圣轴线——圣地亚哥之路。地区多样性意味着，决定旅程性格的更多是所选结构，而非地区本身。"
+      ja: "スペインはほぼすべての旅行構造を高い水準で支える。成熟したツアー路線、容易な個人旅行の手配、上質な海岸リゾート、そしてサンティアゴ巡礼路というヨーロッパで最も発達した巡礼軸。地域の多様性ゆえに、旅の性格を決めるのは地域よりも選んだ構造である。"
+    family_fit:
+      structured_supported: "high"
+      independent_autonomous: "high"
+      comfort_premium: "high"
+      purpose_led: "high"
+      mobility_led: "high"
+      values_led: "medium"
+    best_seasons: {en: "April–June and September–October", ar: "أبريل–يونيو وسبتمبر–أكتوبر", fr: "avril–juin et septembre–octobre", es: "abril–junio y septiembre–octubre", de: "April–Juni und September–Oktober", zh: "4–6月与9–10月", ja: "4〜6月と9〜10月"}
+    typical_duration: {en: "7–14 days", ar: "7–14 يومًا", fr: "7–14 jours", es: "7–14 días", de: "7–14 Tage", zh: "7–14天", ja: "7〜14日"}
+    sources:
+      - label: "Turespaña — Official tourism portal of Spain"
+        url: "https://www.spain.info/"
+
+  - id: "italy"
+    order: 3
+    enabled: true
+    country_code: "IT"
+    name: {en: "Italy", ar: "إيطاليا", fr: "Italie", es: "Italia", de: "Italien", zh: "意大利", ja: "イタリア"}
+    region: {en: "Southern Europe", ar: "جنوب أوروبا", fr: "Europe du Sud", es: "Europa del Sur", de: "Südeuropa", zh: "南欧", ja: "南ヨーロッパ"}
+    summary:
+      en: "Italy pairs a dense guided and cultural-tour market with strong independent rail logistics between major cities. Heritage density rewards slow, deep structures; compressed multi-city itineraries trade depth for coverage faster here than in most destinations."
+      ar: "تجمع إيطاليا بين سوق كثيفة للجولات الموجهة والثقافية ولوجستيات قطارات مستقلة قوية بين المدن الكبرى. كثافة التراث تكافئ البنى البطيئة العميقة؛ أما المسارات المضغوطة متعددة المدن فتستبدل العمق بالتغطية هنا أسرع من معظم الوجهات."
+      fr: "L'Italie associe un marché dense de circuits guidés et culturels à une solide logistique ferroviaire indépendante entre les grandes villes. La densité du patrimoine récompense les structures lentes et profondes ; les itinéraires multi-villes compressés y échangent la profondeur contre la couverture plus vite que dans la plupart des destinations."
+      es: "Italia combina un denso mercado de circuitos guiados y culturales con una sólida logística ferroviaria independiente entre las grandes ciudades. La densidad patrimonial premia las estructuras lentas y profundas; los itinerarios comprimidos de varias ciudades cambian profundidad por cobertura aquí más rápido que en la mayoría de los destinos."
+      de: "Italien verbindet einen dichten Markt für geführte Kultur-Touren mit starker unabhängiger Bahnlogistik zwischen den Großstädten. Die Dichte des Erbes belohnt langsame, tiefe Strukturen; komprimierte Mehrstädte-Routen tauschen hier Tiefe schneller gegen Abdeckung als in den meisten Zielen."
+      zh: "意大利将密集的向导型文化游市场与大城市之间强大的自主铁路后勤相结合。遗产密度回报缓慢而深入的结构；而压缩的多城市行程在这里比大多数目的地更快地以深度换取覆盖面。"
+      ja: "イタリアは、密度の高いガイド付き文化ツアー市場と、主要都市間の強力な個人向け鉄道網を併せ持つ。遺産の密度はゆっくり深く関わる構造に報いる。圧縮された多都市周遊は、他のほとんどの目的地より速く、深さを網羅性と引き換えにしてしまう。"
+    family_fit:
+      structured_supported: "high"
+      independent_autonomous: "high"
+      comfort_premium: "high"
+      purpose_led: "high"
+      mobility_led: "medium"
+      values_led: "medium"
+    best_seasons: {en: "April–June and September–October", ar: "أبريل–يونيو وسبتمبر–أكتوبر", fr: "avril–juin et septembre–octobre", es: "abril–junio y septiembre–octubre", de: "April–Juni und September–Oktober", zh: "4–6月与9–10月", ja: "4〜6月と9〜10月"}
+    typical_duration: {en: "7–14 days", ar: "7–14 يومًا", fr: "7–14 jours", es: "7–14 días", de: "7–14 Tage", zh: "7–14天", ja: "7〜14日"}
+    sources:
+      - label: "Italia.it — Official Italian tourism portal"
+        url: "https://www.italia.it/"
+
+  - id: "france"
+    order: 4
+    enabled: true
+    country_code: "FR"
+    name: {en: "France", ar: "فرنسا", fr: "France", es: "Francia", de: "Frankreich", zh: "法国", ja: "フランス"}
+    region: {en: "Western Europe", ar: "غرب أوروبا", fr: "Europe de l'Ouest", es: "Europa Occidental", de: "Westeuropa", zh: "西欧", ja: "西ヨーロッパ"}
+    summary:
+      en: "France combines mature tour infrastructure with high-autonomy rail and road travel, and a premium layer that runs from Paris to rural châteaux. Its regional spread rewards mobility-led and slow structures more than single-base itineraries."
+      ar: "تجمع فرنسا بين بنية جولات ناضجة وسفر عالي الاستقلالية بالقطار والطريق، وطبقة فاخرة تمتد من باريس إلى القصور الريفية. اتساعها الإقليمي يكافئ البنى القائمة على الحركة والبطيئة أكثر من المسارات ذات القاعدة الواحدة."
+      fr: "La France combine une infrastructure de circuits mature avec un voyage ferroviaire et routier à forte autonomie, et une couche premium qui va de Paris aux châteaux ruraux. Son étendue régionale récompense les structures itinérantes et lentes davantage que les séjours à base unique."
+      es: "Francia combina una infraestructura de circuitos madura con viajes de alta autonomía en tren y carretera, y una capa premium que va de París a los châteaux rurales. Su extensión regional premia las estructuras itinerantes y lentas más que los itinerarios de base única."
+      de: "Frankreich verbindet ausgereifte Tour-Infrastruktur mit autonomiestarkem Bahn- und Straßenreisen und einer Premium-Schicht von Paris bis zu ländlichen Schlössern. Seine regionale Ausdehnung belohnt mobilitätsgeführte und langsame Strukturen mehr als Ein-Basis-Routen."
+      zh: "法国将成熟的跟团基础设施与高度自主的铁路和公路旅行相结合，其高端层从巴黎延伸到乡村城堡。地域广度更能回报以移动为主导和缓慢的结构，而非单一基地的行程。"
+      ja: "フランスは成熟したツアーインフラと、自律性の高い鉄道・道路旅行、そしてパリから田園の城館まで広がるプレミアム層を併せ持つ。地域の広がりは、単一拠点型よりも移動主導型やスローな構造に報いる。"
+    family_fit:
+      structured_supported: "high"
+      independent_autonomous: "high"
+      comfort_premium: "high"
+      purpose_led: "medium"
+      mobility_led: "high"
+      values_led: "medium"
+    best_seasons: {en: "April–June and September–October", ar: "أبريل–يونيو وسبتمبر–أكتوبر", fr: "avril–juin et septembre–octobre", es: "abril–junio y septiembre–octubre", de: "April–Juni und September–Oktober", zh: "4–6月与9–10月", ja: "4〜6月と9〜10月"}
+    typical_duration: {en: "7–14 days", ar: "7–14 يومًا", fr: "7–14 jours", es: "7–14 días", de: "7–14 Tage", zh: "7–14天", ja: "7〜14日"}
+    sources:
+      - label: "France.fr — Official France tourism site"
+        url: "https://www.france.fr/"
+
+  - id: "greece"
+    order: 5
+    enabled: true
+    country_code: "GR"
+    name: {en: "Greece", ar: "اليونان", fr: "Grèce", es: "Grecia", de: "Griechenland", zh: "希腊", ja: "ギリシャ"}
+    region: {en: "Southeastern Europe", ar: "جنوب شرق أوروبا", fr: "Europe du Sud-Est", es: "Europa Sudoriental", de: "Südosteuropa", zh: "东南欧", ja: "南東ヨーロッパ"}
+    summary:
+      en: "Greece splits structurally between mainland heritage circuits and island logistics governed by ferry schedules. Guided formats absorb the coordination burden of island-hopping, while independent structures gain flexibility at the price of seasonal timetable risk."
+      ar: "تنقسم اليونان بنيويًا بين مسارات التراث في البر الرئيسي ولوجستيات الجزر المحكومة بجداول العبّارات. تمتص الصيغ الموجهة عبء تنسيق التنقل بين الجزر، بينما تكسب البنى المستقلة مرونة مقابل مخاطر الجداول الموسمية."
+      fr: "La Grèce se divise structurellement entre les circuits patrimoniaux du continent et la logistique insulaire régie par les horaires de ferry. Les formats guidés absorbent la charge de coordination du saut d'îles, tandis que les structures indépendantes gagnent en flexibilité au prix du risque d'horaires saisonniers."
+      es: "Grecia se divide estructuralmente entre los circuitos patrimoniales del continente y la logística insular regida por los horarios de ferry. Los formatos guiados absorben la carga de coordinación del salto entre islas, mientras las estructuras independientes ganan flexibilidad al precio del riesgo de horarios estacionales."
+      de: "Griechenland teilt sich strukturell in Erbe-Rundfahrten auf dem Festland und Insellogistik, die von Fährplänen bestimmt wird. Geführte Formate fangen die Koordinationslast des Inselhüpfens ab, während unabhängige Strukturen Flexibilität gewinnen — zum Preis saisonaler Fahrplanrisiken."
+      zh: "希腊在结构上分为大陆遗产线路和由渡轮时刻表支配的海岛后勤。向导型形式吸收了跳岛游的协调负担，而自主结构以季节性时刻表风险为代价换取灵活性。"
+      ja: "ギリシャは、本土の遺産周遊とフェリー時刻表に支配される島嶼部の手配とに構造的に分かれる。ガイド形式はアイランドホッピングの調整負担を吸収し、個人型の構造は季節的な時刻表リスクと引き換えに柔軟性を得る。"
+    family_fit:
+      structured_supported: "high"
+      independent_autonomous: "high"
+      comfort_premium: "high"
+      purpose_led: "medium"
+      mobility_led: "medium"
+      values_led: "medium"
+    best_seasons: {en: "May–June and September–October", ar: "مايو–يونيو وسبتمبر–أكتوبر", fr: "mai–juin et septembre–octobre", es: "mayo–junio y septiembre–octubre", de: "Mai–Juni und September–Oktober", zh: "5–6月与9–10月", ja: "5〜6月と9〜10月"}
+    typical_duration: {en: "7–10 days", ar: "7–10 أيام", fr: "7–10 jours", es: "7–10 días", de: "7–10 Tage", zh: "7–10天", ja: "7〜10日"}
+    sources:
+      - label: "Visit Greece — Greek National Tourism Organisation"
+        url: "https://www.visitgreece.gr/"
+
+  - id: "turkiye"
+    order: 6
+    enabled: true
+    country_code: "TR"
+    name: {en: "Türkiye", ar: "تركيا", fr: "Turquie", es: "Turquía", de: "Türkei", zh: "土耳其", ja: "トルコ"}
+    region: {en: "Eastern Mediterranean", ar: "شرق المتوسط", fr: "Méditerranée orientale", es: "Mediterráneo Oriental", de: "Östliches Mittelmeer", zh: "东地中海", ja: "東地中海"}
+    summary:
+      en: "Türkiye layers strong guided-circuit infrastructure over a geography spanning urban, coastal, and interior highland travel. Independent structures work well on main corridors but carry a higher planning burden off them, which keeps supported formats structurally attractive."
+      ar: "تضع تركيا بنية مسارات موجهة قوية فوق جغرافيا تمتد من المدن إلى السواحل والهضاب الداخلية. تعمل البنى المستقلة جيدًا على الممرات الرئيسية لكنها تحمل عبء تخطيط أعلى خارجها، ما يبقي الصيغ المدعومة جذابة بنيويًا."
+      fr: "La Turquie superpose une solide infrastructure de circuits guidés à une géographie couvrant villes, côtes et hauts plateaux intérieurs. Les structures indépendantes fonctionnent bien sur les corridors principaux mais portent une charge de planification plus élevée en dehors, ce qui maintient l'attrait structurel des formats accompagnés."
+      es: "Turquía superpone una sólida infraestructura de circuitos guiados a una geografía que abarca ciudades, costas y altiplanos interiores. Las estructuras independientes funcionan bien en los corredores principales pero cargan mayor peso de planificación fuera de ellos, lo que mantiene el atractivo estructural de los formatos asistidos."
+      de: "Die Türkei legt starke geführte Rundreise-Infrastruktur über eine Geografie aus Städten, Küsten und innerem Hochland. Unabhängige Strukturen funktionieren auf den Hauptkorridoren gut, tragen abseits davon aber eine höhere Planungslast — was begleitete Formate strukturell attraktiv hält."
+      zh: "土耳其在横跨城市、海岸与内陆高原的地理上叠加了强大的向导线路基础设施。自主结构在主要走廊上运转良好，但离开走廊后规划负担更高，这使支持型形式在结构上保持吸引力。"
+      ja: "トルコは、都市・海岸・内陸高原にまたがる地理の上に、強力なガイド周遊インフラを重ねている。個人型の構造は主要回廊では機能するが、そこを外れると計画負担が高まり、支援型形式の構造的な魅力が保たれる。"
+    family_fit:
+      structured_supported: "high"
+      independent_autonomous: "medium"
+      comfort_premium: "high"
+      purpose_led: "medium"
+      mobility_led: "medium"
+      values_led: "medium"
+    best_seasons: {en: "April–June and September–October", ar: "أبريل–يونيو وسبتمبر–أكتوبر", fr: "avril–juin et septembre–octobre", es: "abril–junio y septiembre–octubre", de: "April–Juni und September–Oktober", zh: "4–6月与9–10月", ja: "4〜6月と9〜10月"}
+    typical_duration: {en: "7–12 days", ar: "7–12 يومًا", fr: "7–12 jours", es: "7–12 días", de: "7–12 Tage", zh: "7–12天", ja: "7〜12日"}
+    sources:
+      - label: "GoTürkiye — Official tourism portal"
+        url: "https://www.goturkiye.com/"
+
+  - id: "morocco"
+    order: 7
+    enabled: true
+    country_code: "MA"
+    name: {en: "Morocco", ar: "المغرب", fr: "Maroc", es: "Marruecos", de: "Marokko", zh: "摩洛哥", ja: "モロッコ"}
+    region: {en: "North Africa", ar: "شمال أفريقيا", fr: "Afrique du Nord", es: "África del Norte", de: "Nordafrika", zh: "北非", ja: "北アフリカ"}
+    summary:
+      en: "Morocco's travel market is structurally guide-led: riads, drivers, and desert circuits absorb most coordination and cultural navigation. Independent structures are viable on the main axis but shift real planning and negotiation labor onto the traveler."
+      ar: "سوق السفر المغربية موجهة بنيويًا: الرياضات والسائقون ومسارات الصحراء تمتص معظم التنسيق والملاحة الثقافية. البنى المستقلة ممكنة على المحور الرئيسي لكنها تنقل عبء تخطيط وتفاوض حقيقيًا إلى المسافر."
+      fr: "Le marché du voyage marocain est structurellement guidé : riads, chauffeurs et circuits du désert absorbent l'essentiel de la coordination et de la navigation culturelle. Les structures indépendantes sont viables sur l'axe principal mais transfèrent au voyageur un vrai travail de planification et de négociation."
+      es: "El mercado de viajes de Marruecos está estructuralmente guiado: riads, conductores y circuitos del desierto absorben la mayor parte de la coordinación y la navegación cultural. Las estructuras independientes son viables en el eje principal pero trasladan al viajero un trabajo real de planificación y negociación."
+      de: "Marokkos Reisemarkt ist strukturell geführt: Riads, Fahrer und Wüsten-Rundfahrten fangen den Großteil der Koordination und kulturellen Navigation ab. Unabhängige Strukturen sind auf der Hauptachse machbar, verlagern aber echte Planungs- und Verhandlungsarbeit auf die Reisenden."
+      zh: "摩洛哥的旅行市场在结构上以向导为主导：庭院旅馆、司机与沙漠线路吸收了大部分协调与文化导航工作。自主结构在主轴线上可行，但会把实际的规划与议价劳动转移给旅行者。"
+      ja: "モロッコの旅行市場は構造的にガイド主導である。リヤド、ドライバー、砂漠周遊が調整と文化的ナビゲーションの大半を吸収する。個人型の構造は主要軸では成立するが、実際の計画と交渉の労力を旅行者に移す。"
+    family_fit:
+      structured_supported: "high"
+      independent_autonomous: "medium"
+      comfort_premium: "high"
+      purpose_led: "medium"
+      mobility_led: "medium"
+      values_led: "medium"
+    best_seasons: {en: "March–May and September–November", ar: "مارس–مايو وسبتمبر–نوفمبر", fr: "mars–mai et septembre–novembre", es: "marzo–mayo y septiembre–noviembre", de: "März–Mai und September–November", zh: "3–5月与9–11月", ja: "3〜5月と9〜11月"}
+    typical_duration: {en: "7–10 days", ar: "7–10 أيام", fr: "7–10 jours", es: "7–10 días", de: "7–10 Tage", zh: "7–10天", ja: "7〜10日"}
+    sources:
+      - label: "Visit Morocco — Moroccan National Tourist Office"
+        url: "https://www.visitmorocco.com/"
+
+  - id: "thailand"
+    order: 8
+    enabled: true
+    country_code: "TH"
+    name: {en: "Thailand", ar: "تايلاند", fr: "Thaïlande", es: "Tailandia", de: "Thailand", zh: "泰国", ja: "タイ"}
+    region: {en: "Southeast Asia", ar: "جنوب شرق آسيا", fr: "Asie du Sud-Est", es: "Sudeste Asiático", de: "Südostasien", zh: "东南亚", ja: "東南アジア"}
+    summary:
+      en: "Thailand carries one of the world's deepest backpacking infrastructures alongside mature resort comfort and guided circuits. Low daily costs and dense traveler services lower the entry barrier for independent and budget structures more than almost anywhere."
+      ar: "تحمل تايلاند واحدة من أعمق بنى السفر بحقيبة الظهر في العالم إلى جانب رفاهية منتجعات ناضجة ومسارات موجهة. التكاليف اليومية المنخفضة وكثافة خدمات المسافرين تخفضان حاجز الدخول للبنى المستقلة والاقتصادية أكثر من أي مكان تقريبًا."
+      fr: "La Thaïlande porte l'une des infrastructures de backpacking les plus profondes au monde, aux côtés d'un confort de resorts mature et de circuits guidés. Les coûts quotidiens bas et la densité des services aux voyageurs abaissent la barrière d'entrée des structures indépendantes et économiques plus que presque partout ailleurs."
+      es: "Tailandia sostiene una de las infraestructuras de mochilero más profundas del mundo junto a un confort de resorts maduro y circuitos guiados. Los bajos costes diarios y la densidad de servicios al viajero reducen la barrera de entrada de las estructuras independientes y económicas más que casi en ningún otro lugar."
+      de: "Thailand trägt eine der tiefsten Backpacking-Infrastrukturen der Welt neben ausgereiftem Resort-Komfort und geführten Rundreisen. Niedrige Tageskosten und dichte Reisedienste senken die Einstiegshürde für unabhängige und Budget-Strukturen stärker als fast überall sonst."
+      zh: "泰国拥有世界上最深厚的背包旅行基础设施之一，同时具备成熟的度假村舒适度与向导线路。低廉的日常成本与密集的旅行者服务，比几乎任何地方都更能降低自主与预算型结构的进入门槛。"
+      ja: "タイは、世界で最も厚みのあるバックパッキングインフラの一つを、成熟したリゾートの快適さやガイド周遊と併せ持つ。低い日次コストと密度の高い旅行者向けサービスが、個人型・低予算型構造の参入障壁を世界でも稀なほど下げている。"
+    family_fit:
+      structured_supported: "high"
+      independent_autonomous: "high"
+      comfort_premium: "high"
+      purpose_led: "medium"
+      mobility_led: "medium"
+      values_led: "medium"
+    best_seasons: {en: "November–February", ar: "نوفمبر–فبراير", fr: "novembre–février", es: "noviembre–febrero", de: "November–Februar", zh: "11月–次年2月", ja: "11〜2月"}
+    typical_duration: {en: "10–14 days", ar: "10–14 يومًا", fr: "10–14 jours", es: "10–14 días", de: "10–14 Tage", zh: "10–14天", ja: "10〜14日"}
+    sources:
+      - label: "Tourism Authority of Thailand"
+        url: "https://www.tourismthailand.org/"
+
+  - id: "egypt"
+    order: 9
+    enabled: true
+    country_code: "EG"
+    name: {en: "Egypt", ar: "مصر", fr: "Égypte", es: "Egipto", de: "Ägypten", zh: "埃及", ja: "エジプト"}
+    region: {en: "North Africa", ar: "شمال أفريقيا", fr: "Afrique du Nord", es: "África del Norte", de: "Nordafrika", zh: "北非", ja: "北アフリカ"}
+    summary:
+      en: "Egypt's monument geography and logistics strongly favor structured, supported formats: guided circuits and Nile cruises absorb transfers, timing, and site access. Fully independent structures are possible but carry the highest coordination burden in this batch."
+      ar: "جغرافيا الآثار واللوجستيات في مصر ترجحان بقوة الصيغ المنظمة المدعومة: المسارات الموجهة والرحلات النيلية تمتص التنقلات والتوقيت والوصول إلى المواقع. البنى المستقلة كليًا ممكنة لكنها تحمل أعلى عبء تنسيق في هذه الدفعة."
+      fr: "La géographie monumentale et la logistique de l'Égypte favorisent fortement les formats structurés et accompagnés : circuits guidés et croisières sur le Nil absorbent transferts, timing et accès aux sites. Les structures pleinement indépendantes sont possibles mais portent la charge de coordination la plus élevée de ce lot."
+      es: "La geografía monumental y la logística de Egipto favorecen con fuerza los formatos estructurados y asistidos: los circuitos guiados y los cruceros por el Nilo absorben traslados, tiempos y acceso a los sitios. Las estructuras plenamente independientes son posibles pero cargan el mayor peso de coordinación de este lote."
+      de: "Ägyptens Monument-Geografie und Logistik begünstigen stark strukturierte, begleitete Formate: geführte Rundreisen und Nilkreuzfahrten fangen Transfers, Timing und Zugang zu den Stätten ab. Völlig unabhängige Strukturen sind möglich, tragen aber die höchste Koordinationslast dieser Charge."
+      zh: "埃及的古迹地理与后勤强烈偏向结构化、支持型形式：向导线路与尼罗河游轮吸收了接驳、时间安排与景点准入。完全自主的结构是可行的，但在本批次中承担最高的协调负担。"
+      ja: "エジプトの遺跡の地理と手配事情は、構造化・支援型形式を強く優遇する。ガイド周遊とナイル川クルーズが送迎、時間管理、遺跡へのアクセスを吸収する。完全な個人型構造も可能だが、このバッチで最も高い調整負担を伴う。"
+    family_fit:
+      structured_supported: "high"
+      independent_autonomous: "medium"
+      comfort_premium: "medium"
+      purpose_led: "medium"
+      mobility_led: "low"
+      values_led: "medium"
+    best_seasons: {en: "October–April", ar: "أكتوبر–أبريل", fr: "octobre–avril", es: "octubre–abril", de: "Oktober–April", zh: "10月–次年4月", ja: "10〜4月"}
+    typical_duration: {en: "7–10 days", ar: "7–10 أيام", fr: "7–10 jours", es: "7–10 días", de: "7–10 Tage", zh: "7–10天", ja: "7〜10日"}
+    sources:
+      - label: "Experience Egypt — Official tourism portal"
+        url: "https://egypt.travel/"
+
+  - id: "portugal"
+    order: 10
+    enabled: true
+    country_code: "PT"
+    name: {en: "Portugal", ar: "البرتغال", fr: "Portugal", es: "Portugal", de: "Portugal", zh: "葡萄牙", ja: "ポルトガル"}
+    region: {en: "Southern Europe", ar: "جنوب أوروبا", fr: "Europe du Sud", es: "Europa del Sur", de: "Südeuropa", zh: "南欧", ja: "南ヨーロッパ"}
+    summary:
+      en: "Portugal offers short distances, gentle logistics, and a full pilgrimage axis in the Caminho Português, making it forgiving for nearly every structure. Compact geography favors road-trip and slow formats without demanding heavy planning capacity."
+      ar: "تقدم البرتغال مسافات قصيرة ولوجستيات سهلة ومحور حج كاملًا عبر الطريق البرتغالي، ما يجعلها متسامحة مع كل البنى تقريبًا. الجغرافيا المدمجة تحابي صيغ رحلات الطريق والبطء دون طلب قدرة تخطيط ثقيلة."
+      fr: "Le Portugal offre de courtes distances, une logistique douce et un axe de pèlerinage complet avec le Caminho Português, ce qui le rend indulgent pour presque toutes les structures. Sa géographie compacte favorise les formats road-trip et lents sans exiger de lourde capacité de planification."
+      es: "Portugal ofrece distancias cortas, logística amable y un eje de peregrinación completo en el Caminho Português, lo que lo hace indulgente con casi todas las estructuras. Su geografía compacta favorece los formatos de road trip y lentos sin exigir gran capacidad de planificación."
+      de: "Portugal bietet kurze Distanzen, sanfte Logistik und mit dem Caminho Português eine vollständige Pilgerachse — nachsichtig gegenüber fast jeder Struktur. Die kompakte Geografie begünstigt Roadtrip- und langsame Formate, ohne schwere Planungskapazität zu verlangen."
+      zh: "葡萄牙提供短距离、轻松的后勤，以及葡萄牙之路这条完整的朝圣轴线，使它对几乎所有结构都很宽容。紧凑的地理更适合公路旅行与慢节奏形式，而无需沉重的规划能力。"
+      ja: "ポルトガルは短い移動距離、穏やかな手配事情、そしてポルトガルの道という完全な巡礼軸を備え、ほぼすべての構造に寛容である。コンパクトな地理は、重い計画能力を要求することなく、ロードトリップ型やスローな形式を優遇する。"
+    family_fit:
+      structured_supported: "high"
+      independent_autonomous: "high"
+      comfort_premium: "high"
+      purpose_led: "high"
+      mobility_led: "high"
+      values_led: "medium"
+    best_seasons: {en: "March–June and September–October", ar: "مارس–يونيو وسبتمبر–أكتوبر", fr: "mars–juin et septembre–octobre", es: "marzo–junio y septiembre–octubre", de: "März–Juni und September–Oktober", zh: "3–6月与9–10月", ja: "3〜6月と9〜10月"}
+    typical_duration: {en: "7–10 days", ar: "7–10 أيام", fr: "7–10 jours", es: "7–10 días", de: "7–10 Tage", zh: "7–10天", ja: "7〜10日"}
+    sources:
+      - label: "Visit Portugal — Official tourism portal"
+        url: "https://www.visitportugal.com/"

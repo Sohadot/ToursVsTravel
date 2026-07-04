@@ -167,3 +167,34 @@ Procedure: see `GOVERNANCE.md` §6.
   sourced or labeled a prior — retire the audit table's largest "not
   published" row while honoring D-002's promise that destination counts
   only return to public copy derived from shipped data.
+
+## D-009 — Machine layer unified; sitemap hreflang policy aligned
+
+- **Date:** 2026-07-04
+- **Decision:** Two pre-P3 closures:
+  1. **Machine layer unification.** A canonical machine directory ships at
+     `/api/index.json`, listing every machine artifact the asset publishes;
+     every artifact envelope now carries a `machine_index` pointer back to
+     it. Two artifacts complete the mirror: `/api/compass-v1.json` (the
+     Compass engine specification — bands, axes, profiles, labels, exactly
+     as the client-side engine runs them) and `/api/destinations-v1.json`
+     (the governed destinations batch). Published v1 endpoint URLs are
+     unchanged, honoring GOVERNANCE §2.3 immutability; unification is by
+     indexing, not by moving. A bidirectional build gate enforces that the
+     index and the shipped artifacts match exactly: nothing shipped
+     unlisted, nothing listed unshipped. For the record: no `/machine/`
+     path was ever published or referenced; the documented endpoints have
+     been `/ontology/`, `/standard/`, `/api/`, and `/about.json` since
+     D-004.
+  2. **Sitemap format audit fix.** Page heads emit `hreflang="x-default"`
+     (site-wide `seo.hreflang` policy) but the sitemap generator read a
+     separate, unset `seo.sitemap` key and silently defaulted to false —
+     a policy drift between the pages and the sitemap. The generator now
+     inherits the site-wide hreflang policy when no sitemap-specific
+     override exists, and a new gate fails the build if alternate clusters
+     and x-default links ever diverge again. Result: 329/329 clusters carry
+     x-default.
+- **Rationale:** Agent-readability is a core value thesis; a machine layer
+  scattered across four roots without a directory is discoverable only by
+  reading pages. The index makes the machine surface self-describing, and
+  both fixes convert one-time audits into standing gates.

@@ -390,15 +390,23 @@ def _resolve_include_hreflang(site_config: Mapping[str, Any]) -> bool:
 
 
 def _resolve_include_x_default(site_config: Mapping[str, Any]) -> bool:
-    value = _get_nested(site_config, ("seo", "sitemap", "include_x_default"), default=False)
+    # One hreflang policy for the whole asset: when no sitemap-specific
+    # override is set, inherit the site-wide seo.hreflang policy that the
+    # page <head> generators already follow. This prevents the sitemap and
+    # the pages from silently diverging on x-default.
+    value = _get_nested(site_config, ("seo", "sitemap", "include_x_default"), default=None)
+    if value is None:
+        value = _get_nested(site_config, ("seo", "hreflang", "include_x_default"), default=False)
     if not isinstance(value, bool):
-        raise SitemapConfigError("site_config.seo.sitemap.include_x_default must be a boolean.")
+        raise SitemapConfigError("site_config seo include_x_default must be a boolean.")
     return value
 
 
 def _resolve_x_default_lang(site_config: Mapping[str, Any], enabled_languages: List[Mapping[str, Any]]) -> str:
     enabled_codes = [_ensure_string(item.get("code"), "enabled_language.code") for item in enabled_languages]
     raw = _get_nested(site_config, ("seo", "sitemap", "x_default_lang"), default=None)
+    if raw is None:
+        raw = _get_nested(site_config, ("seo", "hreflang", "x_default_lang"), default=None)
 
     if raw is None:
         return enabled_codes[0]

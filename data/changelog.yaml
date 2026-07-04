@@ -168,3 +168,23 @@ entries:
       de: "Zehn Reiseziele traten dem Referenzsystem bei, jedes durch Reisestrukturen statt Attraktionen interpretiert: Abdeckung in sieben Sprachen, strukturelle Familien-Passungsprioren mit Ontologie-Anbindung, offizielle Tourismus-Quellen und ein Build-Gate, das fehlende oder Phantom-Seiten verbietet."
       zh: "十个目的地加入参考系统，每个都通过旅行结构而非景点来解读：七种语言覆盖、与本体关联的家族适配结构性先验、官方旅游机构来源，以及禁止缺失或幻影页面的构建关卡。"
       ja: "10の目的地がリファレンスシステムに加わった。それぞれ観光名所ではなく旅行構造で解読されている。7言語のカバレッジ、オントロジーに紐づくファミリー適合の構造的事前値、公式観光機関のソース、そして欠落ページや幻のページを禁じるビルドゲートを備える。"
+
+  - id: "2026-07-04-machine-unification"
+    date: "2026-07-04"
+    decision_ref: "D-009"
+    title:
+      en: "Machine layer unified under a canonical index; sitemap hreflang aligned"
+      ar: "توحيد طبقة الآلة تحت دليل قانوني؛ ومواءمة hreflang في خريطة الموقع"
+      fr: "Couche machine unifiée sous un index canonique ; hreflang du sitemap aligné"
+      es: "Capa máquina unificada bajo un índice canónico; hreflang del sitemap alineado"
+      de: "Maschinenebene unter kanonischem Index vereinheitlicht; Sitemap-hreflang angeglichen"
+      zh: "机器层统一至规范索引；站点地图 hreflang 已对齐"
+      ja: "マシンレイヤーを正規インデックスに統合、サイトマップの hreflang を整合"
+    summary:
+      en: "A canonical machine directory now ships at /api/index.json, every artifact points back to it, and two artifacts complete the mirror: the Compass engine specification and the governed destinations batch. A bidirectional gate keeps the index and shipped artifacts identical. The sitemap now carries x-default on every alternate cluster, inheriting the same hreflang policy the page heads use, with a gate against future drift."
+      ar: "أصبح الدليل القانوني للآلة يُنشر على ‎/api/index.json، وكل وثيقة تشير إليه، واكتملت المرآة بوثيقتين: مواصفة محرك البوصلة ودفعة الوجهات المحكومة. بوابة ثنائية الاتجاه تُبقي الدليل والوثائق المنشورة متطابقين. وتحمل خريطة الموقع الآن x-default في كل مجموعة بدائل، وارثةً سياسة hreflang نفسها التي تستخدمها ترويسات الصفحات، مع بوابة تمنع الانحراف مستقبلًا."
+      fr: "Un répertoire machine canonique est désormais publié à /api/index.json, chaque artefact y renvoie, et deux artefacts complètent le miroir : la spécification du moteur Boussole et le lot gouverné de destinations. Une barrière bidirectionnelle maintient l'index et les artefacts publiés identiques. Le sitemap porte désormais x-default sur chaque groupe d'alternates, héritant de la même politique hreflang que les en-têtes de pages, avec une barrière contre toute dérive future."
+      es: "Un directorio máquina canónico se publica ahora en /api/index.json, cada artefacto apunta de vuelta a él, y dos artefactos completan el espejo: la especificación del motor Brújula y el lote gobernado de destinos. Una barrera bidireccional mantiene idénticos el índice y los artefactos publicados. El sitemap lleva ahora x-default en cada grupo de alternates, heredando la misma política hreflang de las cabeceras de página, con una barrera contra derivas futuras."
+      de: "Ein kanonisches Maschinenverzeichnis erscheint nun unter /api/index.json, jedes Artefakt verweist darauf zurück, und zwei Artefakte vervollständigen den Spiegel: die Kompass-Engine-Spezifikation und die regelgeleitete Reiseziel-Charge. Ein bidirektionales Gate hält Index und ausgelieferte Artefakte identisch. Die Sitemap trägt jetzt x-default in jedem Alternate-Cluster und erbt dieselbe hreflang-Politik der Seitenköpfe, mit einem Gate gegen künftige Drift."
+      zh: "规范的机器目录现发布于 /api/index.json，每个工件都指回该目录，两个新工件补全了镜像：指南针引擎规范与受治理目的地批次。双向关卡确保索引与已发布工件完全一致。站点地图现在在每个备用语言组中携带 x-default，继承页面头部使用的同一 hreflang 策略，并有关卡防止未来漂移。"
+      ja: "正規のマシンディレクトリが /api/index.json で公開され、すべてのアーティファクトがそこを指し示す。コンパスエンジン仕様と統治された目的地バッチの2つがミラーを完成させた。双方向ゲートがインデックスと公開アーティファクトの完全一致を保つ。サイトマップは全ての代替クラスタで x-default を持ち、ページヘッダーと同じ hreflang ポリシーを継承し、将来のドリフトを防ぐゲートを備える。"

@@ -59,7 +59,7 @@ import time
 from html import unescape
 from html.parser import HTMLParser
 from pathlib import Path
-from typing import List, Optional, Sequence
+from typing import List, Optional, Sequence, Set
 from urllib.parse import urlsplit
 
 
@@ -908,6 +908,18 @@ def _verify_sitemap_contract(stage_dir: Path) -> None:
             if fragment not in text:
                 raise BuildStepError(f"sitemap.xml is missing reference URL fragment: {fragment}")
 
+    # hreflang policy consistency: when pages declare x-default (site-wide
+    # seo.hreflang policy), every sitemap entry that carries alternates must
+    # carry x-default too. The sitemap and the page heads must tell the same
+    # hreflang truth.
+    clusters = text.count('hreflang="' + SUPPORTED_LANGUAGES[0] + '"')
+    x_defaults = text.count('hreflang="x-default"')
+    if clusters and x_defaults != clusters:
+        raise BuildStepError(
+            "sitemap.xml hreflang policy drift: "
+            f"{clusters} alternate clusters but {x_defaults} x-default links."
+        )
+
 
 def _verify_experience_type_count(stage_dir: Path) -> None:
     styles_dir = stage_dir / "en" / "styles"
@@ -961,6 +973,9 @@ def _verify_machine_layer_contract(stage_dir: Path) -> None:
         stage_dir / "ontology" / "tso-v1.json",
         stage_dir / "standard" / "tdis-v1.json",
         stage_dir / "api" / "criteria-v1.json",
+        stage_dir / "api" / "compass-v1.json",
+        stage_dir / "api" / "destinations-v1.json",
+        stage_dir / "api" / "index.json",
         stage_dir / "about.json",
     ]
     for path in required_files:
@@ -994,6 +1009,33 @@ def _verify_machine_layer_contract(stage_dir: Path) -> None:
         raise BuildStepError(
             "tso-v1.json structure_count does not match the ontology contract "
             f"({tso_payload.get('structure_count')!r} != {EXPECTED_EXPERIENCE_TYPE_COUNT})"
+        )
+
+    # Machine index must match shipped artifacts exactly, in both directions.
+    index_payload = _json.loads((stage_dir / "api" / "index.json").read_text(encoding="utf-8"))
+    listed: Set[str] = set()
+    for entry in index_payload.get("artifacts", []):
+        if "endpoint" in entry:
+            listed.add(entry["endpoint"])
+        for endpoint in entry.get("endpoints", []):
+            listed.add(endpoint)
+
+    shipped: Set[str] = {"/about.json"}
+    for area in ("ontology", "standard", "api"):
+        area_dir = stage_dir / area
+        if area_dir.is_dir():
+            for json_file in area_dir.rglob("*.json"):
+                shipped.add("/" + json_file.relative_to(stage_dir).as_posix())
+
+    unlisted = shipped - listed
+    if unlisted:
+        raise BuildStepError(
+            f"Machine artifacts shipped but missing from /api/index.json: {sorted(unlisted)}"
+        )
+    phantom = listed - shipped
+    if phantom:
+        raise BuildStepError(
+            f"/api/index.json lists endpoints that do not exist in the build: {sorted(phantom)}"
         )
 
 

@@ -1,7 +1,16 @@
 # ASSET_INTELLIGENCE_FACTORY_PLAN.md
 
 **Asset:** `tourvstravel.com` (TourVsTravel)
-**Plan version:** 1.0.7
+**Plan version:** 1.1.0
+**Current revision date:** 2026-09-08
+**Revision note (1.1.0):** D-010 adopts the evidence-first phase in §16:
+Evidence → Adoption → Economics. §16 supersedes conflicting priorities,
+authority claims, and success criteria in the retained v1.0.7 text below.
+Sections 0–15 and earlier revision notes remain historical context; their
+completed-work entries are not a fresh production audit. Unconflicted standing
+constraints continue to apply. GOVERNANCE.md remains authoritative.
+**Companion status:** STRATEGIC_DEVELOPMENT_PLAN_AR.md is supporting guidance,
+not a second governing plan; §16 controls sequencing and release gates.
 **Plan date:** 2026-07-03
 **Revision note (1.0.1):** P0 executed same day — "200 destinations" claim retired
 (DECISIONS.md D-002), `GOVERNANCE.md`/`DECISIONS.md` added (D-003), claims-restraint
@@ -426,3 +435,165 @@ to JSON endpoints. Vanity metrics are not tracked.
 6. Human pages and machine endpoints tell the same truth.
 7. Concept → performance → beauty, in that order.
 8. Every layer must make the sentence truer: **the same destination is not the same trip — and this domain is where that decision is made.**
+
+---
+
+## 16. Evidence-first development phase — v1.1.0 (2026-09-08)
+
+### 16.1 Authority, scope, and current-state boundary
+
+Adopted by D-010. This is the current execution plan. It supersedes the
+unfinished P2/P3 ordering in §14, the commercialization ordering in §12, and
+any interpretation of §§2–3 or §13 as proof of category ownership, external
+adoption, or an inevitable acquisition. TSO, TDIS, and SFP are project-developed
+frameworks; external authority must be supported by specific, verifiable use.
+Existing identifiers, definitions, URLs, endpoint meanings, and governance
+constraints are preserved. This revision changes planning documents only.
+
+The local source and D-004 through D-009 record the ontology, Compass, ten
+destinations, seven-language reference footprint, and machine index. The
+historical audit tables above mix earlier snapshots and later additions; they
+must not be used as today's inventory. A fresh build, live-site audit, and
+search/usage baseline remain implementation work. Traffic, revenue, external
+adoption, and current production page counts are not established by this revision.
+
+The strategic sequence is:
+
+**Evidence registry → existing destination evidence cleanup → contextual
+decision cases → proven utility → destination-aware Compass → economics.**
+
+The registry begins as the working record for the cleanup, not a separate large
+platform project. New destinations, additional standards, Cost Comparator,
+paid API development, and broad tourism-economic coverage are deferred.
+Calendar dates do not override evidence or release gates.
+
+### 16.2 Close evidence debt across the existing ten destinations
+
+Review every material claim in the existing destination dataset and its
+localized projections, including summaries, season guidance, duration guidance,
+and family-fit priors. A material claim is one that could change a reader's
+decision, a comparison conclusion, or a tool output. A tourism-body homepage
+does not by itself substantiate the individual claims on a destination page.
+
+Each claim receives a stable ID and an explicit type:
+
+| Type | Required treatment |
+|---|---|
+| FACT | Direct supporting evidence with the relevant scope and period; no unsupported superlative |
+| DERIVED | Identified input claims/data, units, reproducible calculation, assumptions, and limitations |
+| EDITORIAL | Attributed reasoning, supporting evidence where it makes empirical assertions, and explicit limits |
+| STRUCTURAL_PRIOR | Identified framework/version, rationale, context limits, and a visible statement that this is not an observed result |
+
+Relabeling an empirical assertion EDITORIAL or STRUCTURAL_PRIOR does not cure
+missing evidence. Each unsupported assertion must be supported, narrowed,
+removed, or explicitly withheld from publication; its dependent outputs are
+identified. Evidence closure means the audit disposition has been applied to
+the affected public content, not merely recorded in an internal spreadsheet.
+
+The proposed registry contract records claim ID, type, statement, evidence IDs,
+exact source locator, publisher, publication/retrieval dates, observed period,
+geography, units where applicable, derivation, reviewer, review date, next review,
+rights/reuse status, and dependent pages/tools/machine artifacts. Non-applicable
+fields are explicit; unknown rights are not assumed to permit redistribution.
+Evidence records have stable IDs, relevant extracts or locators within allowed
+rights, and source limitations. Contradictory sources and corrections remain
+traceable. A correction propagates to all affected projections.
+
+These are implementation requirements, not claims that a registry or automated
+validator already exists. The implementation must define schema validation and
+meaningful build gates before releasing evidence-backed cases. Existing v1
+machine contracts cannot silently change meaning; corrections or changed
+semantics follow the established versioning rule.
+
+### 16.3 Two reference-quality cases before six
+
+Start with two contextual research dossiers. Morocco for a first-time family
+and Japan for a first-time visitor are candidate contexts, subject to evidence
+availability and editorial capability. Select existing TSO structure IDs during
+implementation; informal titles must not introduce new ontology classes.
+
+Each case is one canonical research object with a stable case ID, context,
+claim IDs, evidence IDs, shared calculations, assumptions, alternatives,
+tradeoffs, uncertainty, reviewer, and version history. Its language versions
+are localized editorial projections of that same object. The canonical research
+object is not an instruction to canonicalize every language URL to English;
+existing localized canonical/hreflang policy remains in force.
+
+All existing seven-language reference release obligations continue to apply.
+There is no language exception in this decision. Research is performed once;
+translations share claim and evidence IDs and calculations, and receive language
+review. Two cases are not fourteen independent studies.
+
+Both cases must pass these gates before expansion to four additional cases:
+
+1. **Evidence integrity:** all material claims are classified and defensible;
+   direct evidence supports the exact assertion and all derivations reproduce.
+2. **Editorial review:** an identified independent reviewer checks reasoning,
+   limits, conflicts of interest, and translation fidelity; no unresolved
+   decision-changing error remains.
+3. **User comprehension:** at least five formative reader sessions per case;
+   at least four readers per case can explain a conditional fit and one material
+   limitation. Failures trigger revision and retesting. This is a proposed
+   usability gate, not a population-level confidence estimate.
+4. **Citation usability:** a reviewer can retrieve the claim, exact source,
+   relevant period, case version, and permitted citation from the published
+   representation without guessing.
+5. **Machine parity:** machine and human projections resolve the same IDs,
+   evidence, context, and calculations; existing route, localization, and build
+   contracts pass. No machine endpoint or case is advertised before it ships.
+
+### 16.4 First 90 days — conditional delivery schedule
+
+Day 1 is the start of implementation, not a claim that work began on the plan date.
+
+| Window | Deliverable | Accountable role | Exit condition |
+|---|---|---|---|
+| Days 1–14: evidence debt closure | Working registry; material-claim audit of all ten destinations and languages; corrections applied; current build/production and search baseline where access exists | Research editor with developer support | Every material claim has a reviewed disposition; unsupported assertions are corrected or withheld in affected outputs; missing access is recorded, not treated as zero traffic |
+| Days 15–30: two reference-quality cases | Two canonical dossiers, reviewed localized projections, reproducible calculations and machine representation | Research editor + independent reviewer + developer | Both cases pass all five §16.3 gates |
+| Days 31–60: prove repeatability | Up to four more cases using the same schema and workflow; record production and maintenance cost | Product owner + editor | Each added case passes the same gates; no template-generated evidence gaps; reduce volume if review capacity is insufficient |
+| Days 61–90: prove utility | Compass comprehension study and a bounded agency workflow pilot | Product owner + agency participant | Fifteen Compass sessions, with at least twelve participants explaining a fit and limitation; documented repeat agency use or explicit reasons for non-use |
+
+If debt closure or a case gate fails, fix it before expanding. Agency recruitment
+and access setup may proceed alongside research when separately authorized;
+outreach is not performed by adopting this plan. The pilot may use reviewed cases
+and the existing Compass without changing destination scoring.
+
+Destination-aware Compass requires reviewed destination priors and accepted cases
+for every enabled destination context, explicit scoring derivations, scenario
+tests, explanation of changed results, and machine parity. Unsupported contexts
+remain unavailable. Passing a usability study alone does not validate the priors.
+
+### 16.5 Adoption before economics
+
+Months 4–6 test repeated agency/advisor use and a narrowly scoped willingness-to-pay
+offer. Months 7–9 develop the product supported by that evidence (for example a
+reusable case workflow or an embed), subject to positive service economics.
+Months 10–12 consolidate the evidence history, corrections, reusable data,
+permissions, operational documentation, and verifiable institutional use.
+These are hypotheses and decision windows, not revenue commitments.
+
+Tourism economics is in scope only when it explains the effects or tradeoffs of
+travel structures using suitable data. Aggregate tourism counts cannot establish
+TSO structure shares, and spending is not profit. A broad statistics portal and
+a paid API are not current delivery goals. Existing monetization constraints
+continue: diagnosis is independent, sponsorship cannot buy comparison positions,
+and data cannot be resold without appropriate rights.
+
+The primary evidence of progress is defensible claims, reproducible cases,
+reader understanding, repeat use, independent citations, and paid demand when
+tested. Track maintenance cost and rights alongside revenue. Indexed/published
+page ratio near one, page volume, terminology, JSON availability, and rankings
+alone are not success criteria; this supersedes the measurement wording in §14.
+No traffic, adoption, valuation, or defensibility score is invented.
+
+### 16.6 Implementation boundaries and companion document
+
+STRATEGIC_DEVELOPMENT_PLAN_AR.md remains explanatory guidance for audiences,
+SEO, staffing, and longer-term options. Its original schedules and any conflicting
+priorities are superseded by this section. There is one governing execution plan.
+
+Subsequent production changes should be independently reviewable: evidence
+schema and cleanup; first two cases and their release gates; repeatability;
+utility evaluation; then any eligible engine change. Substantive changes receive
+their own decision entries. No public changelog, destination data, scoring,
+routes, or generated output changes are included in this planning revision.

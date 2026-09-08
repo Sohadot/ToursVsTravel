@@ -6,16 +6,6 @@ last_reviewed: "2026-09-08"
 claim_types: ["FACT", "DERIVED", "EDITORIAL_INTERPRETATION", "STRUCTURAL_PRIOR"]
 evidence_statuses: ["SUPPORTED", "NARROW", "REPLACE_SOURCE", "RETIRE"]
 publication_states: ["PUBLISHED", "WITHHELD"]
-material_source_paths:
-  - "summary"
-  - "best_seasons"
-  - "typical_duration"
-  - "family_fit.structured_supported"
-  - "family_fit.independent_autonomous"
-  - "family_fit.comfort_premium"
-  - "family_fit.purpose_led"
-  - "family_fit.mobility_led"
-  - "family_fit.values_led"
 
 claims:
   - claim_id: "TVT-CL-JP-0001"

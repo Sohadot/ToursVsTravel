@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from copy import deepcopy
 from datetime import date
-from typing import Any, Dict, List, Mapping, Sequence, Tuple
+from typing import Any, Dict, List, Mapping
 
 from scripts.loaders import load_yaml
 
@@ -94,12 +94,6 @@ def load_evidence_registry() -> Dict[str, Any]:
         record["retrieved_at"] = _iso_date(record.get("retrieved_at"), f"records[{index}].retrieved_at")
         records[evidence_id] = record
 
-    declared_paths = [_text(value, "material_source_paths[]") for value in _list(
-        claims_root.get("material_source_paths"), "evidence_claims.material_source_paths"
-    )]
-    if len(declared_paths) != len(set(declared_paths)):
-        raise EvidenceContractError("material_source_paths contains duplicates.")
-
     claims: List[Dict[str, Any]] = []
     ids: set[str] = set()
     paths: set[str] = set()
@@ -142,12 +136,17 @@ def load_evidence_registry() -> Dict[str, Any]:
                 raise EvidenceContractError(f"Withheld claim {claim_id} must not define claim_text.")
         claims.append(claim)
 
-    if set(declared_paths) != paths:
-        raise EvidenceContractError(
-            f"Pilot material-claim coverage mismatch; missing={sorted(set(declared_paths)-paths)}, "
-            f"undeclared={sorted(paths-set(declared_paths))}"
-        )
     return {"pilot_destination": pilot, "records": records, "claims": claims}
+
+
+def derive_material_source_paths(destination: Mapping[str, Any]) -> set[str]:
+    """Derive the audit boundary from the governed destination, not the ledger."""
+    expected = {field for field in ("summary", "best_seasons") if field in destination}
+    if "typical_duration" in destination:
+        expected.add("typical_duration")
+    family_fit = _mapping(destination.get("family_fit"), "destination.family_fit")
+    expected.update(f"family_fit.{key}" for key in family_fit)
+    return expected
 
 
 def apply_evidence_projection(destination: Mapping[str, Any], registry: Mapping[str, Any]) -> Dict[str, Any]:
@@ -187,6 +186,13 @@ def apply_evidence_projection(destination: Mapping[str, Any], registry: Mapping[
 
 
 def validate_published_projection(destination: Mapping[str, Any], registry: Mapping[str, Any]) -> None:
+    expected_paths = derive_material_source_paths(destination)
+    registered_paths = {claim["source_path"] for claim in registry["claims"]}
+    if expected_paths != registered_paths:
+        raise EvidenceContractError(
+            f"Pilot material-claim coverage mismatch; missing={sorted(expected_paths-registered_paths)}, "
+            f"unexpected={sorted(registered_paths-expected_paths)}"
+        )
     projected = apply_evidence_projection(destination, registry)
     for claim in registry["claims"]:
         path = claim["source_path"]

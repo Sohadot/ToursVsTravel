@@ -50,6 +50,7 @@ Design principles
 from __future__ import annotations
 
 import argparse
+import hashlib
 import logging
 import os
 import re
@@ -137,6 +138,8 @@ from scripts.trust_authority_copy import TRUST_PAGE_COPY
 # ============================================================================
 
 log = logging.getLogger("build")
+
+DESTINATIONS_V1_SHA256 = "49d58e622863198c4773520c44a8cead2a7c60252f80450c011a7593186983a6"
 
 
 def configure_logging(*, verbose: bool = False) -> None:
@@ -989,6 +992,15 @@ def _verify_machine_layer_contract(stage_dir: Path) -> None:
     for path in required_files:
         _require_file(path)
 
+    destinations_v1_path = stage_dir / "api" / "destinations-v1.json"
+    destinations_v1_hash = hashlib.sha256(destinations_v1_path.read_bytes()).hexdigest()
+    if destinations_v1_hash != DESTINATIONS_V1_SHA256:
+        raise BuildStepError(
+            "Immutable destinations-v1.json snapshot drift: "
+            f"expected {DESTINATIONS_V1_SHA256}, found {destinations_v1_hash}. "
+            "Future destination edits must not rewrite the historical v1 endpoint."
+        )
+
     structures_dir = stage_dir / "api" / "structures"
     _require_dir(structures_dir)
     structure_files = sorted(structures_dir.glob("*.json"))
@@ -1091,9 +1103,16 @@ def _verify_evidence_claim_contract(stage_dir: Path) -> None:
         retired_duration = pilot["typical_duration"][lang]
         if retired_duration in html_text:
             raise BuildStepError(f"Retired pilot duration remains published for {lang}.")
-        if html_text.count("<code>high</code>") != 2:
+        for family_id, fit_value in projected["family_fit"].items():
+            marker = f'data-evidence-family-id="{family_id}" data-evidence-fit-value="{fit_value}"'
+            if html_text.count(marker) != 1:
+                raise BuildStepError(
+                    f"Pilot page for {lang} does not render reviewed family fit {family_id}={fit_value}."
+                )
+        rendered_family_markers = html_text.count('data-evidence-family-id="')
+        if rendered_family_markers != len(projected["family_fit"]):
             raise BuildStepError(
-                f"Pilot page for {lang} must publish exactly the two reviewed family-fit priors."
+                f"Pilot page for {lang} renders an unreviewed or duplicate family-fit prior."
             )
 
 

@@ -33,7 +33,11 @@ from scripts.generate_category_infrastructure import (
     load_ontology_structures,
 )
 from scripts.generate_compass import VALUE_LABELS
-from scripts.evidence import apply_evidence_projection, load_evidence_registry
+from scripts.evidence import (
+    apply_evidence_projection,
+    load_evidence_registry,
+    validate_published_projection,
+)
 from scripts.loaders import (
     load_destinations,
     load_experience_types,
@@ -294,6 +298,10 @@ def load_governed_destinations() -> List[Dict[str, Any]]:
     if not output:
         raise GenerateDestinationPagesError("No enabled destinations found in destinations.yaml.")
     registry = load_evidence_registry()
+    pilot = next((entry for entry in output if entry["id"] == registry["pilot_destination"]), None)
+    if pilot is None:
+        raise GenerateDestinationPagesError("Evidence pilot destination is absent from destinations.yaml.")
+    validate_published_projection(pilot, registry)
     output = [apply_evidence_projection(entry, registry) for entry in output]
     output.sort(key=lambda entry: entry["order"])
     return output

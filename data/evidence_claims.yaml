@@ -1,0 +1,150 @@
+schema_version: "1.0.0"
+dataset: "evidence_claims"
+status: "pilot"
+pilot_destination: "japan"
+last_reviewed: "2026-09-08"
+claim_types: ["FACT", "DERIVED", "EDITORIAL_INTERPRETATION", "STRUCTURAL_PRIOR"]
+evidence_statuses: ["SUPPORTED", "NARROW", "REPLACE_SOURCE", "RETIRE"]
+publication_states: ["PUBLISHED", "WITHHELD"]
+material_source_paths:
+  - "summary"
+  - "best_seasons"
+  - "typical_duration"
+  - "family_fit.structured_supported"
+  - "family_fit.independent_autonomous"
+  - "family_fit.comfort_premium"
+  - "family_fit.purpose_led"
+  - "family_fit.mobility_led"
+  - "family_fit.values_led"
+
+claims:
+  - claim_id: "TVT-CL-JP-0001"
+    destination_id: "japan"
+    source_path: "summary"
+    claim_type: "EDITORIAL_INTERPRETATION"
+    evidence_status: "NARROW"
+    publication_state: "PUBLISHED"
+    evidence_ids: ["TVT-EV-JP-0001", "TVT-EV-JP-0003"]
+    claim_text:
+      en: "Japan supports both guided and independent trip structures. JNTO documents extensive public transport options and multilingual volunteer-guide programs. These options reduce some planning barriers, while regional transport, language needs, and traveler constraints still determine fit."
+      ar: "تدعم اليابان الرحلات الموجّهة والمستقلة معًا. توثّق منظمة السياحة الوطنية اليابانية خيارات واسعة للنقل العام وبرامج مرشدين متطوعين بلغات متعددة. تخفف هذه الخيارات بعض أعباء التخطيط، بينما تظل ملاءمة الرحلة مرتبطة بالنقل الإقليمي والاحتياجات اللغوية وقيود المسافر."
+      fr: "Le Japon permet des voyages guidés comme indépendants. La JNTO documente de nombreuses options de transport public et des programmes de guides bénévoles multilingues. Ces options réduisent certains obstacles d'organisation, tandis que les transports régionaux, les besoins linguistiques et les contraintes du voyageur déterminent toujours l'adéquation."
+      es: "Japón permite estructuras de viaje guiadas e independientes. La JNTO documenta numerosas opciones de transporte público y programas de guías voluntarios multilingües. Estas opciones reducen algunas barreras de planificación, mientras que el transporte regional, las necesidades lingüísticas y las restricciones del viajero siguen determinando el ajuste."
+      de: "Japan ermöglicht sowohl geführte als auch unabhängige Reisestrukturen. Die JNTO dokumentiert zahlreiche öffentliche Verkehrsoptionen und mehrsprachige Programme freiwilliger Guides. Diese Angebote senken einige Planungshürden; regionale Verkehrsbedingungen, Sprachbedarf und persönliche Einschränkungen bestimmen weiterhin die Passung."
+      zh: "日本同时支持有向导和自主旅行结构。日本国家旅游局记录了广泛的公共交通选择和多语种志愿向导项目。这些条件可降低部分规划门槛，但地区交通、语言需求和旅行者自身限制仍会决定适配度。"
+      ja: "日本ではガイド付き旅行と個人旅行の双方を組み立てられる。JNTOは多様な公共交通手段と多言語のボランティアガイド制度を案内している。これらは計画上の障壁の一部を下げるが、地域の交通事情、言語面の必要性、旅行者の制約が適合性を左右する。"
+    reviewed_at: "2026-09-08"
+    next_review: "2027-03-08"
+    reviewer: "TourVsTravel editorial review"
+    rationale: "Narrows the former global-reliability superlative and unsupported language-effect assertion to documented transport and guide availability plus a bounded editorial implication."
+
+  - claim_id: "TVT-CL-JP-0002"
+    destination_id: "japan"
+    source_path: "best_seasons"
+    claim_type: "EDITORIAL_INTERPRETATION"
+    evidence_status: "NARROW"
+    publication_state: "PUBLISHED"
+    evidence_ids: ["TVT-EV-JP-0002"]
+    claim_text:
+      en: "Spring and autumn can support outdoor travel, but timing and weather vary substantially by region; check local forecasts for the planned route."
+      ar: "يمكن أن يلائم الربيع والخريف السفر في الهواء الطلق، لكن التوقيت والطقس يختلفان كثيرًا حسب المنطقة؛ تحقّق من التوقعات المحلية لمسار الرحلة المخطط."
+      fr: "Le printemps et l'automne peuvent convenir aux activités extérieures, mais le calendrier et la météo varient fortement selon la région ; vérifiez les prévisions locales pour l'itinéraire prévu."
+      es: "La primavera y el otoño pueden favorecer los viajes al aire libre, pero las fechas y el tiempo varían mucho según la región; consulta los pronósticos locales para la ruta prevista."
+      de: "Frühling und Herbst können sich für Reisen im Freien eignen, doch Zeitpunkt und Wetter unterscheiden sich je nach Region deutlich; prüfen Sie lokale Vorhersagen für die geplante Route."
+      zh: "春季和秋季可能适合户外旅行，但具体时段和天气因地区而有很大差异；请按计划路线查看当地预报。"
+      ja: "春と秋は屋外の旅行に適する場合があるが、時期と天候は地域によって大きく異なる。予定する経路の現地予報を確認すること。"
+    reviewed_at: "2026-09-08"
+    next_review: "2027-03-08"
+    reviewer: "TourVsTravel editorial review"
+    rationale: "Replaces a universal month range with conditional guidance that reflects the source's explicit regional variation."
+
+  - claim_id: "TVT-CL-JP-0003"
+    destination_id: "japan"
+    source_path: "typical_duration"
+    claim_type: "EDITORIAL_INTERPRETATION"
+    evidence_status: "RETIRE"
+    publication_state: "WITHHELD"
+    evidence_ids: []
+    original_claim: "10–14 days"
+    reviewed_at: "2026-09-08"
+    next_review: null
+    reviewer: "TourVsTravel editorial review"
+    rationale: "No method or source establishes a typical duration across traveler contexts and routes. The field is withheld from current HTML and machine output."
+
+  - claim_id: "TVT-CL-JP-0004"
+    destination_id: "japan"
+    source_path: "family_fit.structured_supported"
+    claim_type: "STRUCTURAL_PRIOR"
+    evidence_status: "SUPPORTED"
+    publication_state: "PUBLISHED"
+    evidence_ids: ["TVT-EV-JP-0003"]
+    claim_text: "high"
+    reviewed_at: "2026-09-08"
+    next_review: "2027-03-08"
+    reviewer: "TourVsTravel editorial review"
+    rationale: "TSO v1 prior. JNTO lists multilingual guide programs across multiple regions; actual availability remains conditional and this is not an observed outcome or ranking."
+
+  - claim_id: "TVT-CL-JP-0005"
+    destination_id: "japan"
+    source_path: "family_fit.independent_autonomous"
+    claim_type: "STRUCTURAL_PRIOR"
+    evidence_status: "SUPPORTED"
+    publication_state: "PUBLISHED"
+    evidence_ids: ["TVT-EV-JP-0001"]
+    claim_text: "high"
+    reviewed_at: "2026-09-08"
+    next_review: "2027-03-08"
+    reviewer: "TourVsTravel editorial review"
+    rationale: "TSO v1 prior. JNTO documents national and local transport choices that can support autonomous movement; regional conditions and traveler constraints still apply."
+
+  - claim_id: "TVT-CL-JP-0006"
+    destination_id: "japan"
+    source_path: "family_fit.comfort_premium"
+    claim_type: "STRUCTURAL_PRIOR"
+    evidence_status: "RETIRE"
+    publication_state: "WITHHELD"
+    evidence_ids: []
+    original_claim: "high"
+    reviewed_at: "2026-09-08"
+    next_review: null
+    reviewer: "TourVsTravel editorial review"
+    rationale: "The pilot found no reviewed rationale and direct evidence sufficient for this destination-level prior."
+
+  - claim_id: "TVT-CL-JP-0007"
+    destination_id: "japan"
+    source_path: "family_fit.purpose_led"
+    claim_type: "STRUCTURAL_PRIOR"
+    evidence_status: "RETIRE"
+    publication_state: "WITHHELD"
+    evidence_ids: []
+    original_claim: "medium"
+    reviewed_at: "2026-09-08"
+    next_review: null
+    reviewer: "TourVsTravel editorial review"
+    rationale: "The pilot found no reviewed rationale and direct evidence sufficient for this destination-level prior."
+
+  - claim_id: "TVT-CL-JP-0008"
+    destination_id: "japan"
+    source_path: "family_fit.mobility_led"
+    claim_type: "STRUCTURAL_PRIOR"
+    evidence_status: "RETIRE"
+    publication_state: "WITHHELD"
+    evidence_ids: []
+    original_claim: "medium"
+    reviewed_at: "2026-09-08"
+    next_review: null
+    reviewer: "TourVsTravel editorial review"
+    rationale: "The pilot found no reviewed rationale and direct evidence sufficient for this destination-level prior."
+
+  - claim_id: "TVT-CL-JP-0009"
+    destination_id: "japan"
+    source_path: "family_fit.values_led"
+    claim_type: "STRUCTURAL_PRIOR"
+    evidence_status: "RETIRE"
+    publication_state: "WITHHELD"
+    evidence_ids: []
+    original_claim: "medium"
+    reviewed_at: "2026-09-08"
+    next_review: null
+    reviewer: "TourVsTravel editorial review"
+    rationale: "The pilot found no reviewed rationale and direct evidence sufficient for this destination-level prior."

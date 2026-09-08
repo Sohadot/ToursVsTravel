@@ -119,6 +119,13 @@ from scripts.generate_machine_layer import (
     GenerateMachineLayerError,
     generate_machine_layer,
 )
+from scripts.evidence import (
+    EvidenceContractError,
+    apply_evidence_projection,
+    load_evidence_registry,
+    validate_published_projection,
+)
+from scripts.loaders import load_destinations
 from scripts.generate_robots import GenerateRobotsError, generate_robots_file
 from scripts.generate_sitemap import GenerateSitemapError, generate_sitemap_file
 from scripts.generate_travel_decision_architecture import ENGLISH_SECTIONS as TDA_ENGLISH_SECTIONS
@@ -975,6 +982,7 @@ def _verify_machine_layer_contract(stage_dir: Path) -> None:
         stage_dir / "api" / "criteria-v1.json",
         stage_dir / "api" / "compass-v1.json",
         stage_dir / "api" / "destinations-v1.json",
+        stage_dir / "api" / "destinations-v2.json",
         stage_dir / "api" / "index.json",
         stage_dir / "about.json",
     ]
@@ -1039,6 +1047,56 @@ def _verify_machine_layer_contract(stage_dir: Path) -> None:
         )
 
 
+def _verify_evidence_claim_contract(stage_dir: Path) -> None:
+    """Fail closed when the audited destination and its evidence ledger drift."""
+    import json as _json
+
+    try:
+        registry = load_evidence_registry()
+        raw_destinations = load_destinations()
+        pilot = next(
+            (item for item in raw_destinations if item.get("id") == registry["pilot_destination"]),
+            None,
+        )
+        if pilot is None:
+            raise EvidenceContractError("Pilot destination is absent from destinations.yaml.")
+        validate_published_projection(pilot, registry)
+        projected = apply_evidence_projection(pilot, registry)
+    except (EvidenceContractError, StopIteration) as exc:
+        raise BuildStepError(f"Evidence claim contract failed: {exc}") from exc
+
+    machine_path = stage_dir / "api" / "destinations-v2.json"
+    _require_file(machine_path)
+    machine_payload = _json.loads(machine_path.read_text(encoding="utf-8"))
+    machine_pilot = next(
+        (item for item in machine_payload.get("destinations", []) if item.get("id") == registry["pilot_destination"]),
+        None,
+    )
+    if machine_pilot is None:
+        raise BuildStepError("Evidence-reviewed machine artifact omits the pilot destination.")
+    for field in ("summary", "best_seasons", "family_fit"):
+        if machine_pilot.get(field) != projected.get(field):
+            raise BuildStepError(f"Machine evidence projection drift for pilot field {field!r}.")
+    if "typical_duration" in machine_pilot:
+        raise BuildStepError("Retired pilot duration remains published in destinations-v2.json.")
+    if machine_pilot.get("evidence_claims") != projected.get("evidence_claims"):
+        raise BuildStepError("Machine evidence claim references drift from the registry.")
+
+    for lang in SUPPORTED_LANGUAGES:
+        html_path = stage_dir / lang / "destinations" / registry["pilot_destination"] / "index.html"
+        _require_file(html_path)
+        html_text = unescape(html_path.read_text(encoding="utf-8"))
+        if projected["summary"][lang] not in html_text or projected["best_seasons"][lang] not in html_text:
+            raise BuildStepError(f"Published pilot copy does not match evidence projection for {lang}.")
+        retired_duration = pilot["typical_duration"][lang]
+        if retired_duration in html_text:
+            raise BuildStepError(f"Retired pilot duration remains published for {lang}.")
+        if html_text.count("<code>high</code>") != 2:
+            raise BuildStepError(
+                f"Pilot page for {lang} must publish exactly the two reviewed family-fit priors."
+            )
+
+
 def _verify_trust_pages_are_indexable(stage_dir: Path) -> None:
     trust_path_templates = [
         "{lang}/about/index.html",
@@ -1096,6 +1154,7 @@ def _verify_output_contract(stage_dir: Path) -> None:
 
     _verify_destination_pages_contract(stage_dir)
     _verify_machine_layer_contract(stage_dir)
+    _verify_evidence_claim_contract(stage_dir)
     _verify_trust_pages_are_indexable(stage_dir)
     _verify_experience_type_count(stage_dir)
     _verify_sitemap_contract(stage_dir)

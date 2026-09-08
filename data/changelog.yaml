@@ -188,3 +188,23 @@ entries:
       de: "Ein kanonisches Maschinenverzeichnis erscheint nun unter /api/index.json, jedes Artefakt verweist darauf zurück, und zwei Artefakte vervollständigen den Spiegel: die Kompass-Engine-Spezifikation und die regelgeleitete Reiseziel-Charge. Ein bidirektionales Gate hält Index und ausgelieferte Artefakte identisch. Die Sitemap trägt jetzt x-default in jedem Alternate-Cluster und erbt dieselbe hreflang-Politik der Seitenköpfe, mit einem Gate gegen künftige Drift."
       zh: "规范的机器目录现发布于 /api/index.json，每个工件都指回该目录，两个新工件补全了镜像：指南针引擎规范与受治理目的地批次。双向关卡确保索引与已发布工件完全一致。站点地图现在在每个备用语言组中携带 x-default，继承页面头部使用的同一 hreflang 策略，并有关卡防止未来漂移。"
       ja: "正規のマシンディレクトリが /api/index.json で公開され、すべてのアーティファクトがそこを指し示す。コンパスエンジン仕様と統治された目的地バッチの2つがミラーを完成させた。双方向ゲートがインデックスと公開アーティファクトの完全一致を保つ。サイトマップは全ての代替クラスタで x-default を持ち、ページヘッダーと同じ hreflang ポリシーを継承し、将来のドリフトを防ぐゲートを備える。"
+
+  - id: "2026-09-08-japan-evidence-closure"
+    date: "2026-09-08"
+    decision_ref: "D-011"
+    title:
+      en: "Japan evidence closure pilot"
+      ar: "تجربة إغلاق أدلة اليابان"
+      fr: "Pilote de clôture des preuves pour le Japon"
+      es: "Piloto de cierre de evidencia para Japón"
+      de: "Pilot zur Evidenzprüfung für Japan"
+      zh: "日本证据闭环试点"
+      ja: "日本エビデンス整備パイロット"
+    summary:
+      en: "A claim-level registry now governs Japan's material destination claims. Unsupported wording and fields are narrowed or withheld, exact evidence records replace a general homepage citation, and a build gate keeps the registry, current pages, and destinations v2 machine artifact aligned."
+      ar: "أصبح سجل على مستوى الادعاء يحكم الادعاءات الجوهرية لوجهة اليابان. ضُيقت الصياغات غير المدعومة أو حُجبت، وحلت سجلات أدلة دقيقة محل رابط عام، وتُبقي بوابة بناء السجل والصفحات الحالية وملف الوجهات v2 متطابقة."
+      fr: "Un registre au niveau des affirmations gouverne désormais les affirmations matérielles sur le Japon. Les formulations et champs insuffisamment étayés sont resserrés ou masqués, des preuves précises remplacent un lien général et une barrière de build aligne le registre, les pages actuelles et l'artefact destinations v2."
+      es: "Un registro por afirmación gobierna ahora las afirmaciones materiales sobre Japón. Los textos y campos sin respaldo suficiente se acotan u ocultan, registros precisos sustituyen un enlace general y una barrera de compilación alinea el registro, las páginas actuales y el artefacto destinations v2."
+      de: "Ein Register auf Behauptungsebene steuert nun die wesentlichen Aussagen zu Japan. Unzureichend belegte Formulierungen und Felder werden eingegrenzt oder ausgeblendet, genaue Evidenzdatensätze ersetzen einen allgemeinen Link, und ein Build-Gate hält Register, aktuelle Seiten und das destinations-v2-Artefakt synchron."
+      zh: "日本目的地的重要表述现由逐项主张登记表治理。证据不足的措辞和字段被收窄或隐藏，精确证据记录取代通用主页链接，构建关卡确保登记表、当前页面和 destinations v2 机器工件保持一致。"
+      ja: "日本の重要な目的地記述を主張単位のレジストリで管理する。根拠が不十分な表現や項目は限定または非公開とし、一般的なトップページ参照を正確な証拠記録に置き換え、ビルドゲートがレジストリ、現行ページ、destinations v2 マシン成果物の整合を保つ。"

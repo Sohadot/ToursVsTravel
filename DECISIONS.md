@@ -198,3 +198,30 @@ Procedure: see `GOVERNANCE.md` §6.
   scattered across four roots without a directory is discoverable only by
   reading pages. The index makes the machine surface self-describing, and
   both fixes convert one-time audits into standing gates.
+
+## D-010 — Adopt evidence-first development phase
+
+- **Date:** 2026-09-08
+- **Decision:** Adopt ASSET_INTELLIGENCE_FACTORY_PLAN.md v1.1.0 §16 as the
+  current execution sequence: Evidence → Adoption → Economics. Preserve the
+  v1.0.7 body and historical revision notes; §16 explicitly supersedes conflicting
+  priorities, category-authority assertions, and measurement criteria.
+- **Sequence:** Establish the working evidence registry while closing material
+  claim debt across the existing ten destinations; produce two reviewed contextual
+  cases; expand to six only after their gates pass; evaluate Compass comprehension
+  and repeat agency use. Destination-aware scoring follows reviewed evidence and
+  cases, never precedes them. Additional destinations, tools, paid API work, and
+  broad tourism-economic coverage are deferred.
+- **Research model:** One canonical case object with stable claim/evidence IDs
+  and reproducible calculations feeds localized projections. Existing seven-language
+  reference obligations and endpoint/versioning rules are unchanged.
+- **Authority:** TSO/TDIS/SFP are project-developed frameworks; external authority
+  and adoption must be demonstrated. STRATEGIC_DEVELOPMENT_PLAN_AR.md is supporting
+  guidance subject to §16, not a competing governing plan.
+- **Scope:** Planning documentation only. No public data, pages, scoring, routes,
+  machine contracts, public changelog, or deployment changes. Evidence closure,
+  case production, usability studies, and institutional adoption remain future
+  work and are not marked completed by this decision.
+- **Rationale:** The next constraint is evidence depth and demonstrated utility,
+  not infrastructure quantity. Claim-level provenance, correction history,
+  reproducibility, and repeated use are the proposed basis for durable value.

@@ -129,4 +129,3 @@ class GeneratedContractTests(unittest.TestCase):
             lambda data: data.replace(b"<li>", b'<li data-evidence-family-id="bad">', 1),
             _verify_evidence_claim_contract,
         )
-

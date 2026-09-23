@@ -245,8 +245,13 @@ Procedure: see `GOVERNANCE.md` §6.
 - **Machine versioning:** `/api/destinations-v1.json` remains the historical v1
   representation and is marked superseded. Its exact serialized payload is pinned
   by SHA-256 in the build contract, so any future drift fails the build. The
-  evidence-reviewed projection is published as `/api/destinations-v2.json`; the
-  machine index and `about.json` identify v2 as current. The v1 URL is not repurposed.
+  Japan evidence-closure projection is published inside `/api/destinations-v2.json`;
+  the machine index and `about.json` identify its destination-scoped pilot status.
+  JSON artifacts serialize as UTF-8 bytes with a single LF newline so v1's pinned
+  SHA-256 is platform-independent. The v1 URL is not repurposed.
+- **Projection parity:** Only Japan carries evidence records and claims in v2.
+  Its seven pages carry evidence markers; the other nine destinations retain
+  byte-equivalent v1 destination objects and emit no evidence markers.
 - **Scope:** Japan only. No other destination is audited or changed by this
   decision; no comparison case, Compass scoring, new destination, or new tool is
   introduced.

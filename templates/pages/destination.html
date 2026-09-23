@@ -14,7 +14,7 @@
     <p>{{ copy.fit_intro }}</p>
     <ul>
       {% for family in family_fit %}
-      <li data-evidence-family-id="{{ family.id }}" data-evidence-fit-value="{{ family.fit_value }}">
+      <li{% if destination.evidence_governed %} data-evidence-family-id="{{ family.id }}" data-evidence-fit-value="{{ family.fit_value }}"{% endif %}>
         <strong>{{ family.label }}</strong> — {{ family.fit_label }} <code>{{ family.fit_value }}</code>
         <br>{{ copy.structures_in_family_label }}:
         {% for member in family.members %}

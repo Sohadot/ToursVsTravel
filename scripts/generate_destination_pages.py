@@ -508,6 +508,7 @@ def _build_context(
         "typical_duration": destination.get("typical_duration", {}).get(lang),
         "sources": destination["sources"],
         "evidence_claims": destination.get("evidence_claims", []),
+        "evidence_governed": bool(destination.get("evidence_claims")),
     }
 
     canonical_url = build_destination_path(site_config, lang, destination["id"], absolute=True)

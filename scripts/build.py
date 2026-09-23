@@ -139,7 +139,7 @@ from scripts.trust_authority_copy import TRUST_PAGE_COPY
 
 log = logging.getLogger("build")
 
-DESTINATIONS_V1_SHA256 = "49d58e622863198c4773520c44a8cead2a7c60252f80450c011a7593186983a6"
+DESTINATIONS_V1_SHA256 = "3b76bb8f4f20aca5c9f617ef0a159967087a704bb6d1857a646bcefbb3fb2f9a"
 
 
 def configure_logging(*, verbose: bool = False) -> None:
@@ -1093,6 +1093,28 @@ def _verify_evidence_claim_contract(stage_dir: Path) -> None:
         raise BuildStepError("Retired pilot duration remains published in destinations-v2.json.")
     if machine_pilot.get("evidence_claims") != projected.get("evidence_claims"):
         raise BuildStepError("Machine evidence claim references drift from the registry.")
+    if machine_pilot.get("evidence_records") != projected.get("evidence_records"):
+        raise BuildStepError("Machine evidence records drift from the registry.")
+    records_by_id = {record["evidence_id"]: record for record in machine_pilot["evidence_records"]}
+    for claim in machine_pilot["evidence_claims"]:
+        for evidence_id in claim["evidence_ids"]:
+            if evidence_id not in records_by_id:
+                raise BuildStepError(f"Published claim references unshipped evidence {evidence_id!r}.")
+    expected_sources = [
+        {"label": record["title"], "url": record["source_url"], "evidence_id": evidence_id}
+        for evidence_id, record in registry["records"].items()
+    ]
+    if machine_pilot.get("sources") != expected_sources:
+        raise BuildStepError("Machine evidence sources drift from registry IDs or URLs.")
+
+    v1_payload = _json.loads((stage_dir / "api" / "destinations-v1.json").read_text(encoding="utf-8"))
+    v1_by_id = {item["id"]: item for item in v1_payload.get("destinations", [])}
+    v2_by_id = {item["id"]: item for item in machine_payload.get("destinations", [])}
+    if set(v1_by_id) != set(v2_by_id):
+        raise BuildStepError("v1 and v2 destination IDs differ.")
+    for destination_id, v1_destination in v1_by_id.items():
+        if destination_id != registry["pilot_destination"] and v2_by_id[destination_id] != v1_destination:
+            raise BuildStepError(f"Non-pilot destination {destination_id!r} drifted between v1 and v2.")
 
     for lang in SUPPORTED_LANGUAGES:
         html_path = stage_dir / lang / "destinations" / registry["pilot_destination"] / "index.html"
@@ -1114,6 +1136,14 @@ def _verify_evidence_claim_contract(stage_dir: Path) -> None:
             raise BuildStepError(
                 f"Pilot page for {lang} renders an unreviewed or duplicate family-fit prior."
             )
+
+        for destination_id in v1_by_id:
+            if destination_id == registry["pilot_destination"]:
+                continue
+            non_pilot_html = stage_dir / lang / "destinations" / destination_id / "index.html"
+            _require_file(non_pilot_html)
+            if 'data-evidence-' in non_pilot_html.read_text(encoding="utf-8"):
+                raise BuildStepError(f"Non-pilot page {destination_id!r} incorrectly emits evidence markers.")
 
 
 def _verify_trust_pages_are_indexable(stage_dir: Path) -> None:

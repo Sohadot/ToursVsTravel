@@ -188,3 +188,23 @@ entries:
       de: "Ein kanonisches Maschinenverzeichnis erscheint nun unter /api/index.json, jedes Artefakt verweist darauf zurück, und zwei Artefakte vervollständigen den Spiegel: die Kompass-Engine-Spezifikation und die regelgeleitete Reiseziel-Charge. Ein bidirektionales Gate hält Index und ausgelieferte Artefakte identisch. Die Sitemap trägt jetzt x-default in jedem Alternate-Cluster und erbt dieselbe hreflang-Politik der Seitenköpfe, mit einem Gate gegen künftige Drift."
       zh: "规范的机器目录现发布于 /api/index.json，每个工件都指回该目录，两个新工件补全了镜像：指南针引擎规范与受治理目的地批次。双向关卡确保索引与已发布工件完全一致。站点地图现在在每个备用语言组中携带 x-default，继承页面头部使用的同一 hreflang 策略，并有关卡防止未来漂移。"
       ja: "正規のマシンディレクトリが /api/index.json で公開され、すべてのアーティファクトがそこを指し示す。コンパスエンジン仕様と統治された目的地バッチの2つがミラーを完成させた。双方向ゲートがインデックスと公開アーティファクトの完全一致を保つ。サイトマップは全ての代替クラスタで x-default を持ち、ページヘッダーと同じ hreflang ポリシーを継承し、将来のドリフトを防ぐゲートを備える。"
+
+  - id: "2026-09-08-japan-evidence-closure"
+    date: "2026-09-08"
+    decision_ref: "D-011"
+    title:
+      en: "Japan evidence closure pilot"
+      ar: "تجربة إغلاق أدلة اليابان"
+      fr: "Pilote de clôture des preuves pour le Japon"
+      es: "Piloto de cierre de evidencia para Japón"
+      de: "Pilot zur Evidenzprüfung für Japan"
+      zh: "日本证据闭环试点"
+      ja: "日本エビデンス整備パイロット"
+    summary:
+      en: "A claim-level registry governs Japan's material destination claims. Destinations v2 is explicitly a Japan-only evidence-closure pilot: it carries Japan's complete evidence records and claim parity, while the other nine destination objects remain v1-equivalent and unreviewed in this pilot. Deterministic UTF-8/LF serialization preserves the historical v1 hash across platforms, and only Japan pages carry evidence markers."
+      ar: "يحكم سجل على مستوى الادعاء الادعاءات الجوهرية لليابان. الوجهات v2 هي صراحةً تجربة إغلاق أدلة تخص اليابان فقط: تحمل سجلات أدلة اليابان الكاملة وتطابق الادعاءات، بينما تبقى كائنات الوجهات التسع الأخرى مكافئة لـ v1 وغير مراجعة في هذه التجربة. وتحافظ سلسلة UTF-8/LF الحتمية على تجزئة v1 التاريخية عبر المنصات، ولا تحمل علامات الأدلة إلا صفحات اليابان."
+      fr: "Un registre au niveau des affirmations gouverne les affirmations matérielles sur le Japon. Destinations v2 est explicitement un pilote de clôture des preuves limité au Japon : il contient les dossiers de preuve complets et la parité des affirmations du Japon, tandis que les neuf autres objets destination restent équivalents à v1 et non révisés dans ce pilote. Une sérialisation UTF-8/LF déterministe préserve le hash historique de v1 sur toutes les plateformes, et seules les pages Japon portent des marqueurs de preuve."
+      es: "Un registro por afirmación gobierna las afirmaciones materiales de Japón. Destinations v2 es explícitamente un piloto de cierre de evidencia limitado a Japón: contiene los registros completos y la paridad de afirmaciones de Japón, mientras que los otros nueve objetos de destino permanecen equivalentes a v1 y sin revisar en este piloto. La serialización determinista UTF-8/LF conserva el hash histórico de v1 entre plataformas y solo las páginas de Japón llevan marcadores de evidencia."
+      de: "Ein Register auf Behauptungsebene steuert die wesentlichen Aussagen zu Japan. Destinations v2 ist ausdrücklich ein auf Japan beschränktes Pilotprojekt zur Evidenzschließung: Es enthält Japans vollständige Evidenzdatensätze und Behauptungsparität, während die anderen neun Reisezielobjekte v1-äquivalent und in diesem Pilotprojekt ungeprüft bleiben. Deterministische UTF-8/LF-Serialisierung bewahrt den historischen v1-Hash plattformübergreifend, und nur Japan-Seiten tragen Evidenzmarker."
+      zh: "逐项主张登记表管理日本目的地的重要表述。destinations v2 明确是仅限日本的证据闭环试点：它包含日本完整的证据记录和主张一致性，而其余九个目的地对象保持与 v1 等同，且未在本试点中审核。确定性的 UTF-8/LF 序列化可跨平台保留 v1 的历史哈希，且只有日本页面带有证据标记。"
+      ja: "主張単位のレジストリが日本の重要な目的地記述を管理する。destinations v2 は日本に限定したエビデンス整備のパイロットであり、日本の完全なエビデンス記録と主張の整合性を含む一方、他の9つの目的地オブジェクトは v1 と同等のままで、このパイロットでは未審査である。決定論的な UTF-8/LF シリアライズはプラットフォーム間で v1 の履歴ハッシュを維持し、エビデンスマーカーを持つのは日本ページだけである。"

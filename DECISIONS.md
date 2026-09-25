@@ -225,3 +225,36 @@ Procedure: see `GOVERNANCE.md` §6.
 - **Rationale:** The next constraint is evidence depth and demonstrated utility,
   not infrastructure quantity. Claim-level provenance, correction history,
   reproducibility, and repeated use are the proposed basis for durable value.
+
+## D-011 — Japan Evidence Closure pilot establishes the evidence contract
+
+- **Date:** 2026-09-08
+- **Decision:** Establish the first claim-level evidence registry with Japan as
+  the sole pilot destination. Nine material source paths are covered: summary,
+  season guidance, duration guidance, and all six family-fit priors. The public
+  projection narrows the summary and season guidance, retires the unsupported
+  duration, retains two source-bounded structural priors, and withholds four
+  family-fit priors whose rationale and evidence are insufficient.
+- **Evidence contract:** `data/evidence_records.yaml` stores stable evidence IDs,
+  exact source locators, publisher, retrieval date, geographic scope, rights
+  posture, and limitations. `data/evidence_claims.yaml` stores stable claim IDs,
+  source paths, type, disposition, publication state, evidence references,
+  review dates, reviewer, and rationale. A build gate rejects incomplete coverage,
+  invalid dispositions, unknown evidence, or drift between registry, current HTML,
+  and current machine output.
+- **Machine versioning:** `/api/destinations-v1.json` remains the historical v1
+  representation and is marked superseded. Its exact serialized payload is pinned
+  by SHA-256 in the build contract, so any future drift fails the build. The
+  Japan evidence-closure projection is published inside `/api/destinations-v2.json`;
+  the machine index and `about.json` identify its destination-scoped pilot status.
+  JSON artifacts serialize as UTF-8 bytes with a single LF newline so v1's pinned
+  SHA-256 is platform-independent. The v1 URL is not repurposed.
+- **Projection parity:** Only Japan carries evidence records and claims in v2.
+  Its seven pages carry evidence markers; the other nine destinations retain
+  byte-equivalent v1 destination objects and emit no evidence markers.
+- **Scope:** Japan only. No other destination is audited or changed by this
+  decision; no comparison case, Compass scoring, new destination, or new tool is
+  introduced.
+- **Rationale:** The pilot proves the durable schema and fail-closed publication
+  gate against a real destination before extending evidence closure to the
+  remaining nine destinations.

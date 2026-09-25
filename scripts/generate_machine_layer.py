@@ -53,7 +53,7 @@ from scripts.generate_compass import (
     _load_engine_settings,
 )
 from scripts.generate_destination_pages import load_governed_destinations
-from scripts.loaders import load_site_config
+from scripts.loaders import load_destinations, load_site_config
 from scripts.routes import (
     build_changelog_path,
     build_destination_path,
@@ -82,13 +82,16 @@ class GenerateMachineLayerError(Exception):
 
 def _atomic_write_json(path: Path, payload: Mapping[str, Any]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
+    # JSON artifacts are public contracts.  Serialize once into canonical UTF-8
+    # bytes so Windows newline translation cannot alter a versioned snapshot.
     serialized = json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=False)
+    serialized_bytes = (serialized + "\n").encode("utf-8")
     tmp_path: Optional[Path] = None
     try:
         with NamedTemporaryFile(
-            "w", encoding="utf-8", dir=str(path.parent), delete=False, suffix=".tmp"
+            "wb", dir=str(path.parent), delete=False, suffix=".tmp"
         ) as tmp:
-            tmp.write(serialized + "\n")
+            tmp.write(serialized_bytes)
             tmp.flush()
             os.fsync(tmp.fileno())
             tmp_path = Path(tmp.name)
@@ -298,15 +301,23 @@ def build_compass_payload(site_config: Mapping[str, Any]) -> Dict[str, Any]:
     return payload
 
 
-def build_destinations_payload(site_config: Mapping[str, Any]) -> Dict[str, Any]:
-    """Machine mirror of the governed destinations batch."""
-    destinations = load_governed_destinations()
+def build_destinations_payload(
+    site_config: Mapping[str, Any],
+    destinations: Sequence[Mapping[str, Any]],
+    *,
+    version: str,
+    generated_from: Sequence[str],
+) -> Dict[str, Any]:
+    """Machine mirror of one version of the governed destinations batch."""
     payload = _artifact_header(
-        artifact="Governed Destinations Batch",
+        artifact=(
+            "Governed Destinations Batch — Japan Evidence Closure Pilot 01"
+            if version == "2.0.0" else "Governed Destinations Batch"
+        ),
         artifact_id="destinations",
-        version="1.0.0",
+        version=version,
         canonical_pages=_lang_page_map(site_config, build_destinations_index_path),
-        generated_from=["data/destinations.yaml"],
+        generated_from=generated_from,
     )
     payload["batch"] = 1
     payload["destination_count"] = len(destinations)
@@ -314,6 +325,16 @@ def build_destinations_payload(site_config: Mapping[str, Any]) -> Dict[str, Any]
         "family_fit values are structural priors per TSO family "
         "(TDIS rule priors-context), not verdicts or rankings."
     )
+    if version == "2.0.0":
+        pilot_id = "japan"
+        payload["review_scope"] = {
+            "scope": "destination-scoped pilot",
+            "pilot_destination": pilot_id,
+            "reviewed_destinations": [pilot_id],
+            "not_reviewed_in_this_pilot": [
+                destination["id"] for destination in destinations if destination["id"] != pilot_id
+            ],
+        }
     payload["destinations"] = [
         {
             "id": dest["id"],
@@ -323,8 +344,11 @@ def build_destinations_payload(site_config: Mapping[str, Any]) -> Dict[str, Any]
             "summary": dict(dest["summary"]),
             "family_fit": dict(dest["family_fit"]),
             "best_seasons": dict(dest["best_seasons"]),
-            "typical_duration": dict(dest["typical_duration"]),
+            **({"typical_duration": dict(dest["typical_duration"])} if dest.get("typical_duration") else {}),
             "sources": [dict(source) for source in dest["sources"]],
+            **({"evidence_claims": list(dest["evidence_claims"])} if dest.get("evidence_claims") else {}),
+            **({"evidence_records": [dict(record) for record in dest["evidence_records"]]}
+               if dest.get("evidence_records") else {}),
             "reference_pages": {
                 lang: build_destination_path(site_config, lang, dest["id"], absolute=True)
                 for lang in SUPPORTED_LANGUAGES
@@ -363,8 +387,12 @@ def build_index_payload(
              "endpoint": "/api/criteria-v1.json"},
             {"id": "compass", "artifact": "Travel Decision Compass Engine Specification",
              "version": "1.0.0", "endpoint": "/api/compass-v1.json"},
-            {"id": "destinations", "artifact": "Governed Destinations Batch", "version": "1.0.0",
+            {"id": "destinations-v1", "artifact": "Governed Destinations Batch", "version": "1.0.0",
+             "status": "superseded", "superseded_by": "/api/destinations-v2.json",
              "endpoint": "/api/destinations-v1.json"},
+            {"id": "destinations", "artifact": "Governed Destinations Batch — Japan Evidence Closure Pilot 01",
+             "version": "2.0.0", "status": "current", "review_scope": "destination-scoped pilot",
+             "reviewed_destinations": ["japan"], "endpoint": "/api/destinations-v2.json"},
             {"id": "tso-classes", "artifact": "Per-class ontology artifacts",
              "version": TSO_VERSION,
              "endpoint_template": "/api/structures/{slug}.json",
@@ -420,9 +448,12 @@ def build_about_payload(
                 "endpoint": "/api/compass-v1.json",
             },
             "destinations": {
-                "name": "Governed Destinations Batch",
-                "version": "1.0.0",
-                "endpoint": "/api/destinations-v1.json",
+                "name": "Governed Destinations Batch — Japan Evidence Closure Pilot 01",
+                "version": "2.0.0",
+                "endpoint": "/api/destinations-v2.json",
+                "supersedes": "/api/destinations-v1.json",
+                "review_scope": "destination-scoped pilot",
+                "reviewed_destinations": ["japan"],
             },
             "machine_index": {
                 "name": "Machine Layer Index",
@@ -485,9 +516,21 @@ def generate_machine_layer(*, output_dir: Path = DEFAULT_OUTPUT_DIR) -> List[Pat
     _atomic_write_json(compass_path, build_compass_payload(site_config))
     written.append(compass_path)
 
-    destinations_path = safe_output_dir / "api" / "destinations-v1.json"
-    _atomic_write_json(destinations_path, build_destinations_payload(site_config))
-    written.append(destinations_path)
+    legacy_destinations = [dict(item) for item in load_destinations() if item.get("enabled") is not False]
+    destinations_v1_path = safe_output_dir / "api" / "destinations-v1.json"
+    _atomic_write_json(destinations_v1_path, build_destinations_payload(
+        site_config, legacy_destinations, version="1.0.0", generated_from=["data/destinations.yaml"]
+    ))
+    written.append(destinations_v1_path)
+
+    destinations_v2_path = safe_output_dir / "api" / "destinations-v2.json"
+    _atomic_write_json(destinations_v2_path, build_destinations_payload(
+        site_config,
+        load_governed_destinations(),
+        version="2.0.0",
+        generated_from=["data/destinations.yaml", "data/evidence_claims.yaml", "data/evidence_records.yaml"],
+    ))
+    written.append(destinations_v2_path)
 
     index_path = safe_output_dir / "api" / "index.json"
     _atomic_write_json(index_path, build_index_payload(structures))

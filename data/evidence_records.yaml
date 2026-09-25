@@ -1,0 +1,42 @@
+schema_version: "1.0.0"
+dataset: "evidence_records"
+status: "pilot"
+pilot_destination: "japan"
+last_reviewed: "2026-09-08"
+
+records:
+  - evidence_id: "TVT-EV-JP-0001"
+    title: "Transportation in Japan"
+    publisher: "Japan National Tourism Organization"
+    source_url: "https://www.japan.travel/en/plan/getting-around/"
+    source_locator: "Transportation in Japan; introductory paragraphs and Getting Around Tips"
+    published_at: null
+    retrieved_at: "2026-09-08"
+    geography: "Japan"
+    observed_period: null
+    rights_status: "LINK_AND_PARAPHRASE_ONLY"
+    limitations: "Destination-marketing source. It documents available transport and planning options but does not establish a global reliability ranking or universal traveler fit."
+
+  - evidence_id: "TVT-EV-JP-0002"
+    title: "Weather & Geography"
+    publisher: "Japan National Tourism Organization"
+    source_url: "https://www.japan.travel/en/plan/weather/"
+    source_locator: "Weather forecast and Weather through the seasons sections"
+    published_at: null
+    retrieved_at: "2026-09-08"
+    geography: "Japan; source explicitly notes substantial regional variation"
+    observed_period: null
+    rights_status: "LINK_AND_PARAPHRASE_ONLY"
+    limitations: "General planning guidance, not a universal best-time determination. Local forecasts and the traveler's route remain necessary."
+
+  - evidence_id: "TVT-EV-JP-0003"
+    title: "List of Volunteer Guides"
+    publisher: "Japan National Tourism Organization"
+    source_url: "https://www.japan.travel/en/plan/list-of-volunteer-guides/"
+    source_locator: "Introduction and regional Systematized Goodwill Guide listings"
+    published_at: null
+    retrieved_at: "2026-09-08"
+    geography: "Listed regions of Japan"
+    observed_period: null
+    rights_status: "LINK_AND_PARAPHRASE_ONLY"
+    limitations: "Documents listed multilingual guide programs; availability varies by region, language, reservation requirements, and provider capacity."

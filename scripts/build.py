@@ -50,6 +50,7 @@ Design principles
 from __future__ import annotations
 
 import argparse
+import hashlib
 import logging
 import os
 import re
@@ -119,6 +120,13 @@ from scripts.generate_machine_layer import (
     GenerateMachineLayerError,
     generate_machine_layer,
 )
+from scripts.evidence import (
+    EvidenceContractError,
+    apply_evidence_projection,
+    load_evidence_registry,
+    validate_published_projection,
+)
+from scripts.loaders import load_destinations
 from scripts.generate_robots import GenerateRobotsError, generate_robots_file
 from scripts.generate_sitemap import GenerateSitemapError, generate_sitemap_file
 from scripts.generate_travel_decision_architecture import ENGLISH_SECTIONS as TDA_ENGLISH_SECTIONS
@@ -130,6 +138,8 @@ from scripts.trust_authority_copy import TRUST_PAGE_COPY
 # ============================================================================
 
 log = logging.getLogger("build")
+
+DESTINATIONS_V1_SHA256 = "3b76bb8f4f20aca5c9f617ef0a159967087a704bb6d1857a646bcefbb3fb2f9a"
 
 
 def configure_logging(*, verbose: bool = False) -> None:
@@ -975,11 +985,21 @@ def _verify_machine_layer_contract(stage_dir: Path) -> None:
         stage_dir / "api" / "criteria-v1.json",
         stage_dir / "api" / "compass-v1.json",
         stage_dir / "api" / "destinations-v1.json",
+        stage_dir / "api" / "destinations-v2.json",
         stage_dir / "api" / "index.json",
         stage_dir / "about.json",
     ]
     for path in required_files:
         _require_file(path)
+
+    destinations_v1_path = stage_dir / "api" / "destinations-v1.json"
+    destinations_v1_hash = hashlib.sha256(destinations_v1_path.read_bytes()).hexdigest()
+    if destinations_v1_hash != DESTINATIONS_V1_SHA256:
+        raise BuildStepError(
+            "Immutable destinations-v1.json snapshot drift: "
+            f"expected {DESTINATIONS_V1_SHA256}, found {destinations_v1_hash}. "
+            "Future destination edits must not rewrite the historical v1 endpoint."
+        )
 
     structures_dir = stage_dir / "api" / "structures"
     _require_dir(structures_dir)
@@ -1039,6 +1059,93 @@ def _verify_machine_layer_contract(stage_dir: Path) -> None:
         )
 
 
+def _verify_evidence_claim_contract(stage_dir: Path) -> None:
+    """Fail closed when the audited destination and its evidence ledger drift."""
+    import json as _json
+
+    try:
+        registry = load_evidence_registry()
+        raw_destinations = load_destinations()
+        pilot = next(
+            (item for item in raw_destinations if item.get("id") == registry["pilot_destination"]),
+            None,
+        )
+        if pilot is None:
+            raise EvidenceContractError("Pilot destination is absent from destinations.yaml.")
+        validate_published_projection(pilot, registry)
+        projected = apply_evidence_projection(pilot, registry)
+    except (EvidenceContractError, StopIteration) as exc:
+        raise BuildStepError(f"Evidence claim contract failed: {exc}") from exc
+
+    machine_path = stage_dir / "api" / "destinations-v2.json"
+    _require_file(machine_path)
+    machine_payload = _json.loads(machine_path.read_text(encoding="utf-8"))
+    machine_pilot = next(
+        (item for item in machine_payload.get("destinations", []) if item.get("id") == registry["pilot_destination"]),
+        None,
+    )
+    if machine_pilot is None:
+        raise BuildStepError("Evidence-reviewed machine artifact omits the pilot destination.")
+    for field in ("summary", "best_seasons", "family_fit"):
+        if machine_pilot.get(field) != projected.get(field):
+            raise BuildStepError(f"Machine evidence projection drift for pilot field {field!r}.")
+    if "typical_duration" in machine_pilot:
+        raise BuildStepError("Retired pilot duration remains published in destinations-v2.json.")
+    if machine_pilot.get("evidence_claims") != projected.get("evidence_claims"):
+        raise BuildStepError("Machine evidence claim references drift from the registry.")
+    if machine_pilot.get("evidence_records") != projected.get("evidence_records"):
+        raise BuildStepError("Machine evidence records drift from the registry.")
+    records_by_id = {record["evidence_id"]: record for record in machine_pilot["evidence_records"]}
+    for claim in machine_pilot["evidence_claims"]:
+        for evidence_id in claim["evidence_ids"]:
+            if evidence_id not in records_by_id:
+                raise BuildStepError(f"Published claim references unshipped evidence {evidence_id!r}.")
+    expected_sources = [
+        {"label": record["title"], "url": record["source_url"], "evidence_id": evidence_id}
+        for evidence_id, record in registry["records"].items()
+    ]
+    if machine_pilot.get("sources") != expected_sources:
+        raise BuildStepError("Machine evidence sources drift from registry IDs or URLs.")
+
+    v1_payload = _json.loads((stage_dir / "api" / "destinations-v1.json").read_text(encoding="utf-8"))
+    v1_by_id = {item["id"]: item for item in v1_payload.get("destinations", [])}
+    v2_by_id = {item["id"]: item for item in machine_payload.get("destinations", [])}
+    if set(v1_by_id) != set(v2_by_id):
+        raise BuildStepError("v1 and v2 destination IDs differ.")
+    for destination_id, v1_destination in v1_by_id.items():
+        if destination_id != registry["pilot_destination"] and v2_by_id[destination_id] != v1_destination:
+            raise BuildStepError(f"Non-pilot destination {destination_id!r} drifted between v1 and v2.")
+
+    for lang in SUPPORTED_LANGUAGES:
+        html_path = stage_dir / lang / "destinations" / registry["pilot_destination"] / "index.html"
+        _require_file(html_path)
+        html_text = unescape(html_path.read_text(encoding="utf-8"))
+        if projected["summary"][lang] not in html_text or projected["best_seasons"][lang] not in html_text:
+            raise BuildStepError(f"Published pilot copy does not match evidence projection for {lang}.")
+        retired_duration = pilot["typical_duration"][lang]
+        if retired_duration in html_text:
+            raise BuildStepError(f"Retired pilot duration remains published for {lang}.")
+        for family_id, fit_value in projected["family_fit"].items():
+            marker = f'data-evidence-family-id="{family_id}" data-evidence-fit-value="{fit_value}"'
+            if html_text.count(marker) != 1:
+                raise BuildStepError(
+                    f"Pilot page for {lang} does not render reviewed family fit {family_id}={fit_value}."
+                )
+        rendered_family_markers = html_text.count('data-evidence-family-id="')
+        if rendered_family_markers != len(projected["family_fit"]):
+            raise BuildStepError(
+                f"Pilot page for {lang} renders an unreviewed or duplicate family-fit prior."
+            )
+
+        for destination_id in v1_by_id:
+            if destination_id == registry["pilot_destination"]:
+                continue
+            non_pilot_html = stage_dir / lang / "destinations" / destination_id / "index.html"
+            _require_file(non_pilot_html)
+            if 'data-evidence-' in non_pilot_html.read_text(encoding="utf-8"):
+                raise BuildStepError(f"Non-pilot page {destination_id!r} incorrectly emits evidence markers.")
+
+
 def _verify_trust_pages_are_indexable(stage_dir: Path) -> None:
     trust_path_templates = [
         "{lang}/about/index.html",
@@ -1096,6 +1203,7 @@ def _verify_output_contract(stage_dir: Path) -> None:
 
     _verify_destination_pages_contract(stage_dir)
     _verify_machine_layer_contract(stage_dir)
+    _verify_evidence_claim_contract(stage_dir)
     _verify_trust_pages_are_indexable(stage_dir)
     _verify_experience_type_count(stage_dir)
     _verify_sitemap_contract(stage_dir)

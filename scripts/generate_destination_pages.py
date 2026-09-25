@@ -33,6 +33,11 @@ from scripts.generate_category_infrastructure import (
     load_ontology_structures,
 )
 from scripts.generate_compass import VALUE_LABELS
+from scripts.evidence import (
+    apply_evidence_projection,
+    load_evidence_registry,
+    validate_published_projection,
+)
 from scripts.loaders import (
     load_destinations,
     load_experience_types,
@@ -292,6 +297,12 @@ def load_governed_destinations() -> List[Dict[str, Any]]:
 
     if not output:
         raise GenerateDestinationPagesError("No enabled destinations found in destinations.yaml.")
+    registry = load_evidence_registry()
+    pilot = next((entry for entry in output if entry["id"] == registry["pilot_destination"]), None)
+    if pilot is None:
+        raise GenerateDestinationPagesError("Evidence pilot destination is absent from destinations.yaml.")
+    validate_published_projection(pilot, registry)
+    output = [apply_evidence_projection(entry, registry) for entry in output]
     output.sort(key=lambda entry: entry["order"])
     return output
 
@@ -458,6 +469,8 @@ def _build_family_fit_view(
 
     view: List[Dict[str, Any]] = []
     for family_id in FAMILY_ORDER:
+        if family_id not in destination["family_fit"]:
+            continue
         members = members_by_family[family_id]
         if not members:
             raise GenerateDestinationPagesError(f"Ontology family {family_id!r} has no member structures.")
@@ -492,8 +505,10 @@ def _build_context(
         "region": destination["region"][lang],
         "summary": destination["summary"][lang],
         "best_seasons": destination["best_seasons"][lang],
-        "typical_duration": destination["typical_duration"][lang],
+        "typical_duration": destination.get("typical_duration", {}).get(lang),
         "sources": destination["sources"],
+        "evidence_claims": destination.get("evidence_claims", []),
+        "evidence_governed": bool(destination.get("evidence_claims")),
     }
 
     canonical_url = build_destination_path(site_config, lang, destination["id"], absolute=True)

@@ -126,7 +126,8 @@ from scripts.evidence import (
     load_evidence_registry,
     validate_published_projection,
 )
-from scripts.loaders import load_destinations
+from scripts.loaders import load_destinations, load_site_config
+from scripts.seo import build_default_social_image_metadata
 from scripts.generate_robots import GenerateRobotsError, generate_robots_file
 from scripts.generate_sitemap import GenerateSitemapError, generate_sitemap_file
 from scripts.generate_travel_decision_architecture import ENGLISH_SECTIONS as TDA_ENGLISH_SECTIONS
@@ -700,7 +701,7 @@ def _verify_claims_restraint(stage_dir: Path) -> None:
 
 def _verify_static_asset_references(stage_dir: Path) -> None:
     static_ref_pattern = re.compile(
-        r"""(?:src|href)=["'](?:https://tourvstravel\.com)?(/static/[^"'\?#]+)""",
+        r"""(?:src|href|content)=["'](?:https://tourvstravel\.com)?(/static/[^"'\?#]+)""",
         re.IGNORECASE,
     )
 
@@ -733,6 +734,7 @@ class _HtmlIntegrityParser(HTMLParser):
         self.h1_count = 0
         self.canonical_href = ""
         self.robots_content = ""
+        self.social_meta: dict[str, str] = {}
         self.hrefs: List[str] = []
         self.text_parts: List[str] = []
         self._skip_depth = 0
@@ -754,6 +756,10 @@ class _HtmlIntegrityParser(HTMLParser):
             self.canonical_href = attr_map.get("href", "")
         elif tag_name == "meta" and attr_map.get("name", "").lower() == "robots":
             self.robots_content = attr_map.get("content", "")
+        elif tag_name == "meta":
+            meta_key = attr_map.get("property") or attr_map.get("name")
+            if meta_key:
+                self.social_meta[meta_key.lower()] = attr_map.get("content", "")
 
     def handle_endtag(self, tag: str) -> None:
         if tag.lower() in {"script", "style", "noscript"} and self._skip_depth:
@@ -775,6 +781,60 @@ def _parse_generated_html(path: Path) -> _HtmlIntegrityParser:
     except UnicodeDecodeError as exc:
         raise BuildStepError(f"Generated HTML is not valid UTF-8: {path}") from exc
     return parser
+
+
+def _verify_social_card_contract(stage_dir: Path) -> None:
+    """Fail the build if the promised shared image or essential cards disappear."""
+    card = build_default_social_image_metadata(load_site_config())
+    image_url = card["image"]
+    image_path = urlsplit(image_url).path.lstrip("/")
+    asset = (stage_dir / image_path).resolve()
+    if not _is_relative_to(asset, stage_dir.resolve()):
+        raise BuildStepError("The configured social card escapes the output directory.")
+    _require_file(asset)
+
+    # The standardized card is PNG; dimensions are checked without optional
+    # image libraries so CI cannot publish an incorrectly sized placeholder.
+    with asset.open("rb") as handle:
+        header = handle.read(24)
+    if header[:16] != b"\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR":
+        raise BuildStepError(f"Social preview card must be a valid PNG: {asset}")
+    actual_size = (
+        int.from_bytes(header[16:20], "big"),
+        int.from_bytes(header[20:24], "big"),
+    )
+    expected_size = (card["image_width"], card["image_height"])
+    if actual_size != expected_size:
+        raise BuildStepError(f"Social card dimensions {actual_size} differ from configured {expected_size}.")
+
+    shareable_paths = (
+        "index.html",
+        "styles/index.html",
+        "compare/index.html",
+        "tools/index.html",
+        "destinations/index.html",
+        "report/index.html",
+        "tools/find-your-match/index.html",
+    )
+    pages = [stage_dir / "index.html"]
+    pages.extend(stage_dir / lang / path for lang in SUPPORTED_LANGUAGES for path in shareable_paths)
+    for page in pages:
+        parser = _parse_generated_html(page)
+        required = {
+            "og:image": image_url,
+            "og:image:type": card["image_type"],
+            "og:image:width": str(card["image_width"]),
+            "og:image:height": str(card["image_height"]),
+            "og:image:alt": card["image_alt"],
+            "twitter:card": "summary_large_image",
+            "twitter:image": image_url,
+        }
+        for key, expected in required.items():
+            actual = parser.social_meta.get(key)
+            if actual != expected:
+                raise BuildStepError(
+                    f"Invalid social preview {key} in {page}: expected {expected!r}, found {actual!r}"
+                )
 
 
 def _english_reference_fragments(page_key: str) -> List[str]:
@@ -1210,6 +1270,7 @@ def _verify_output_contract(stage_dir: Path) -> None:
     _scan_html_forbidden_fragments(stage_dir)
     _verify_claims_restraint(stage_dir)
     _verify_static_asset_references(stage_dir)
+    _verify_social_card_contract(stage_dir)
     _verify_reference_page_integrity(stage_dir)
     _verify_local_links(stage_dir)
 

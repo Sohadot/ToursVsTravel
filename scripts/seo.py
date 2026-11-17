@@ -54,6 +54,7 @@ __all__ = [
     "normalize_canonical_url",
     "normalize_og_image_url",
     "normalize_hreflang_entries",
+    "build_default_social_image_metadata",
     # JSON-LD utilities
     "serialize_jsonld_payloads",
     "build_organization_jsonld",
@@ -436,6 +437,28 @@ def _get_default_og_image(site_config: Mapping[str, Any]) -> str:
     return normalize_og_image_url(site_config, _ensure_string(seo["default_og_image"], "site_config.seo.default_og_image"))
 
 
+def build_default_social_image_metadata(site_config: Mapping[str, Any]) -> Dict[str, Any]:
+    """Validated metadata for the shared, rasterized social preview card."""
+    seo = _get_seo_section(site_config)
+    width = seo.get("default_og_image_width")
+    height = seo.get("default_og_image_height")
+    for label, value in (("width", width), ("height", height)):
+        if isinstance(value, bool) or not isinstance(value, int) or value <= 0:
+            raise MetadataBuildError(f"site_config.seo.default_og_image_{label} must be a positive integer.")
+
+    image_type = _ensure_string(seo.get("default_og_image_type"), "site_config.seo.default_og_image_type")
+    if image_type not in {"image/jpeg", "image/png"}:
+        raise MetadataBuildError("The social preview image must be a JPEG or PNG raster asset.")
+
+    return {
+        "image": _get_default_og_image(site_config),
+        "image_alt": _ensure_string(seo.get("default_og_image_alt"), "site_config.seo.default_og_image_alt"),
+        "image_type": image_type,
+        "image_width": width,
+        "image_height": height,
+    }
+
+
 def _get_title_template(site_config: Mapping[str, Any], lang: str) -> str:
     seo = _get_seo_section(site_config)
 
@@ -590,9 +613,10 @@ def build_page_seo(
 
     resolved_og_title = normalize_meta_title(og_title or title)
     resolved_og_description = normalize_meta_description(og_description or description)
+    default_image = build_default_social_image_metadata(site_config)
     resolved_og_image = normalize_og_image_url(
         site_config,
-        og_image_url if og_image_url is not None else _get_default_og_image(site_config),
+        og_image_url if og_image_url is not None else default_image["image"],
     )
     resolved_og_type = _ensure_string(og_type, "og_type")
 
@@ -611,6 +635,25 @@ def build_page_seo(
 
     serialized_jsonld = serialize_jsonld_payloads(jsonld_payloads or [])
 
+    og = {
+        "title": resolved_og_title,
+        "description": resolved_og_description,
+        "image": resolved_og_image,
+        "type": resolved_og_type,
+        "url": canonical,
+        "site_name": _get_site_name(site_config),
+    }
+    twitter = {
+        "card": resolved_twitter_card,
+        "title": resolved_twitter_title,
+        "description": resolved_twitter_description,
+        "image": resolved_twitter_image,
+    }
+    if resolved_og_image == default_image["image"]:
+        og.update(default_image)
+    if resolved_twitter_image == default_image["image"]:
+        twitter["image_alt"] = default_image["image_alt"]
+
     return {
         "lang": _ensure_string(lang, "lang"),
         "page_type": _ensure_string(page_type, "page_type"),
@@ -619,20 +662,8 @@ def build_page_seo(
         "canonical_url": canonical,
         "robots_directive": resolved_robots,
         "hreflang": hreflang,
-        "og": {
-            "title": resolved_og_title,
-            "description": resolved_og_description,
-            "image": resolved_og_image,
-            "type": resolved_og_type,
-            "url": canonical,
-            "site_name": _get_site_name(site_config),
-        },
-        "twitter": {
-            "card": resolved_twitter_card,
-            "title": resolved_twitter_title,
-            "description": resolved_twitter_description,
-            "image": resolved_twitter_image,
-        },
+        "og": og,
+        "twitter": twitter,
         "jsonld": serialized_jsonld,
     }
 

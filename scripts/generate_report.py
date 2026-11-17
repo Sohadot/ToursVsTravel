@@ -39,6 +39,7 @@ from scripts.routes import (
     build_tools_index_path,
 )
 from scripts.i18n import build_absolute_url
+from scripts.seo import build_default_social_image_metadata
 
 logging.basicConfig(
     level=logging.INFO,
@@ -275,6 +276,7 @@ def _build_seo_payload(
             separators=(",", ":"),
         )
     ]
+    social_image = build_default_social_image_metadata(site_config)
     payload: Dict[str, Any] = {
         "lang": lang,
         "title": title,
@@ -285,18 +287,17 @@ def _build_seo_payload(
         "og": {
             "title": title,
             "description": description,
-            "image": f"{base_url}{logo_url}",
+            **social_image,
             "type": "website",
             "url": canonical_url,
             "site_name": site_name,
-            "image_alt": site_name,
         },
         "twitter": {
             "card": "summary_large_image",
             "title": title,
             "description": description,
-            "image": f"{base_url}{logo_url}",
-            "image_alt": site_name,
+            "image": social_image["image"],
+            "image_alt": social_image["image_alt"],
         },
         "jsonld": jsonld,
         "extra_meta": [],

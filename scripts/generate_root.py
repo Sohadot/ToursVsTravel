@@ -22,7 +22,7 @@ Design principles
 - deterministic output
 - strict base URL handling
 - safe HTML escaping
-- no direct dependency on browser behavior alone
+- crawler-readable social metadata even when JavaScript/meta refresh is ignored
 """
 
 from __future__ import annotations
@@ -37,6 +37,8 @@ from typing import Any, Mapping, Optional, Sequence
 from urllib.parse import urlparse
 
 import yaml
+
+from scripts.seo import SeoError, build_default_social_image_metadata
 
 
 # ============================================================================
@@ -189,6 +191,11 @@ def _resolve_site_name(site_config: Mapping[str, Any], default_lang: str) -> str
     return "TourVsTravel"
 
 
+def _resolve_localized_site_text(site: Mapping[str, Any], key: str, lang: str) -> str:
+    variants = _ensure_mapping(site.get(key), f"site.{key}")
+    return _ensure_string(variants.get(lang, variants.get("en")), f"site.{key}.{lang}")
+
+
 def _extract_enabled_language_codes(site_config: Mapping[str, Any]) -> list[str]:
     languages = site_config.get("languages")
 
@@ -306,14 +313,31 @@ def build_root_entrypoint_html(
     )
 
     site_name = _resolve_site_name(site_config, default_lang)
+    tagline = _resolve_localized_site_text(site, "tagline", default_lang)
+    summary = _resolve_localized_site_text(site, "summary", default_lang)
+    try:
+        social_image = build_default_social_image_metadata(site_config)
+    except SeoError as exc:
+        raise RootConfigError(f"Invalid social image configuration: {exc}") from exc
+
+    twitter_card = _ensure_string(
+        _ensure_mapping(site_config.get("seo"), "seo").get("twitter_card"),
+        "seo.twitter_card",
+    )
 
     target_path = f"/{default_lang}/"
     canonical_url = f"{base_url}{target_path}"
 
     safe_lang = html.escape(default_lang, quote=True)
     safe_site_name = html.escape(site_name, quote=True)
+    safe_title = html.escape(f"{site_name} | {tagline}", quote=True)
+    safe_summary = html.escape(summary, quote=True)
     safe_target_path = html.escape(target_path, quote=True)
     safe_canonical_url = html.escape(canonical_url, quote=True)
+    safe_image = html.escape(social_image["image"], quote=True)
+    safe_image_alt = html.escape(social_image["image_alt"], quote=True)
+    safe_image_type = html.escape(social_image["image_type"], quote=True)
+    safe_twitter_card = html.escape(twitter_card, quote=True)
 
     return f"""<!DOCTYPE html>
 <html lang="{safe_lang}">
@@ -322,7 +346,23 @@ def build_root_entrypoint_html(
   <meta http-equiv="refresh" content="0; url={safe_target_path}">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="{safe_canonical_url}">
-  <title>{safe_site_name}</title>
+  <title>{safe_title}</title>
+  <meta name="description" content="{safe_summary}">
+  <meta property="og:title" content="{safe_title}">
+  <meta property="og:description" content="{safe_summary}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{safe_canonical_url}">
+  <meta property="og:image" content="{safe_image}">
+  <meta property="og:image:type" content="{safe_image_type}">
+  <meta property="og:image:width" content="{social_image['image_width']}">
+  <meta property="og:image:height" content="{social_image['image_height']}">
+  <meta property="og:image:alt" content="{safe_image_alt}">
+  <meta property="og:site_name" content="{safe_site_name}">
+  <meta name="twitter:card" content="{safe_twitter_card}">
+  <meta name="twitter:title" content="{safe_title}">
+  <meta name="twitter:description" content="{safe_summary}">
+  <meta name="twitter:image" content="{safe_image}">
+  <meta name="twitter:image:alt" content="{safe_image_alt}">
   <script>
     window.location.replace("{safe_target_path}");
   </script>

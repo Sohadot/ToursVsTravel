@@ -31,6 +31,7 @@ from scripts.loaders import (
     resolve_footer_reference_report_label,
     resolve_nav_report_label,
 )
+from scripts.seo import build_default_social_image_metadata
 
 
 logging.basicConfig(
@@ -990,6 +991,7 @@ def _build_seo_payload(
             separators=(",", ":"),
         )
     ]
+    social_image = build_default_social_image_metadata(site_config)
     payload: Dict[str, Any] = {
         "lang": lang,
         "title": title,
@@ -997,8 +999,8 @@ def _build_seo_payload(
         "canonical_url": canonical_url,
         "robots_directive": "index, follow",
         "hreflang": _build_hreflang(base_url, languages),
-        "og": {"title": title, "description": description, "image": f"{base_url}{logo_url}", "type": "website", "url": canonical_url, "site_name": site_name, "image_alt": site_name},
-        "twitter": {"card": "summary_large_image", "title": title, "description": description, "image": f"{base_url}{logo_url}", "image_alt": site_name},
+        "og": {"title": title, "description": description, **social_image, "type": "website", "url": canonical_url, "site_name": site_name},
+        "twitter": {"card": "summary_large_image", "title": title, "description": description, "image": social_image["image"], "image_alt": social_image["image_alt"]},
         "jsonld": jsonld,
         "extra_meta": [],
     }

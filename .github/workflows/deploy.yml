@@ -37,6 +37,12 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install pyyaml jinja2
 
+      - name: Run regression suite
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m unittest discover -s tests -v
+
       - name: Run disciplined build pipeline
         shell: bash
         run: |
@@ -69,6 +75,7 @@ jobs:
           test -f output/CNAME
           test -f output/.nojekyll
           test -f output/index.html
+          test -f output/static/img/og/default-og.png
 
           test -f output/en/index.html
           test -f output/ar/index.html

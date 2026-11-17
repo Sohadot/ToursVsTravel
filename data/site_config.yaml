@@ -121,7 +121,11 @@ seo:
   robots_directive: "index, follow"
   og_type: "website"
   twitter_card: "summary_large_image"
-  default_og_image: "https://tourvstravel.com/static/img/og/default-og.jpg"
+  default_og_image: "https://tourvstravel.com/static/img/og/default-og.png"
+  default_og_image_type: "image/png"
+  default_og_image_width: 1200
+  default_og_image_height: 630
+  default_og_image_alt: "TourVsTravel travel-decision reference: two paths toward one destination."
   theme_color: "#002B49"
 
   hreflang:

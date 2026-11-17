@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">TourVsTravel — Same Destination. Different Stories.</title>
+  <desc id="desc">An elegant navy and gold travel-decision card with two routes crossing a compass.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#002B49"/>
+      <stop offset="0.62" stop-color="#071F35"/>
+      <stop offset="1" stop-color="#0D2233"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E9CF7D"/>
+      <stop offset="0.52" stop-color="#D4AF37"/>
+      <stop offset="1" stop-color="#A77B23"/>
+    </linearGradient>
+    <linearGradient id="aqua" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#A7D8DC"/>
+      <stop offset="1" stop-color="#4C9BB2"/>
+    </linearGradient>
+    <radialGradient id="compass-glow">
+      <stop offset="0" stop-color="#1B5870" stop-opacity="0.58"/>
+      <stop offset="1" stop-color="#1B5870" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="frame">
+      <rect width="1200" height="630" rx="0"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#frame)">
+    <rect width="1200" height="630" fill="url(#background)"/>
+    <path d="M0 0H1200V630H0Z" fill="none" stroke="#6E8CA1" stroke-opacity="0.22" stroke-width="2"/>
+    <g fill="none" stroke="#96B6C5" stroke-opacity="0.075" stroke-width="1">
+      <path d="M0 102H1200M0 207H1200M0 312H1200M0 417H1200M0 522H1200"/>
+      <path d="M108 0V630M223 0V630M338 0V630M453 0V630M568 0V630M683 0V630M798 0V630M913 0V630M1028 0V630M1143 0V630"/>
+    </g>
+
+    <!-- A quiet institutional mark: two horizons, one shared destination. -->
+    <g transform="translate(76 68)">
+      <circle cx="30" cy="30" r="29" fill="none" stroke="url(#gold)" stroke-width="2.2"/>
+      <path d="M12 40L30 18L48 40" fill="none" stroke="#E5CF81" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M10 46H50" stroke="#84C6D2" stroke-width="2.6" stroke-linecap="round"/>
+    </g>
+    <g font-family="DejaVu Sans, sans-serif" font-weight="700">
+      <text x="151" y="112" font-size="36" fill="#FFFFFF" letter-spacing="-1">Tour</text>
+      <text x="242" y="112" font-size="36" fill="#D4AF37" letter-spacing="-1">VS</text>
+      <text x="299" y="112" font-size="36" fill="#FFFFFF" letter-spacing="-1">Travel</text>
+    </g>
+    <text x="76" y="178" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="600" fill="#D9BF67" letter-spacing="3.6">THE TRAVEL DECISION REFERENCE</text>
+
+    <g font-family="DejaVu Sans, sans-serif" fill="#FFFFFF" font-weight="700" letter-spacing="-2.8">
+      <text x="72" y="310" font-size="66">Same Destination.</text>
+      <text x="72" y="393" font-size="66">Different Stories.</text>
+    </g>
+    <path d="M75 421H188" stroke="url(#gold)" stroke-width="5" stroke-linecap="round"/>
+    <text x="75" y="465" font-family="DejaVu Sans, sans-serif" font-size="22" fill="#C8DAE4">Compare the choices. Understand the trade-offs.</text>
+
+    <g transform="translate(970 320)">
+      <circle r="264" fill="url(#compass-glow)"/>
+      <circle r="188" fill="none" stroke="#82B0C0" stroke-opacity="0.18" stroke-width="1.5"/>
+      <circle r="156" fill="none" stroke="#82B0C0" stroke-opacity="0.26" stroke-width="1.5"/>
+      <circle r="115" fill="none" stroke="#82B0C0" stroke-opacity="0.22" stroke-width="1.4" stroke-dasharray="5 10"/>
+      <path d="M0-198V-174M0 174V198M-198 0H-174M174 0H198" stroke="#D4AF37" stroke-opacity="0.55" stroke-width="2.3"/>
+      <path d="M-133-133L133 133M133-133L-133 133" stroke="#8FB4C2" stroke-opacity="0.17" stroke-width="1.2"/>
+
+      <!-- The guided path and the exploratory path meet at one destination. -->
+      <path d="M-155 120C-62 119-80 30-26-4C12-28 54-23 68-94"
+            fill="none" stroke="url(#gold)" stroke-width="7" stroke-linecap="round"/>
+      <path d="M-160 120C-180 54-98 58-120 0C-147-71-35-78 5-62C46-46 26-92 68-94"
+            fill="none" stroke="url(#aqua)" stroke-width="5" stroke-linecap="round" stroke-dasharray="1 15"/>
+      <circle cx="-155" cy="120" r="11" fill="#0D2233" stroke="#D4AF37" stroke-width="3"/>
+      <circle cx="68" cy="-94" r="15" fill="#D4AF37"/>
+      <circle cx="68" cy="-94" r="26" fill="none" stroke="#D4AF37" stroke-opacity="0.54" stroke-width="2"/>
+      <path d="M68-117L77-94L68-71L59-94Z" fill="#FFF4C7"/>
+    </g>
+
+    <path d="M76 537H1123" stroke="#92ADBD" stroke-opacity="0.27" stroke-width="1.4"/>
+    <text x="77" y="575" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="700" fill="#D4AF37" letter-spacing="3.2">TOURVSTRAVEL.COM</text>
+    <text x="1123" y="575" text-anchor="end" font-family="DejaVu Sans, sans-serif" font-size="13" fill="#98B5C5" letter-spacing="1.5">EVIDENCE-LED • MULTILINGUAL • INDEPENDENT</text>
+  </g>
+</svg>
